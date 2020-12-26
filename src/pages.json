@@ -1,17 +1,39 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+		    "path" : "pages/home/ExchangeZone/AcquireExchage/AcquireExchange",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000",
-				"color": "rgba(249, 242, 226, 100)",
-				"font-size": "20px",
-				"text-align": "left",
-				"font-family": "Arial",
-				"border": "1px solid rgba(255, 255, 255, 100)"
+				"navigationBarTitleText": "柚光"
+				
+			}
+		},
+		
+		{
+		    "path" : "pages/home/ExchangeZone/ExchangeZone",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+			"path": "pages/home/Advertising/Advertising",
+			"style": {
+				"navigationBarTitleText": "柚光"
+				
 			}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

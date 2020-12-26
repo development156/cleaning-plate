@@ -15,6 +15,14 @@
 /* 颜色变量 */
 
 /* 行为相关颜色 */
+ @mixin gy($margin,$boder,$text,$width,$height){
+  margin-top: $margin;
+   border-radius:$boder;
+   text-align: $text;
+   width: $width;
+   height: $height; 
+   
+  }
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;
