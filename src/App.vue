@@ -68,8 +68,10 @@
 	
 </script>
 
+
 <style>
 	@import url("static/iconFont.css");
+	@import  '~@/static/css/font-icon.css'
 	/*每个页面公共css */ 
 	/* 隐藏滚动条，但依旧具备可以滚动的功能 */
 		::-webkit-scrollbar{
@@ -82,5 +84,5 @@
 	   
 		display: none
 	    }
-			 
+
 </style>

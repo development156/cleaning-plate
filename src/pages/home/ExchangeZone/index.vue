@@ -1,4 +1,5 @@
 <template>
+
 	<view><xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:100,spacing: 200,background:'#1D5397',color:'#666666',actColor:'#D97F00',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
 		<!-- :url="`/pages/details/index?id=${item.target}`" -->
 			<!-- 开始循环遍历 -->
@@ -8,7 +9,6 @@
 	<view class="hot_goods" v-if="flag==1">
 		<view class="tit">我的积分</view>
 		<view class="goods_list">
-		
 			      <navigator class="goods_item"
 			      v-for="(item,index) in goodsList"
 			      :key="index"

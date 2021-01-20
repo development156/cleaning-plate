@@ -1,0 +1,65 @@
+@font-face {
+    font-family: uniicons;
+    font-weight: normal;
+    font-style: normal;
+    src:url('~@/static/font/iconfont.ttf') format('truetype'); 
+}
+
+.icon {
+    color: #999;
+    font-family: uniicons;
+    font-size: 42upx;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon.uni-active {
+    color: #1ca6ec;
+}
+/* // 下面的样式直接复制 */
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-caipin-:before {
+  content: "\e601";
+}
+
+.icon-navicon-cptx:before {
+  content: "\e63f";
+}
+
+.icon-fenzu:before {
+  content: "\e602";
+}
+
+.icon-gonggao:before {
+  content: "\e648";
+}
+
+
+/* c */
+.icon-web-icon-:before {
+  content: "\e6e8";
+}
+
+.icon-tuya-:before {
+  content: "\e757";
+}
+
+.icon-tianjiafenzu:before {
+  content: "\e629";
+}
+
+.icon-dingdanguanli:before {
+  content: "\e61c";
+}
+

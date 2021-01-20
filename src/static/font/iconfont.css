@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 2329466 */
+  src: url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.eot');
+  src: url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2329466_zhgk4w0q2cl.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-web-icon-:before {
+  content: "\e6e8";
+}
+
+.icon-tuya-:before {
+  content: "\e757";
+}
+
+.icon-tianjiafenzu:before {
+  content: "\e629";
+}
+
+.icon-dingdanguanli:before {
+  content: "\e61c";
+}
+
+.icon-caipin-:before {
+  content: "\e601";
+}
+
+.icon-navicon-cptx:before {
+  content: "\e63f";
+}
+
+.icon-fenzu:before {
+  content: "\e602";
+}
+
+.icon-gonggao:before {
+  content: "\e648";
+}
+

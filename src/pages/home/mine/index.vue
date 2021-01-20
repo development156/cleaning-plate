@@ -22,7 +22,6 @@
 			</view>
 		</header>
 		
-		
 		<main>
 			<view class="top-cnt"></view>
 			<view class="btm-cnt">
@@ -45,13 +44,13 @@
 				</view>
 			</view>
 		</main>
-<!-- 
+		
 		<neil-modal :auto-close="false" :show="logout" :confirmColor="'#F73657'" @cancel="bindBtn" @confirm="bindBtn"
 		 :confirmText="'确认'" :cancelText="'取消'">
 			<view class="logout-modal-content">
 				<view class="logout-title">是否确定</view>
 			</view>
-		</neil-modal> -->
+		</neil-modal>
 	</view>
 </template>
 

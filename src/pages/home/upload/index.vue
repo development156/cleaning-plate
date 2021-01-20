@@ -22,8 +22,8 @@
 </template>
 
 <script>
-	import {upload} from '../../../models/upload/upload.js'
-	const uploadImg = new upload()
+
+	
 	export default{
 		name:"uniPopupDefine",
 		 inject: ['popup'],

@@ -4,25 +4,33 @@
 		<view class="icon" @click="navTo2">
 			我的
 		</view>
+		
 		<view class="top">
+
 			<view class="box1"   @click="confirmDialog">
 				<text >上传照片</text>
 				<image ></image>
 			</view>
+			
 			<navigator class="box2"
-			url="exchangeZone/exchangeZone"
+			url="exchangeZone/index"
 			>
 				<text>兑换专区</text>
 			<image ></image>
 			</navigator>
+			
 			<view class="box3" @click="navTo3">
 			<text>菜品展示</text>
 			<image ></image>
 			</view>
+			
+		
 			<view class="box4" @click="navTo">
 				<text>公告</text>
 			<image ></image>
 			</view>
+			
+			
 			<view class="box5" >
 				<text>剩菜分析</text>
 			<image ></image>
