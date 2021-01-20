@@ -1,0 +1,151 @@
+<template>
+	<view>
+		<view class="top">已完成</view>
+		<view class="tip">您的订单已经签收，欢迎您再次光临！</view>
+		<view class="address">
+			<text>姓名</text>
+			<text>电话</text>
+			<text>地址</text>
+		</view>
+		<view class="goods_details">
+			<view class="info">
+			<image></image>
+			<view class="details">
+				<text>海南网纹瓜 玫珑瓜蜜瓜哈密瓜 新鲜水果</text>
+				<text> 1粒装1.5-2.5斤</text>
+				<text>¥19.9</text>
+			</view>
+			</view>
+			<view class="total">	
+			<text>共1件</text>
+			<text>商品小计：¥19.9</text>	
+			</view>
+		</view>
+		<view class="order_info">
+			<text>订单编号：</text>
+			<text>创建时间：</text>
+			<text>支付方式：</text>
+			<view class="line"></view>
+			<text>配送方式</text>
+			<view class="money">
+			<text>实付款</text>
+			<text> ¥19.9</text>
+		</view>
+		</view>
+		
+		
+	</view>
+</template>
+
+<script>
+	
+</script>
+
+<style lang="scss">
+	page{
+		background-color: gainsboro;
+	}
+	.top{
+		height: 5.125rem;
+		background-color: #C9A65E ;
+		text-align: center;
+		
+	}
+	.tip{
+	
+		text-align: center;
+		border: 1px solid rgba(255, 255, 255, 100);
+		font-size: 0.8125rem;
+		height: 3.75rem;
+		background-color: #FFFFFF;
+	}
+	.address{
+		display: flex;
+		flex-direction: column;
+		font-size: 0.8125rem;
+		padding-left: 2.4375rem;
+		margin-top: 0.875rem;
+		height: 6.25rem;
+		justify-content: space-around;
+		border-radius: 10px;
+		background-color: #FFFFFF;
+		border: 1px solid rgba(255, 255, 255, 100);
+	}
+	.goods_details{
+			margin-top: 0.875rem;
+		border-radius: 10px;
+		border: 1px solid rgba(255, 255, 255, 100);
+		background-color: #FFFFFF;
+		height: 13.0625rem;
+		.info{
+			display: flex;
+			image{
+				width: 5.9375rem;
+				height: 5.5rem;
+				margin: 3.3125rem  0 0 1.0625rem ;
+				border: 1px solid red;
+			}
+			.details{
+				margin:3.3125rem  0 0 0.5625rem;
+				display: flex;
+				height: 6.25rem;
+				width: 14.5625rem;
+				justify-content: space-around;
+				flex-direction: column;
+				text{
+					&:nth-child(1){
+						font-size: 0.75rem;
+					}
+					&:nth-child(2){
+						font-size: 8px;
+						color:#9F9F9F;
+					}
+				}
+			}
+		}
+		
+		.total{
+			display: flex;
+			margin: 1.8125rem 0 0.875rem 11.5rem;
+			font-size: 0.625rem;
+			
+		}
+	}
+	.order_info{
+		margin-top: 0.875rem;
+		background-color: #FFFFFF;
+		display: flex;
+		flex-direction: column;
+		font-size: 0.875rem;
+		padding:1.25rem 0 0 1.375rem ;
+		text{
+			margin-bottom: 1.25rem;
+			&:nth-child(5){
+				margin-top: 1.25rem;
+			}
+		}
+		.line{
+			background-color: #FFFFFF;
+			width: 20.6875rem;
+			height: 0.0625rem;
+			opacity: 0.67;
+			background-color: gainsboro;
+		}
+		.money{
+			background-color: #FFFFFF;
+			display: flex;
+			margin:1.8125rem 0 0 13.5rem;
+			font-size: 0.75rem;
+			justify-content: space-around;
+			text{
+				&:nth-child(2){
+					color: red;
+				}
+			}
+			
+		}
+	}
+	
+	
+	
+</style>

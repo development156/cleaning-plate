@@ -1,13 +1,30 @@
 <template>
 	<view>
 		
-	<view class="box1">水果通知</view>
+	<view class="box1" @click="navTo">水果通知</view>
 	<view class="box2">产品通知</view>
 	<view class="box3">宣传通知</view>
 	</view>
 </template>
 
 <script>
+	export default{
+		methods:{
+			// 跳转路由
+			navTo(){
+				uni.navigateTo({
+				url:'./advertisingList/advertisingList?type=新闻'
+				})
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
 </script>
 
 <style lang="scss" scoped>
