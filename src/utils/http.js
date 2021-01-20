@@ -7,7 +7,6 @@ class HTTP {
 	constructor() {
 		this.baseUrl = config.base_url
 	}
-
 	request({
 		url,
 		data = {},
@@ -25,7 +24,7 @@ class HTTP {
 			data: data,
 			dataType:"json",
 			header: {
-				'Content-Type': "json",
+				'Content-Type': "application/json",
 				'appId': config.appId,
 				// 'token': uni.getStorageSync('AuthTokens')
 			},

@@ -10,7 +10,10 @@
  
 </template>
 <script>
-var _self;
+	import { FoodUpload } from '@/models/admin/Upload/foodUpload.js'
+	const upLoad = new FoodUpload();
+	
+	var _self;
 export default {
  data(){
 		return{
@@ -33,30 +36,46 @@ export default {
 	uni.showLoading({
 	    title: '加载中'
 	});
+	console.log(res)
      const tempFilePaths = res.tempFilePaths;
-	 
-     const uploadTask = uni.uploadFile({
-      url : '',
-      filePath: tempFilePaths[0],
-      name: 'file',
-      formData: {//????
-       'user': 'test'
-      },
-      success: function (uploadFileRes) {
+	 const tempFilePath= tempFilePaths[0];
+     const uploadTask = upLoad.uploadPicture(//{
+      // url : '',
+      // filePath: tempFilePaths[0],
+      // name: 'file',
+      // formData: {//????
+      //  'user': 'test'
+      // },
+	  tempFilePath
+    
+//     }
+	 ).then(res => {
+		 
+		 // success: function (uploadFileRes) {
+		 		  
+		  console.log(uploadFileRes.data);
+		  uni.hideLoading();
 		  
-       console.log(uploadFileRes.data);
-	   uni.hideLoading();
-	   
-	   // const back = JSON.parse(uploadFileRes.data);
-	   // 					if(back.status=="0"){
-	   // 						that.paidImgUrl = that.host+back.filepath[0];
-	   // 						console.log(that.paidImgUrl);
-	   // 					}else{
-	   // 						that.showToast(back.msg)
-	   // 					}
-      },
-	
-     });
+		  // const back = JSON.parse(uploadFileRes.data);
+		  // 					if(back.status=="0"){
+		  // 						that.paidImgUrl = that.host+back.filepath[0];
+		  // 						console.log(that.paidImgUrl);
+		  // 					}else{
+		  // 						that.showToast(back.msg)
+		  // 					}
+		 // },
+		 
+		 
+		 
+	 }).catch(err => {
+			console.log(err)
+	   		console.log("err");
+			uni.showModal({
+								content: err,
+								showCancel: false
+						});
+			console.log("err")	
+	   	})	;
  
      uploadTask.onProgressUpdate(function (res) {
       _self.percent = res.progress;

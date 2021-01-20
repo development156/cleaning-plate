@@ -18,7 +18,6 @@
 	border: 1rpx solid rgba(187,187,187, 0.2);"></view>
 		<view class="divery-firm">
 		   <span>快递公司</span>
-		   
 		   <view class="modal-body">
 		   			<input v-model="inputSerialNum2" style="width: 500rpx; opacity: 0.7;  padding-top: 15rpx; padding-left: 50rpx;font-size: 28rpx; font-family: Microsoft Yahei;" class="uni-input" focus placeholder="请选择快递公司" />
 		   </view>

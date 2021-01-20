@@ -1,6 +1,6 @@
 <template>
 	<!-- 上传照片 -->
-	            <view class="item-num">
+	           
 	                <view class="upload-img">
 	                    <!-- 预览缩略图 -->
 	                    <view class="q-image-wrap">
@@ -22,7 +22,7 @@
 	                            </image>
 	                        </view>
 	                    </view>
-	                </view>
+	               
 	            </view>
 	            <!-- end -->
 </template>
@@ -30,18 +30,18 @@
 <script>
 	export default{
 		data() {
-		            return {
-		                photoFiles: [
-		                    {url: "",id:1},
-		                    {url: "",id:2},
-							{url: "",id:3},
-							{url: "",id:4},
-							{url: "",id:5},
-							{url: "",id:6},
+		       return {
+		            photoFiles: [
+		                {url: "",id:1},
+		                {url: "",id:2},
+						{url: "",id:3},
+						{url: "",id:4},
+						{url: "",id:5},
+						{url: "",id:6},
 		                
 		                ], //凭证图片列表
 		            };
-		        },
+		    },
 		methods:{
 		/**
 		             * 上传图片
@@ -113,7 +113,7 @@
 </script>
 
 <style scoped >
-	.item-num {}
+
 	
 	.item-num .upload-img {
 	    padding: 20rpx 10rpx 20rpx 10rpx;

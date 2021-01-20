@@ -43,16 +43,20 @@
 </template>
 
 <script>
+	import { OrderManager } from '@/models/admin/OrderMangae/orderManager.js'
+	const orderMangae = new OrderManager();
+	
+	
 	import taHeadBar from './tabbar.vue'
 	export default{
-		name:'OrderManager',
+		// name:'OrderManager',
 		data(){
 			return{
 			tackled:false,
 			array: [{
 			   "studentId": "1",
 			   "date": "2020",
-			   "url": "wwww",
+			   "url": "",
 			   "integrate": 8,
 			   "id": 7,
 			   "pname": null,
@@ -62,7 +66,7 @@
 			},{
 			   "studentId": "2",
 			   "date": "2020",
-			   "url": "wwww",
+			   "url": "",
 			   "integrate": 8,
 			   "id": 7,
 			   "pname": null,
@@ -74,6 +78,9 @@
 		},
 		components:{
 			taHeadBar
+		},
+		created() {
+			this.gotAllGoods();
 		},
 		methods:{
 			imageError: function(e) {
@@ -91,6 +98,28 @@
 				}else{
 					this.tackled=true;
 				}
+			},
+			gotAllGoods:function(
+			
+			){
+							orderMangae.getAllGoods().then(res => {
+						console.log(res)
+						// this.array=res.data
+							console.log(JSON.parse(res.data));
+					    uni.showToast({
+					    	    title: '操作成功',
+					    	    duration: 1500
+					    	});	
+					})
+					.catch(err => {
+							console.log("err")
+						console.log(err)
+							uni.showModal({
+												content: err,
+												showCancel: false
+										});
+							console.log("err")	
+				})	
 			}
 		}
 	}

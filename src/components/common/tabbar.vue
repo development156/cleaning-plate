@@ -60,9 +60,9 @@
 					    "fontIcon": "icon-dingdanguanli"
 					},
 					{
-						"pagePath": "",
+						"pagePath": "AddSocre/addSocre",
 						"iconPath": "/static/images/tabbar/addscore",
-						"selectedIconPath": "/static/tabBar/person_col.png",
+						"selectedIconPath": "",
 						"text": "加分",
 						"fontIcon": "icon-tianjiafenzu"
 					}
@@ -85,7 +85,6 @@
         },
         methods: {
             changeTab(item) {
-				console.log(item.pagePath)
                 this.page = item.pagePath;
 　　　　　　　　　　// 这里使用reLaunch关闭所有的页面，打开新的栏目页面	
 				uni.reLaunch({

@@ -31,6 +31,16 @@
 			
 		},
 		{
+			//加分页面
+			"path": "pages/admin/AddSocre/addSocre",
+			"style": {
+				"navigationBarTitleText": "加分",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
+			
+		},
+		{
 			//输入快递单号页面
 			"path": "pages/admin/OrderManage/index",
 			"style": {

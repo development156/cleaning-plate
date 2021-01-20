@@ -1,7 +1,7 @@
 <template>
 	
 	<view>
-	<view class="window-choice" @click="show(0)">-点击选择窗口-</view>
+	<view class="window-choice" @click="show(0)">{{ShowTab}}</view>
 	<!-- 下拉 -->
 	<view class="arrivalNavigation" v-if="ShowHidden">
 	  <view class="d4"></view>
@@ -18,10 +18,10 @@
 	<view class="food-show">
 		<view class="food-list"  v-for="(item,index) in foodlist" :key="index">
 		<view class="one-food">
-			<image style="height: 234rpx; width: 300rpx;background: #3F536E; border-radius: 10rpx;" mode="aspectFit" src=""
+			<image style="height: 234rpx; width: 300rpx;background: #3F536E; border-radius: 10rpx;" mode="aspectFit" :src="item.url"
 			    @error="imageError"></image>
 				<view style="display: flex; justify-content: space-between;">
-					<span>{{item.foodname}} </span> 
+					<span>{{item.dishName}} </span> 
 					<span> {{item.price}} </span>
 				</view>
 		</view>
@@ -32,52 +32,58 @@
 		 <view class="food-photo" >
 			 <addPhoto @photoShow="showPicture($event)"></addPhoto>
 		 </view>
-		 
-		<view class="food-info" >
-			    <input class="input-name"  maxlength="20" placeholder="输入菜品名称" />
-				<view class="choice host-choice" @click="show(1)">-食堂  待处理-</view>
-				<view class="arrivalNavigation1" v-if="ShowHidden1">
-				  
-				  <view class="sideNavigation1">
-				  <ul>
-					<li 
-					v-for="(item,index) in windowlist1" :key="index" @click="tap1(index)" :class="activeIndex1==index ? 'active' : ''"
-				 > {{item.num}} 
-				 </li>
-				  </ul>
-				  </view>
-				 </view>
-				
-				
-				
 		
-				<view class="choice layer-choice" @click="show(2)">-楼层 待处理-</view>
+		<!-- 食物价格 -->
+		<view  class="food-price">
+					 <input class="input-name" type="number" v-model="inputInfo.price" maxlength="15" placeholder="输入价格" />		 
+		</view>
+		
+		<view class="food-info" >
+				<input class="input-name" v-model="inputInfo.dishName" maxlength="20" placeholder="输入菜品名称" />
+				
+				<!-- -食堂  待处理- -->
+				<view class="choice host-choice" @click="show(1)">{{ShowTab1}}</view>
+					<view class="arrivalNavigation1" v-if="ShowHidden1">
+					  
+					  <view class="sideNavigation1">
+					  <ul>
+						<li 
+						v-for="(item,index) in windowlist1" :key="index" @click="tap1(index)" :class="activeIndex1==index ? 'active' : ''"
+						> {{item.num}} 
+							</li>
+					  </ul>
+					  </view>
+					</view>
+				
+				<!-- -楼层 待处理- -->
+				<view class="choice layer-choice" @click="show(2)">{{ShowTab2}}</view>
 				<view class="arrivalNavigation2" v-if="ShowHidden2">
+					<view class="sideNavigation2">
+					 <ul>
+							<li 
+								v-for="(item,index) in windowlist2" :key="index" @click="tap2(index)" :class="activeIndex2==index ? 'active' : ''"
+					> {{item.num}} 
+					</li>
+					 </ul>
+					 </view>
 				  
-				  <view class="sideNavigation2">
-				  <ul>
-					<li 
-					v-for="(item,index) in windowlist2" :key="index" @click="tap2(index)" :class="activeIndex2==index ? 'active' : ''"
-				 > {{item.num}} 
-				 </li>
-				  </ul>
-				  </view>
 				 </view>
-				
-				
+		
 			
-				
-				<view class="choice wind-choice" @click="show(3)">-窗口  待处理-</view>
+			
+		
+				<!-- -窗口  待处理- -->
+				<view class="choice wind-choice"  @click="show(3)" >{{ShowTab3}}</view>
 				<view class="arrivalNavigation3" v-if="ShowHidden3">
-				  
-				  <view class="sideNavigation3">
-				  <ul>
-					<li 
-					v-for="(item,index) in windowlist3" :key="index" @click="tap3(index)" :class="activeIndex3==index ? 'active' : ''"
-				 > {{item.num}} 
-				 </li>
-				  </ul>
-				  </view>
+					
+					 <view class="sideNavigation3">
+					 <ul>
+										<li 
+										v-for="(item,index) in windowlist3" :key="index" @click="tap3(index)" :class="activeIndex3==index ? 'active' : ''"
+					> {{item.num}} 
+					</li>
+					 </ul>
+					 </view>
 				  
 				 </view>
 		 </view>
@@ -94,8 +100,8 @@
 </template>
 
 <script>
-	import { Upload } from '@/models/Upload/Upload.js'
-	const upLoad = new Upload();
+	import { FoodUpload } from '@/models/admin/Upload/foodUpload.js'
+	const upLoad = new FoodUpload();
 	
 	import addPhoto from "../../../../components/common/add-photo.vue"
 
@@ -104,32 +110,42 @@
 	  name:'UploadFood',
 	  data() {
 	  return {
+		  //输入的信息
+		inputInfo:{  
+			"diningRoom":"",//第二食堂
+			"floor":"",//一楼
+			"window":"",//2号窗口
+			"dishName":"",
+			"price":"30",
+			"url":"wewfwjefkwe",  
+		  },
 		  
-	   ShowHidden: false,
-	   ShowHidden1: false,
-	   ShowHidden2: false,
-	   ShowHidden3: false,
+		  diningRoom:'第二食堂',//食堂名称
+		  floor:'一楼',//食堂楼层
+		  window:'2号窗口',//窗口
+		  
+		//显示下拉框列表与否
+			ShowHidden: false,
+			ShowHidden1: false,
+			ShowHidden2: false,
+			ShowHidden3: false,
+			//显示下拉框选择的内容
+			ShowTab:'-点击选择窗口-',
+			ShowTab1:'-食堂 未选择-',
+			ShowTab2:'-楼层 未选择-',
+			ShowTab3:'-窗口 未选择-',
+	   
+	   //选择得下拉框下标
 	   	activeIndex:"-1",//	   ShowHidden: true,////如果想要设置默认选中，activeIndex值和索引值对应即可；例如，activeIndex等于0，默认选中就是按钮A
 		activeIndex1:"-1",
 		activeIndex2:"-1",
 	    activeIndex3:"-1",
+		
+		//下拉框窗口
 		   windowlist:[
-	   		{
-	   			num:"窗口B"
-	   		},
-			{
-				num:"窗口B"
-			},
-			{
-				num:"窗口B"
-			},{
-				num:"窗口B"
-			},
-	   	],
-		windowlist1:[
-			{
-				num:"窗口B"
-			},	
+				{
+					num:"窗口B"
+				},
 				{
 					num:"窗口B"
 				},
@@ -138,75 +154,127 @@
 				},{
 					num:"窗口B"
 				},
+	   	],
+		   //食堂下拉表
+		   windowlist1:[
+			   {
+			   	num:"第二食堂"
+			   },	
+			   	{
+			   		num:"一楼"
+			   	},
+			   	{
+			   		num:"2号窗口"
+			   	},{
+			   		num:"窗口B"
+			   	},
+		   ],
+		     //楼层下拉表
+		   windowlist2:[
+					{
+						num:"一楼"
+					},	
+						{
+							num:"窗口B"
+						},	
+						{
+							num:"窗口B"
+						},	
+						{
+							num:"窗口Z"
+						},
+		
 		],
-		windowlist2:[
-			{
-				num:"窗口B"
-			},	
-				{
-					num:"窗口B"
-				},	
-				{
-					num:"窗口B"
-				},	
-				{
-					num:"窗口Z"
-				},	
-		],
-		windowlist3:[
-			{
-				num:"窗口B"
-			},		
-		],
-		willUploadUrl:'',//即将上传的图片
-		foodlist:[
-			{
-				imageurl:'',
-				foodname:'麻婆豆腐',
-				price:'¥7',
-			},
-			{
-				imageurl:'',
-				foodname:'麻婆豆腐',
-				price:'¥7',
-			},
-			
-		]
+		   //窗口下拉表
+		   windowlist3:[
+						{
+							num:"2号窗口"
+						},
+		   ],
+		//willUploadUrl:'',//即将上传的图片
+		//食物列表
+			foodlist:[
+				
+					{
+						dishName: "冒菜", 
+						price: 30, 
+						url: "wewfwjefkwe", 
+						favour: 0, 
+						state: 1
+					},
+			]
 	  };
 	  },
 	  components:{
 		addPhoto  
 	  },
+	  created() {
+			//获得菜得数据
+			this.gotMenu();
+	  },
 	  methods: {
+		  
+	   //获取数据
+	   gotMenu(){
+		   upLoad.getMenu({
+		   	"diningRoom":this.diningRoom,
+		   	"floor":this.floor,
+		   	"window":this.window,
+		   }
+		   ).then(res => {
+		   	this.foodlist=res.data
+		   })
+		   .catch(err => {
+		   	uni.showModal({
+		   			content: err.msg,
+		   			showCancel: false
+		   	});
+		   })
+	   },
+	   //添加数据
 	   addData(){
-	   	
-			upLoad.uploadMenu({
-			"diningRoom":"第二食堂",
-			"floor":"一楼",
-			"window":"2号窗口",
-			"dishName":"冒菜",
-			"price":"30",
-			"url":"wewfwjefkwe"
-		}
-
-	   ).then(res => {
-	   		console.log(res)
-	   		// this.array=res.data
-			JSON.parse(res.data);
-	   	    uni.showToast({
-	   	    	    title: '操作成功',
-	   	    	    duration: 1500
-	   	    	});	
-	   	})
-	   	.catch(err => {
-			console.log(err)
-	   		
-			uni.showModal({
-								content: err,
-								showCancel: false
+				//上传菜名接口
+					upLoad.uploadMenu( this.inputInfo ).then(res => {
+					console.log(res)
+					//如果菜名为空返回
+					if(this.inputInfo.dishName==''){
+						uni.showToast({
+							title: '菜名不能为空',
+							icon:'none',
+							duration: 2000
 						});
-			console.log("err")	
-	   	})	
+						return
+					}
+					
+					console.log(this.inputInfo.floor)
+					if(this.inputInfo.diningRoom ==''||this.inputInfo.floor==''|| this.inputInfo.window==''){
+						uni.showToast({
+							title: '未选择完全哦',
+							icon:'none',
+							duration: 2000
+						});
+						return
+					}
+					
+					this.gotMenu();
+					
+				    uni.showToast({
+				    	    title: res.msg,
+				    	    duration: 1500
+				    	});	
+					this.ShowTab="-点击选择窗口-"
+					this.ShowTab1='-食堂 未选择-'
+					this.ShowTab2='-楼层 未选择-'
+					this.ShowTab3='-窗口 未选择-'
+					
+				})
+				.catch(err => {
+					console.log(err)
+					uni.showModal({
+							content: err,
+							showCancel: false
+						});
+				})	
 	   },
 	   //显示照片
 	   showPicture(imgurl){
@@ -216,24 +284,38 @@
 		imageError: function(e) {
 	      console.error('image发生error事件，携带值为' + e.detail.errMsg)
 		},
+		
+		//点击下拉框
 	    tap(index){
 			
 	   			  this.activeIndex=index;
-				  setTimeout(()=>{ this.HiddenClick()}, 350);
-					
+				  setTimeout(()=>{ this.HiddenClick()}, 100);
+				  //设置选择的窗口得显示
+				  this.ShowTab = this.windowlist[index].num 
+				  //把]不能给inputinfo 因为这是查询得输入
+				  // this.inputInfo.window = this.windowlist[index].num 
 				  
 	    },
 		tap1(index){
+			//食堂
 				  this.activeIndex1=index;
-				  setTimeout(()=>{ this.HiddenClick()}, 350);
+				  setTimeout(()=>{ this.HiddenClick()}, 100);
+				  this.ShowTab1 = this.windowlist1[index].num 
+				  this.inputInfo.diningRoom = this.windowlist1[index].num 
 		},
 		tap2(index){
+			//楼层
 				  this.activeIndex2=index;
-				  setTimeout(()=>{ this.HiddenClick()}, 350);
+				  setTimeout(()=>{ this.HiddenClick()}, 100);
+				  this.ShowTab2 = this.windowlist2[index].num 
+				  this.inputInfo.floor = this.windowlist2[index].num 
 		},
 		tap3(index){
+			//窗口
 				  this.activeIndex3=index;
-				   setTimeout(()=>{ this.HiddenClick()}, 350);
+				  setTimeout(()=>{ this.HiddenClick()}, 100);
+				  this.ShowTab3= this.windowlist3[index].num 
+				  this.inputInfo.window = this.windowlist3[index].num 
 		},
 		show(num){
 			if(num==0){
@@ -255,9 +337,7 @@
 			
 		   },
 	  },
-	  mounted () {
-	    
-	   },
+	
 	 }
 </script>
 
@@ -307,36 +387,24 @@
 		box-shadow: 0rpx 2rpx 8rpx 0rpx rgba(0, 0, 0, 0.4);
 		font-family: Arial;
 		border: 2rpx solid rgba(255, 255, 255, 100);
+		.food-price{
+			width: 260rpx;
+			height: 60rpx;
+			border-radius: 10rpx;
+			position: relative;
+			left: 30rpx;
+			top: 54rpx;
+			.input-name{
+				background-color: #FFFFFF;
+			}
+		}
 		.food-photo{
 			width: 260rpx;
 			height: 260rpx;
 			border-radius: 20rpx;
 			position: relative;
-			left: 28rpx;
-			top: 42rpx;
-			
-			// ??AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		
-		// 		font-family: Microsoft Yahei;
-		// 		font-weight: 500;
-		// 		color: #F9F9F9 ;
-		// 		font-size: 100rpx;
-		// 		width: 260rpx;
-		// 		height: 260rpx;
-		// 		line-height: 260rpx;
-		// 		border-radius: 10px;
-		// 		background: #EBEBEB;
-			
-
-
-
-
-
-
-
-
-
-
+			left: 30rpx;
+			top: 38rpx;
 
 		}
 		.food-info{
@@ -367,7 +435,7 @@
 				// height: 64rpx;
 				height: 13%;
 				// line-height: 64rpx;
-				line-height:210% ;
+				line-height:240% ;
 				background: #FFFFFF;
 				color: rgba(136, 136, 136, 100);
 				font-size: 28rpx;
@@ -380,20 +448,20 @@
 				position: absolute;
 				left: 344rpx;
 				// top: 124rpx;
-				top: 27%;
+				top: 25.5%;
 			}
 			.layer-choice{
 				
 				position: absolute;
 				left: 344rpx;
 				// top: 214rpx;
-				top: 45%;
+				top: 44%;
 			}
 			.wind-choice{
 				position: absolute;
 				left: 344rpx;
 				// top: 304rpx;
-				top: 63%;
+				top: 62%;
 					//下拉窗口!!
 					
 			}
