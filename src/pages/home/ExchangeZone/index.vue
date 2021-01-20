@@ -5,7 +5,7 @@
 		
 		<view class="goods_list">
 			<view class="goods_item">
-			<image src="../../../static/img/图片%203.png"></image>
+			<!-- <image src="../../../static/img/图片%203.png"></image> -->
 			<view class="price">
 				<text>￥2199</text>
 			
@@ -16,7 +16,7 @@
 			</view>
 			
 			<view class="goods_item">
-			<image src="../../../static/img/图片%203.png"></image>
+			<!-- <image src="../../../static/img/图片3.png"></image> -->
 			<view class="price">
 				<text>￥2199</text>
 				>
@@ -27,7 +27,7 @@
 			</view>
 			
 			<view class="goods_item">
-			<image src="../../../static/img/图片%203.png"></image>
+			<!-- <image src="../../../static/img/图片4.png"></image> -->
 			<view class="price">
 				<text>￥2199</text>
 				
@@ -38,7 +38,7 @@
 			</view>
 			
 			<view class="goods_item">
-			<image src="../../../static/img/图片%203.png"></image>
+			<!-- <image src="../../../static/img/图片5.png"></image> -->
 			<view class="price">
 				<text>￥2199</text>
 			
@@ -50,7 +50,7 @@
 		
 		
 		<view class="goods_item">
-		<image src="../../../static/img/图片%203.png"></image>
+		<!-- <image src="../../../static/img/图片6.png"></image> -->
 		<view class="price">
 			<text>￥2199</text>
 		

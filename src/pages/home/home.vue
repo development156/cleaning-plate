@@ -3,23 +3,23 @@
 		<view class="top">
 			<view class="box1">
 				<text>上传照片</text>
-				<image src="../../static/img/图片%203.png"></image>
+				<!-- <image src="../../static/img/图片%203.png"></image> -->
 			</view>
 			<view class="box2">
 				<text>兑换专区</text>
-			<image src="../../static/img/图片%205.png"></image>
+			<!-- <image src="../../static/img/图片%205.png"></image> -->
 			</view>
 			<view class="box3">
 			<text>菜品展示</text>
-			<image src="../../static/img/图片%207.png"></image>
+			<!-- <image src="../../static/img/图片%207.png"></image> -->
 			</view>
 			<view class="box4">
 				<text>公告</text>
-			<image src="../../static/img/图片%204.png"></image>
+			<!-- <image src="../../static/img/图片%204.png"></image> -->
 			</view>
 			<view class="box5">
 				<text>剩菜分析</text>
-			<image src="../../static/img/图片%206.png"></image>
+			<!-- <image src="../../static/img/图片%206.png"></image> -->
 			</view>
 		</view>
 	</view>
