@@ -68,7 +68,21 @@
 	
 </script>
 
-<style lang="scss">
-	/*每个页面公共css */
+
+<style>
+	@import url("static/iconFont.css");
 	@import  '~@/static/css/font-icon.css'
+	/*每个页面公共css */ 
+	/* 隐藏滚动条，但依旧具备可以滚动的功能 */
+		::-webkit-scrollbar{
+		    display: none;
+		}
+	/* #endif */
+	/* 解决H5 的问题 */
+	/* #ifdef H5 */
+	    uni-scroll-view .uni-scroll-view::-webkit-scrollbar {
+	   
+		display: none
+	    }
+
 </style>

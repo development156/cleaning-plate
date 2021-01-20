@@ -1,10 +1,10 @@
 <template>
 	<view class="mine-container">
-		<header>
+		<header >
 			<!--  hasAuthorUrserInfo -->
-			<view class="view-header_root" v-if="hasUserInfo">
+			<view class="view-header_root" v-if="hasUserInfo" >
 				<view>
-					<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"></image>
+					<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"  @click="navTo"></image>
 					<image class="avatar-img2" :src="starUrl" v-if="userInfo.starId > 0"></image>
 				</view>
 				<text>{{userInfo.nickName | formatUserName}}</text>
@@ -25,14 +25,22 @@
 		<main>
 			<view class="top-cnt"></view>
 			<view class="btm-cnt">
-				<view class="view-item-container" v-for="(item, index) in cellDataArray" :key="index" @tap="jumpToLoveRecord(item)">
-					<text :class="item.img"></text>
-					<text v-if="index!=2" class="text-item-title">{{item.title}}</text>
-					<button v-else open-type="contact" bindcontact="handleContact" class="button-item-title">{{item.title}}</button>
+				<!-- <view class="view-item-container" v-for="item in cellDataArray" :key="index" @tap="jumpToLoveRecord(item)">
+					<text class="text-item-title">{{item}}</text>
+				</view> -->
+				<view class="view-item-container" >
+				<!-- 	<text class="text-item-title1">{{item}}</text> -->
+					<text class="text-item-title">上传历史</text>
+					<text class="text-item-title1" @click="navTo2">订单</text>
+					<text class="text-item-title2" @click="navTo1">反馈</text>
+					<text class="text-item-title3">兑换</text>
 				</view>
-				<view class="view-item-container logout-cell" @tap="logoutFansTeam">
+				<!-- <view class="view-item-container logout-cell" @tap="logoutFansTeam">
 					<text :class="logOutCell.img"></text>
 					<text class="text-item-title">{{logOutCell.title}}</text>
+				</view> -->
+				<view class="bottom">
+					柚见食光
 				</view>
 			</view>
 		</main>
@@ -60,29 +68,13 @@
 			return {
 				hasUserInfo:false,
 				cellDataArray: [
-					// {
-					// 	img: 'icon-font icon-redeem_icon',
-					// 	title: '路由跳转',
-					// 	type: 2,
-					// 	url: "love_record/love_record"
-					// },
-					// {
-					// 	img: 'icon-font icon-redeem_icon',
-					// 	title: '路由跳转',//  分页记录列表
-					// 	type: 1,
-					// 	url: "love_record/love_record"
-					// },
-					{
-						img: 'icon-font icon-redeem_icon',
-						title: '联系客服',
-						type: 3
-					}
+					"上传历史","订单","兑换","反馈"
 				],
-				logOutCell: {
-					img: 'icon-font icon-redeem_icon',
-					title: '弹框',
-					type: 4
-				},
+				// logOutCell: {
+				// 	img: 'icon-font icon-redeem_icon',
+				// 	title: '弹框',
+				// 	type: 4
+				// },
 				idolName: "",
 				logout: false,
 				newNickname: "",
@@ -155,6 +147,26 @@
 			},
 			bindBtn(type) {
 				this.logout = false
+			},
+			navTo(){	
+				console.log("啦啦啦啦")
+				uni.navigateTo({
+				url:'./changeInfo/changeInfo'
+				})
+			},
+			//跳转我的反馈界面
+			navTo1(){
+				console.log("啦啦啦啦")
+				uni.navigateTo({
+				url:'./feedBack/feedBack'
+				})
+			},
+			//跳转我的订单界面
+			navTo2(){
+				console.log("啦啦啦啦")
+				uni.navigateTo({
+				url:'./myOrder/myOrder'
+				})
 			}
 		}
 	}
@@ -170,7 +182,9 @@
 			button {
 				line-height: 40upx;
 			}
+			
 		}
+		
 	}
 	.input-nickname {
 		width: 462upx;
@@ -198,10 +212,33 @@
 
 	.view-item-container {
 		display: flex;
-		flex-direction: row;
+		flex-direction:column;
 		align-items: center;
+		
+		
+		color: #FFFFFF 10000%;
+		.text-item-title{
+			
+			margin:2.25rem 4rem 0rem 6.75rem ;
+			letter-spacing: 5;
+			font-family: "方正新书宋-标准";
+			font-size: 30px;
+			letter-spacing: 7px;
+			width: 12.5rem;
+		}
+		.text-item-title1,.text-item-title2,.text-item-title3 {
+			margin:2.25rem 6.75rem 0rem 6.75rem ;
+			letter-spacing: 5;
+			font-family: "方正新书宋-标准";
+			font-size: 30px;
+			letter-spacing: 20px;
+		}
+		
 	}
-
+.bottom{
+			margin: 7.5rem 9.75rem 3.375rem 8rem;
+			width: 100%;
+		}
 	.view-level {
 		display: flex;
 		flex-direction: row;
@@ -270,12 +307,14 @@
 	
 
 	.view-header_root {
+			margin-top: 8.9375rem;
 		>view {
 			&:nth-child(1) {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				flex-direction: row;
+			
 			}
 
 			&:nth-child(2) {
@@ -317,12 +356,7 @@
 		color: #FFFFFF;
 	}
 
-	.text-item-title {
-		margin-left: 35upx;
-		font-family: PingFangSC-Regular;
-		font-size: 32upx;
-		color: #212121;
-	}
+	
 
 	.button-item-title {
 		margin-left: 35upx;
@@ -344,42 +378,39 @@
 
 	page {
 		height: 100%;
-
+		
 		.mine-container {
+			background-color: #7094AE;
 			height: 100%;
-			background: #F7F7F7;
-
 			>header {
+			
 				width: 750upx;
 				height: 312upx;
-				background-image: linear-gradient(-180deg,#008080 0%, 	#7FFFAA 100%);
+			
 				display: flex;
 				flex-direction: row;
+				
 			}
 
 			>main {
 
 				.btm-cnt {
-					margin-top: 24upx;
-					background: #fff;
+					margin-top: 6.75rem;
+					background-color: #7094AE;
 					padding: 0 32upx;
 
 					>view {
 						display: flex;
-						align-items: center;
-						height: 120upx;
-						border-bottom: 1px solid #F7F7F7;
-						font-family: PingFangSC-Regular;
+						
+						
+						font-family:"arial, helvetica, sans-serif";
 						font-size: 32upx;
-						color: #212121;
-						letter-spacing: 0;
+						color: #ffffff;
+						
 
-						>image {
-							width: 40upx;
-							height: 40upx;
-							margin-right: 30upx;
-						}
+						
 					}
+					
 				}
 			}
 		}

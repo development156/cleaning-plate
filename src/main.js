@@ -4,6 +4,7 @@ import store from './store/index.js'
 import tabBar from './components/common/tabbar.vue'
 
 Vue.component('tabBar', tabBar)
+Vue.prototype.imgUrl="http://8.131.230.3:8080/YouGuang_war"
 Vue.config.productionTip = false
 Vue.prototype.$store = store
 

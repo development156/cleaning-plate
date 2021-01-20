@@ -1,0 +1,180 @@
+<template>
+	<view>
+		<view class="swiper">
+		  <swiper 
+			autoplay 
+			interval="2000" 
+			duration="500">
+		                        <swiper-item>
+		                            <view class="swiper-item uni-bg-red">
+										<image :src="imgUrl+goodsItem.url" class="image"></image>
+									</view>
+		                        </swiper-item>
+		                        <swiper-item>
+		                            <view class="swiper-item uni-bg-green">B</view>
+		                        </swiper-item>
+		                        <swiper-item>
+		                            <view class="swiper-item uni-bg-blue">C</view>
+		                        </swiper-item>
+		                    </swiper>
+		</view>
+		<view class="info" >
+			<view class="item">
+				<text>产品</text>
+				<text>{{goodsItem.name}}</text>
+			</view>
+			
+			
+			<view class="item">
+			<text>描述</text>
+			<text>{{goodsItem.description}}</text>
+			</view>
+			
+			
+			<view class="item">
+				<text>产地</text>
+				<text>{{goodsItem.productionPlace}}</text>
+			</view>
+			
+			<view class="item">
+				<text>销量</text>
+			<text>{{goodsItem.sales}}</text>
+			</view>
+			
+			<view class="item">
+			<text>所需积分</text>
+			<text>{{goodsItem.integrate}}</text>
+			</view>
+		</view>
+		
+		<view class="footer">
+			<view class="text">
+			<text>兑换需知</text>
+			<text>1、兑换方法：点击立即兑换-兑换成功。</text>
+			<text>2、物流：可在个人中心-兑换中查看物流。</text>
+			<text>3、发货时间：下单后72小时内发货。</text>
+			<text>温馨提示</text>
+			<text>积分一经使用不支持退还，数量有限，先到先得，兑完即止。</text>
+			</view>
+			<button  :style="{backgroundColor:'#777468'}" @click="navTo">立即兑换</button>
+		</view>
+		
+	</view>
+	
+</template>
+
+<script>
+	import {swiperList} from '../../../../models/exchangezone/creditsExchange/swiperList.js'
+	const SwiperList = new swiperList
+	export default{
+		data(){
+			return{
+				goodsItem:[]
+			}
+		},
+		onLoad(e){
+			 const item = JSON.parse(decodeURIComponent(e.item));
+			this.goodsItem = item;
+			console.log(this.goodsItem)
+			this.getSwiper()
+		},
+		methods:{
+			navTo(){
+			
+				uni.navigateTo({
+				url:`../acquireExchange/creditAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(this.goodsItem))
+				})
+			},
+			// 获取轮播图数据
+			getSwiper(){
+				console.log(this.goodsItem.ID)
+				SwiperList.GetSwiperList(this.goodsItem.ID).then(res=>{
+					console.log(res)
+				})
+			}
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	page{
+		background:	#EDEDED;
+		swiper{
+			border-radius: 0.3125rem;
+			height: 375px;
+			}
+			
+			.image{
+				height:  375px;
+				width: 100%;
+			}
+			
+	
+		.info{
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			height: 7.4375rem;
+			background-color: white;
+			font-size: 0.625rem;
+			width: 98%;
+			border-radius: 0.625rem;
+			margin: 3% auto;
+			.item{
+				display: flex;
+				justify-content: space-between;
+				text:nth-child(2){
+					margin-right: 20%;
+					width: 50%;
+				}
+				text:nth-child(1){
+					
+					color: gray;
+					margin-left: 3%;
+				}
+				
+			}
+			
+			
+			
+		}
+		.footer{
+			
+			.text{
+			
+			width: 98%;
+			margin: 3% auto;
+			border-radius: 0.625rem;
+				background-color: white;
+				display: flex;
+				flex-direction: column;
+				text{
+					margin: 0.625rem 0 0 0.5rem;
+					font-size: 0.5rem;
+					&:nth-child(1),&:nth-child(5){
+						height:0.9375rem;
+						width: 2.8125rem;
+						border-radius: 0.625rem;
+						border: 0.0625rem solid gainsboro;
+						text-align: center;
+						background-color:#C9A65E ;
+						color: white;
+					}
+				}
+			}
+			button{
+				height: 2.625rem;
+				width: 18.75rem;
+				text-align: center;
+				background-color: #C9A65E;
+				color: white;
+				margin-bottom: 1.125rem;
+			}
+		}
+		
+		
+		
+	}
+</style>
