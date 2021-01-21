@@ -195,13 +195,14 @@
 	.footer{
 		background: #FFFCEB;
 		height:40%;
+		
 		display: flex;
 		justify-content: space-around;
 		flex-direction: column;
 		border: 1px solid red;
 		position: absolute;
 		width: 100%;
-		bottom: 0rem;
+		bottom: 1.4rem;
 		select{
 			width: 80%;
 			height: 15%;
@@ -213,12 +214,16 @@
 			display: flex;
 			justify-content: space-between;
 			margin: 10% 10% 0 10%;
+			
 		}
 		button{
+			
 			height: 2.1875rem;
+			line-height: 100%;
 			width: 80%;
 			border-radius: 20px;
 			margin: 10% auto;
+			
 			text-align: center;
 			background-color: #C9A65E;
 			color: white;

@@ -176,7 +176,8 @@
 <!-- lang="less" -->
 
 <style lang="less"   scoped>
-	@import '@/static/iconFont.css';
+	// @import '@/static/iconFont.css',;
+	@import '@/static/css/font-icon.css';
 	.mine-container {
 		.user-info-container {
 			button {

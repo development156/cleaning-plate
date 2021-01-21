@@ -6,10 +6,8 @@
 		<view class="leftort" >
 			
 			<view class="icon icon-gonggao"></view>
-			
 			<view class="word">
 			<span class="defont">上传剩菜统计</span>
-			
 			<view class="font">上传每日剩菜统计数据 </view>
 			</view>
 		</view>
@@ -95,7 +93,9 @@
 		}
 		}
 		.container{
-			
+			display: flex;
+			align-items: center;
+			flex-direction: column;
 			// width: 750rpx;
 		.leftort{
 			   // width: 90%;

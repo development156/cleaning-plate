@@ -1,7 +1,16 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
-
+		{
+			//管理员首页
+			"path": "pages/admin/Upload/index",
+			"style": {
+				"navigationBarTitleText": "上传",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
+			
+		},
 	// 用户端
 		{
 					"path": "pages/home/home",
@@ -42,16 +51,16 @@
 		// 	}
 			
 		// },
-		{
-			//管理员首页
-			"path": "pages/admin/Upload/index",
-			"style": {
-				"navigationBarTitleText": "上传",
-				"navigationBarBackgroundColor":"#FFFFFF",
-				"navigationBarTextStyle":"black"
-			}
+		// {
+		// 	//管理员首页
+		// 	"path": "pages/admin/Upload/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "上传",
+		// 		"navigationBarBackgroundColor":"#FFFFFF",
+		// 		"navigationBarTextStyle":"black"
+		// 	}
 			
-		},
+		// },
 		{
 			//加分页面
 			"path": "pages/admin/AddSocre/addSocre",
@@ -180,7 +189,7 @@
 				
 			},
 			{
-				"path": "pages/home/exchangeZone/ExchangeHistory/ExchangeHistory",
+				"path": "pages/home/ExchangeZone/ExchangeHistory/ExchangeHistory",
 				"style": {
 					"navigationBarTitleText": "兑换历史",
 					"navigationBarBackgroundColor":"#775C4C",
@@ -275,14 +284,14 @@
 						}
 					},
 			{
-				"path": "pages/home/advertising/advertising",
+				"path": "pages/home/Advertising/Advertising",
 				"style": {
 					"navigationBarTitleText": "柚光"
 					
 				}
 			},
 			{
-				"path":"pages/home/advertising/advertisingList/advertisingList",
+				"path":"pages/home/Advertising/advertisingList/advertisingList",
 				"style": {
 					"navigationBarTitleText": "柚光",
 					"backgroundColor": "#000000",//FF8C00
@@ -295,7 +304,7 @@
 			},		
 	
 	{
-		    "path" : "pages/home/exchangeZone/index",
+		    "path" : "pages/home/ExchangeZone/index",
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "",
@@ -307,7 +316,7 @@
 
 
 {
-		    "path" : "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
+		    "path" : "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "柚光"
 				
@@ -316,7 +325,7 @@
 		
 		
 {
-			    "path" : "pages/home/exchangeZone/acquireExchange/payAcquireExchange",
+			    "path" : "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -327,7 +336,7 @@
 	
 
 	{
-			    "path" : "pages/home/exchangeZone/goodsDetails/creditDetails",
+			    "path" : "pages/home/ExchangeZone/goodsDetails/creditDetails",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -337,7 +346,7 @@
 			},
 
 	{
-			    "path" : "pages/home/exchangeZone/goodsDetails/payDetails",
+			    "path" : "pages/home/ExchangeZone/goodsDetails/payDetails",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -346,7 +355,7 @@
 			    
 			},
 	{
-				    "path" : "pages/home/exchangeZone/cart/cart",
+				    "path" : "pages/home/ExchangeZone/cart/cart",
 				    "style" :                                                                                    
 				    {
 				        "navigationBarTitleText": "购物车",
@@ -354,6 +363,7 @@
 				    }
 				    
 			},
+		
 			
 
 {

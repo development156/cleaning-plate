@@ -21,12 +21,30 @@
     color: #1ca6ec;
 }
 /* // 下面的样式直接复制 */
+
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-web-icon-:before {
+  content: "\e6e8";
+}
+
+.icon-tuya-:before {
+  content: "\e757";
+}
+
+.icon-tianjiafenzu:before {
+  content: "\e629";
+}
+
+.icon-dingdanguanli:before {
+  content: "\e61c";
 }
 
 .icon-caipin-:before {
@@ -46,20 +64,6 @@
 }
 
 
-/* c */
-.icon-web-icon-:before {
-  content: "\e6e8";
-}
 
-.icon-tuya-:before {
-  content: "\e757";
-}
 
-.icon-tianjiafenzu:before {
-  content: "\e629";
-}
-
-.icon-dingdanguanli:before {
-  content: "\e61c";
-}
 
