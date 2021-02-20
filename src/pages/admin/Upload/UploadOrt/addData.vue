@@ -4,33 +4,39 @@
 	
 	<view class="data" style="padding: 34rpx; border-bottom: 2rpx solid rgba(187, 187, 187, 1);">{{Data}}</view>
 
-	<GodenButton style="margin-left: -18rpx;" :delivery="btn"></GodenButton>
+	<!-- <GodenButton style="margin-left: -18rpx;" :delivery="btn" @click="uploadWasteInfo"></GodenButton> -->
+	<view class="contain">
+		 <!-- <navigator url="./addData" hover-class="navigator-hover"> -->
+		<view  @click="uploadWasteInfo"> 保存</view>
+		 <!--   </navigator> -->
+	</view>
 	</view>
 </template>
 
 <script>
-	import GodenButton from '../../../../components/common/gode-button.vue'
-
+	// import GodenButton from '../../../../components/common/gode-button.vue'
+	import { OrtUpload } from '@/models/admin/Upload/ortUpload.js'
+	const ortUpload = new OrtUpload();
+	
 	  
 	export default{
 		name:'addData',
-		btn:{
-			url:'',
-			content:'保存'
-		},
+		// btn:{
+		// 	url:'',
+		// 	content:'保存'
+		// },
 		data(){
 			return{
-				btn:{
-					url:'',
-					content:'保存'
-				},
-				Data:'33',
+				// btn:{
+				// 	url:'',
+				// 	content:'保存'
+				// },
+				Data:'',
 				inputAcount:''
 			}
 		},
 		components:{
-			
-			GodenButton
+			// GodenButton
 			
 		},
 		created() {
@@ -44,6 +50,32 @@
 					
 					
 		//         },
+		uploadWasteInfo:function(){
+			var th=this;
+			ortUpload.uploadOrt( {"wasteFood": this.inputAcount } ).then(res => {
+				if(res.code==200){
+					uni.showToast({
+						title: '上传成功',
+						// icon:'none',
+						duration: 1450
+					});
+				}else if(res.code==1005){
+					uni.showToast({
+						title: res.msg,
+						icon:'none',
+						duration: 1510
+					});
+				}
+				th.inputAcount=''
+			})
+				.catch(err => {
+					// console.log(err)
+					uni.showModal({
+							content: "error",
+							showCancel: false
+						});
+				})
+		},
 		getTime:function(){
 		
 		var date = new Date(),
@@ -81,7 +113,32 @@
 		// left:50%;
 		// transform:translate(-50%);
 		
-		
+		.contain{
+			position: fixed;
+			display: flex;
+			width: 750rpx;
+			height: 116rpx;
+			
+			bottom: 0;
+			left: 0;
+			background: #FFFFFF;
+			
+			view{
+				
+				align-self: center;
+				margin: 0 auto;
+				width: 694rpx;
+				height: 88rpx;
+				line-height: 88rpx;
+				border-radius: 40rpx;
+				color: rgba(255, 255, 255, 100);
+				font-size: 40rpx;
+				font-weight: 600;
+				background-color: rgba(201, 166, 94, 100);
+				text-align: center;
+				border: 2rpx solid rgba(187, 187, 187, 100);
+			}
+		}
 		// .add-buttom{
 		// 	position: fixed;
 		// 	display: flex;

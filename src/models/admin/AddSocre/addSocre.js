@@ -1,17 +1,10 @@
 import { HTTP } from '../../../utils/http.js'
 class AddScocre extends HTTP {
-	//显示待处理的专业
-	showRowMajor(params) {
-	    return this.request({
-	        url: ``,
-			method: 'Get',
-			data: params
-	    })
-	}
-	////显示已处理的专业
-	showRipeMajor(params){
+	
+	//加分
+	awardIntegrateByAdmin(params){
 		return this.request({
-		    url: ``,
+		    url: `/admin/awardIntegrateByAdmin`,
 			method: 'Get',
 			data: params
 		})

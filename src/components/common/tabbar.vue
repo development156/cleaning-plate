@@ -89,7 +89,9 @@
 　　　　　　　　　　// 这里使用reLaunch关闭所有的页面，打开新的栏目页面	
 				uni.reLaunch({
 				    url: '/pages/admin/'+ this.page ,
-					success: res => {},fail: (e) => {
+					success: res => {
+						// console.log("res"); console.log(this.page)
+						},fail: (e) => {
 								console.log(e)
 							},complete: () => {}
 				});
@@ -100,12 +102,12 @@
 
 <style lang="scss" scoped>
 	
-    // [nvue] uni-scroll-view, [nvue] uni-swiper-item, [nvue] uni-view {
-    //     flex-direction: unset;
-    // }
-    // [nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
-    //     flex-direction: unset;
-    // }
+ //    [nvue] uni-scroll-view, [nvue] uni-swiper-item, [nvue] uni-view {
+ //        flex-direction: unset;
+ //    }
+ //    [nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
+ //        flex-direction: unset;
+ //    }
 	
     .uni-tabbar {
         position: fixed;

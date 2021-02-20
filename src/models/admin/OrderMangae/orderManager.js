@@ -1,15 +1,36 @@
 import { HTTP } from '../../../utils/http.js'
 class OrderManager extends HTTP {
-	//获得所有商品
-	getAllGoods(params) {
+	//管理员查看所有订单
+	getAllGoods() {
 	    return this.request({
-	        url: `/covert/getAllGoods`,
+	        url: `/admin/getAllOrderFirstPageByAdmin`,
 			method: 'Get',
-			data: params
 	    })
 	}
-	
-	
+	//管理员查询未发货的订单
+	getUnshipment(params) {
+	    return this.request({
+	        url: `/admin/getUnshipment`,
+			method: 'Get',
+			data:params
+	    })
+	}
+	//管理员确认发货
+	ensureShipment(params) {
+	    return this.request({
+	        url: `/admin/ensureShipment`,
+			method: 'Get',
+			data:params
+	    })
+	}
+	//查询订单详情
+	getApplyInformation(params) {
+	    return this.request({
+	        url: `/mine/getApplyInformation`,
+			method: 'Get',
+			data:params
+	    })
+	}
 }
 
 export { OrderManager }

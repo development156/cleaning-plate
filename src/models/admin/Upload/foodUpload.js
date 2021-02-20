@@ -10,24 +10,30 @@ class FoodUpload extends HTTP {
 			data: JSON.stringify(params)
 		})
 	}
-	
+
+
 	//添加菜品图片
 	uploadPicture(params){
 		return uni.uploadFile({
-			url : '/admin/uploadProductImg',
+			url : 'http://8.129.51.225:8080/YouGuang_war/admin/uploadProductImg',
 			filePath: params,
-			name: 'file',
-			formData: {//????
-			 'user': 'test'
-			},
+			name: 'multipartFile',
 		})
 	}
 	
 	//获得所有的菜品	
 	getMenu(params){
-		console.log(params)
 		return this.request({
 		    url: `/admin/getMenu`,
+			method: 'GET',
+			data: params
+		})
+	}
+	
+	//删除菜品
+	deleteMenu(params){
+		return this.request({
+		    url: `/admin/deleteMenu`,
 			method: 'GET',
 			data: params
 		})

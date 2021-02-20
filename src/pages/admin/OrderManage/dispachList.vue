@@ -38,6 +38,9 @@
 		inputSerialNum2: null,
 			}
 		},
+		onLoad() {
+			console.log(this.$route.query.id)
+		},
 		methods: {
 			handleConfirm() {
 				

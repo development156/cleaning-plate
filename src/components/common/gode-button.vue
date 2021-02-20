@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		 <!-- <navigator url="./addData" hover-class="navigator-hover"> -->
-		<view @click="addData">{{delivery.content}}</view>
+		<view  @click="addData">{{delivery.content}}</view>
 		 <!--   </navigator> -->
 	</view>
 </template>

@@ -31,6 +31,9 @@
 </template>
 
 <script>
+	import { OrderManager } from '@/models/admin/OrderMangae/orderManager.js'
+	const orderMangae = new OrderManager();
+	
 	export default{
 		name:'CheckLogistics',
 		data(){
@@ -39,6 +42,7 @@
 		inputSerialNum2: null,
 			}
 		},
+		
 		methods: {
 			handleConfirm() {
 				

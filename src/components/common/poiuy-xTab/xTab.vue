@@ -2,12 +2,12 @@
 	<view :style="{padding:'0 '+conf.padding+'rpx',height:conf.height+'rpx'}" class="view-scroll">
 		<view class="scroll-view" scroll-with-animation :scroll-x="!adaptation" :scroll-into-view="'sv_'+currAct"
 		 :style="{height:(conf.height)+'rpx'}">
-			<view :class="adaptation?'adaptation':''">
+			<view :class="adaptation?'adaptation':''" id="adapta">
 				<view :id="'sv_'+item[setField.id]" @click="select(i)" v-for="(item,i) of tabList" :key="i" class="view-content"
 				 :style="{'font-size':conf.size+'rpx',color:conf.color,'margin-right':adaptation?0:conf.spacing+'rpx',height:conf.height+'rpx','line-height':conf.height+'rpx'}">
 					<label :id="'txt_'+item[setField.id]" class="txt" :style="{color:currAct===item[setField.id]?(conf.actColor):(conf.color),'font-size':(currAct===item[setField.id]?conf.actSize+'rpx':conf.size+'rpx'),'font-weight':(currAct===item.id?conf.actWeight:'initial')}">{{item[setField.name]}}</label>
 				</view>
-				<text v-if="actType =='triangle'" :style="{color:conf.actColor,left:moves+'px',top:((conf.height)-20)+'rpx'}" class="iconfont icon_act">&#xe6b5;</text>
+				<text  v-if="actType =='triangle'" :style="{color:conf.actColor,left:moves+'px',top:((conf.height)-20)+'rpx'}" class="iconfont icon_act">&#xe6b5;</text>
 				<text v-if="actType =='underline'" :style="{width:lineWidth+'px',background:conf.background,left:moves+'px',top:(conf.height-conf.height1)+'rpx'}"
 				 class="underline"></text>
 			</view>
@@ -46,11 +46,11 @@
 			},
 			adaptation: { //是否自适应显示
 				type: Boolean,
-				default: false
+				default: true
 			},
 			actType: {
 				type: String,
-				default: 'triangle' //选中类型： triangle (三角形)| underline (下划线)
+				default: 'underline' //选中类型： triangle (三角形)| underline (下划线)
 			}
 		},
 		data() {
@@ -131,15 +131,19 @@
 					this.deal(curr,sizeGap);
 				} else {
 					//第一个位置
-					this.moves = this.conf.position
+					this.moves = this.conf.position+20
 				}
 			},
 			deal(index,sizeGap) {
 				let leng = 0;
+				
 				for (let i = 0; i < index; i++) {
-					leng += this.tabList[i].width + uni.upx2px(this.conf.spacing)
+					
+					leng += this.tabList[i].width+uni.upx2px(this.conf.spacing)
+					
 				}
 				this.moves = leng + this.conf.position-sizeGap;
+				
 			},
 
 			emit(i,val) {
@@ -179,20 +183,26 @@
 	}
 </script>
 
-<style scoped>
+<style scoped >
+	
 	.scroll-view {
+		position: fixed;
+			
 		width: 100%;
 		white-space: nowrap;
-		margin-left: 1.25rem;
+		/* margin-left: 1.25rem; */
 		transition: all .5s;
 		position: -webkit-sticky;
 		position: sticky;
 			 top: var(--window-top);
 			  z-index: 99;
+		/* overflow-x: scroll; */
+		
 	}
 
 	.scroll-view>view {
 	
+	/* #adapta{ */
 		height: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -201,6 +211,7 @@
 	.view-content {	
 		
 		display: inline-block;
+		
 	}
 
 	.txt {
@@ -208,6 +219,7 @@
 	}
 
 	.view-content>text {
+
 		position: absolute;
 		bottom: -10rpx;
 		left: 15%;
@@ -225,11 +237,12 @@
 	.underline {
 		position: absolute;
 		bottom: 0;
-		height: 6rpx;
+		/* height: 86rpx; */
 		transition: all .4s;
 	}
 
 	.adaptation {
+		
 		display: flex;
 		justify-content: space-between;
 	}

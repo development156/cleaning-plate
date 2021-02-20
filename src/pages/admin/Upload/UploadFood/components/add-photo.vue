@@ -36,53 +36,46 @@ export default {
 	uni.showLoading({
 	    title: '加载中'
 	});
-	console.log(res)
+	
      const tempFilePaths = res.tempFilePaths;
 	 const tempFilePath= tempFilePaths[0];
      const uploadTask = upLoad.uploadPicture(//{
       // url : '',
       // filePath: tempFilePaths[0],
       // name: 'file',
-      // formData: {//????
-      //  'user': 'test'
-      // },
 	  tempFilePath
     
 //     }
 	 ).then(res => {
-		 
-		 // success: function (uploadFileRes) {
-		 		  
-		  console.log(uploadFileRes.data);
-		  uni.hideLoading();
-		  
-		  // const back = JSON.parse(uploadFileRes.data);
-		  // 					if(back.status=="0"){
-		  // 						that.paidImgUrl = that.host+back.filepath[0];
-		  // 						console.log(that.paidImgUrl);
-		  // 					}else{
-		  // 						that.showToast(back.msg)
-		  // 					}
-		 // },
-		 
-		 
+		 // success: function (uploadFileRes) {  
+			if(JSON.parse(res[1].data).code==200){
+				uni.hideLoading();
+		  // console.log(JSON.parse(res[1].data));
+		   var imgPath=JSON.parse(res[1].data).data;
+			_self.$emit("photoShow",imgPath)
+			uni.showToast({
+				title: '上传成功',
+				icon:'none',
+				duration: 1080
+			});
+			
+		  }
 		 
 	 }).catch(err => {
-			console.log(err)
-	   		console.log("err");
+		
 			uni.showModal({
-								content: err,
-								showCancel: false
+						content: err,
+						showCancel: false
 						});
-			console.log("err")	
+			
 	   	})	;
  
-     uploadTask.onProgressUpdate(function (res) {
-      _self.percent = res.progress;
-      console.log('上传进度' + res.progress);
-      console.log('已经上传的数据长度' + res.totalBytesSent);
-      console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
-     });
+     // uploadTask.onProgressUpdate(function (res) {
+     //  _self.percent = res.progress;
+     //  console.log('上传进度' + res.progress);
+     //  console.log('已经上传的数据长度' + res.totalBytesSent);
+     //  console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+     // });
     },
     error : function(e){
 		console.log("---------error--------");
@@ -108,5 +101,6 @@ export default {
 		line-height: 260rpx;
 		border-radius: 10px;
 		background: #EBEBEB;
+		z-index: 0;
 	}
 </style>

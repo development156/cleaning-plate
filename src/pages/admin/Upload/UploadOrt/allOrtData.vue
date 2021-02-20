@@ -1,11 +1,11 @@
 <template>
 	<view>
 	<view class="container1">
-		<span class="tips1">253条数据</span>
+		<span class="tips1">{{array.length}}条数据</span>
 		
 		<view class="one-data">
 		<span>剩菜 </span>
-		<span>1800.5kg</span>
+		<span>{{TotalWasteInfo}}</span>
 		</view>
 	</view >
 	
@@ -19,8 +19,8 @@
 		<view class="item-info">
 			<span>剩菜 </span>
 		<span class="tips" style="display: flex; flex-direction: column;">
-		<span >{{item.weight}}</span>
-		<span>{{item.data}}</span>
+		<span style='color: rgba(16, 16, 16, 100);font-size: 32rpx;text-align: right;'>{{item.wasteFood}}kg</span>
+		<span><span>{{item.timeFrame}}</span>{{item.uploadDate}}</span>
 		</span>
 		</view>
 		</view>
@@ -32,55 +32,72 @@
 </template>
 
 <script>
+	import { OrtUpload } from '@/models/admin/Upload/ortUpload.js'
+	const ortUpload = new OrtUpload();
+	
+	
 	export default{
 		name:'allOrtData',
 		data(){
 			return{
+				TotalWasteInfo:'',
 				hasNodata:false,
 				array:[{
-					weight:'30.5kg',
-					data:'2020-01-13'
+					day: null,
+					id: 1,
+					timeFrame: "下午",
+					uploadDate: "2021-02-02 00:00:00",
+					wasteFood: 20,
 				},
 				{
-					weight:'30.5kg',
-					data:'2020-01-13'
+					timeFrame: "下午",
+					uploadDate: "2021-02-02 00:00:00",
+					wasteFood: 20,
 				},{
-					weight:'30.5kg',
-					data:'2020-01-13'
+					timeFrame: "下午",
+					uploadDate: "2021-02-02 00:00:00",
+					wasteFood: 20,
 				},
-				{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},
-				{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},
-				{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},
-				{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},
-				{
-					weight:'30.5kg',
-					data:'2020-01-13'
-				},]
+				]
 			}
+		},
+		created() {
+			this.getTotalWasteInfo();
+			this.getAllOrt();
+			
+		},
+		methods:{
+			getTotalWasteInfo(){
+				ortUpload.getTotalWasteInfo().then(res => {
+					console.log(res)
+					// this.TotalWasteInfo=res.data;
+					})
+					.catch(err => {
+						uni.hideLoading()
+						uni.showToast({
+							title: 'error',
+							icon:'none',
+							duration: 1400
+						});
+						
+					})	
+			},
+			getAllOrt(){
+				
+				ortUpload.getAllOrt().then(res => {
+					this.array=res.data;
+					})
+					.catch(err => {
+						uni.hideLoading()
+						uni.showToast({
+							title: 'error',
+							icon:'none',
+							duration: 1400
+						});
+						
+					})	
+			}
+			
 		}
 	}
 </script>
@@ -108,7 +125,7 @@
 		line-height: 110rpx;
 		margin-top: 138rpx;
 		display: flex;
-		
+		border: 2rpx solid #C8C7CC;
 		
 		flex-direction: row ;
 		justify-content: space-between; /* 横向中间自动空间 */
@@ -123,11 +140,13 @@
 			color: rgba(16, 16, 16, 100);
 			padding-left:34rpx; 
 			
+			
 		}
 		span:nth-child(2){
 			color: rgba(14, 172, 226, 100);
 			font-size: 32rpx;
 			padding-right:34rpx; 
+			
 			
 		}
 		.tips2{
@@ -146,12 +165,12 @@
 		font-size: 28rpx;
 		padding-top: 28rpx  ;  
 		padding-bottom: 28rpx  ; 
-		 
+		
 		 
 	}
 	.container3{
 		overflow-y: scroll;
-		
+		border: 2rpx solid #C8C7CC;
 		background: #FFFFFF;
 		border-radius: 10px;
 		text-align: center;
@@ -166,16 +185,22 @@
 			flex: row nowrap;
 			justify-content: space-between; /* 横向中间自动空间 */
 			border-bottom: 2rpx solid rgba(187, 187, 187, 0.41);
-			span:nth-child(1){
+			span:nth-child(1),{
 				padding-top: 24rpx;
 				font-weight: 600;
 				font-size: 32rpx;
 				color: rgba(16, 16, 16, 100);
 				line-height: 46rpx;
 			}
+			
 			.tips:nth-child(2){
 				color: rgba(151, 151, 151, 100);
 				font-size: 24rpx;
+				span{
+					font-size: 23rpx;
+					color: rgba(151, 151, 151, 100);
+					padding-right: 20rpx;
+				}
 			}
 		}
 	}
