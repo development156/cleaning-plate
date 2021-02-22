@@ -1,89 +1,37 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-
 	{
-			//输入快递单号页面
-			"path": "pages/admin/OrderManage/index",
-			"style": {
-				"navigationBarTitleText": "",	
-				"navigationBarBackgroundColor":"#FFFFFF",
-				"navigationBarTextStyle":"black"
-			}
-			
-		},
-		{
-			//加分页面
-			"path": "pages/admin/AddSocre/addSocre",
-			"style": {
-				"navigationBarTitleText": "加分",
-				"navigationBarBackgroundColor":"#FFFFFF",
-				"navigationBarTextStyle":"black"
-			}
-			
-		},
-		
-		
-		{
-				   //上传生菜统计
-				"path": "pages/admin/Upload/UploadOrt/index",
+				//管理员首页
+				"path": "pages/admin/Upload/index",
 				"style": {
-				
-					"navigationBarTitleText": "",	
+					"navigationBarTitleText": "管理员端",
 					"navigationBarBackgroundColor":"#FFFFFF",
 					"navigationBarTextStyle":"black"
 				}
-		},
-	
+				},
+				
+	{
+	//管理员展示专业年级
+	"path": "pages/admin/Management/ManageAcademy/showAcademy",
+	"style": {
+		"navigationBarTitleText": "专业年级展示",
+		"navigationBarBackgroundColor":"#FFFFFF",
+		"navigationBarTextStyle":"black"
+	}
+	},
 		
+	{
+	//管理员添加学院
+	"path": "pages/admin/Management/ManageCanteen/index",
+	"style": {
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor":"#FFFFFF",
+		"navigationBarTextStyle":"black"
+	}
+	},
+
 		
-	
-		{
-		//管理员添加学院
-		"path": "pages/admin/Management/ManageAcademy/index",
-		"style": {
-			"navigationBarTitleText": "",
-			"navigationBarBackgroundColor":"#FFFFFF",
-			"navigationBarTextStyle":"black"
-		}
-		},
-		{
-		//管理员展示专业年级
-		"path": "pages/admin/Management/ManageAcademy/showAcademy",
-		"style": {
-			"navigationBarTitleText": "",
-			"navigationBarBackgroundColor":"#FFFFFF",
-			"navigationBarTextStyle":"black"
-		}
-		},
-		
-		
-		
-			{
-					   //查看反馈
-					"path": "pages/admin/Feedback/feedback",
-					"style": {
-					
-						"navigationBarTitleText": "反馈信息",
-					
-						"navigationBarShadow": {
-						           "colorType": "grey" //grey|blue|green|orange|red|yellow  
-						       }, 
-						"navigationBarBackgroundColor":"#FFFFFF",
-						"navigationBarTextStyle":"black",
-						"enablePullDownRefresh": false
-					}
-					
-			},
 			
-			{
-			//管理员添加学院
-			"path": "pages/admin/Management/ManageCanteen/index",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationBarBackgroundColor":"#FFFFFF",
-				"navigationBarTextStyle":"black"
-			}
-			},
 			{
 				   //上传公告
 				"path": "pages/admin/Upload/UploadAnnoncement/index",
@@ -190,15 +138,7 @@
 							}
 			},
 			
-{
-			//管理员首页
-			"path": "pages/admin/Upload/index",
-			"style": {
-				"navigationBarTitleText": "上传",
-				"navigationBarBackgroundColor":"#FFFFFF",
-				"navigationBarTextStyle":"black"
-			}
-			
+
 	
 
 
@@ -227,27 +167,27 @@
 		// },
 
 		
+	
+		{
+			//加分页面
+			"path": "pages/admin/AddSocre/addSocre",
+			"style": {
+				"navigationBarTitleText": "加分",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
+			
 		},
-		// {
-		// 	//加分页面
-		// 	"path": "pages/admin/AddSocre/addSocre",
-		// 	"style": {
-		// 		"navigationBarTitleText": "加分",
-		// 		"navigationBarBackgroundColor":"#FFFFFF",
-		// 		"navigationBarTextStyle":"black"
-		// 	}
+		{
+			//输入快递单号页面
+			"path": "pages/admin/OrderManage/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle":"black"
+			}
 			
-		// },
-		// {
-		// 	//输入快递单号页面
-		// 	"path": "pages/admin/OrderManage/index",
-		// 	"style": {
-				
-		// 		"navigationBarBackgroundColor":"#FFFFFF",
-		// 		"navigationBarTextStyle":"black"
-		// 	}
-			
-		// },
+		},
 
 		{
 			//快递详情页
@@ -272,27 +212,27 @@
 			"path": "pages/admin/Upload/UploadFood/index",
 			"style": {
 			
-					
+					"navigationBarTitleText": "",
 				"navigationBarBackgroundColor":"#FFFFFF",
 				"navigationBarTextStyle":"black"
 			}
 		},
-		// {
-		// 		   //上传生菜统计
-		// 		"path": "pages/admin/Upload/UploadOrt/index",
-		// 		"style": {
+		{
+				   //上传生菜统计
+				"path": "pages/admin/Upload/UploadOrt/index",
+				"style": {
 				
-						
-		// 			"navigationBarBackgroundColor":"#FFFFFF",
-		// 			"navigationBarTextStyle":"black"
-		// 		}
-		// },
+						"navigationBarTitleText": "",
+					"navigationBarBackgroundColor":"#FFFFFF",
+					"navigationBarTextStyle":"black"
+				}
+		},
 		{
 				   //所有剩菜数据
 				"path": "pages/admin/Upload/UploadOrt/allOrtData",
 				"style": {
 				
-						
+					"navigationBarTitleText": "",
 					"navigationBarBackgroundColor":"#F5F5F5",
 					"navigationBarTextStyle":"black"
 				}
@@ -301,39 +241,39 @@
 				   //添加剩菜数据
 				"path": "pages/admin/Upload/UploadOrt/addData",
 				"style": {
-				
-					"navigationBarBackgroundColor":"#F5F5F5",
+				"navigationBarTitleText": "添加",
+					"navigationBarBackgroundColor":"#FFFFFF",
 					"navigationBarTextStyle":"black"
 				}
 		},
 
-		// {
-		// //管理员添加学院
-		// "path": "pages/admin/Management/ManageAcademy/index",
-		// "style": {
-		// 	"navigationBarTitleText": "",
-		// 	"navigationBarBackgroundColor":"#FFFFFF",
-		// 	"navigationBarTextStyle":"black"
-		// }
-		// },
-		// {
-		// 		   //查看反馈
-		// 		"path": "pages/admin/Feedback/feedback",
-		// 		"style": {
+		{
+		//管理员添加学院
+		"path": "pages/admin/Management/ManageAcademy/index",
+		"style": {
+			"navigationBarTitleText": "",
+			"navigationBarBackgroundColor":"#FFFFFF",
+			"navigationBarTextStyle":"black"
+		}
+		},
+		{
+				   //查看反馈
+				"path": "pages/admin/Feedback/feedback",
+				"style": {
 				
-		// 			"navigationBarTitleText": "反馈信息",
-		// 			"font-family": "FangSong",
-		// 			"font-size": "20px",
-		// 			"text-align": "left",
-		// 			"navigationBarShadow": {
-		// 			           "colorType": "grey" //grey|blue|green|orange|red|yellow  
-		// 			       }, 
-		// 			"navigationBarBackgroundColor":"#FFFFFF",
-		// 			"navigationBarTextStyle":"black",
-		// 			"enablePullDownRefresh": false
-		// 		}
+					"navigationBarTitleText": "反馈信息",
+					"font-family": "FangSong",
+					"font-size": "20px",
+					"text-align": "left",
+					"navigationBarShadow": {
+					           "colorType": "grey" //grey|blue|green|orange|red|yellow  
+					       }, 
+					"navigationBarBackgroundColor":"#FFFFFF",
+					"navigationBarTextStyle":"black",
+					"enablePullDownRefresh": false
+				}
 				
-		// },
+		},
 	   		
 	   {
 		   //查看反馈的具体信息
@@ -444,7 +384,7 @@
 					},
 			
 			{
-				"path":"pages/home/advertising/advertisingList/advertisingList",
+				"path":"pages/home/Advertising/advertisingList/advertisingList",
 				"style": {
 					"navigationBarTitleText": "柚光",
 					"backgroundColor": "#000000"//FF8C00
@@ -456,7 +396,7 @@
 				}
 			},		
 		{
-					"path":"pages/home/advertising/advertisingDetails/advertisingDetails",
+					"path":"pages/home/Advertising/advertisingDetails/advertisingDetails",
 					"style": {
 						"navigationBarTitleText": "柚光"
 						
@@ -466,7 +406,7 @@
 			
 	
 	{
-		    "path" : "pages/home/exchangeZone/index",
+		    "path" : "pages/home/ExchangeZone/index",
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "",
@@ -478,7 +418,7 @@
 
 
 {
-		    "path" : "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
+		    "path" : "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "柚光"
 				
@@ -487,7 +427,7 @@
 		
 		
 {
-			    "path" : "pages/home/exchangeZone/acquireExchange/payAcquireExchange",
+			    "path" : "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -498,7 +438,7 @@
 	
 
 	{
-			    "path" : "pages/home/exchangeZone/goodsDetails/creditDetails",
+			    "path" : "pages/home/ExchangeZone/goodsDetails/creditDetails",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -508,7 +448,7 @@
 			},
 
 	{
-			    "path" : "pages/home/exchangeZone/goodsDetails/payDetails",
+			    "path" : "pages/home/ExchangeZone/goodsDetails/payDetails",
 			    "style" :                                                                                    
 			    {
 			        "navigationBarTitleText": "",
@@ -517,7 +457,7 @@
 			    
 			},
 	{
-				    "path" : "pages/home/exchangeZone/cart/cart",
+				    "path" : "pages/home/ExchangeZone/cart/cart",
 				    "style" :                                                                                    
 				    {
 				        "navigationBarTitleText": "购物车",
