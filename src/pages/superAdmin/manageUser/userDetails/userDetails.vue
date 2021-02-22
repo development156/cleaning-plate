@@ -20,7 +20,23 @@
 </template>
 
 <script>
+	import {User} from '../../../../models/superAdmin/user.js'
+	const user = new User()
 	
+	export default{
+		onLoad(){
+			this.selectUser()
+		},
+		methods:{
+			selectUser(){
+				user.selectUser().then(res=>{
+					console.log(res)
+					
+				})
+				
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

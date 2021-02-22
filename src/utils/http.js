@@ -25,7 +25,7 @@ class HTTP {
 			data: data,
 			dataType:"json",
 			header: {
-				'Content-Type': "json",
+				'Content-Type': "application/json",
 				'appId': config.appId,
 				// 'token': uni.getStorageSync('AuthTokens')
 			},

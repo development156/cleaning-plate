@@ -1,8 +1,8 @@
 <template>
-    <view>
+    <view class="page">
 <view class="head">
-  <view class="tab1">个人</view>
-  <view class="tab2">班级</view>
+  <view class="tab1" :style="{backgroundColor:(index==true) ? 'rgba(119, 92, 76, 0.5)':'white'}" @click="change">个人</view>
+  <view class="tab2" :style="{backgroundColor:(index==false) ? 'rgba(119, 92, 76, 0.5)':'white'}" @click="change">班级</view>
   <view class="info">
 	  <view class="portrait">
 		  <view class="head_portrait"></view>
@@ -22,14 +22,16 @@
 </view>
 <view class="content">
 	
-	<view class="content_info" v-for="(item,index) in array" :key="index">
+	<view class="content_info" v-for="(item,index) in perList" :key="index">
 			<view class="item_info">
 				<view class="item_infoleft">
-				<view class="item_id">{{item.id}}</view>
+				<view class="item_id">{{index}}</view>
 				<view class="info_head"></view>
-				<view class="info_name">{{item.username}}</view>
+				<view class="info_name">{{item.profession}}</view>
+				<view class="info_name">{{item.name}}</view>
+			
 				</view>
-				<view class="info_credit">{{item.credit}}</view>
+				<view class="info_credit">{{item.integrate}}</view>
 			<view>
 	  </view>
 	</view>
@@ -39,32 +41,65 @@
 </template>
 
 <script>
+	import {Rank} from '../../../models/space/Rank.js'
+	const rank = new Rank()
 	export default {
 	  name: 'space',
 	  data() {
 	        return {
-	            array: [{
-	                id:'1',
-					head:'',
-					username:'李一',
-					credit:'212'
-	            }, {
-	               id:'2',
-	               head:'',
-	               username:'王五',
-	               credit:'231'
-	            }, ],
+			
+				perList:[],
+				index:true
 	}
-	}
+	},
+	onLoad(){
+		this.getPerRank()
+	},
+	methods:{
+		// 改变index
+		change(){
+			this.index = !this.index
+			this.getPerRank()
+		},
+		// 获得个人排名
+		getPerRank(){
+			if(this.index == true){
+				rank.getPerRank().then(res=>{
+					console.log(res)
+					this.perList = res.data
+					this.perList.sort(function (a, b) {
+					  return (a.integrate - b.integrate)
+					});
+					console.log(this.perList)
+				
+				})
+			}
+			else{	
+				// 集体排名
+				rank.getClassRank().then(res=>{
+					console.log(res)
+					this.perList  = res.data
+					this.perList .sort(function (a, b) {
+					  return (a.integrate - b.integrate)
+					});
+				})
+			}
+		},
+
+		
+	},
+	
 			
 }
 	
 </script>
-
+<style>
+	page{
+		background: rgba(119, 92, 76, 0.5);
+	}
+</style>
 <style lang="scss"  scoped>
 	page{
-		background-color: rgba(119, 92, 76, 0.5);
-	    vertical-align :middle;
 	.head{
 		background-color: rgba(119, 92, 76, 100);
 		height: 366rpx;
@@ -128,7 +163,7 @@
 		line-height: 62rpx;
 		border-radius: 40rpx 0rpx 0rpx 40rpx;
 		background-color: rgba(132, 101, 88, 100);
-		color: rgba(255, 255, 255, 100);
+		color: black;
 		text-align: left;
 		font-family: PingFangSC-regular;
 		font-size: 28rpx;
@@ -188,18 +223,16 @@
 				border: 1px solid rgba(187, 187, 187, 100);
 			}
 			.info_name{
-				
-				line-height: 82rpx;
-				margin-left: 28rpx;
+				margin-top: 5%;
 				color: rgba(16, 16, 16, 100);
-				font-size: 40rpx;
+				font-size: 31rpx;
 				font-family: SourceHanSansSC-regular;
 			}
 }
 				.info_credit{
-					
-					margin-left: 290rpx;
-					
+					position: absolute;
+					right: 2%;
+				
 					color: rgba(105, 78, 67, 100);
 					font-size: 48rpx;
 			

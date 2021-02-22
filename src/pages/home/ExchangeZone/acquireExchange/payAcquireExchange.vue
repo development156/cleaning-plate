@@ -17,27 +17,38 @@
 		</view>
 	</view>
 	
-	<view class="goods_details">
-		<view class="info">
-		<image :src="imgUrl+Item.url"></image>
+	<view class="goods_details" v-for="item in Item" >
+		<view class="info" v-for="i in item.orderProductList">
+		<image :src="imgUrl+i.url"></image>
 		<view class="details">
-			<text>{{Item.description}}</text>
-			<text> {{Item.productionPlace}}</text>
-			<text>¥{{Item.univalence}}</text>
+			<text>{{i.name}}</text>
+			
+			<view class="countBox centerboth">
+				<view class="carSub" @click="changeNum(index,item.id,2)">
+					<text class="iconfont car-sub"></text>
+				</view>
+				<view class="cartNum">*{{i.number}}</view>
+				<view class="carAdd" @click="changeNum(index,item.id,1)">
+					<text class="iconfont car-add"></text>
+				</view>
+			</view>
+			
+			<text>¥{{i.univalence}}/份</text>
 		</view>
 		</view>
+		
 		<view class="total">	
-		<text>共1件</text>
-		<text>商品小计：¥{{Item.univalence}}</text>	
+		<text>共{{totalNum1}}件</text>
+		<text>商品小计：¥{{totalPrice1}}</text>	
 		</view>
 	</view>
 	
 	<view class="footer">
 		<view class="money">
-			<text>应付：￥¥{{Item.univalence}}</text>
+			<text>应付：¥{{totalPrice1}}</text>
 			<text>含运费：￥0.00</text>
 		</view>
-		<button type="submit">提交订单</button>
+		<button type="submit" @click="pay">提交订单</button>
 		
 	</view>
 	
@@ -47,17 +58,89 @@
 </template>
 
 <script>
+	// import{exchangeCredit}  from '../../mine/myOrder/myOrder.vue'
+	import{exchangeCredit}  from '@/models/exchangezone/creditsExchange/exchangeCredit'
+	const Exchange = new exchangeCredit()
 	export default{
 		onLoad(e){
-			const item = JSON.parse(decodeURIComponent(e.item));
-			this.Item = item;
-			console.log(this.Item)
+			const Pid = JSON.parse(decodeURIComponent(e.item));
+			this.pid = Pid;
+			console.log(this.pid)
+			this.acquirePay()
+			
 		},
 		data(){
 			return {
 				Item:[],
+				// 临时设置的id
+				studentID:1,
+				pid:4,
+				
+				// 总数量
+				totalNum:0,
+				totalPrice:0
 				
 			}
+		},
+		computed:{
+			totalNum1(){
+				for(var i=0;i<this.Item.length;i++){
+					console.log(this.Item[i].orderProductList.length)
+					for(var j =0;j<this.Item[i].orderProductList.length;j++)
+					
+						this.totalNum+=this.Item[i].orderProductList[j].number
+						
+					}
+				return this.totalNum
+			
+			},
+			totalPrice1(){
+				for(var i=0;i<this.Item.length;i++){
+					console.log(this.Item[i].orderProductList.length)
+					for(var j =0;j<this.Item[i].orderProductList.length;j++)
+						this.totalPrice+=this.Item[i].orderProductList[j].number*this.Item[i].orderProductList[j].univalence
+					}
+					return this.totalPrice
+			}
+			
+		},
+		methods:{
+		acquirePay(){
+			Exchange.acquirePay(this.studentID,this.pid).then(res=>{
+				console.log(res.data[0].orderProductList[0].orderID)
+				this.Item = res.data
+				console.log(this.Item)
+			})
+		},
+		
+		// 进行支付
+		pay(){
+		Exchange.orderPay(this.pid,this.totalPrice).then(res=>{
+			console.log(res)
+			uni.showToast({
+			  title: res.msg,
+			  icon: "none"
+			});
+		})
+		},
+		/**
+		 * 修改商品数量
+		 */
+		changeNum:function(index,id,type) {
+			var that = this;
+			var carts = that.carts;
+			var number = parseInt(carts[index].number);
+			if(type==2){
+				number = number - 1;
+				if(number<=1){
+					number = 1;
+				}
+			}else{
+				number = number + 1;
+			}
+			carts[index].number = number;
+			this.$emit('changeNum',carts,id,type);
+		},
 		}
 	}
 </script>
@@ -119,6 +202,27 @@
 					width: 14.5625rem;
 					justify-content: space-around;
 					flex-direction: column;
+					.countBox {
+						position: absolute;
+						right: 140rpx;
+						bottom: 25rpx;
+						right: 10rpx;
+						bottom: 20rpx;
+					}
+					
+					.countBox .iconfont{
+						font-size: 46rpx;
+					}
+					
+					.cartNum {
+						width: 80rpx;
+						height: 50rpx;
+						text-align: center;
+						line-height: 50rpx;
+						font-size: 32rpx;
+						color: #1a256a;
+					}
+					
 					text{
 						&:nth-child(1){
 							font-size: 0.75rem;

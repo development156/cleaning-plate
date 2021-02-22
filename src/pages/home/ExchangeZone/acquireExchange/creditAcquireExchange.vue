@@ -33,13 +33,16 @@
 			<text>合计</text>
 			<text>{{Item.integrate}}积分</text>
 		</view>
-		<button size="mini">确认兑换</button>
+		<button size="mini" @click="confirm">确认兑换</button>
 	</view>
 
 </view>
 </template>
 
 <script>
+	import{exchangeCredit}  from '@/models/exchangezone/creditsExchange/exchangeCredit'
+	const Exchange = new exchangeCredit()
+	
 	export default{
 		data(){
 			return {
@@ -50,6 +53,26 @@
 			const item = JSON.parse(decodeURIComponent(e.item));
 			this.Item = item;
 			console.log(this.Item)
+		},
+		methods:{
+			confirm(){
+				const time = new Date()
+				const studentId = 1
+				Exchange.exchange(this.Item.id,studentId,time.getYear(),this.Item.name,this.Item.url,this.Item.integrate).then(res=>{
+					uni.showToast({
+					  title: res.msg,
+					  icon:"none"
+					});
+					// 进行判断是否兑换成功
+					
+				}).catch(error=>{
+					uni.showToast({
+					  title: '积分不足',
+					  icon:"none"
+					});
+				})
+				
+			}
 		}
 	}
 </script>

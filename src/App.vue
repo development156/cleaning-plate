@@ -10,12 +10,14 @@
 					return {
 					}
 				},
-		onLaunch: function() {
-			console.log('App Launch')
-		},
+
+		
 		onShow: function() {
 			console.log('on show');
-			this.getLogin()
+			// this.getLogin()
+		},
+		onLaunch: function() {
+			console.log('App Launch')
 		},
 		onHide: function() {
 			console.log('App Hide')

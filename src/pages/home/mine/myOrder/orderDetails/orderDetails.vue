@@ -1,6 +1,8 @@
 <template>
 	<view>
-		<view class="top">已完成</view>
+		<view class="top">
+			已完成
+			</view>
 		<view class="tip">您的订单已经签收，欢迎您再次光临！</view>
 		<view class="address">
 			<text>姓名</text>
@@ -9,27 +11,27 @@
 		</view>
 		<view class="goods_details">
 			<view class="info">
-			<image></image>
+			<image :src="imgUrl+Item[0].url"></image>
 			<view class="details">
-				<text>海南网纹瓜 玫珑瓜蜜瓜哈密瓜 新鲜水果</text>
-				<text> 1粒装1.5-2.5斤</text>
-				<text>¥19.9</text>
+				<text>{{Item[0].orderProductList[0].name}}</text>
+				<text> {{Item[0].orderProductList[0].description}}</text>
+				<text>¥{{Item[0].money}}</text>
 			</view>
 			</view>
 			<view class="total">	
 			<text>共1件</text>
-			<text>商品小计：¥19.9</text>	
+			<text>商品小计：¥{{Item[0].money}}</text>	
 			</view>
 		</view>
 		<view class="order_info">
-			<text>订单编号：</text>
-			<text>创建时间：</text>
-			<text>支付方式：</text>
+			<text>订单编号：{{Item[0].id}}</text>
+			<text>创建时间：{{Item[0].date}}</text>
+			<text>支付方式：{{Item[0].contactWay}}</text>
 			<view class="line"></view>
-			<text>配送方式</text>
+			<text>上门自取</text>
 			<view class="money">
 			<text>实付款</text>
-			<text> ¥19.9</text>
+			<text> ¥{{Item[0].money}}</text>
 		</view>
 		</view>
 		
@@ -38,6 +40,33 @@
 </template>
 
 <script>
+	import {exchangeCredit} from '../../../../../models/exchangezone/creditsExchange/exchangeCredit.js'
+	const Exchange = new exchangeCredit()
+	export default{
+		data(){
+			return{
+				Item:[],
+				studentID:1,
+				pid:''
+			}
+		},
+		onLoad(e){
+			this.pid  = JSON.parse(decodeURIComponent(e.item));
+			console.log(this.pid)
+			this.acquirePay()
+		},
+		methods:{
+			acquirePay(){
+				Exchange.acquirePay(this.studentID,this.pid).then(res=>{
+					console.log(res.data[0].orderProductList[0].orderID)
+					this.Item = res.data
+					console.log(this.Item)
+				})
+			},
+		}
+		
+		
+	}
 	
 </script>
 
@@ -83,7 +112,7 @@
 				width: 5.9375rem;
 				height: 5.5rem;
 				margin: 3.3125rem  0 0 1.0625rem ;
-				border: 1px solid red;
+				border-radius: 10px;
 			}
 			.details{
 				margin:3.3125rem  0 0 0.5625rem;

@@ -5,17 +5,12 @@
 			autoplay 
 			interval="2000" 
 			duration="500">
-		                       <swiper-item>
-		                           <view class="swiper-item uni-bg-red">
-		                       		<image :src="imgUrl+shopItem.url" class="image"></image>
-		                       	</view>
+		                       <swiper-item v-for="item in images">
+		                         
+		                       		<image :src="imgUrl+item.url" class="image"></image>
+		                      
 		                       </swiper-item>
-		                        <swiper-item>
-		                            <view class="swiper-item uni-bg-green">B</view>
-		                        </swiper-item>
-		                        <swiper-item>
-		                            <view class="swiper-item uni-bg-blue">C</view>
-		                        </swiper-item>
+		                    
 		                    </swiper>
 		</view>
 		<view class="info" >
@@ -74,6 +69,8 @@
 		const AddToCart = new addToCart()
 		import {swiperList} from '../../../../models/exchangezone/creditsExchange/swiperList.js'
 		const SwiperList = new swiperList
+		import{exchangeCredit}  from '@/models/exchangezone/creditsExchange/exchangeCredit'
+		const Exchange = new exchangeCredit()
 		export default{
 			onLoad(e){
 				const item = JSON.parse(decodeURIComponent(e.item));
@@ -105,7 +102,8 @@
 					         color: '#fff'
 					       }
 					       ],
-						   shopItem:[]
+						   shopItem:[],
+						   images:[]
 				}
 			},
 			components:{
@@ -122,6 +120,7 @@
 				       console.log(e)
 					   if(e.index==0){
 						   const studentId=1
+						  
 						  const number = this.options[0].info+1
 						  console.log(this.shopItem.id)
 						AddToCart.addToCart(this.shopItem.id,studentId,number).then(res=>{
@@ -131,10 +130,33 @@
 						})    
 					   }
 				      else{
-						 
-						  uni.navigateTo({
-						  url:`../acquireExchange/payAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(this.shopItem))
-						  })
+						 // 生成订单
+						 	
+						 	// 之后注册后在获取学号
+						 	let studentId =1
+							// 需要购买的数量
+						 	
+							let PIdList={
+								number:1,
+								pId:this.shopItem.id
+							}
+							
+						 	// 确认订单
+						 	Exchange.pay(studentId,PIdList).then(res=>{
+								console.log(res)
+						 		uni.showToast({
+						 		  title:res.msg,
+						 		  icon: "none"
+						 		})
+						 		uni.navigateTo({
+						 		url:`../acquireExchange/payAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(res.data))
+						 		})
+						 	}).catch(error=>{
+								uni.showToast({
+								  title:"提交订单失败",
+								  icon: "none"
+								});
+							})
 					  }
 				     },
 					 // 获取轮播图数据
@@ -142,17 +164,19 @@
 					 	console.log(this.shopItem.ID)
 					 	SwiperList.GetSwiperList(this.shopItem.ID).then(res=>{
 					 		console.log(res)
+							this.images = res.data
+							console.log(this.images)
 					 	})
 					 }
 			}
 		}
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss" >
 	
 	page{
 		height: 100%;
-		background:	#EDEDED;
+		background-color: #F5F5F5;
 	
 		swiper{
 			border-radius: 0.3125rem;

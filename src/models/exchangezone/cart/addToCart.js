@@ -5,9 +5,8 @@ class addToCart extends HTTP{
 			url:'/covert/addToShoppingCart',
 			method:'POST',
 			header:{
-			'content-type': 'application/json; charset=UTF-8',
+			'Content-Type': 'application/json',
 			        },
-			dataType:' json',
 			data:{
 				// 商品ID
 				PID:PID,

@@ -13,6 +13,15 @@ class MyModel extends HTTP {
 			}
 	    })
 	}
+	
+	// 所有人兑换的历史列表
+	allHistoty(){
+		return this.request({
+		    url: `/covert/getHistory`,
+			method: 'Get',
+			
+		})
+	}
 }
 
 export { MyModel }

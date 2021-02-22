@@ -29,7 +29,7 @@
 </template>
 
 <script>
-	import DataPresenceWeek from '../../../home/mine/ort/DataPresenceWeek.vue'
+	import DataPresenceWeek from '../../../home/ort/DataPresenceWeek.vue'
 	import GodenButton from '../../../../components/common/gode-button.vue'
 	export default{
 		name:'UploadOrt',

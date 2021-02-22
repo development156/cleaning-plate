@@ -60,7 +60,8 @@
 				// 		_self.tips="网络错误，小程序端请检查合法域名";
 				// 	},
 				// });
-				let data=_self .chartData1.series[0].data
+				
+				let data=_self.chartData1.series[0].data
 				for(let i=0;i<data.length;i++){
 					if(data[i]<33){
 						data[i]={"value": data[i],"color": "#f04864"}

@@ -12,7 +12,7 @@
 					<view class="font1">	柚光自营＞ <span class="font2">已完成</span></view>
 						<view style="margin-top: 30rpx;">
 		                <view class="image-content">
-		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='"http://8.131.230.3:8080/YouGuang_war"+item.url'
+		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='"http://8.131.230.3:8080/YouGuang_war/"+item.url'
 		                        @error="imageError"></image>
 		                </view>
 		                <view class="image-title">{{item.description}}</view>

@@ -2,57 +2,35 @@
 		<view>
 			<!--顶部导航栏-->
 			<view class="uni-tab-bar">
-			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 150,height1: 40,left:200,color:'#666666',actColor:'#C9A65E',size:32,position:0}" class="uni-swiper-tab"></xTab>
-			
+			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 150,padding:30,spacing: 90,height1: 40,left:200,color:'#666666',actColor:'#C9A65E',size:32,position:0}" class="uni-swiper-tab">
+				
+			</xTab>
+			</view>
 			<!--内容区-->
 			
-				<swiper  :current="swiperCurrIndex" @change="swiperChange" :style="{height:swiperHegiht}">
-					<swiper-item v-for="(content,index) in contentList" :key="index"  >
-						<!-- <view class="swiper-item">{{content}}</view> -->
-					<view :id="'swiper_id_'+index">
-					<view class="content" >
+				<swiper  
+				:current="swiperCurrIndex" 
+				@change="swiperChange" 
+				:style="{height:swiperHegiht}"
+				>
+					<swiper-item v-for="(item,index) in tabBars" :key="index">		
+					<view :id="'swiper_id_'+item.id">
+					<view class="content" v-for="(content,index) in contentList">
 						<view class="item1">
-								<text>柚见时光</text>
-								<text>订单已完成</text>
+								<text>{{content.shipmentFlag}}</text>
+								<text>{{content.receivingDate}}</text>
 						</view>
-							<view class="item2" @click="navTo">
-								<image>
+							<view class="item2" @click="navTo(content.id)">
+								<image :src="imgUrl+content.url">
 									
 								</image>
-								<text>海南网纹瓜 玫珑瓜蜜瓜哈密瓜 新鲜水果</text>
-								<text>￥19.9</text>
+								<text>{{content.shippingAdress}}</text>
+								<text>￥{{content.money}}</text>
 							</view>
-							<view class="item3">再次购买</view>
-					</view>	
-					<view class="content">
-						<view class="item1">
-								<text>柚见时光</text>
-								<text>订单已完成</text>
-						</view>
-							<view class="item2">
-								<image>
-									
-								</image>
-								<text>海南网纹瓜 玫珑瓜蜜瓜哈密瓜 新鲜水果</text>
-								<text>￥19.9</text>
-							</view>
-							<view class="item3">再次购买</view>
-					</view>	
-					<view class="content">
-						<view class="item1">
-								<text>柚见时光</text>
-								<text>订单已完成</text>
-						</view>
-							<view class="item2">
-								<image>
-									
-								</image>
-								<text>海南网纹瓜 玫珑瓜蜜瓜哈密瓜 新鲜水果</text>
-								<text>￥19.9</text>
-							</view>
-							<view class="item3">再次购买</view>
+							<view class="item3" @click="acquireOrder(content.id)" v-show="isShow">确认订单</view>
 					</view>	
 					
+				
 					
 					</view>
 					</swiper-item>
@@ -60,129 +38,138 @@
 			
 			
 			
-			
-			<!-- <view class="uni-tab-bar">
-						<scroll-view scroll-x class="uni-swiper-tab">
-							<block v-for="(tabBar,index) in tabBars" :key="index">
-								<view class="swiper-tab-list" :class="{'active': tabIndex==index}" @tap="toggleTab(index)">
-									{{tabBar.name}}
-									<view class="swiper-tab-line">
-									</view>
-								</view>
-							</block>
-						</scroll-view>
-						
-		</view> -->
 		
-			</view>
+		
 			
 		</view>
 </template>
 <script>
 	  import xTab from '@/components/common/poiuy-xTab/xTab.vue';
+	  import {orderList} from '../../../../models/MyModel/orderList.js'
+	  const getOrder = new orderList()
 	export default {
 		
 			data() {
 				return {
 				
-					contentList: [
-									"关注",
-									"推荐",
-									"热点",
-									"体育",
-									'财经',
-									'娱乐',
-								 ],
+					contentList: [],
 					tabBars:[
 						{
 							name: '全部',
-							id: 1
+							id: 0
 						},
 						{
 							name: '待付款',
+							id: 1
+						},
+						{
+							name: '待取货',
 							id: 2
 						},
 						{
-							name: '待发货',
+							name: '已完成',
 							id: 3
 						},
-						{
-							name: '已完成',
-							id: 4
-						},
-						{
-							name: '已取消',
-							id: 5
-						}
+						
 						
 					],
 				
 				//swiper当前位置
 				swiperCurrIndex:0,
 				//swiper动态高度
-				swiperHegiht:300, 
+				swiperHegiht:400, 
+				// 临时设置的学号
+				studentId:1,
+				state:'',
+				isShow:false
 				}
 			},
 			components: {
 				xTab
 			},
 			onLoad() {
-				
+				 this.getOrder()
 		// 获取动态高度
 			 this.setSwiperHeight();
+			
 			},
 			methods: {
 				
 				changeTab(e){
 				                 console.log(e);
 				                 this.swiperCurrIndex = e.index;
-								
+								 
+								 this.getOrder()
+								 if(this.swiperCurrIndex ==2){
+									 this.isShow = true
+								 }
+								 else{
+									  this.isShow = false
+								 }
 				             },
 				//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
 				            swiperChange(e) {
-				                this.swiperCurrIndex = e.detail.current;
+								
+				                this.swiperCurrIndex = e.detail.current;	
 				                this.setSwiperHeight(); //例如动态获取高
 				            },
 				 //动态设置swiper高度
 				            setSwiperHeight() {
 				                const that = this;
+							
 				                let obj = uni.createSelectorQuery().in(this).select("#swiper_id_" + (this.swiperCurrIndex));
+							
 				                obj.boundingClientRect(function(data) { //data - 各种参数
 				                    if (data) {
 				//得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
-				                        that.swiperHegiht = data.height * 2 + 110; 
+										
+										that.swiperHegiht = data.height+50+'px'; 
+										console.log(that.swiperHegiht)
 				                    }
 				                }).exec();
 				            },
 				
-				
-				// toggleTab(index){
-				// 	console.log(index)
-				// 	this.tabIndex = index
-				// },
-				//滑动切换swiper
-				// tabChange(e){
-				// 	console.log(e.detail)
-				// 	const tabIndex = e.detail.current
-				// 	this.tabIndex = tabIndex
+				navTo(id){
+					console.log(id)
+					if(this.swiperCurrIndex ==3){
+						uni.navigateTo({
+						url:`orderDetails/orderDetails?item=`+ encodeURIComponent(JSON.stringify(id))
+						})
+					}
 					
-				// },
-				//    getElementHeight() {
-					   
-				//                 uni.getSystemInfo({
-				//                 				success: (res) => {
-				//                 					// uni-app 提供了 upx2px 方法，将对应的 rpx 值转换成了 px
-				//                 					let height = res.windowHeight - uni.upx2px(100)
-				//                 					this.swiperHeight = height+1000; // 让data中定义的swiperheight高度等于计算过后的高度
-				//                 					console.log(this.swiperHeight)
-				//                 				}
-				//                 			});
-				//             },
-				navTo(){
-					uni.navigateTo({
-					url:'orderDetails/orderDetails'
+				},
+				
+				// 获取订单列表
+				getOrder(){
+					if(this.swiperCurrIndex==1 || this.swiperCurrIndex==2 ||  this.swiperCurrIndex==2)
+					{
+						 this.state = this.swiperCurrIndex
+					}
+					getOrder.getOrderFirstPage(this.studentId,this.state).then(res=>{
+						console.log(res.data)
+						if(res.data!=null){
+							this.contentList = res.data
+						}
+						else{
+							this.contentList=""
+						}
+						
+
 					})
-				}
+				},
+				
+				// 确认订单
+				acquireOrder(id){
+					getOrder.acquireOrder(this.studentId,id).then(res=>{
+						console.log(res)
+						uni.showToast({
+						  title:res.msg,
+						  icon: "none"
+						})
+					})
+					
+				},
+			
 			}
 		}
 	</script>
@@ -191,9 +178,10 @@
 		.tab-view{
 			margin-top: 3.125rem;
 			
+			
 		}
 		  swiper {
-		            min-height: 200vh;
+		            min-height: 80vh;
 		        }
 		
 		
@@ -201,24 +189,23 @@
 		background-color: #3B5A69;
 	}
 	
-		.uni-swiper-tab{
+		.uni-tab-bar{
 			border-bottom: 1upx solid #eeeeee;
 			background-color: #ffffff;
 			
 		}
-	
-		
-				.content{
-						
-						
+				.content{	
 						background-color: #FFFFFF;
 						border-radius: 5px;
 						text-align: center;
 						border: 1px solid rgba(255, 255, 255, 100);
 						margin-top: 0.875rem;
+						width: 98%;
+						box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+						margin: 5% auto;
 						.item1{
 						display: flex;
-						margin:1.3125rem  1.5625rem 1.1875rem 1.5625rem;
+						margin:0.3125rem  1.5625rem 0.1875rem 1.5625rem;
 						justify-content: space-between;
 						text{
 							&:nth-child(1) {
@@ -233,11 +220,13 @@
 					.item2{
 						display: flex;
 						justify-content: space-around;
+						margin-bottom: 5%;
 						image{
-							width: 5.5rem;
+						
+							width: 60%;
 							height: 5.5rem;
 							border: 1px solid gray;
-							margin: 1.1875rem 0 0 1.4375rem; 
+							margin: 0.1875rem 0 0 1.4375rem; 
 							border-radius: 10px;
 						}
 						text{
@@ -262,7 +251,7 @@
 						text-align: center;
 						border: 1px solid rgba(187, 187, 187, 100);
 						font-size: 0.8125rem;
-						margin: 1.25rem 1.375rem 1.125rem 14.375rem;
+						margin: 0 1.375rem 5% 75%;
 					}
 					}
 			

@@ -10,7 +10,7 @@
 					<view class="first-line">
 				<view class="user-info">
 					
-					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFit" src='"http://8.131.230.3:8080/YouGuang_war"+item.url'
+					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFit" :src="imgUrl+item.url"
 		                    @error="imageError"></image>
 					<span>我的昵称</span>
 				</view>
@@ -20,7 +20,7 @@
 					</view>
 					<view style="margin-top: 30rpx;">
 		            <view class="image-content">
-		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='"http://8.131.230.3:8080/YouGuang_war"+item.url'
+		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src="imgUrl+item.url"
 		                    @error="imageError"></image>
 		            </view>
 		            <view class="image-title">{{item.description}}</view>

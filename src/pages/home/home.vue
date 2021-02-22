@@ -1,46 +1,56 @@
 <template>
 	<view class="content" >
-		
-		<view class="icon" @click="navTo2">
-			我的
+		<view class="iconAll">
+			<view class="icon1" @click="navTo2">
+				我的
+			</view>
+			<view class="icon2" @click="navTo5">
+				空间
+			</view>
 		</view>
 		
 		<view class="top">
 
 			<view class="box1"   @click="confirmDialog">
-				<text >上传照片</text>
 				<image ></image>
+				<text >上传照片</text>
 			</view>
 			
 			<navigator class="box2"
 			url="exchangeZone/index"
 			>
-				<text>兑换专区</text>
 			<image ></image>
+			<text>兑换专区</text>
 			</navigator>
 			
 			<view class="box3" @click="navTo3">
-			<text>菜品展示</text>
 			<image ></image>
+			<text>菜品展示</text>
+			
 			</view>
 			
 		
 			<view class="box4" @click="navTo">
+				<image ></image>
 				<text>公告</text>
-			<image ></image>
+			
 			</view>
 			
 			
-			<view class="box5" >
-				<text>剩菜分析</text>
+			<navigator class="box5"
+			url="ort/index"
+			>
 			<image ></image>
-			</view>
+			<text>剩菜分析</text>
+			
+			</navigator>
+			
 		</view>
 		
 		
 		<!-- 提交信息 -->
 		<uni-popup ref="popupShare" >
-			<uni-popup-define title="分享到" @select="select"></uni-popup-define>
+			<uni-popup-define  @select="select"></uni-popup-define>
 		</uni-popup>
 		
 		
@@ -49,7 +59,7 @@
 <script>
 	import uniPopup from '@/components/common/uni-popup/uni-popup.vue'
 	
-	import uniPopupDefine from '@/pages/home/upload/index.vue'
+	import uniPopupDefine from './upload/index.vue'
 	export default{
 		components:{
 			uniPopup,
@@ -60,7 +70,7 @@
 		methods:{
 			navTo(){
 				uni.navigateTo({
-				url:'advertising/advertising'
+				url:'advertising/advertisingList/advertisingList'
 				})
 			},
 			navTo2(){
@@ -70,12 +80,17 @@
 			},
 			navTo3(){
 				uni.navigateTo({
-				url:'foodShow/foodShow'
+				url:'foodShow/CanteenList'
 				})
 			},
 			navTo4(){
 				uni.navigateTo({
 				url:'upload/index'
+				})
+			},
+			navTo5(){
+				uni.navigateTo({
+				url:'space/index'
 				})
 			},
 			//打开弹框
@@ -91,48 +106,69 @@
 
 <style lang="scss" scoped>
 	.content{
-		.icon{
-			background-color: red;
-			width: 3.125rem;
-			height: 3.125rem;
+		.iconAll{
+			display: flex;
+			justify-content: space-between;
+			.icon1,.icon2{
+				background-color: red;
+				width: 3.125rem;
+				height: 3.125rem;
+			}
 		}
+		
 		.top{
 			color: white;
 			display:flex;
-			justify-content: space-between;
+			justify-content:space-evenly ;
 			flex-wrap: wrap ;
-			
-			margin: 14.4375rem 1.125rem 0 1.125rem;
+			margin: 35.3% 0 12.28% 0;
 		.box1,.box2{
 			color: black;
 			box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
 			border: 1px solid rgba(255, 255, 255, 100);
-			@include gy("",15px,align-center,10rem, 13.4375rem);
+			@include gy("",15px,align-center,42.7%,215px);
 			background-color: rgba(255, 255, 255, 100);
+			text{
+			margin-left: 25%;
+			font-size: 20px;
+			}
 			image{
 				
 				display: block;
 				margin: 0 auto;
-				@include gy('','','',2.75rem,2.75rem);
+				@include gy(45px,'','',2.75rem,2.75rem);
+				margin-bottom: 1.625rem;
+				
+				border: 1px solid red;
 			}
 		}
 		
 		.box3,.box4{
-			 @include gy(5%,15px,align-center,10rem,5.1875rem);
+			 @include gy(5%,15px,align-center,43%,5.1875rem);
 				background-color: rgba(105, 78, 67, 100);
-			image{
-				@include gy('','','',2.3125rem,2.3125rem);
 				
+			image{
+				display: block;
+				margin: 5% 0 5% 1.375rem;
+				@include gy('','','',1.3125rem,1.3125rem);
+				border: 1px solid red;
+			}
+			text{
+				margin-left: 1.375rem;
 			}
 		}
 		
 		.box5{
-			 @include gy(1rem,15px,align-center,21.1875rem,4.6875rem);
+			 @include gy(1rem,15px,align-center,90.6%,4.6875rem);
 			background-color: rgba(105, 78, 67, 100);
-		
+			text{
+				margin-left: 1.375rem;
+			}
 			image{
-				
-				@include gy('','','',1.4375rem,1.4375rem);
+				display: block;
+				margin: 3% 0 3% 1.375rem;
+				@include gy('','','',1rem,1rem);
+				border: 1px solid red;
 			}
 			
 		}

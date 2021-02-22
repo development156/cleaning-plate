@@ -1,5 +1,6 @@
 <template>
 	<view class="dia">
+	
 		    <view class="text">点击图标上传</view>
 			<view class="item" v-for="item in items">
 				<view class="content">
@@ -16,14 +17,14 @@
 			<button class="button" @click="close">取消</button>
 			
 		</view>
-		
+		<compress  ref="compress"/>
 		
 	</view>
 </template>
 
 <script>
+	import compress from '@/components/common/compress.vue'
 
-	
 	export default{
 		name:"uniPopupDefine",
 		 inject: ['popup'],
@@ -31,6 +32,7 @@
 		 	return{
 		 	
 				studentId:1,
+				
 				items:[{
 					name:'相册',
 					content:'从相册中选择照片上传',
@@ -48,7 +50,7 @@
 			
 		 	}
 		 },
-		 
+		 components: { compress },
 		 methods:{
 			select(item, index) {
 				this.$emit('select', {
@@ -80,32 +82,48 @@
 					             //             console.log("已授权")
 					             // 如果已授权,直接获取对应参数
 													
-													
+									let _this = this	
 									// 选择上传
 									uni.chooseImage({
 									      count: 1,
-									      sizeType: ['original', 'compressed'],
+									      sizeType: [ 'compressed'],
 									      sourceType:(e==1)? ['album']:['camera '],
 									      success: function(res) {
 											   console.log(res)
 										const file =res.tempFilePaths[0];
-										console.log(file)
-										
+										console.log(res.tempFilePaths[0])
+										const compressParams = {
+													src:res.tempFilePaths[0]  // 必选： 要压缩的图片地址
+												}
 										// 自己设置的学号
 										const studentId=1
-										uni.uploadFile({
-										url:'http://8.131.230.3:8080/YouGuang_war/Img/uploadImg',
-										filePath: file,
-										formData: {
-										studentId:studentId
-										},	
-										success: (res) => {
-										console.log(res);
-										},
-										fail:(res)=>{
-											console.log(res);
-										}
-									});												
+										// _this.$refs.compress.compress(compressParams).then(file => {
+											
+											console.log(file)
+											 wx.uploadFile({
+												url:'http://8.129.51.225:8080/YouGuang_war/Img/uploadImg',
+												filePath: file,
+												formData: {
+												studentId:studentId
+												},	
+												
+												success: (res) => {
+													console.log(res)
+													console.log("啦啦啦")
+												const data = JSON.parse(res.data)
+												uni.showToast({
+												  title:"啦啦",
+												  icon: "none"
+												});
+												},
+												fail:(res)=>{
+													console.log(res);
+													
+												}
+											});							
+											
+										// })
+														
 									      }
 									      })
 					//权限						
@@ -132,7 +150,7 @@
 		margin: 0 auto;
 		.item{
 			height: 30%;
-			width: 95%;
+			width: 98%;
 			display: flex;
 			justify-content: space-between;
 			margin: 5% auto;

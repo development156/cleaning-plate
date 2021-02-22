@@ -1,26 +1,43 @@
 <template>
 	<view>
 		<view class="tab-view">
-		<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:30,background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,actWeight:'Bold',position:0}"></xTab>
-		<xTab :value="floorList" @changeTab="changeTab" actType="underline" :config="{padding:30,spacing: 115,background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,actWeight:'Bold',position:0}"></xTab>
-		<select  v-model="window" class="select">
-		      <option v-for="(item,index) in windows" @click="changeTab" :value='item.id' :key="index" class="option">{{item.name}}</option>
-		 </select>
+			<view class="tab">
+				<view class="item1">
+					<text>楼层</text>
+					 <picker mode="selector" :value="index1" :range-key="'floor'" :range="floorList" @change="bindPickerChange1">
+					       <view>{{floorList[index1].floor}}</view>
+					  </picker>
+					
+				</view>
+				
+			<view class="item2">
+			<text>窗口</text>
+			<picker @change="bindPickerChange2" :value="index2" :range="windows" :range-key="'windows'">
+				<view class="uni-input">{{windows[index2].windows}}</view>
+			</picker>
+			
+				</view>
+				
+			</view>
 		</view>
+		
 		<view class="goods_list">
 				<!-- 开始循环遍历 -->
 				      <view class="goods_item"
-				      v-for="(item,index) in tabList"
+				      v-for="(item,index) in foodList"
 				      :key="index">
 				      <image 
 				      mode="widthFix"
-				      :src="item.url"></image>
+				      :src="imgUrl+item.url"></image>
 					  <view class="content">
 					  <view class="price">
-					  	<text>{{item.id}}</text>
+					  	<text>{{item.dishName}}</text>
 					  </view>
 					  <view class="name">
-					  	{{item.name}}
+					  	{{item.price}}
+					  </view>
+					  <view>
+					  	{{item.favour}}
 					  </view>
 					</view>
 				      </view>
@@ -32,132 +49,131 @@
 
 <script>
 	
-	import xTab from '@/components/common/poiuy-xTab/xTab.vue'
+	import {FoodShow} from '../../../models/foodShow/foodShow.js'
+	const foodShow = new FoodShow()
 	export default{
-		components: {
-			xTab
-		},
+		
 		data(){
 			return{
-				tabList: [{
-					name:'学生食堂',
-					id:0
-					},
-					{
-						name:'小食堂',
+				// 楼层列表
+				floorList: [],
+				// 窗口列表
+				windows:[],
 				
-					id:1
-					},
-					{
-						name:'教工食堂',
-					id:2
-						
-					},
-					{
-						name:'教工食堂',
-					id:3
-						
-					}
-				],
-				floorList: [{
-					name:'一楼',
-					id:0
-					},
-					{
-						name:'二楼',
+				// 菜品列表
+				foodList:[],
+				// 当前默认窗口
+				window:'1号',
+				// 当前默认楼层
+				floor:'1楼',
+				// 当前默认食堂
+				diningRoom:'第一食堂',
+				index1: 0,
+				index2:0
 				
-					id:1
-					},
-					{
-						name:'三楼',
-					id:2
-						
-					},
-					{
-						name:'四楼',
-					id:3
-						
-					}
-				],
-				windows:[{
-					name:'窗口1',
-					id:0
-					},
-					{
-						name:'窗口2',
-				
-					id:1
-					},
-					{
-						name:'窗口3',
-					id:2
-						
-					},
-					{
-						name:'窗口4',
-					id:3
-						
-					}
-				],
-				window:'窗口1'
 			}
 		},
-		watch:{
-			window(val, oldval) {
-			   console.log(this.floorList[val].id)
-			      }
+		// watch:{
+		// 	floor(val, oldval) {
+		// 	   this.getFood()
+		// 	      },
+		// 	window(val, oldval) {
+		// 	   this.getFood()
+		// 	      }
+				
+		// },
+		onLoad(e){
+			this.diningRoom  = JSON.parse(decodeURIComponent(e.item));
+			this.getCanteenInfo()
+			this.getFood()
+			
 		},
 		methods:{
-			changeTab(e){
-			                 console.log(e);
-			                 this.swiperCurrIndex = e.index;
-							 this.type=e.name;
+						
+					// 获取菜品列表
+					getFood(){
+						console.log(this.floor)
+						console.log(this.window)
+						foodShow.getFood(this.diningRoom,this.floor,this.window).then(res=>{
+							console.log(res.data)
+							this.foodList = res.data
+						})
+					},
+				
+					// 获取楼层信息
+					getCanteenInfo(){
+						foodShow.getCanteenInfo(this.diningRoom).then(res=>{
+							console.log(res)
 							
-			             },
-			//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
-			            swiperChange(e) {
-			                this.swiperCurrIndex = e.detail.current;
-			                this.setSwiperHeight(); //例如动态获取高
-			            },
-			 //动态设置swiper高度
-			            setSwiperHeight() {
-			                const that = this;
-			                let obj = uni.createSelectorQuery().in(this).select("#swiper_id_" + (this.swiperCurrIndex));
-			                obj.boundingClientRect(function(data) { //data - 各种参数
-			                    if (data) {
-			//得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
-			                        that.swiperHegiht = data.height * 2 + 110; 
-			                    }
-			                }).exec();
-			            },
-						findItemNameBYClass(e){
-										console.log( e)
-								}
+							for(var i=0;i<res.data.length;i++){
+								this.floorList[i]=res.data[i]
+								
+							}
+							this.windows =res.data[this.index1].windowsList
+							console.log(this.windows)
+						})
+					},
+					bindPickerChange1: function(e) {
+						
+						this.index1 = e.detail.value
+						this.floor = this.floorList[this.index1].floor
+						this.getFood()
+					},
+					bindPickerChange2: function(e) {
+						this.index2 = e.detail.value
+						this.window = this.windows[this.index2].windows
+						this.getFood()
+					},
+					
 		}
 		}
 </script>
 
 <style lang="scss">
 	page{
-		.select{
-			margin: 1.25rem 0 1.375rem 1.6875rem;
-			width: 7.6875rem;
-			height: 1.875rem;
-			border: 1px solid rgba(187, 187, 187, 100);
-			font-size: 0.875rem;
-			.option::after{
-				width: 7.6875rem;
+		background-color: rgba(249, 249, 249, 0.8);
+		
+		.tab{
+			display: flex;
+			width: 98%;
+			height: 3.125rem;
+			margin: 5% auto;
+			background-color: white;
+			border-radius: 0.3125rem;
+			justify-content: space-around;
+			.item1,.item2{
+			margin: 3% 0 0 10%;
+			display: flex;
+			width: 50%;
+				picker{
+					width: 3.125rem;
+					height: 1.875rem;
+					margin-left: 5%;
+					border: none;
+					font-size: 0.9375rem;
+					color: #C9A65E;
+					
+				}
+				text{
+					font-size: 0.9375rem;
+					color: gray;
 				
+				}
 			}
+			
 		}
 		.goods_list{
 				display: flex;
 				flex-wrap: wrap;
 				padding: 0 10rpx;
-				justify-content: space-between;
+				justify-content: space-around;
+				background-color: white;
+				width: 95%;
+				margin: 0 auto;
+				border-radius: 12px;
 			.goods_item{
 				background: #fff;
-				width: 355rpx;
+				width: 45%;
 				margin-top: 10px;
 				
 				padding: 20rpx;
@@ -167,14 +183,16 @@
 					width: 8.125rem;
 					height: 7.3125rem;
 					margin: 0 auto;
-						border: 1px solid red;
+			
 					border-radius: 5px
 				}
 				.content{
 					display: flex;
 					justify-content: space-around;
 					font-size: 32rpx;
-					
+					.name{
+						color: red;
+					}
 				}
 				
 			}

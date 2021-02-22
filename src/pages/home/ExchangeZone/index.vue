@@ -1,13 +1,17 @@
 <template>
 
-	<view><xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:100,spacing: 200,background:'#1D5397',color:'#666666',actColor:'#D97F00',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
+	<view>
+		<view class="xTab">
+			<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:150,spacing: 150,background:'white',color:'#666666',actColor:'#C9A65E',actSize:40,size:40,position:0}"></xTab>
+		</view>
+		
 		<!-- :url="`/pages/details/index?id=${item.target}`" -->
 			<!-- 开始循环遍历 -->
 			
 			<!-- 	积分兑换 -->
 			
 	<view class="hot_goods" v-if="flag==1">
-		<view class="tit">我的积分</view>
+		<view class="tit">我的积分:208</view>
 		<view class="goods_list">
 			      <navigator class="goods_item"
 			      v-for="(item,index) in goodsList"
@@ -37,7 +41,7 @@
 
 <!-- 商城 -->
 <view v-else>
-	<uni-search-bar radius="100" placeholder="搜索" clearButton="none" cancelButton="none" @confirm="search" class="search"  />
+<uni-search-bar placeholder="搜索" @confirm="search" @cancel="cancel()" :radius="100"></uni-search-bar>
     <navigator class="news_item"
 	 v-for="(item,index) in shopList"
 	:url="'goodsDetails/payDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
@@ -65,8 +69,10 @@ import uniSearchBar from '@/components/common/uni-search-bar/uni-search-bar.vue'
 import xTab from '@/components/common/poiuy-xTab/xTab.vue';
 import {getGoodlist} from '../../../models/exchangezone/creditsExchange/goodsList.js'
 import {swiperList} from '../../../models/exchangezone/creditsExchange/swiperList.js'
+import {search} from '../../../models/exchangezone/search/search.js'
 const getgoodlist = new getGoodlist()
 const SwiperList = new swiperList
+const Search = new search()
 export default{
 	components: {
 		xTab,
@@ -122,12 +128,14 @@ export default{
 			getgoodlist.getGoodList(this.flag,this.pageNum=((this.flag==1)?this.pageNum1:this.pageNum2)).then(res =>{
 				console.log(res.data);
 				console.log(this.pageNum1);
-				if(this.flag==1)
+				
+				if(this.flag==1 && this.hasMore1==true)
 				{
 						this.goodsList=[...this.goodsList,...res.data];
 						console.log(this.goodsList);
 				}
-				else{
+				if(this.flag==2 && this.hasMore2 ==true)
+				{
 					this.shopList = [...this.shopList,...res.data]
 					console.log(this.shopList[0].description);
 				}
@@ -169,7 +177,6 @@ export default{
 					if(this.hasMore1 || this.hasMore2){
 						this.getScoll()
 					}
-					console.log(this.shopList.length)
 					
 	             },
 			//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
@@ -184,91 +191,106 @@ export default{
 	                obj.boundingClientRect(function(data) { //data - 各种参数
 	                    if (data) {
 			//得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
-	                        that.swiperHegiht = data.height * 2 + 110; 
+	                        that.swiperHegiht = data.height * 2 + 110+'px'; 
 	                    }
 	                }).exec();
-	            }
-	
-		
-	
-	
-	
+	            },
+			search(e){
+				console.log(e.value)
+				Search.doSearch(e.value).then(res=>{
+					this.shopList = res.data
+				})
+			},
+			cancel(e){
+				console.log(e)
+				this.getScoll();
+			}
 	}
-	
-	
-	
 }
 	
 </script>
 
-<style lang="scss" scope>
-	
-	.hot_goods{
-		background: #eee;
-		overflow: hidden;
-		margin-top: 10px;
-	
-		.tit{
-			height: 50px;
-			line-height: 50px;
-			color: red;
-			text-align: center;
-			// 字间距
-			letter-spacing: 20px;
-			background: #fff;
-			margin: 7rpx 0;
-		}
+<style>
+	page{
+		background-color: #F5F5F5;
 	}
-	.goods_list{
-			display: flex;
-			flex-wrap: wrap;
-			padding: 0 10rpx;
-			justify-content: space-between;
-		.goods_item{
-			background: #fff;
-			width: 355rpx;
+</style>
+<style lang="scss" scoped>
+	page{
+		
+	.xTab{
+		height: 3.625rem;
+		background-color: white;
+	}
+		.hot_goods{
+			overflow: hidden;
 			margin-top: 10px;
-			
-			padding: 20rpx;
-			box-sizing: border-box;
-			border-radius: 10px;
-			image{
-				width: 70%;
-				height: 130px;
-				display: block;
+			.tit{
+				height: 40px;
+				width: 90%;
+				margin: 3% auto;
+				border-radius: 0.5rem;
+				line-height: 40px;
+				color: white;
+				padding-left: 5%;
+				// 字间距
+				letter-spacing: 3px;
+				background: rgba(201, 166, 94, 0.8);
+			}
+		}
+		.goods_list{
+				display: flex;
+				flex-wrap: wrap;
+				padding: 0 10rpx;
+				justify-content: space-between;
+				width: 95%;
 				margin: 0 auto;
-			}
-			.price{
-				color:   red;
-				font-size: 30rpx;
-			
-			}
-			.name{
-				font-size: 32rpx;
-				line-height: 50rpx;
-				padding-bottom: 15rpx;
-				padding-top: 10rpx;
+			.goods_item{
+				background: #fff;
+				width: 49%;
+				margin-top: 10px;
+				
+				padding: 20rpx;
+				box-sizing: border-box;
+				border-radius: 10px;
+				image{
+					width: 70%;
+					height: 130px;
+					display: block;
+					margin: 0 auto;
+				}
+				.price{
+					color:   red;
+					font-size: 30rpx;
+				
+				}
+				.name{
+					font-size: 32rpx;
+					line-height: 50rpx;
+					padding-bottom: 15rpx;
+					padding-top: 10rpx;
+				}
 			}
 		}
 	}
+	
 	// 商城
-	.search{
-		width: 18.75rem;
-		border-radius: 20px;
-	}
+	
 	.news_item{
-				height: 8.3125rem;
+				height: 7.3125rem;
 				display: flex;
 				border-radius: 5px;
 				margin: 1.0625rem 0.5rem 0px 0.5rem;
 				padding: 10rpx 20rpx;
-				box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
+				box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+				background-color: white;
 				border: 1px solid rgba(255, 255, 255, 100);
 				image{
-				height: 8.3125rem;
+				height: 90%;
 					min-width: 7.5rem;
 					max-width: 7.5rem;
-					width: 8.3125rem;
+					height: 100%;
+					border-radius: 10px;
 				}
 				.right{
 					margin-left: 15rpx;

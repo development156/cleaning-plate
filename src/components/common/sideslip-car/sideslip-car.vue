@@ -9,16 +9,16 @@
 					</view>
 					<view class="gmes">
 						<view class='cartImg centerboth'>
-							<image :src="item.img" mode="aspectFit"></image>
+							<image :src="imgUrl+item.product.url" mode="aspectFit"></image>
 						</view>
 						<view class="boxCount clearfix">
-							<text class="gname line1">{{item.name}}</text>
-							<view class="gtitle line1">{{item.spec_key_name}}</view>
-							<view class="gprice"><text>￥</text>{{item.price}}</view>
+							<text class="gname line1">{{item.product.name}}</text>
+							<view class="gtitle line1">产地 {{item.product.productionPlace}}</view>
+							<view class="gprice"><text>￥</text>{{item.product.univalence}}</view>
 						</view>
 					</view>
 					<view class="countBox centerboth">
-						<view class="carSub" @click="changeNum(index,item.id,0)">
+						<view class="carSub" @click="changeNum(index,item.id,2)">
 							<text class="iconfont car-sub"></text>
 						</view>
 						<view class="cartNum">{{item.number}}</view>
@@ -53,7 +53,7 @@
 		data() {
 			return{
 				totalPrice: 0, // 总价，初始为0
-				selectAll: false, // 全选状态，默认全选
+				selectAll: true, // 全选状态，默认全选
 				startX: 0, //开始坐标
 				startY: 0,
 				totalNum: 0,
@@ -73,10 +73,12 @@
 			jiesuan:function(){
 				var that = this;
 				var idArr = [];
+				var numArr =[]
 				var carId = that.carts;
 				for(var i =0;i< carId.length ;i++){
 					if(carId[i].selected == true){
 						idArr.push(carId[i].id);
+						numArr.push(carId[i].number)
 					}
 				}
 				
@@ -87,8 +89,8 @@
 					})
 					return false;
 				}
-				var ids = idArr.toString(',');
-				this.$emit('jsBtn',ids);
+				// var ids = idArr.toString(',');
+				this.$emit('jsBtn',idArr,numArr);
 			},
 			/**
 			 * 修改商品数量
@@ -97,7 +99,7 @@
 				var that = this;
 				var carts = that.carts;
 				var number = parseInt(carts[index].number);
-				if(type==0){
+				if(type==2){
 					number = number - 1;
 					if(number<=1){
 						number = 1;
@@ -106,7 +108,7 @@
 					number = number + 1;
 				}
 				carts[index].number = number;
-				this.$emit('changeNum',carts);
+				this.$emit('changeNum',carts,id,type);
 			},
 			/**
 			 * 删除购物车当前商品
@@ -115,6 +117,7 @@
 				var that = this;
 				let carts = that.carts;
 				this.$emit('delBtn',carts,ids,index)
+				
 			},
 			/**
 			 * 当前商品选中事件
@@ -161,7 +164,7 @@
 				var totalnum = 0;
 				for (var i = 0; i < carts.length; i++) { // 循环列表得到每个数据
 					if (carts[i].selected) { // 判断选中才会计算价格
-						total += carts[i].number * carts[i].price; // 所有价格加起来
+						total += carts[i].number * carts[i].product.univalence; // 所有价格加起来
 						totalnum = totalnum + parseInt(carts[i].number);
 					}
 				}
@@ -183,9 +186,11 @@
 			},
 			//滑动事件处理
 			touchmove: function(e) {
+			
 				var that = this;
 				var carts = that.carts;
 				var index = e.currentTarget.dataset.index, //当前索引
+				
 					startX = that.startX, //开始X坐标
 					startY = that.startY, //开始Y坐标
 					touchMoveX = e.changedTouches[0].clientX, //滑动变化坐标

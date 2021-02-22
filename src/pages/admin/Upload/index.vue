@@ -5,7 +5,7 @@
 			<view>
 		<view class="leftort" >
 			
-			<view class="icon icon-gonggao"></view>
+			<view class="iconfont icon-gonggao"></view>
 			
 			<view class="word">
 			<span class="defont">上传剩菜统计</span>

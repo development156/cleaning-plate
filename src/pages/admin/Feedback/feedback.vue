@@ -4,7 +4,7 @@
 	<navigator  url="./inputFeed" hover-class="navigator-hover"> 
 		<view class="info-item1">
 	            <view class="info_image">
-	                <image style="width:92rpx; height: 92rpx; background-color:#7094AE ;border-radius: 200rpx;" mode="aspectFit" src='"http://8.131.230.3:8080/YouGuang_war"'
+	                <image style="width:92rpx; height: 92rpx; background-color:#7094AE ;border-radius: 200rpx;" mode="aspectFit" :src="imgUrl"
 	                    @error="imageError"></image>
 	            </view>
 	            <view class="info_content">

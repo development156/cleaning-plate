@@ -5,16 +5,8 @@
 			autoplay 
 			interval="2000" 
 			duration="500">
-		                        <swiper-item>
-		                            <view class="swiper-item uni-bg-red">
-										<image :src="imgUrl+goodsItem.url" class="image"></image>
-									</view>
-		                        </swiper-item>
-		                        <swiper-item>
-		                            <view class="swiper-item uni-bg-green">B</view>
-		                        </swiper-item>
-		                        <swiper-item>
-		                            <view class="swiper-item uni-bg-blue">C</view>
+		                        <swiper-item v-for="item in images">
+										<image :src="imgUrl+Item.url" class="image"></image>
 		                        </swiper-item>
 		                    </swiper>
 		</view>
@@ -56,7 +48,7 @@
 			<text>温馨提示</text>
 			<text>积分一经使用不支持退还，数量有限，先到先得，兑完即止。</text>
 			</view>
-			<button  :style="{backgroundColor:'#777468'}" @click="navTo">立即兑换</button>
+			<button  :style="{backgroundColor:isEnough?'#C9A65E':'#777468'}" @click="navTo" :disabled="!isEnough">立即兑换</button>
 		</view>
 		
 	</view>
@@ -69,18 +61,22 @@
 	export default{
 		data(){
 			return{
-				goodsItem:[]
+				goodsItem:[],
+				images:[],
+				isEnough:true
 			}
 		},
+		
 		onLoad(e){
 			 const item = JSON.parse(decodeURIComponent(e.item));
 			this.goodsItem = item;
 			console.log(this.goodsItem)
 			this.getSwiper()
+			this.IsEnough()
 		},
+		
 		methods:{
 			navTo(){
-			
 				uni.navigateTo({
 				url:`../acquireExchange/creditAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(this.goodsItem))
 				})
@@ -89,9 +85,17 @@
 			getSwiper(){
 				console.log(this.goodsItem.ID)
 				SwiperList.GetSwiperList(this.goodsItem.ID).then(res=>{
-					console.log(res)
+					this.images = res.data
+					console.log(this.images)
 				})
+			},
+			// 判断积分是否足够
+			IsEnough(){
+		
+			if(this.goodsItem.integrate>5){
+				this.isEnough= false
 			}
+		}
 			
 		}
 	}
@@ -99,7 +103,7 @@
 
 <style lang="scss">
 	page{
-		background:	#EDEDED;
+		background-color: #F5F5F5;
 		swiper{
 			border-radius: 0.3125rem;
 			height: 375px;
@@ -168,7 +172,7 @@
 				height: 2.625rem;
 				width: 18.75rem;
 				text-align: center;
-				background-color: #C9A65E;
+				
 				color: white;
 				margin-bottom: 1.125rem;
 			}
