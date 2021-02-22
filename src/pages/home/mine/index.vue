@@ -189,7 +189,42 @@
 <!-- lang="less" -->
 
 <style lang="less"   scoped>
-	
+
+	// @import '@/static/iconFont.css',;
+	@import '@/static/css/font-icon.css';
+	.mine-container {
+		.user-info-container {
+			button {
+				line-height: 40upx;
+			}
+			
+		}
+		
+	}
+	.input-nickname {
+		width: 462upx;
+		height: 86upx;
+		margin-bottom: 16upx;
+		margin-top: 16upx;
+		background: #FFFFFF;
+		border: 1upx solid #F0F0F0;
+		border-radius: 4upx;
+		display: flex;
+		align-items: center;
+
+		>input {
+			width: 398upx;
+			margin: 16upx 32upx;
+			font-family: PingFangSC-Regular;
+			font-size: 28upx;
+			color: #212121;
+		}
+	}
+
+	.neil-modal__footer {
+		border-top: 1px solid #e5e5e5;
+	}
+
 
 	.view-item-container {
 		display: flex;

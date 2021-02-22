@@ -97,7 +97,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import url("../../../static/iconFont.css");
+	// @import url("../../../static/iconFont.css");c
+	@import '@/static/css/font-icon.css';
 	.flex {
 		/* #ifndef APP-NVUE */
 		display: flex;

@@ -2,7 +2,7 @@
 	<view>
 	<!--index.wxml-->
 	  <view id="Vue">
-	        <view class="back">
+	
 	            <view class="top">
 	                <view class="topbar">
 	                    <view :class="[index == status ? 'bechoice':'nochoice']" v-for="(item,index) in list" :key="index">
@@ -10,10 +10,7 @@
 	                    </view>
 	                </view>
 	            </view>
-	        </view>
-	
-	
-	
+	      
 	    </view>
 	</view>
 </template>
@@ -62,13 +59,7 @@
 </script>
 
 <style scoped>
-	
-	   .back {
-	            width: 100%;
-				height:58rpx;
-				
-	        }
-	
+
 	        .top {
 	            width: 750rpx;
 				height:100%;
@@ -84,8 +75,9 @@
 	            height: 86rpx;
 	            /* margin-left: 10%; */
 	            overflow: hidden;
-	            border-radius: 5px 5px 0 0;
+	            
 				background: #FFFFFF;
+				
 	        }
 	
 	        .bechoice {

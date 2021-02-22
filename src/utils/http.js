@@ -7,7 +7,6 @@ class HTTP {
 	constructor() {
 		this.baseUrl = config.base_url
 	}
-
 	request({
 		url,
 		data = {},

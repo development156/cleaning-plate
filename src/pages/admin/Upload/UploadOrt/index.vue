@@ -10,8 +10,8 @@
 			<view class="item-info">
 				<span>剩菜 </span>
 			<span class="tips" style="display: flex; flex-direction: column;">
-			<span >{{item.weight}}</span>
-			<span>{{item.data}}</span>
+			<span >{{item.wasteFood}}</span>
+			<span>{{item.uploadDate}}</span>
 			</span>
 			</view>
 			</view>
@@ -29,7 +29,11 @@
 </template>
 
 <script>
+
 	import DataPresenceWeek from '../../../home/ort/DataPresenceWeek.vue'
+	import { OrtUpload } from '@/models/admin/Upload/ortUpload.js'
+	const ortUpload = new OrtUpload();
+
 	import GodenButton from '../../../../components/common/gode-button.vue'
 	export default{
 		name:'UploadOrt',
@@ -42,13 +46,12 @@
 			},
 			hasdata:true,
 			array:[{
-				weight:'30.5kg',
-				data:'2020-01-13'
+				timeFrame: "下午",
+				uploadDate: "2021-02-02 00:00:00",
+				wasteFood: 20,
 			},
-			{
-				weight:'30.5kg',
-				data:'2020-01-13'
-			},]
+			
+			]
 			}
 		},
 		components:{
@@ -56,6 +59,37 @@
 			GodenButton
 			
 		},
+		created() {
+			this.getAllOrt();
+		},
+		methods:{
+			getAllOrt(){
+				var th=this;
+				var i=0;
+				ortUpload.getAllOrt().then(res => {
+						res.data.forEach((item)=>{
+								if(i<2){
+								th.array.push(item)
+								i++;
+								
+								}else{
+									return; 
+								}
+								
+							
+						});
+					})
+					.catch(err => {
+						uni.hideLoading()
+						uni.showToast({
+							title: 'error',
+							icon:'none',
+							duration: 1400
+						});
+						
+					})	
+			}
+		}
 	
 		
 	}
@@ -68,22 +102,22 @@
 	.picture{
 		overflow-x: scroll;
 		position: absolute;
-		left: 42rpx;
+		// left: 42rpx;
 		top: 24rpx;
-		width: 666rpx;
-		height: 602rpx
+		
+		margin: 0 auto;
 		
 	}
 	.latest-data{
 		position: absolute;
 		left: 42rpx;
-		top: 630rpx;
+		top: 600rpx;
 		width: 664rpx;
-		height: 602rpx;
+		height:  35%;
 		line-height: 40rpx;
 		border-radius: 20rpx;
-		
-		border: 2rpx solid rgba(255, 255, 255, 100);
+		overflow-y: scroll;
+		border: 2rpx solid #C8C7CC;
 		background: #FFFFFF;
 		
 		p:nth-child(1){
@@ -99,7 +133,7 @@
 		}
 		.item-info{
 			width: 596rpx;
-			height: 126rpx;
+			height: 23%;
 			margin: 0 auto; 
 			display: flex;
 			flex: row nowrap;

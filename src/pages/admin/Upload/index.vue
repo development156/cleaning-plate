@@ -1,15 +1,14 @@
 <template>
 	<view class="container">
 		
-		<navigator url="/pages/admin/Upload/UploadOrt/addData" hover-class="navigator-hover" >
+		<navigator url="/pages/admin/Upload/UploadOrt/index" hover-class="navigator-hover" >
 			<view>
 		<view class="leftort" >
 			
+
 			<view class="iconfont icon-gonggao"></view>
-			
 			<view class="word">
 			<span class="defont">上传剩菜统计</span>
-			
 			<view class="font">上传每日剩菜统计数据 </view>
 			</view>
 		</view>
@@ -44,13 +43,74 @@
 		<!-- 　　　　　　　// 最后引入自定义组件，并传当前栏目对应的pagePath到自定义组件，显示当前栏目的选中样式 -->
 		            <tabBar :pagePath="'Upload/index'"></tabBar>
 		 </view>
+		 
+		 
+		   <uni-fab
+		    :pattern="pattern"
+		    :content="content"
+		    :horizontal="horizontal"
+		    :vertical="vertical"
+		    :direction="direction"
+		    @trigger="trigger"         
+		    ></uni-fab>
 	</view>
 </template>
 
 <script>
+	import uniFab from '@/components/common/uni-fab/uni-fab.vue';
 	export default{
 		name:'UploadOrt',
+		data(){
+			return{
+				content:[{
+					iconPath:'',
+					selectedIconPath:'',
+					text:'管理食堂',
+					active:false
+				},{
+					iconPath:'',
+					selectedIconPath:'',
+					text:'管理学院',
+					active:false
+				},{
+					iconPath:'',
+					selectedIconPath:'',
+					text:'管理商城',
+					active:false
+				}],
+				horizontal:'right',
+				direction:'vertical',
+				vertical:'bottom',//top
+				pattern:{
+					backgroundColor:"#FFFFFF",
+					buttonColor:'#303133 ',//#303133 10000%
+					selectedColor:'#FFAF3E',
+					color:'#838383'//
+				}
+			}
+		},
+		 components: {
+		        uniFab
+		    },
 		methods:{
+			trigger(e){
+				console.log(e)
+				if(e.index == 0){
+					//管理食堂
+					uni.navigateTo({
+					 url:'../Management/ManageCanteen/index'
+					 })   
+				}else if(e.index == 1){
+					//管理学院
+					uni.navigateTo({
+					 url:'../Management/ManageAcademy/index'
+					 })
+				}else if(e.index == 2){
+					uni.navigateTo({
+					 url:'../Management/ManageGoods/index'
+					 })
+				}
+			}
 			// tab1(){
 			// 	//路由方式需要补全
 			// 	uni.navigateTo({
@@ -95,7 +155,9 @@
 		}
 		}
 		.container{
-			
+			display: flex;
+			align-items: center;
+			flex-direction: column;
 			// width: 750rpx;
 		.leftort{
 			   // width: 90%;

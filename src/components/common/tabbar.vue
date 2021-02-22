@@ -47,22 +47,22 @@
                     // },
                     {
                         "pagePath": "Feedback/feedback",
-                        "iconPath": "/static/images/tabbar/feedback",
-                        "selectedIconPath": "/static/tabBar/person_col.png",
+                        "iconPath": "",
+                        "selectedIconPath": "",
                         "text": "反馈信息",
                         "fontIcon": "icon-tuya-"
                     },
 					{
 					    "pagePath": "OrderManage/index",
-					    "iconPath": "/static/images/tabbar/ordermanage",
-					    "selectedIconPath": "/static/tabBar/person_col.png",
+					    "iconPath": "",
+					    "selectedIconPath": "",
 					    "text": "订单管理",
 					    "fontIcon": "icon-dingdanguanli"
 					},
 					{
-						"pagePath": "",
-						"iconPath": "/static/images/tabbar/addscore",
-						"selectedIconPath": "/static/tabBar/person_col.png",
+						"pagePath": "AddSocre/addSocre",
+						"iconPath": "",
+						"selectedIconPath": "",
 						"text": "加分",
 						"fontIcon": "icon-tianjiafenzu"
 					}
@@ -85,12 +85,13 @@
         },
         methods: {
             changeTab(item) {
-				console.log(item.pagePath)
                 this.page = item.pagePath;
 　　　　　　　　　　// 这里使用reLaunch关闭所有的页面，打开新的栏目页面	
 				uni.reLaunch({
 				    url: '/pages/admin/'+ this.page ,
-					success: res => {},fail: (e) => {
+					success: res => {
+						// console.log("res"); console.log(this.page)
+						},fail: (e) => {
 								console.log(e)
 							},complete: () => {}
 				});
@@ -100,13 +101,13 @@
 </script>
 
 <style lang="scss" scoped>
-
-    [nvue] uni-scroll-view, [nvue] uni-swiper-item, [nvue] uni-view {
-        flex-direction: unset;
-    }
-    [nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
-        flex-direction: unset;
-    }
+	
+ //    [nvue] uni-scroll-view, [nvue] uni-swiper-item, [nvue] uni-view {
+ //        flex-direction: unset;
+ //    }
+ //    [nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
+ //        flex-direction: unset;
+ //    }
 	
     .uni-tabbar {
         position: fixed;
