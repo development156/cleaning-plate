@@ -189,7 +189,11 @@
 	},
 	}
 </script>
-
+<style>
+	page{
+		background-color: #F5F5F5;
+	}
+	</style>
 <style scoped lang="scss">
 	page{
 		

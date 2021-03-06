@@ -13,7 +13,7 @@
 	            <view class="info_image">
 
 
-					<image style="width:92rpx; height: 92rpx; background-color:#7094AE ;border-radius: 200rpx;" :src="item.avatarUrl | formatAvatarUrl " @error="imageError"></image>
+					<image style="width:94rpx; height: 94rpx; background-color:#7094AE ;border-radius: 200rpx;" :src="item.avatarUrl | formatAvatarUrl " @error="imageError"></image>
 
 	            </view>
 	            <view class="info_content">

@@ -26,7 +26,7 @@
 		<input class="input1" v-model="notice.title" maxlength="20"  focus placeholder="输入公告标题" />
 			<!-- <input class="input2" maxlength="" focus placeholder="输入公告内容" /> -->
 	     <view class="uni-textarea"style=" margin-bottom: 130rpx;">
-		 <textarea class="input2" maxlength="400" style="height: 670rpx; background: #EEEEEE;"  v-model="notice.article"  placeholder="输入公告内容 (最多400字)"  @blur="bindTextAreaBlur" auto-height />
+		 <textarea class="input2" maxlength="400" style="height: 30%; "  v-model="notice.article"  placeholder="输入公告内容 (最多400字)"  @blur="bindTextAreaBlur" auto-height />
 		 </view>
 	   
 	   <view class="btn-upload"> 
@@ -204,10 +204,14 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		background: #F5F5F5 ;
+		}
+</style>
 <style lang="scss" scoped>
 	  page {
-	        background-color: #efeff4;
+	        
 	        height: 100%;
 	        font-size: 28rpx;
 	        line-height: 1.8;
@@ -230,7 +234,10 @@
 		.uni-input{
 			padding-right: 16rpx;
 			padding-left: 36rpx;
-			text-shadow: 5px 5px 5px #CD853F;
+			color: #3F536E;
+			font-size: 32rpx;
+			font-weight: 500;
+			text-shadow: 4px 5px 4px #CD853F;
 		}
 	  
 	   }
@@ -243,8 +250,8 @@
 		   height: 398rpx;
 		   overflow-y: scroll;
 		   border-radius: 10px;
-		   background-color: #EEEEEE;
-		   box-shadow: 3rpx 4rpx 15rpx #555555;
+		   background: #FFFFFF;
+		   box-shadow: 3rpx 2rpx 5rpx #555555;
 	   }
 	   
 	   .input1{
@@ -256,11 +263,11 @@
 		 width: 654rpx;
 		 height: 90rpx;
 		 border-radius: 10rpx;
-		 color: rgba(136, 136, 136, 100);
+		 
 		 font-size: 28rpx;
 		 text-align: left;
 		 font-family: Microsoft Yahei;
-		 border: 2rpx solid #C0C0C0;
+		 // border: 2rpx solid #C0C0C0;
 		 background: #FFFFFF;
 	   }
 	   .input2{
@@ -275,7 +282,7 @@
 		   left: 30rpx;
 		   top: 662rpx;
 		   width: 654rpx;
-		   min-height: 570rpx;
+		   min-height: 362rpx;
 		   padding-left:20rpx;
 		   padding-right:20rpx;
 		   padding-top: 30rpx;
@@ -287,7 +294,7 @@
 		   font-size: 28rpx;
 		   
 		   font-family: Microsoft Yahei;
-		   border: 2rpx solid #C0C0C0;
+		   // border: 2rpx solid #C0C0C0;
 	   }
 	   .btn-upload{
 			position: fixed;

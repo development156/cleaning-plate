@@ -94,16 +94,20 @@
 		
 	}
 </script>
-
-<style scoped lang="scss">
+<style>
 	page{
 		background-color: #F5F5F5;
+	}
+	</style>
+<style scoped lang="scss">
+	page{
+		
 		
 	.picture{
 		overflow-x: scroll;
 		position: absolute;
 		// left: 42rpx;
-		top: 24rpx;
+		top: -7rpx;
 		
 		margin: 0 auto;
 		
@@ -111,20 +115,21 @@
 	.latest-data{
 		position: absolute;
 		left: 42rpx;
-		top: 600rpx;
+		top: 590rpx;
 		width: 664rpx;
-		height:  35%;
+		height:  41%;
 		line-height: 40rpx;
 		border-radius: 20rpx;
 		overflow-y: scroll;
-		border: 2rpx solid #C8C7CC;
+		// border: 2rpx solid #C8C7CC;
 		background: #FFFFFF;
 		
 		p:nth-child(1){
             margin: 0 auto; 
+			
 			width: 596rpx;
-			height: 110rpx;
-			line-height: 110rpx;
+			height: 100rpx;
+			line-height: 98rpx;
 			color: rgba(16, 16, 16, 100);
 			font-size: 32rpx;
 			font-weight: 600;
@@ -133,7 +138,7 @@
 		}
 		.item-info{
 			width: 596rpx;
-			height: 23%;
+			height: 20%;
 			margin: 0 auto; 
 			display: flex;
 			flex: row nowrap;
@@ -144,6 +149,9 @@
 				font-size: 33rpx;
 				color: rgba(16, 16, 16, 100);
 				line-height: 66rpx;
+			}
+			span:nth-child(2){
+				text-align: center;
 			}
 			.tips:nth-child(2){
 				color: rgba(151, 151, 151, 100);

@@ -101,10 +101,14 @@
 		}
 	}
 </script>
-
-<style lang="scss" scoped>
+<style>
 	page{
 		background: #F5F5F5 ;
+		}
+</style>
+<style lang="scss" scoped>
+	page{
+		
 		
 	.container1{
 		display: flex;
@@ -131,7 +135,7 @@
 		justify-content: space-between; /* 横向中间自动空间 */
 		
 		border-radius: 10px;
-		border: 1px solid rgba(255, 255, 255, 100);
+		// border: 1px solid rgba(255, 255, 255, 100);
 		
 		
 		span:nth-child(1){

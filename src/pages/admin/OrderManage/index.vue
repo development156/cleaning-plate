@@ -50,7 +50,7 @@
 				<text  class="have"> ~ ~   到底啦o(*￣▽￣*)ブ   ~ ~</text>
 		    </view>		
 			
-			<view>
+			<view style="z-index: 99;">
 				
 					<tabBar :pagePath="'OrderManage/index'"></tabBar>
 			 </view>
@@ -238,7 +238,11 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		background-color: #F5F5F5;
+	}
+	</style>
 <style lang="scss" scoped>
 	page{
 		height: 100%;
@@ -353,7 +357,7 @@
 			top:70rpx;
 			left: 495rpx;
 			font-family: PingFangSC-regular;
-			z-index: 9009;
+			z-index:88;
 		}
 	}
 	
