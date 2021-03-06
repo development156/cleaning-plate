@@ -3,20 +3,66 @@
 		<view class="item">
 		<image></image>
 		<view class="info">
-			<text>昵称</text>
-			<text>账户：</text>
-			<text>创建时间</text>	
+			<text style="font-weight: bold; font-size: 1rem">他的账户</text>
+			<view class="item">
+				<text>昵称：</text>
+				<text style="color: #999999;">{{Item.name}}</text>
+			</view>
+		
+			<view class="item">
+				<text>学院：</text>
+				<text style="color: #999999;">{{Item.college}}</text>
+			</view>
+			
+			<view class="item">
+				<text>专业:</text>
+				<text style="color: #999999;">{{Item.profession}}</text>
+			</view>
+			
+			<view class="item">
+				<text>电话：</text>
+				<text style="color: #999999;">{{Item.phone}}</text>
+			</view>
+		
 		</view>
 		</view>
-		<button>删除</button>
+		<button @click="deleted">删除</button>
 	</view>
+	
+	
 </template>
 
 <script>
+	import {Admin} from '@/models/superAdmin/admin.js'
+	const admin = new Admin()
+	
+	export default{
+		onLoad(e){
+			this.Item = JSON.parse(decodeURIComponent(e.item));
+			console.log(this.Item)
+		},
+		data(){
+			return{
+				Item:[]
+			}
+		},
+		methods:{
+			// 删除管理员
+			deleted(){
+				admin.deleteAdmin(Item.id).then(res=>{
+					console.log(res)
+					uni.showToast({
+					  title:res.msg,
+					  icon: "none"
+					});
+				})
+			}
+		}
+	}
 </script>
 
 <style lang="scss">
-	page{
+page{
 		.contnet{
 			
 			.item{
@@ -35,20 +81,18 @@
 					flex-direction: column;
 					font-size: 0.875rem;
 					margin-left: 10%;
-					text:nth-child(1){
-						font-size: 1rem;
-						font-weight: bold;
-					}
+					
 					text{
-						margin-top: 0.625rem;
+						margin-top: 10%;
 					}
 			}
 			}
 				
 				button{
-					height: 3.25rem;
+					height: 3rem;
+					font-size: 1.125rem;
 					text-align: center;
-					margin-top: 20%;
+					margin-top: 10%;
 					color: white;
 					background-color: #C9A65E;
 				}
@@ -56,6 +100,4 @@
 			
 		}
 	}
-	
-	
 </style>

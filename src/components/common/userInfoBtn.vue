@@ -1,6 +1,7 @@
 <template>
     <view class="user-info-container">
-        <button class="user-info-btn" open-type="getUserInfo" @getuserinfo="mpGetUserInfo" withCredentials="true">
+
+        <button class="user-info-btn" open-type="getUserInfo" @getuserinfo="mpGetUserInfo" withCredentials="true" >
             <slot></slot>
         </button>
     </view>
@@ -42,6 +43,7 @@ export default {
                         encryptedData: result.detail.encryptedData,
                         iv: result.detail.iv
                     }).then(response => {
+						console.log(response)
 					console.log("result")
 					console.log(result)
                         _this.$store.dispatch('setUserInfo', response.data)
@@ -49,7 +51,7 @@ export default {
                         uni.setStorageSync('hasUserInfo', true)
                         _this.$emit('onClickBtn')
                         _this.userInfo = result.detail.userInfo
-						//？？？？？？？？？？？？？？？
+					
 						 _this.$store.dispatch('setUserInfo', _this.userInfo)
                         uni.login({
                             success(response) {
@@ -96,7 +98,7 @@ export default {
                     });
                 }
             })
-        },
+        }
     }
 }
 </script>

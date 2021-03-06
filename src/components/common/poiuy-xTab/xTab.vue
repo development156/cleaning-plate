@@ -60,7 +60,7 @@
 					height1: 4,
 					
 					padding: 0,
-					size: 30,
+					size: 40,
 					color: '#333333',
 					actColor: '#1D5397',
 					actSize:30,
@@ -131,7 +131,7 @@
 					this.deal(curr,sizeGap);
 				} else {
 					//第一个位置
-					this.moves = this.conf.position+20
+					this.moves = this.conf.position
 				}
 			},
 			deal(index,sizeGap) {

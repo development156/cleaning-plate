@@ -1,6 +1,16 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
+// 用户端
+			{
+					"path": "pages/home/home",
+					"style": {
+						"navigationBarTitleText": "柚光",
+						"backgroundColor": "#000000"//FF8C00
+						
+					}
+				},
+		
 	{
 			//输入快递单号页面
 			"path": "pages/admin/OrderManage/index",
@@ -21,8 +31,6 @@
 			}
 			
 		},
-		
-		
 		{
 				   //上传生菜统计
 				"path": "pages/admin/Upload/UploadOrt/index",
@@ -144,35 +152,25 @@
 			}
 			},
 	
-	// 用户端
-
-		{
-					"path": "pages/home/home",
-					"style": {
-						"navigationBarTitleText": "柚光",
-						"backgroundColor": "#000000"//FF8C00
-						
-					}
-				},
-
-// 超级管理员
-{
-						"path": "pages/superAdmin/manageAdmin/index",
-						"style": {
-							"navigationBarTitleText": "柚光",
-							"backgroundColor": "#000000"
-						
-						}
-		},
-{
-						"path": "pages/superAdmin/manageUser/index",
-						"style": {
-							"navigationBarTitleText": "柚光",
-							"backgroundColor": "#000000"
-						
-						}
-		},
 	
+	
+{
+						"path": "pages/superAdmin/manageUser/userList",
+						"style": {
+							"navigationBarTitleText": "柚光",
+							"backgroundColor": "#000000"
+						
+						}
+		},
+	// 超级管理员
+	{
+							"path": "pages/superAdmin/index",
+							"style": {
+								"navigationBarTitleText": "柚光",
+								"backgroundColor": "#000000"
+							
+							}
+			},
 {
 			"path": "pages/superAdmin/manageAdmin/managerDetails/managerDetails",
 			"style": {
@@ -265,8 +263,6 @@
 			
 		},
 		
-		
-	
 		{
 			   //上传菜品
 			"path": "pages/admin/Upload/UploadFood/index",
@@ -409,7 +405,7 @@
 						{
 						"path": "pages/home/upload/index"
 						},
-			
+			// 我的首页
 	{
 			"path": "pages/home/mine/index",
 			"style": {
@@ -475,13 +471,11 @@
 		    }
 		    
 		},
-
-
-{
+		
+	{
 		    "path" : "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "柚光"
-				
 			}
 		},
 		
@@ -506,7 +500,7 @@
 			    }
 			    
 			},
-
+			
 	{
 			    "path" : "pages/home/exchangeZone/goodsDetails/payDetails",
 			    "style" :                                                                                    
@@ -516,6 +510,7 @@
 			    }
 			    
 			},
+			// 购物车
 	{
 				    "path" : "pages/home/exchangeZone/cart/cart",
 				    "style" :                                                                                    
@@ -529,6 +524,11 @@
 		// 修改个人信息
 		{
 					"path":"pages/home/mine/changeInfo/changeInfo",
+					"style": {
+					}
+		},
+		{
+					"path":"pages/home/mine/changeInfo/index",
 					"style": {
 					}
 		},
@@ -553,7 +553,19 @@
 	//订单详情界面
 	{
 		"path":"pages/home/mine/myOrder/orderDetails/orderDetails"
+	},
+	
+	// 注册页面
+	{
+	"path":"pages/home/register/index"
+	},
+	
+	// 确认授权登录
+	{
+	"path":"pages/home/login/login"
 	}
+	
+
 	],
 	
 

@@ -2,7 +2,7 @@
 <view>
 	<an-notice-bar  :text="noticeMsg" bgColor=" -webkit-linear-gradient(left, #c9a65e 0%,#c9a65e 61%,#ffffff 100%,#dcdcdd 100%)" color="white"></an-notice-bar>
 <view class="tab-view">
-<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:100,spacing: 122,color:'#666666',actColor:'#C9A65E',size:32,actWeight:'Bold',position:0}"></xTab>
+<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{height1:0,height: 100,padding:95,spacing: 122,color:'#C9A65E',actColor:'#7094AE',size:32,actWeight:'Bold',position:0}"></xTab>
 
  <view>
 	 

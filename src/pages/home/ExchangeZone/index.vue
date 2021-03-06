@@ -11,7 +11,7 @@
 			<!-- 	积分兑换 -->
 			
 	<view class="hot_goods" v-if="flag==1">
-		<view class="tit">我的积分:208</view>
+		<view class="tit">我的积分:{{myInfo.integrate}}</view>
 		<view class="goods_list">
 			      <navigator class="goods_item"
 			      v-for="(item,index) in goodsList"
@@ -19,21 +19,18 @@
 				   :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 			     > 
 			      <image 
-			      :src="item.url">
+			      :src="imgUrl+item.url">
 				  </image>
-				  
-				  <view class="price">
-				  	<text>{{item.univalence}}</text>
-				  </view>
-				  
-				  <view class="name">
+				  <view class="name" style="color: #C9A65E;">
 				  	{{item.name}}
 				  </view>
-				  <view class="name">
-				  	{{item.productionPlace}}
+				  <view class="price">
+				  	<text style="color: red;">{{item.integrate}}积分</text>
+					<text>	产自{{item.productionPlace}}</text>
 				  </view>
+				 
 				  <view class="name">
-				  	{{item.sales}}
+				  	已售{{item.sales}}
 				  </view>
 			      </navigator>
 	</view>
@@ -65,6 +62,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 import uniSearchBar from '@/components/common/uni-search-bar/uni-search-bar.vue'
 import xTab from '@/components/common/poiuy-xTab/xTab.vue';
 import {getGoodlist} from '../../../models/exchangezone/creditsExchange/goodsList.js'
@@ -77,6 +75,11 @@ export default{
 	components: {
 		xTab,
 		uniSearchBar
+	},
+	computed: {
+		...mapGetters([
+			'userInfo','myInfo'
+		])
 	},
 	data(){
 		return{
@@ -179,22 +182,8 @@ export default{
 					}
 					
 	             },
-			//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
-	            swiperChange(e) {
-	                this.swiperCurrIndex = e.detail.current;
-	                this.setSwiperHeight(); //例如动态获取高
-	            },
-			//动态设置swiper高度
-	            setSwiperHeight() {
-	                const that = this;
-	                let obj = uni.createSelectorQuery().in(this).select("#swiper_id_" + (this.swiperCurrIndex));
-	                obj.boundingClientRect(function(data) { //data - 各种参数
-	                    if (data) {
-			//得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
-	                        that.swiperHegiht = data.height * 2 + 110+'px'; 
-	                    }
-	                }).exec();
-	            },
+			
+			
 			search(e){
 				console.log(e.value)
 				Search.doSearch(e.value).then(res=>{
@@ -262,7 +251,8 @@ export default{
 				.price{
 					color:   red;
 					font-size: 30rpx;
-				
+					display: flex;
+					justify-content: space-between;
 				}
 				.name{
 					font-size: 32rpx;

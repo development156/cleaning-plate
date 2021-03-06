@@ -56,6 +56,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import {swiperList} from '../../../../models/exchangezone/creditsExchange/swiperList.js'
 	const SwiperList = new swiperList
 	export default{
@@ -66,7 +67,11 @@
 				isEnough:true
 			}
 		},
-		
+		computed: {
+			...mapGetters([
+				'myInfo'
+			])
+		},
 		onLoad(e){
 			 const item = JSON.parse(decodeURIComponent(e.item));
 			this.goodsItem = item;
@@ -91,8 +96,7 @@
 			},
 			// 判断积分是否足够
 			IsEnough(){
-		
-			if(this.goodsItem.integrate>5){
+			if(this.goodsItem.integrate>this.myInfo.integrate){
 				this.isEnough= false
 			}
 		}
@@ -106,11 +110,11 @@
 		background-color: #F5F5F5;
 		swiper{
 			border-radius: 0.3125rem;
-			height: 375px;
+			height: 275px;
 			}
 			
 			.image{
-				height:  375px;
+				height:  275px;
 				width: 100%;
 			}
 			
@@ -120,9 +124,9 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
-			height: 7.4375rem;
+			height: 6.4375rem;
 			background-color: white;
-			font-size: 0.625rem;
+			font-size: 0.8rem;
 			width: 98%;
 			border-radius: 0.625rem;
 			margin: 3% auto;
@@ -156,10 +160,10 @@
 				flex-direction: column;
 				text{
 					margin: 0.625rem 0 0 0.5rem;
-					font-size: 0.5rem;
+						font-size: 1rem;
 					&:nth-child(1),&:nth-child(5){
-						height:0.9375rem;
-						width: 2.8125rem;
+						height:1.4rem;
+						width: 4.8125rem;
 						border-radius: 0.625rem;
 						border: 0.0625rem solid gainsboro;
 						text-align: center;
@@ -170,7 +174,7 @@
 			}
 			button{
 				height: 2.625rem;
-				width: 18.75rem;
+				width: 95%;
 				text-align: center;
 				
 				color: white;

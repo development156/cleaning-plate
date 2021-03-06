@@ -14,7 +14,7 @@
 		
 		onShow: function() {
 			console.log('on show');
-			// this.getLogin()
+			this.getLogin()
 		},
 		onLaunch: function() {
 			console.log('App Launch')
@@ -39,7 +39,7 @@
 											console.log(response.data);
 											
 											_this.$store.dispatch('setUserInfo', response.data)
-		   									// uni.setStorageSync('AuthTokens', response.data.token)
+		   									uni.setStorageSync('AuthTokens', response.data.token)
 											uni.login({
 												success(response) {
 													uni.setStorageSync('wxCode', response.code);

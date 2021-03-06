@@ -1,16 +1,23 @@
 <template>
 	<view>
 	<view class="tab">
-		<view class="info">
-			<view class="detail">
-			<text>四川省南充市</text>
-			<text>西南石油大学</text>
-			<text>姓名</text>
-			<text>17489731198</text>
+		<view class="all">
+			<view class="info">
+				<text>收货人：</text>
+				<text>{{myInfo.name}}</text>
 			</view>
-			<view class=""icon></view>
+			<view class="address">
+				<text>电话：</text>
+				<text>{{myInfo.phone}} </text>
+			</view>
+			<view class="address">
+				<text>收货地址：</text>
+				<text>{{myInfo.sroom}}</text>
+			</view>
+				
+			<view class="icon"></view>
 		</view>
-		<text class="line"></text>
+	
 		<view class="way">
 			<text>配送方式</text>
 			<text>上门自取</text>
@@ -22,17 +29,7 @@
 		<image :src="imgUrl+i.url"></image>
 		<view class="details">
 			<text>{{i.name}}</text>
-			
-			<view class="countBox centerboth">
-				<view class="carSub" @click="changeNum(index,item.id,2)">
-					<text class="iconfont car-sub"></text>
-				</view>
-				<view class="cartNum">*{{i.number}}</view>
-				<view class="carAdd" @click="changeNum(index,item.id,1)">
-					<text class="iconfont car-add"></text>
-				</view>
-			</view>
-			
+			<text>*{{i.number}}</text>
 			<text>¥{{i.univalence}}/份</text>
 		</view>
 		</view>
@@ -61,6 +58,7 @@
 	// import{exchangeCredit}  from '../../mine/myOrder/myOrder.vue'
 	import{exchangeCredit}  from '@/models/exchangezone/creditsExchange/exchangeCredit'
 	const Exchange = new exchangeCredit()
+	import { mapGetters } from 'vuex'
 	export default{
 		onLoad(e){
 			const Pid = JSON.parse(decodeURIComponent(e.item));
@@ -81,7 +79,7 @@
 				totalPrice:0
 				
 			}
-		},
+		},	
 		computed:{
 			totalNum1(){
 				for(var i=0;i<this.Item.length;i++){
@@ -101,8 +99,10 @@
 						this.totalPrice+=this.Item[i].orderProductList[j].number*this.Item[i].orderProductList[j].univalence
 					}
 					return this.totalPrice
-			}
-			
+			},
+			...mapGetters([
+				'myInfo'
+			])
 		},
 		methods:{
 		acquirePay(){
@@ -144,7 +144,15 @@
 		}
 	}
 </script>
-
+<style lang="scss">
+	page{
+		background-color: #F5F5F5;
+		.line{
+			
+			background-color: gray;
+		}
+	}
+</style>
 <style lang="scss" scoped="scoped">
 	
 	page{
@@ -155,23 +163,29 @@
 			display: flex;
 			flex-direction: column;
 			font-size: 0.75rem;
-			.info{
-				display: flex;
-				justify-content: space-around;
-				.detail{
-					display: flex;
-					flex-direction: column;
-					text{
-						margin-top: 0.625rem;
-					
-					}
+			.all{
+				.info{
+					font-size: 14px;
+					margin:1.5rem  1.125rem 0.4375rem 0.875rem;
+					text:nth-child(1){
+							color: #999999;	
+							}
+					text:nth-child(2){
+								margin-left: 0.875rem;
+									}
 				}
+				.address{
+					font-size: 14px;
+					margin:0.4375rem 1.375rem 0.8125rem  0.875rem;
+					text:nth-child(1){
+							color: #999999;	
+							
+							}
+						
+				}
+				border-bottom: 1px solid lightgray;
 			}
-			.line{
-				height: 0.0625rem;
-				margin:17px 17px 17px 1.0625rem ;
-				background-color: gray;
-			}
+			
 			.way{
 				display: flex;
 				justify-content: space-around;
@@ -243,11 +257,18 @@
 			}
 		}
 		.footer{
-			background-color: white;
-			height: 3.25rem;
-			display: flex;
+		
+			
 			justify-content: space-around;
-			margin-top: 20.625rem;
+			width: 100%;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			background: #FFFFFF;
+			box-shadow: #f3f3f3 0rpx -5rpx 10rpx;
+			height: 98rpx;
+			padding: 0 300rpx 0 30rpx;
+			z-index: 99;
 			.money{
 			
 				font-size: 0.875rem;
@@ -259,7 +280,9 @@
 				}
 			}
 			button{
-				margin-top: 0.3125rem;
+				margin-top: -2.5rem;
+				position: absolute;
+				left: 47%;
 				border-radius: 30px;
 				width: 6.9375rem;
 				height: 2.5rem;

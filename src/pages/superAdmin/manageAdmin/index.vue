@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<view class="item1">
-			<view class="icon" @click="navTo"></view>
-			<view class="con">新增管理员</view>
+			<view class="icon" @click="navTo1"></view>
+			<view class="con">查看用户</view>
 		</view>
 		
-		<view class="item2" @click="navTo2()">
+		<view class="item2" @click="navTo3()">
 			<view class="squ" v-for=" item in list">
 			<image></image>
 			<view class="con2">
@@ -27,42 +27,40 @@
 	import {Admin} from '../../../models/superAdmin/admin.js'
 	const admin = new Admin()
 	export default{
-		data(){
-			return{
-				list:[]
+		
+	props: {
+		list:{//提示信息字体颜色
+			type: Array,
+			default(){
+				return []
 			}
-		},
-		onLoad(){
-			this.selectAdmin()
-		},
+		}
+	},
+	
 		methods:{
-			// 查询
-			selectAdmin(){
-				admin.selectAdmin().then(res=>{
-					console.log(res)
-				})
-			},
+			
 			// 删除
 			deleted(id){
+				this.$emit('deleted',id);
 				admin.deleteAdmin(id).then(res=>{
 					console.log(res)
+					this.list.splice(id, 1);
 				})
 			},
 			// 修改
 			updated(id,name){
+				this.$emit('updated',id,name);
 				admin.updateAdmin(id,name).then(res=>{
 					console.log(res)
 				})
 			},
-			navTo(){
-				uni.navigateTo({
-				url:'../manageUser/index'
-				})
+			
+			navTo3(){
+				this.$emit('navTo3');
 			},
-			navTo2(){
-				uni.navigateTo({
-				url:'./managerDetails/managerDetails'
-				})
+			navTo1(){
+				this.$emit('navTo1');
+				
 			}
 		}
 	}

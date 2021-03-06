@@ -5,9 +5,9 @@
 			</view>
 		<view class="tip">您的订单已经签收，欢迎您再次光临！</view>
 		<view class="address">
-			<text>姓名</text>
-			<text>电话</text>
-			<text>地址</text>
+			<text>姓名:  {{myInfo.name}}</text>
+			<text>电话:  {{myInfo.phone}}</text>
+			<text>地址:  {{myInfo.sroom}}</text>
 		</view>
 		<view class="goods_details">
 			<view class="info">
@@ -42,7 +42,13 @@
 <script>
 	import {exchangeCredit} from '../../../../../models/exchangezone/creditsExchange/exchangeCredit.js'
 	const Exchange = new exchangeCredit()
+	import { mapGetters } from 'vuex'
 	export default{
+		computed: {
+			...mapGetters([
+				'userInfo','myInfo'
+			])
+		},
 		data(){
 			return{
 				Item:[],

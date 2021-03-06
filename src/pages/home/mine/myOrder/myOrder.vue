@@ -2,7 +2,7 @@
 		<view>
 			<!--顶部导航栏-->
 			<view class="uni-tab-bar">
-			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 150,padding:30,spacing: 90,height1: 40,left:200,color:'#666666',actColor:'#C9A65E',size:32,position:0}" class="uni-swiper-tab">
+			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 100,spacing:20,padding:2,height1: 0,left:200,color:'#7094AE',actColor:'#C9A65E',size:32,position:5}" class="uni-swiper-tab">
 				
 			</xTab>
 			</view>
