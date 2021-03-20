@@ -1,5 +1,15 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			//管理员首页
+			"path": "pages/admin/Upload/index",
+			"style": {
+				"navigationBarTitleText": "管理员端",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		
+		},
 		// 用户端
 		{
 			"path": "pages/home/home",
@@ -31,16 +41,16 @@
 
 		},
 		
-		{
-			//管理员首页
-			"path": "pages/admin/Upload/index",
-			"style": {
-				"navigationBarTitleText": "管理员端",
-				"navigationBarBackgroundColor": "#FFFFFF",
-				"navigationBarTextStyle": "black"
-			}
+		// {
+		// 	//管理员首页
+		// 	"path": "pages/admin/Upload/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "管理员端",
+		// 		"navigationBarBackgroundColor": "#FFFFFF",
+		// 		"navigationBarTextStyle": "black"
+		// 	}
 
-		},
+		// },
 
 		{
 
@@ -70,7 +80,7 @@
 			"path": "pages/admin/Upload/UploadAnnoncement/index",
 			"style": {
 
-
+				"navigationBarTitleText": "公告上传",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black"
 			}
@@ -199,7 +209,7 @@
 			//快递详情页
 			"path": "pages/admin/OrderManage/OrderList/orderList",
 			"style": {
-
+				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black",
 				"app-plus": {
@@ -284,7 +294,7 @@
 			"path": "pages/admin/Feedback/inputFeed",
 			"style": {
 
-				//"navigationBarTitleText": "反馈",
+				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black"
 			}
@@ -388,7 +398,7 @@
 		},
 
 		{
-			"path": "pages/home/advertising/advertisingList/advertisingList",
+			"path": "pages/home/Advertising/advertisingList/advertisingList",
 			"style": {
 				"navigationBarTitleText": "柚光",
 				"backgroundColor": "#000000" //FF8C00
@@ -400,7 +410,7 @@
 			}
 		},
 		{
-			"path": "pages/home/advertising/advertisingDetails/advertisingDetails",
+			"path": "pages/home/Advertising/advertisingDetails/advertisingDetails",
 			"style": {
 				"navigationBarTitleText": "柚光"
 
@@ -410,7 +420,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/index",
+			"path": "pages/home/ExchangeZone/index",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
@@ -420,7 +430,7 @@
 		},
 
 		{
-			"path": "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
+			"path": "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "柚光"
 			}
@@ -428,7 +438,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/acquireExchange/payAcquireExchange",
+			"path": "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -438,7 +448,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/goodsDetails/creditDetails",
+			"path": "pages/home/ExchangeZone/goodsDetails/creditDetails",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -447,7 +457,7 @@
 		},
 
 		{
-			"path": "pages/home/exchangeZone/goodsDetails/payDetails",
+			"path": "pages/home/ExchangeZone/goodsDetails/payDetails",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -456,7 +466,7 @@
 		},
 		// 购物车
 		{
-			"path": "pages/home/exchangeZone/cart/cart",
+			"path": "pages/home/ExchangeZone/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
 				"enablePullDownRefresh": false

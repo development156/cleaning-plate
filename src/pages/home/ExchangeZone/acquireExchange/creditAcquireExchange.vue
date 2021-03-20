@@ -1,14 +1,20 @@
 <template>
 <view>
-	
+		
 		<view class="info">
 			<text>收货人：</text>
-			<text>张三 13913991399</text>
+			<text>{{myInfo.name}}</text>
+		</view>
+		<view class="address">
+			<text>电话：</text>
+			<text>{{myInfo.phone}} </text>
 		</view>
 		<view class="address">
 			<text>收货地址：</text>
-			<text>四川省南充市顺庆区舞凤街道 犹豫安陆</text>
+			<text>{{myInfo.sroom}}</text>
 		</view>
+			
+		
 		
 		<view class="order_info">
 			<view class="infos">
@@ -40,6 +46,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import{exchangeCredit}  from '@/models/exchangezone/creditsExchange/exchangeCredit'
 	const Exchange = new exchangeCredit()
 	
@@ -48,6 +55,11 @@
 			return {
 				Item:[]
 			}
+		},
+		computed: {
+			...mapGetters([
+				'myInfo'
+			])
 		},
 		onLoad(e){
 			const item = JSON.parse(decodeURIComponent(e.item));
@@ -80,6 +92,7 @@
 <style lang="scss" scoped>
 	page{
 			font-family: "方正兰亭黑-标准";
+			
 		.info{
 			font-size: 14px;
 			margin:1.5rem  1.125rem 0.4375rem 0.875rem;
@@ -97,23 +110,23 @@
 					color: #999999;	
 					
 					}
-			
+				
 		}
 		
 		.order_info{
 			font-size: 14px;
 			width: 100%;
-			height: 9.4375rem;
+			height: 11.4375rem;
 			text-align: center;
-			border: 1px solid rgba(187, 187, 187, 100);
-			border-left: none;
+			border-top: 1px solid lightgray;
+			border-bottom: 1px solid lightgray;
 			.infos{
 				
 			display: flex;
 			image{
 				width: 4.125rem;
 				height: 4.125rem;
-				border: 1px solid rgba(187, 187, 187, 100);
+				
 				margin: 1.3125rem 0rem 0rem 1.5rem;
 			}
 			.right{

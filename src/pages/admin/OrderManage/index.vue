@@ -7,14 +7,15 @@
 			
 		        <view class="image-item" v-for="(item,index) in Allarray" :key="index">
 					
-				<navigator :url="'./OrderList/orderList?ID='+item.id +'&flag='+item.flag+'&hasTackled='+item.hasTackled" ><!-- hover-class="navigator-hover" -->
+				<navigator :url="'./OrderList/orderList?ID='+item.id +'&flag='+item.flag+'&hasTackled='+item.hasTackled"  hover-class="none"><!-- hover-class="navigator-hover" -->
 					
 					<view class="first-line">
 				<view class="user-info">
 
 
-					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFill" :src='imgurl+item.url'
+					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFill" :src='imgurl+item.url | formatAvatarUrl'
 		                    @error="imageError"></image>
+							
 					<span>{{item.name}}</span>
 				</view>
 				<view class="order-state">
@@ -24,8 +25,9 @@
 					<view style="margin-top: 30rpx;">
 		            <view class="image-content">
 
-		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='imgurl+item.url'
+		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='imgurl+item.url | formatAvatarUrl'
 		                    @error="imageError"></image>
+							
 		            </view>
 					<view class="description">
 		            <view class="image-title" v-for="(it,index) in item.orderProductList" :key='item.orderProductList.pid'>
@@ -42,12 +44,12 @@
 					
 					</navigator>
 					<view  v-if="!tackled" class="btn" @click="dipach(item.id,item.flag,1)">去发货</view>
-					<view  v-else  class="btn" @click="dipach(item.id,item.flag,2)" >收获提醒</view>
+					<view  v-else  class="btn" @click="dipach(item.id,item.flag,2)" >收货提醒</view>
 					
 				</view>
 				<!-- <text v-if="tackled &&  have" class="have">此地暂无订单1</text> -->
-				<text v-if="tackled && !have1" class="have"> 此地暂无订单</text>
-				<text  class="have"> ~ ~   到底啦o(*￣▽￣*)ブ   ~ ~</text>
+				<text v-if="!tackled && have1" class="have"> 此地暂无订单</text>
+				<!-- <text v-if="have" class="have"> ~ ~   到底啦o(*￣▽￣*)ブ   ~ ~</text> -->
 		    </view>		
 			
 			<view style="z-index: 99;">
@@ -97,6 +99,16 @@
 		},
 		components:{
 			taHeadBar
+		},
+		filters: {
+			formatAvatarUrl(val) {
+				if (val) {
+					return val
+				} else {
+					return require('../../../static/images/common/default-avatar.png')
+				}
+			},
+			
 		},
 		created() {
 			this.gotAllGoods(0);
@@ -152,6 +164,7 @@
 				// 	res.data.forEach(function (item) {
 				// 		list.push(item)
 				// 	})
+				if(res.code ==200){
 					res.data.orderToApplyList.forEach(function (item) {
 						item.hasTackled=false;//没有确认订单
 						item.flag=0;//支付订单
@@ -166,14 +179,20 @@
 				
 					th.jugement(1);
 					
+				}else if(res.code==1005){
+					th.have1=true;
+				}
 				})
-				.catch(err => {
-							uni.showModal({
-												content: ' 没有需要处理的订单',
-												showCancel: false
-						});
-							
-				})
+				
+				
+				
+// 				.catch(err => {
+// 							uni.showModal({
+// 												content: ' 没有需要处理的订单',
+// 												showCancel: false
+// 						});
+// 							
+// 				})
 				}else if(shipmentFlag==1){
 					orderMangae.getUnshipment({"shipmentFlag":1}).then(res => {
 						

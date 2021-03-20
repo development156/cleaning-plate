@@ -10,7 +10,7 @@
 	                        <!-- 图片缩略图  -->
 	                        <block v-for="(imgItem, idx) in photoFiles" :key="idx">
 	                            <view class="item">
-	                                <image class="q-image" :src="imgUrl+'/'+imgItem.url"  mode="aspectFill" :data-cur="imgUrl+'/'+imgItem.url" @tap="refundPicPreView"></image>
+	                                <image class="q-image" :src="imgurl+imgItem.url"  mode="aspectFill" :data-cur="imgurl+imgItem.url" @tap="refundPicPreView"></image>
 	                                </image>
 	                                <!-- 移除图片的按钮  -->
 	                                <view class="q-image-remover" :data-idx="idx" @tap="removeImage">
@@ -55,8 +55,12 @@
 	const manageGoods = new ManageGoods();
 	
 	export default{
+		onLoad() {
+			this.imgurl=this.imgUrl;
+		},
 		data() {
 			 return {
+				 imgurl:'',
 			    photoFiles: [
 			         // {url: "",id:1},
 			    	 ], //凭证图片列表
@@ -184,7 +188,7 @@
 									 
 					 }).catch(err => {
 							console.log(err)
-									})	;//这里结束
+						})	;//这里结束
 				},
 				})
 			},

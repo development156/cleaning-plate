@@ -10,8 +10,8 @@
 	</view >
 	
 	<view class="container2">
-	<span class="tips2">2020年1月</span>
-	<span class="tips2" style="float: right;">536.2kg</span>
+	<span class="tips2">{{nowTime}}</span>
+	<span class="tips2" style="float: right;">{{currentMonthData}}kg</span>
 	</view>
 	
 	<view class="container3">
@@ -41,7 +41,9 @@
 		data(){
 			return{
 				TotalWasteInfo:'',
+				nowTime: new Date().toISOString().slice(0, 7),
 				hasNodata:false,
+				currentMonthData:'',//本月数据
 				array:[{
 					day: null,
 					id: 1,
@@ -69,7 +71,9 @@
 		methods:{
 			getTotalWasteInfo(){
 				ortUpload.getTotalWasteInfo().then(res => {
-					console.log(res)
+					if(res.code == 200){
+						this.TotalWasteInfo=res.data;
+					}
 					// this.TotalWasteInfo=res.data;
 					})
 					.catch(err => {
@@ -86,6 +90,23 @@
 				
 				ortUpload.getAllOrt().then(res => {
 					this.array=res.data;
+					console.log(new Date().toISOString().slice(0, 7)); 
+					var currentTime = new Date().toISOString().slice(0, 7);
+					var currentMonthData =0;
+					for(let i=0;i<res.data.length;i++){
+						var time ='';
+						for(let j=0;j<=6;j++){
+							time = time +res.data[i].uploadDate[j];
+							
+						}
+						console.log(time == currentTime);
+						if(time == currentTime){
+							currentMonthData =currentMonthData +res.data[i].wasteFood;
+							this.currentMonthData=currentMonthData;
+						}else{
+							this.currentMonthData="本月尚未添加数据"
+						}
+						}
 					})
 					.catch(err => {
 						uni.hideLoading()

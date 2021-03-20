@@ -22,8 +22,9 @@
 	           					 @tap="removeImage">
 	                                   <text style="position: absolute;
 	           						top: -69rpx;
+									color: #F2F2F2;
 	           						right: 14rpx;">x</text>
-	                                   <image  class="image"
+	                               <!--    <image  class="image"
 	           						style="
 	           						width: 30rpx;
 	           						height: 30rpx;
@@ -31,7 +32,7 @@
 	           						top: -69rpx;
 	           						right: 14rpx;"
 	           						src="../../../../../static/images/tabbar/home-selected.png" mode="aspectFit"></image>
-	           						
+	           						-->
 	                               </view>
 	                           </view>
 	                       </block>

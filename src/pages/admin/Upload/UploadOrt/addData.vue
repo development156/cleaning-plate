@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
- <input class="uni-input"  type="number" v-model="inputAcount" style="font-size: 56rpx;padding: 34rpx; color: rgba(16, 16, 16, 100); border-bottom: 2rpx solid rgba(187, 187, 187, 1);" maxlength="10" placeholder="输入剩菜量" />
+ <input class="uni-input"  type="number" v-model="inputAcount" style="line-height: 20rpx; font-size: 50rpx;padding: 34rpx; padding-bottom: 14rpx; color: rgba(16, 16, 16, 100); border-bottom: 2rpx solid rgba(187, 187, 187, 1);" maxlength="10" placeholder="输入剩菜量" />
 	
 	<view class="data" style="padding: 34rpx; border-bottom: 2rpx solid rgba(187, 187, 187, 1);">{{Data}}</view>
 

@@ -4,17 +4,23 @@
 		 :style="{height:(conf.height)+'rpx'}">
 			<view :class="adaptation?'adaptation':''" id="adapta">
 				<view :id="'sv_'+item[setField.id]" @click="select(i)" v-for="(item,i) of tabList" :key="i" class="view-content"
-				 :style="{'font-size':conf.size+'rpx',color:conf.color,'margin-right':adaptation?0:conf.spacing+'rpx',height:conf.height+'rpx','line-height':conf.height+'rpx'}">
-					<label :id="'txt_'+item[setField.id]" class="txt" :style="{color:currAct===item[setField.id]?(conf.actColor):(conf.color),'font-size':(currAct===item[setField.id]?conf.actSize+'rpx':conf.size+'rpx'),'font-weight':(currAct===item.id?conf.actWeight:'initial')}">{{item[setField.name]}}</label>
-				</view>
-				<text  v-if="actType =='triangle'" :style="{color:conf.actColor,left:moves+'px',top:((conf.height)-20)+'rpx'}" class="iconfont icon_act">&#xe6b5;</text>
-				<text v-if="actType =='underline'" :style="{width:lineWidth+'px',left:moves+'px',top:(conf.height-conf.height1)+'rpx'}"
 				
-				 class="underline"></text>
-				 <!-- background:conf.background, -->
+				 :style="{'font-size':conf.size+'rpx',
+				 color:conf.color,'padding-right':adaptation?0:conf.spacing+'rpx',
+				 height:conf.height+'rpx',
+				 'line-height':conf.height+'rpx'}">
+				 
+					<label :id="'txt_'+item[setField.id]" class="txt" :style="{color:currAct===item[setField.id]?'	#A52A2A':'#FFFFFF',  //(conf.actColor)
+					'font-size':(currAct===item[setField.id]?conf.actSize+'rpx':conf.size+'rpx'),
+					
+					'margin-right':30+'rpx',
+					'font-weight':(currAct===item.id?conf.actWeight:'initial')}">{{item[setField.name]}}</label>
+				</view>
+				<!-- <text  v-if="actType =='triangle'" :style="{color:conf.actColor,left:moves+'px',top:((conf.height)-20)+'rpx'}" class="iconfont icon_act">&#xe6b5;</text>
+				<text v-if="actType =='underline'" :style="{width:lineWidth+'px',background:conf.background,left:moves+'px',top:(conf.height-conf.height1)+'rpx'}"
+				 class="underline"></text> -->
 			</view>
 		</view>
-		
 	</view>
 </template>
 
@@ -63,10 +69,10 @@
 					height1: 4,
 					
 					padding: 0,
-					size: 38,
+					size: 40,
 					color: '#333333',
-					actColor: '#1D5397',
-					actSize:34,
+					actColor: '#C9A65E',
+					actSize:35,
 					spacing: 60,
 					position: 0,
 					actWeight: '100',
@@ -190,16 +196,18 @@
 	
 	.scroll-view {
 		position: fixed;
-			
-		width: 100%;
+		background:rgb(	165,42,42,0.4);
+		width: 150%;
 		white-space: nowrap;
-		/* margin-left: 1.25rem; */
+		padding-left: 0.66rem;
+		padding-right: 0.66rem;
+		box-shadow:0px 8rpx 14rpx #D8DCE6;
 		transition: all .5s;
 		position: -webkit-sticky;
 		position: sticky;
-			 top: var(--window-top);
+		top: var(--window-top);
 			  z-index: 99;
-		/* overflow-x: scroll; */
+		overflow-x: scroll;
 		
 	}
 
@@ -213,7 +221,7 @@
 
 	.view-content {	
 		
-		display: inline-block;
+		display: inline;
 		
 	}
 
@@ -243,6 +251,7 @@
 		/* height: 86rpx; */
 		transition: all .4s;
 	}
+	
 
 	.adaptation {
 		

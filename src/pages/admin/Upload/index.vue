@@ -1,25 +1,22 @@
 <template>
 	<view class="container">
 		
-		<navigator url="/pages/admin/Upload/UploadOrt/index" hover-class="navigator-hover" >
-			<view>
-		<view class="leftort" >
-			
-
+		<navigator url="/pages/admin/Upload/UploadOrt/index"  hover-class="none">
+		<view>
+		<view class="leftort">
 			<view class="iconfont icon-gonggao"></view>
 			<view class="word">
 			<span class="defont">上传剩菜统计</span>
 			<view class="font">上传每日剩菜统计数据 </view>
+			
 			</view>
 		</view>
 		</view>
 		</navigator>
-		
-		
-		<navigator  url="/pages/admin/Upload/UploadAnnoncement/index" hover-class="navigator-hover"> 
+		<navigator  url="/pages/admin/Upload/UploadAnnoncement/index"  hover-class="none"> 
 		<view class="annoncement">
 			<!-- icon-navicon-cptx -->
-			<view class="icon icon-fenzu"></view>
+			<view class="iconfont icon-fenzu"></view>
 			<view class="word">
 				<span class="defont">上传公告</span>
 				<view class="font">上传水果、宣传、产品公告 </view>
@@ -27,14 +24,16 @@
 		</view>
 		</navigator>
 		
-		<navigator url="/pages/admin/Upload/UploadFood/index" hover-class="navigator-hover"> 
+		<navigator url="/pages/admin/Upload/UploadFood/index"  hover-class="none"> 
 		<view class="food">
-			<view class="icon icon-navicon-cptx"></view>
+			<view class="iconfont icon-navicon-cptx"></view>
 			<view class="word">
 				<span class="defont">上传菜品</span>
 				<view class="font">上传每个窗口新增的菜</view>
 		   </view>
 		</view>
+		
+			
 		</navigator>
 		
 		<view>
@@ -63,18 +62,19 @@
 		data(){
 			return{
 				content:[{
-					iconPath:'',
-					selectedIconPath:'',
+					iconPath:'@/static/images/admin/hall.png',
+					selectedIconPath:'@/static/images/admin/hall.png',
 					text:'管理食堂',
-					active:false
+					active:false,
+					
 				},{
-					iconPath:'',
-					selectedIconPath:'',
+					iconPath:'@/static/images/admin/academy.png',
+					selectedIconPath:'@/static/images/admin/academy.png',
 					text:'管理学院',
 					active:false
 				},{
-					iconPath:'',
-					selectedIconPath:'',
+					iconPath:'@/static/images/admin/shop.png',
+					selectedIconPath:'@/static/images/admin/shop.png',
 					text:'管理商城',
 					active:false
 				}],

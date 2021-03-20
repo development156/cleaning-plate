@@ -1,32 +1,32 @@
 <template>
 	<view>
 		<view class="tab-view" >
-		<xTab :value="halls" @changeTab="changeTab" actType="underline" :config="{padding:80,spacing: 200,background:'#1989FA',color:'#666666',actColor:'#C9A65E',size:32,position:0}"></xTab>
-		<xTab  :value="floors" @changeTab="changeTab" actType="underline" :config="{spacing: 125,background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
+		<xTab :value="halls" @changeTab="changeHallTab"  :config="{padding:80,spacing: 200,color:'#666666',actColor:'#C9A65E',size:32,position:0}"></xTab>
+		<xTab  :value="floors" @changeTab="changeFloorTab" actType="underline" :config="{spacing: 125,background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
 		</view>
-			
-			
+
 		<p class="p">窗口</p>
 		<view class="list-zone">
-			<view class="list" v-for="(item,index) in windowList" :key="item.id">
+			<view class="list" v-for="(item,index) in windowList" :key="item.id" >
 			<p  class="list-item" ><span>{{item.id}}</span>{{item.name}}</p>
 			</view>
 		</view>
-		
+
 		<view class="footer">
-			
-			<select  v-model="option" class="select">
+
+			<!-- <select  v-model="option" class="select">
 			      <option v-for="(item,index) in options" @click="changeTab" :value='item.name' :key="item.id" class="option">{{item.name}}</option>
-			</select>
-			
-			<select  v-model="optionhall" class="select">
-			      <option v-for="(item,index) in halls" @click="changeTabHall" :value='item.name' :key="item.id" class="option">{{item.name}}</option>
-			</select>
-		
-			<select  v-model="optionfloor" class="select">
-			      <option v-for="(item,index) in floors" @click="changeTabFloor" :value='item.name' :key="item.id" class="option">{{item.name}}</option>
-			</select>
-		
+			</select> -->
+			<picker  :value="index1" :range="options"  @change="changeTab" class="select" :range-key="'name'">
+				<view class="option" >{{options[index1].name}}</view>
+			</picker>
+			<picker  :value="index2" :range="halls"  @change="changeTabHall" class="select" :range-key="'name'">
+				<view class="option" >{{halls[index2].name}}</view>
+			</picker>
+			<picker  :value="index3" :range="floors"  @change="changeTabFloor" class="select" :range-key="'name'">
+				<view class="option" >{{floors[index3].name}}</view>
+			</picker>
+	
 			<view class="input" >
 			<input maxlength="10"  v-model="window" placeholder="输入窗口" />
 			</view>
@@ -51,6 +51,10 @@
 	export default{
 		data(){
 			return{
+				index1:0,
+				index2:0,
+				index3:0,
+				// options:["食堂","窗口","楼层"],
 				options:[{name:'食堂',id:'0'},{name:'窗口',id:'1'},{name:'楼层',id:'2'}],
 				option:'食堂',
 				halls:[
@@ -70,6 +74,7 @@
 					// {name:'冒菜',id:'1'},
 					
 					],
+				allWindowList:[],//最初获得的所有窗口 需要筛选
 				tabList: [{
 					name:'已处理',
 					id:0
@@ -92,6 +97,9 @@
 			//添加食堂信息
 			addCanteenInfo(){
 				var th=this;
+				console.log(th.optionhall)
+				console.log(th.optionfloor)
+				console.log(th.window)
 				manageCanteen.addCanteenInfo({
 				"ID":"",
 				"diningRoom":th.optionhall,
@@ -105,9 +113,10 @@
 						// icon:'none',
 						duration: 1360
 					});
+					th.getCanteeInfo({name: th.optionhall})
 					th.optionhall="";
 					th.optionfloor="";
-					th.window=""
+					th.window="";
 					
 					}
 				}).catch(err => {
@@ -122,28 +131,37 @@
 				var th=this;
 				// console.log("CanteenName.name")
 				// console.log(CanteenName.name)
+				var i=0;
 				manageCanteen.getCanteenInfo({"CanteenName":CanteenName.name}).then( res => {
+					th.allWindowList=[];
+					th.windowList=[];
 					
-					// console.log(res)
 					if(res.code==200){
 						var id=0;
+					
 						//导入楼层
 						res.data.forEach(function(element) {
 							
 							th.floors.push({
 								name:element.floor,id:id,
 							})
-							id++;		
-								
-						element.windowsList.forEach(function(element2){	
 							
-							th.windowList.push({
-								name:element2.windows,id:element2.id,
+							
+							
+							id++;		
+							
+						element.windowsList.forEach(function(element2){	
+							console.log(element2)
+							th.allWindowList.push({
+								name:element2.windows,id:element2.id,belong:element.floor
 							})
 							
 						})		
+						i++;
+						
 					// console.log(th.windowList)	
 					})
+					th.optionfloor=th.floors[0].name
 					}
 						
 				}).catch(err => {
@@ -164,10 +182,10 @@
 						  th.halls.push({
 							  name:element,id:id,
 						  })
-						  
+						  // th.halls.push(element)
 						  id++;
 						});
-						
+						th.optionhall=th.halls[0].name
 						
 						th.getCanteeInfo(th.halls[0]);
 					}
@@ -179,24 +197,57 @@
 				})
 			},
 			changeTabHall(e){
-				console.log("222");
-				console.log(e);
+				console.log(e)
+				// this.optionhall = e.target.value
+				
+				this.index2 = e.detail.value;
+				this.optionhall =this.halls[this.index2]
+				console.log("this.optionhall")
+				console.log(this.optionhall)
+				this.getCanteeInfo(this.optionhall)
 			
 			},
 			changeTabFloor(e){
-				console.log("changeTabFloor");
 				console.log(e);
-			
+				// this.optionfloor= e.target.value
+				this.index3 = e.detail.value;
+				this.optionfloor=this.optionfloor[this.index3]
+			},
+			//顶部
+			changeFloorTab(e){
+				// this.allWindowList=[];
+				this.windowList=[];
+				console.log(e);
+				console.log(this.optionhall);
+				manageCanteen.getCanteenWindows({
+					"canteenName": "第三食堂",
+					"floor": "3楼"
+				}).then( res => {
+				console.log("res")
+				console.log(res)
+					}).catch(err => {
+					uni.showModal({
+							content: "error",
+							showCancel: false
+						});
+				})
+				// 2021/3/20
+// 				this.allWindowList.forEach(item =>{
+// 					if(item.belong == e.name){
+// 						this.windowList.push(item)
+// 					}
+// 				})
+			},
+			changeHallTab(e){
+				this.getCanteeInfo({CanteenName: e.name});
 			},
 			changeTab(e){
+				
 			  console.log(e);
-			  this.swiperCurrIndex = e.index;
-				if(e.index==1){
-					this.isShow=true
-				}
-				else{
-					this.isShow=true
-				}
+			   // this.option = e.target.value
+			   this.index1 = e.target.value;
+			   this.option=this.options[this.index1]
+			 
 			        },
 			//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
 			            swiperChange(e) {
@@ -299,12 +350,12 @@
 				
 			}
 			}
-			select{
-				
+			.select{
 				background: #FFFFFF;
 				width: 80%;
-				height: 12%;
-				
+				height: 56rpx;
+				line-height: 56rpx;
+				overflow: hidden;
 				margin: 0% auto;
 				margin-bottom: 0%;
 				color: rgba(16, 16, 16, 100);
@@ -313,6 +364,7 @@
 				border: 2rpx solid rgba(255, 255, 255, 100);
 				.option{
 					color: rgba(151, 151, 151, 100);
+					
 				
 				}
 				

@@ -16,7 +16,7 @@
 							<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"></image>
 							<image class="avatar-img2" :src="starUrl" v-if="userInfo.starId > 0"></image>
 						</view>
-						<text>uni-小程序 默认用户名称</text>
+						<text>{{userInfo.nickName | formatUserName}}</text>
 					</section>
 				</userInfoBtn>
 			</view>
@@ -42,6 +42,9 @@
 				</view> -->
 				<view class="bottom">
 					柚见食光
+				</view>
+				<view class="bottom" style="height: 20%;">
+					
 				</view>
 			</view>
 		</main>
@@ -102,7 +105,7 @@
 				if (val) {
 					return val
 				} else {
-					return 'uni-小程序 默认用户名'
+					return '游客模式'
 				}
 			}
 		},
@@ -150,21 +153,21 @@
 				this.logout = false
 			},
 			navTo(){	
-				console.log("啦啦啦啦")
+				
 				uni.navigateTo({
 				url:'./changeInfo/changeInfo'
 				})
 			},
 			//跳转我的反馈界面
 			navTo1(){
-				console.log("啦啦啦啦")
+				
 				uni.navigateTo({
 				url:'./feedBack/feedBack'
 				})
 			},
 			//跳转我的订单界面
 			navTo2(){
-				console.log("啦啦啦啦")
+				
 				uni.navigateTo({
 				url:'./myOrder/myOrder'
 				})
@@ -227,24 +230,28 @@
 
 
 	.view-item-container {
-		display: flex;
-		flex-direction:column;
-		align-items: center;
+		
 		color: #FFFFFF 10000%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		
 		.text-item-title{
-			margin:0 4rem 0rem 6.75rem ;
+			text-align: center;
 			letter-spacing: 5;
 			font-family: "方正新书宋-标准";
-			font-size: 32px;
+			font-size: 180%;
 			letter-spacing: 7px;
 			width: 12.5rem;
 		}
 		.text-item-title1,.text-item-title2,.text-item-title3 {
-			margin:20% 6.75rem 0rem 6.75rem ;
+			margin-top: 20%;
 			letter-spacing: 5;
 			font-family: "方正新书宋-标准";
-			font-size: 32px;
+			font-size: 180%;
 			letter-spacing: 7px;
+			
 		}
 		
 		
@@ -258,8 +265,9 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		margin-top: -45upx;
-		padding: 0 40upx 0 30upx;
+		position: absolute;
+		top:3% ;
+	
 		text {
 			display: block;
 			height: 60upx;
@@ -274,7 +282,7 @@
 	}
 
 	.view-header_root {
-			margin-top: 40%;
+			
 		>view {
 			&:nth-child(1) {
 				display: flex;
@@ -315,10 +323,10 @@
 
 			>main {
 			position: relative;
-				bottom: 0;
+				
 				.btm-cnt {
-					margin-top: 30%;
-					
+				
+					margin-top: 5%;
 					padding: 0 32upx;
 				
 					>view {
@@ -330,7 +338,7 @@
 					
 				}
 				.bottom{
-						margin:25% auto;
+						margin:20% auto;
 						margin-left: 40%;
 						position:relative;
 						font-size: 0.75rem;

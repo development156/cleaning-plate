@@ -115,9 +115,9 @@
 	.latest-data{
 		position: absolute;
 		left: 42rpx;
-		top: 590rpx;
+		top: 592rpx;
 		width: 664rpx;
-		height:  41%;
+		height:  42%;
 		line-height: 40rpx;
 		border-radius: 20rpx;
 		overflow-y: scroll;

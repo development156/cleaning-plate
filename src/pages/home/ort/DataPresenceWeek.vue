@@ -225,7 +225,9 @@
 				var _self=this;
 				
 				ortUpload.getSevenDayWasteFood().then(res => {
-						
+					console.log("res");
+						console.log(res);
+						if(res.code == 200){
 						let LineA={categories:[],series:[{
 							name: '近7日',
 							"data":[],
@@ -243,6 +245,13 @@
 									_self.showLineA("canvasLineA",LineA);
 						// 		LineA.categories=res.data.data.LineA.categories;
 						// 		LineA.series=res.data.data.LineA.series;
+						}else if(res.code == 1005){
+							uni.showToast({
+								title: '暂无数据',
+								icon:'none',
+								duration: 1420
+							});
+						}
 					
 					
 					})

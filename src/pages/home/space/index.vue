@@ -4,19 +4,27 @@
   <view class="tab1" :style="{backgroundColor:(index==true) ? 'rgba(119, 92, 76, 0.5)':'white'}" @click="change">个人</view>
   <view class="tab2" :style="{backgroundColor:(index==false) ? 'rgba(119, 92, 76, 0.5)':'white'}" @click="change">班级</view>
   <view class="info">
-	  <view class="portrait">
-		  <view class="head_portrait"></view>
-		  <view class="info_portrait">哈哈 
-		  <view>12345678</view>
+	  <view class="portrait" v-if="index==true">
+		  <image class="head_portrait" :src="userInfo.avatarUrl"></image>
+		  <view class="info_portrait">
+			  {{myInfo.name}}
+		  <view>{{myInfo.college}}</view>
 		  </view>
+	  </view>
+	  <view class="portrait" v-if="index==false">
+	  		  <!-- <image class="head_portrait" :src="userInfo.avatarUrl"></image> -->
+	  		  <view class="info_portrait">
+	  			  {{myInfo.profession}}
+	  		  <view>{{myInfo.grade}}</view>
+	  		  </view>
 	  </view>
 	  <view class="total_credit">
 		  总荣誉度
-		  <view style="color: rgba(243, 227, 178, 100); font-size: 36px;">2</view>
+		  <view style="color: rgba(243, 227, 178, 100); font-size: 30px;">{{myInfo.fixedintegral}}</view>
 	  </view>
 	  <view class="ranking">
 	  		  排名
-	  		 <view style="color: rgba(243, 227, 178, 100);font-size: 36px; ">99</view>
+	  		 <view style="color: rgba(243, 227, 178, 100);font-size: 30px; ">{{rankNumber}}</view>
 	  </view>
   </view>
 </view>
@@ -41,6 +49,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import {Rank} from '../../../models/space/Rank.js'
 	const rank = new Rank()
 	export default {
@@ -49,8 +58,14 @@
 	        return {
 			
 				perList:[],
-				index:true
+				index:true,
+				rankNumber:0
 	}
+	},
+	computed: {
+		...mapGetters([
+			'userInfo','myInfo'
+		])
 	},
 	onLoad(){
 		this.getPerRank()
@@ -71,7 +86,11 @@
 					  return (a.integrate - b.integrate)
 					});
 					console.log(this.perList)
-				
+				for(var i=0;i<this.perList.length;i++){
+					if(this.myInfo.fixedintegral>this.perList[i].integrate){
+						this.rankNumber = i
+					}
+				}
 				})
 			}
 			else{	
@@ -82,6 +101,11 @@
 					this.perList .sort(function (a, b) {
 					  return (a.integrate - b.integrate)
 					});
+					for(var i=0;i<this.perList.length;i++){
+						if(this.myInfo.fixedintegral>this.perList[i].integrate){
+							this.rankNumber = i
+						}
+					}
 				})
 			}
 		},
@@ -149,7 +173,7 @@
 		.ranking{
 		 
 			position: absolute;
-			left: 560rpx;
+			left: 550rpx;
 			flex-direction:column;
 			
 		}

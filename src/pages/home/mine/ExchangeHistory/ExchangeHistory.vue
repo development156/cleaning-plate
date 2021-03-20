@@ -1,11 +1,9 @@
 <template>
 	<view class="mine-container">
-		<view class="header">
-			<view>208</view>
-		</view>
+		
 		<view class="main">
-			<view class="info">本月获得<span style="color: rgba(243, 227, 178, 100);
-"> 82</span> 使用<span style="color: rgba(243, 227, 178, 100);"> -199</span></view>
+			<view class="info">总共积分<span style="color: rgba(243, 227, 178, 100);
+"> {{myInfo.integrate}}</span> 固定积分<span style="color: rgba(243, 227, 178, 100);"> {{myInfo.fixedintegral}}</span></view>
 	
 			<view class="item-list">
 		            <view class="image-item" v-for="(item,index) in array" :key="index">
@@ -30,23 +28,19 @@
 <script>
 	import { MyModel } from '@/models/MyModel/exchangeHistory.js'
 	const myModel = new MyModel();
-	
+	import { mapGetters } from 'vuex'
 	export default{
 		data() {
 		        return {
 					have:false,
-		            array: [{
-		               "studentId": "1",
-		               "date": "2020",
-		               "url": "wwww",
-		               "integrate": 8,
-		               "id": 7,
-		               "pname": null,
-		               "pid": null,
-						'description':''
-		            } ],
+		            array: [],
 		
 		}
+		},
+		computed: {
+			...mapGetters([
+				'userInfo','myInfo'
+			])
 		},
 		 methods: {
 		        imageError: function(e) {
@@ -56,6 +50,7 @@
 					uni.showLoading({
 						title: '正在加载...'
 					})
+					// 学号
 					myModel.convertHistory(2).then(res => {
 							console.log(res)
 							this.array=res.data
@@ -77,10 +72,14 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		background-color: rgba(119, 92, 76, 100);
+	}
+</style>
 <style  lang="scss" scoped>
 	page{ 	
-		background-color: rgba(119, 92, 76, 100);; 
+		
 		height: 100%;
 		display: flex;
 	    vertical-align :middle;
@@ -89,21 +88,10 @@
 	.mine-container { 
 		height: 100%;
 		
-		.header{
-			position: absolute;
-			left: 36rpx;
-			top: 18rpx;
-			width: 140rpx;
-			height: 82rpx;
-			color: #F3E3B2;
-			font-size: 72rpx;
-			text-align: left;
-			
-			
-		}
+		
 		.main{
 			left: 36rpx;
-			top: 168rpx;
+			top: 20rpx;
 			width: 678rpx;
 			height: 100%;
 			background-color:  rgba(244, 243, 243, 100);
@@ -155,7 +143,7 @@
 					width: 600rpx;
 					height: 150rpx;
 					color: rgba(16, 16, 16, 100);
-					font-size:  26rpx;
+					font-size:  16rpx;
 					
 					
 				}

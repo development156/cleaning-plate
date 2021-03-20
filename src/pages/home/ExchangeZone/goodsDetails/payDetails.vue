@@ -125,6 +125,10 @@
 						  console.log(this.shopItem.id)
 						AddToCart.addToCart(this.shopItem.id,studentId,number).then(res=>{
 							console.log(res)
+							uni.showToast({
+							  title:res.msg,
+							  icon: "none"
+							});
 						}).catch(error=>{
 							console.log(error)
 						})    
@@ -180,11 +184,11 @@
 	
 		swiper{
 			border-radius: 0.3125rem;
-			height: 375px;
+			height: 13.4375rem;
 			}
 			
 			.image{
-				height:  375px;
+				height:  13.4375rem;
 				width: 100%;
 			}
 			
@@ -248,7 +252,15 @@
 		}
 	}
 	.footer{
-		margin-top: 10.3125rem;
+		width: 100%;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		background: #FFFFFF;
+		box-shadow: #f3f3f3 0rpx -5rpx 10rpx;
+		height: 98rpx;
+		padding: 0 300rpx 0 30rpx;
+		z-index: 99;
 	}
 	
 	}

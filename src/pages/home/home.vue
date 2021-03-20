@@ -1,5 +1,5 @@
 <template>
-	<view class="content" >
+	<view class="content" v-if="isLogin==true">
 		<view class="iconAll">
 			<view class="icon1" @click="navTo2">
 				我的
@@ -58,15 +58,50 @@
 </template>
 <script>
 	import uniPopup from '@/components/common/uni-popup/uni-popup.vue'
-	
+	import {MyInfo} from '@/models/MyModel/changeInfo.js'
+	const myInfo = new MyInfo()
 	import uniPopupDefine from './upload/index.vue'
+	import { mapGetters,mapMutations } from 'vuex'
 	export default{
 		components:{
 			uniPopup,
 			uniPopupDefine
 		},
-	
+		// 添加用户信息权限
+	computed: {
+		...mapGetters([
+			'userInfo'
+		]),
 		
+	 
+		
+	},
+	onLoad(){
+		this.getMyInformation()
+	},
+	data(){
+		return{
+			isLogin:false,
+			studentId:1,
+			user:[],
+		}
+	},
+	
+	onShow(){
+		console.log(this.userInfo)
+		let a = this.userInfo.nickName
+		if(a==null){
+			this.isLogin = false
+			//没有登录过
+			uni.navigateTo({
+				url:'./login/login'
+			});
+			}else{
+				this.isLogin = true
+			}
+		},
+	
+	
 		methods:{
 			navTo(){
 				uni.navigateTo({
@@ -97,13 +132,27 @@
 			confirmDialog() {
 				this.$refs.popupShare.open()
 			},
+			// 获得个人信息
+			getMyInformation(){
+				myInfo.getMyInformation(this.studentId).then(res=>{
+					console.log(res)
+					this.user = res.data
+					 this.$store.dispatch('setMyInfo', this.user)
+				})
+			},
 					
 		}
 	}
 	
 	
 </script>
-
+<style>
+	page{
+		background:url('https://ftp.bmp.ovh/imgs/2021/03/f8c4abe9b986ad8f.jpg') no-repeat ;
+		 background-size:100% 100%;
+		 
+	}
+</style>
 <style lang="scss" scoped>
 	.content{
 		.iconAll{
@@ -121,7 +170,7 @@
 			display:flex;
 			justify-content:space-evenly ;
 			flex-wrap: wrap ;
-			margin: 35.3% 0 12.28% 0;
+			margin: 60% 0 12.28% 0;
 		.box1,.box2{
 			color: black;
 			box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);

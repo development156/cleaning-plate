@@ -16,7 +16,7 @@
 				<view class="uni-input">{{windows[index2].windows}}</view>
 			</picker>
 			
-				</view>
+			</view>
 				
 			</view>
 		</view>

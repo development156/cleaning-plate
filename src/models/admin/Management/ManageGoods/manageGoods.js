@@ -12,7 +12,7 @@ class ManageGoods extends HTTP {
 	uploadPictrue(params){
 		
 		return  uni.uploadFile({
-		    url: 'http://8.131.230.3:8080/YouGuang_war/admin/uploadProductImg',
+		    url: 'http://8.129.51.225:8080/YouGuang_war/admin/uploadProductImg',
 			filePath: params,
 			name: 'multipartFile',
 	
