@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<view class="tip">
-			<text>
-				“
+			<text class="iconfont icon-shuangyinhao">
+				
 			</text>
 			<text>
 				同学意见多多提

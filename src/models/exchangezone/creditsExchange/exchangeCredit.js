@@ -20,7 +20,7 @@ class exchangeCredit extends HTTP{
 	}
 	
 	// 提交订单
-	pay(studentId,PIdList){
+	pay(orderProductListViewList){
 		return this.request({
 		url:"/covert/getApplyGoods",
 		method:'POST',
@@ -29,8 +29,7 @@ class exchangeCredit extends HTTP{
 		        },	
 				
 		data:{
-			studentId:studentId,
-			PIdList:PIdList
+			orderProductListViewList:orderProductListViewList
 		}
 		})
 	}

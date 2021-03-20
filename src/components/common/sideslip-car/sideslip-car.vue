@@ -5,11 +5,11 @@
 			 @touchstart="touchstart" @touchmove="touchmove" :data-index='index'>
 				<view class="cartList clearfix">
 					<view @click="selectList(index)" class="selBtn centerboth">
-						<text class="iconfont" :class="item.selected==true?'car-sel':'car-unsel'"></text>
+						<text class="iconfont" :class="item.selected==true?'icon-xuanzhong_':'icon-2weixuanzhong'"></text>
 					</view>
 					<view class="gmes">
 						<view class='cartImg centerboth'>
-							<image :src="imgUrl+item.product.url" mode="aspectFit"></image>
+							<image :src="imgurl+item.product.url" mode="aspectFit"></image>
 						</view>
 						<view class="boxCount clearfix">
 							<text class="gname line1">{{item.product.name}}</text>
@@ -19,11 +19,11 @@
 					</view>
 					<view class="countBox centerboth">
 						<view class="carSub" @click="changeNum(index,item.id,2)">
-							<text class="iconfont car-sub"></text>
+							<text class="iconfont icon-jianhao" style="font-size: 1.375rem"></text>
 						</view>
 						<view class="cartNum">{{item.number}}</view>
 						<view class="carAdd" @click="changeNum(index,item.id,1)">
-							<text class="iconfont car-add"></text>
+							<text class="iconfont icon-tubiaozhizuomoban"  ></text>
 						</view>
 					</view>
 					<text class="dleBtn" @click="deleteList(index,item.id)">删除</text>
@@ -32,7 +32,7 @@
 		</view>
 		<view class="botomBtn">
 			<view @click="allSelBtn"  class="selBtn centerboth">
-				<text class="iconfont" :class="selectAll?'car-sel':'car-unsel'"></text>
+				<text class="iconfont" :class="selectAll?'icon-xuanzhong_':'icon-2weixuanzhong'"></text>
 				<text>全选</text>
 			</view>
 			<view class="price">合计：<text class="fh">￥</text><text class="num">{{totalPrice}}</text></view>
@@ -50,6 +50,9 @@
 				}
 			}
 		},
+		onLoad(){
+				this.imgurl = this.imgUrl
+				},
 		data() {
 			return{
 				totalPrice: 0, // 总价，初始为0
@@ -57,6 +60,7 @@
 				startX: 0, //开始坐标
 				startY: 0,
 				totalNum: 0,
+				imgurl:''
 			}
 		},
 		mounted() {
@@ -226,7 +230,11 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		background-color: #f5f5f5;
+	}
+</style>
 <style scoped>
 	
 	/*有商品时*/

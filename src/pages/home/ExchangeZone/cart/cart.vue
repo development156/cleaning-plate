@@ -56,12 +56,8 @@
 
 					// }
 				], // 购物车列表
-				// 临时设置的学号
-				studentID: 1,
+				
 				idList: []
-
-
-
 			}
 		},
 		onLoad() {
@@ -80,20 +76,17 @@
 						number: numArr[i],
 						pId: idArr[i]
 					}
-
 				}
 				console.log(PIdList)
-				// // 之后注册后在获取学号
-				let studentId = 1
-
+				
 				// // 进行生成订单
-				Exchange.pay(studentId, PIdList).then(res => {
+				Exchange.pay(PIdList).then(res => {
 					console.log(res)
 					uni.showToast({
 						title: res.msg,
 						icon: "none"
 					})
-					if (res.code == 200) {
+					if (res.code == 1001) {
 						uni.navigateTo({
 							url: `../acquireExchange/payAcquireExchange?item=` + encodeURIComponent(JSON.stringify(res.data))
 						})
@@ -143,7 +136,7 @@
 			},
 			// 获取购物车列表
 			getCartList() {
-				cartList.getCartList(this.studentID).then(res => {
+				cartList.getCartList().then(res => {
 					console.log(res.data)
 					this.carts = res.data
 					for (var i = 0; i < this.carts.length; i++) {

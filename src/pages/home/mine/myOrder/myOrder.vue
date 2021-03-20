@@ -17,11 +17,11 @@
 					<view :id="'swiper_id_'+item.id">
 					<view class="content" v-for="(content,index) in contentList">
 						<view class="item1">
-								<text>{{content.shipmentFlag}}</text>
-								<text>{{content.receivingDate}}</text>
+								<text>暖心食光</text>
+								<text>交易时间{{content.receivingDate}}</text>
 						</view>
 							<view class="item2" @click="navTo(content.id)">
-								<image :src="imgUrl+content.url">
+								<image :src="imgurl+content.url">
 									
 								</image>
 								<text>{{content.shippingAdress}}</text>
@@ -73,6 +73,7 @@
 						
 						
 					],
+					imgurl:'',
 				
 				//swiper当前位置
 				swiperCurrIndex:0,
@@ -91,7 +92,7 @@
 				 this.getOrder()
 		// 获取动态高度
 			 this.setSwiperHeight();
-			
+			this.imgurl = this.imgUrl
 			},
 			methods: {
 				
@@ -205,7 +206,7 @@
 						margin: 5% auto;
 						.item1{
 						display: flex;
-						margin:0.3125rem  1.5625rem 0.1875rem 1.5625rem;
+						margin:2%  1.5625rem 0.1875rem 1.5625rem;
 						justify-content: space-between;
 						text{
 							&:nth-child(1) {
@@ -223,10 +224,10 @@
 						margin-bottom: 5%;
 						image{
 						
-							width: 60%;
+							width: 25%;
 							height: 5.5rem;
-							border: 1px solid gray;
-							margin: 0.1875rem 0 0 1.4375rem; 
+						
+							margin: 0.5rem 0 0 1.4375rem; 
 							border-radius: 10px;
 						}
 						text{

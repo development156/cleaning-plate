@@ -31,7 +31,7 @@
 		<input placeholder="请输入姓名" />
 	</view>
 	
-		<button style="color: white; width: 95%; margin: 10% auto; background-color: rgba(250,250,250,0.5);" @click="register">立即注册</button>
+		<button style="color: white; width: 95%; margin: 10% auto; background-color: rgba(250,250,250,0.5);" @click="register">立即修改</button>
 		
 	</view>
 	</view>
@@ -56,18 +56,18 @@
 		methods:{
 			getAllProfession(){
 					manageAcademy.getAllProfession().then( res => {
-						console.log(res)
+						// console.log(res)
 						for(var i=0;i<res.data.length;i++){
 								this.colleges.push(res.data[i].college)
 						}
 					
-						console.log(this.colleges)
+					// 	console.log(this.colleges)
 					})
 				},
 			
 			getProfession(){
 				manageAcademy.getAllProfession({"college":this.college}).then( res => {
-					console.log(res)
+					// console.log(res)
 					if(res.code==200){
 						console.log(res.data)
 						for(var i=0;i<res.data.length;i++){
@@ -76,22 +76,22 @@
 						}
 						
 					}
-					console.log(this.grade)
+					// console.log(this.grade)
 				})
 			},
 			bindPickerChange1(e){
-				console.log(e)
+				// console.log(e)
 				this.index1 = e.detail.value
 				this.college = this.colleges[this.index1]
 				this.getProfession()
 			},
 			bindPickerChange2(e){
-				console.log(e)
+				// console.log(e)
 				this.index2 = e.detail.value
 				this.pro = this.profession[this.index2]
 			},
 			bindPickerChange3(e){
-				console.log(e)
+				// console.log(e)
 				this.index3 = e.detail.value
 				this.grd = this.grade[this.index3]
 			},
@@ -101,16 +101,16 @@
 					profession:this.pro,
 					grade:this.grd
 				}
-				console.log(this.userInfo)
+				// console.log(this.userInfo)
 				Register.registerStudent(studentInfo,this.userInfo).then(res=>{
 					console.log(res)
-					if(code==200){
-						uni.showToast({
-							title: res.msg,
-							icon:'none',
-							duration: 1500
-						});
-					}
+					// if(code==200){
+					// 	uni.showToast({
+					// 		title: res.msg,
+					// 		icon:'none',
+					// 		duration: 1500
+					// 	});
+					// }
 				})
 			}
 		},
@@ -158,7 +158,7 @@
 			picker{
 				
 				height: 1.875rem;
-			
+				
 				font-size: 0.9375rem;
 				color:white;
 				
@@ -171,6 +171,7 @@
 			}
 			input{
 				border: none;
+				width: 25%;
 			}
 			border-bottom: 1px solid rgba(223, 223, 223, 0.26);
 			justify-content: space-between;

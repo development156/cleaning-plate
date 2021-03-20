@@ -1,6 +1,6 @@
 import {HTTP} from '../../../utils/http.js'
 class addToCart extends HTTP{
-	addToCart(PID,studentId,number){
+	addToCart(PID,number){
 		return this.request({
 			url:'/covert/addToShoppingCart',
 			method:'POST',
@@ -10,8 +10,7 @@ class addToCart extends HTTP{
 			data:{
 				// 商品ID
 				PID:PID,
-				// 学号
-				studentId:studentId,
+			
 				// 数量
 				number:number
 			}

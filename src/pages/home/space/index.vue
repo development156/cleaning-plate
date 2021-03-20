@@ -34,7 +34,7 @@
 			<view class="item_info">
 				<view class="item_infoleft">
 				<view class="item_id">{{index}}</view>
-				<view class="info_head"></view>
+				<image :src="item.avatarUrl" class="info_head"></image>
 				<view class="info_name">{{item.profession}}</view>
 				<view class="info_name">{{item.name}}</view>
 			
@@ -54,6 +54,7 @@
 	const rank = new Rank()
 	export default {
 	  name: 'space',
+	 
 	  data() {
 	        return {
 			
@@ -242,7 +243,6 @@
 				line-height: 82rpx;
 				width: 60rpx;
 				height: 60rpx;
-				
 				background-color: white;
 				border: 1px solid rgba(187, 187, 187, 100);
 			}

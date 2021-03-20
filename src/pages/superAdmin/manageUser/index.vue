@@ -7,7 +7,7 @@
 				<view>{{item.name}}</view>
 				<view>{{item.applyDate}}</view>
 			</view>
-			<view @click="add(item.studentId)">添加</view>
+			<view @click="add(item.studentId)" class="iconfont icon-jia " style="font-size: 1.875rem;"></view>
 		</view>
 		
 		

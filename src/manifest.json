@@ -12,7 +12,10 @@
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
             "autoclose" : true,
-            "delay" : 0
+            "delay" : 0,
+			 "statusbar": {  
+			        "immersed": false  
+			    }
         },
         "modules" : {},
         /* 模块配置 */

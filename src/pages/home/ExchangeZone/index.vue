@@ -19,7 +19,7 @@
 				   :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 			     > 
 			      <image 
-			      :src="imgUrl+item.url">
+			      :src="imgurl+item.url">
 				  </image>
 				  <view class="name" style="color: #C9A65E;">
 				  	{{item.name}}
@@ -44,7 +44,7 @@
 	:url="'goodsDetails/payDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 	 :key="item.id"
 	>
-									<image :src="imgUrl+item.url"></image>
+									<image :src="imgurl+item.url"></image>
 						              <view class="right">
 						              	<view class="tit">
 						                  	{{item.name}}
@@ -86,7 +86,7 @@ export default{
 			goodsList:[],
 			// 商城里的商品列表
 			shopList:[],
-			
+			imgurl:'',
 			// 判断是否是支付还是积分的标志
 			  flag:1,
 			  // 分页的相应参数
@@ -110,6 +110,7 @@ export default{
 	},
 	onLoad(){
 		this.getScoll();
+		this.imgurl = this.imgUrl
 
 	},
 	//滚动条触底事件
@@ -243,10 +244,11 @@ export default{
 				box-sizing: border-box;
 				border-radius: 10px;
 				image{
-					width: 70%;
+					width: 90%;
 					height: 130px;
 					display: block;
 					margin: 0 auto;
+					border-radius: 10px;
 				}
 				.price{
 					color:   red;

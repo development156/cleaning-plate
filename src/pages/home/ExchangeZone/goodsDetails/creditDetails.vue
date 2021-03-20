@@ -6,7 +6,7 @@
 			interval="2000" 
 			duration="500">
 		                        <swiper-item v-for="item in images">
-										<image :src="imgUrl+Item.url" class="image"></image>
+										<image :src="imgurl+Item.url" class="image"></image>
 		                        </swiper-item>
 		                    </swiper>
 		</view>
@@ -64,7 +64,8 @@
 			return{
 				goodsItem:[],
 				images:[],
-				isEnough:true
+				isEnough:true,
+				imgurl:''
 			}
 		},
 		computed: {
@@ -78,6 +79,7 @@
 			console.log(this.goodsItem)
 			this.getSwiper()
 			this.IsEnough()
+			this.imgurl = this.imgUrl
 		},
 		
 		methods:{
@@ -160,7 +162,7 @@
 				flex-direction: column;
 				text{
 					margin: 0.625rem 0 0 0.5rem;
-						font-size: 1rem;
+						font-size: 0.875rem;
 					&:nth-child(1),&:nth-child(5){
 						height:1.4rem;
 						width: 4.8125rem;
