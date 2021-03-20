@@ -1,10 +1,9 @@
 import { HTTP } from '../../utils/http.js'
 
-
 class register extends HTTP {
 	// 注册
 	registerStudent(studentInfo,userDate) {
-	    return this.request({
+	    return this.request1({
 	        url: `/user/registerStudent`,
 			method: 'POST',
 			data: {
@@ -15,5 +14,6 @@ class register extends HTTP {
 	    })
 	}
 }
+
 
 export {register }

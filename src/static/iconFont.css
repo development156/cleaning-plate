@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7bbe5219d06e9a4db7c9f0e15551ff23be19d67e
 @font-face {
   font-family: 'iconfont';  /* project id 2329466 */
   src: url('//at.alicdn.com/t/font_2329466_yjikdoszp5.eot');
@@ -163,4 +166,60 @@
   content: "\e648";
 	color:	#DEB887;
 }
+.icon-zhuangxiushangjia:before {
+	content: "\e60a";
+}
+.icon-shangcheng:before {
+	content: "\e6b3";
+}
+.icon-gonggao1:before {
+	content: "\e692";
+}
+.icon-tongjitu:before {
+	content: "\e6ad";
+}
+.icon-xiangjipaizhao:before {
+	content: "\e622";
+}
+.icon-chakantiezigengduo:before {
+	content: "\e661";
+}
+.icon-yonghu:before {
+	content: "\e60b";
+}
+.icon-jia:before {
+	content: "\e8a6";
+}
+.icon-jianhao:before {
+	content: "\e64c";
+}
+.icon-2weixuanzhong:before {
+	content: "\e604";
+}
+.icon-tubiaozhizuomoban:before {
+	content: "\e60c";
+}
+.icon-gouwuche:before {
+	content: "\e603";
+}
+.icon-xuanzhong_:before {
+	content: "\e664";
+}
+.icon-gengxin:before {
+	content: "\e662";
+}
+.icon-chakan:before {
+	content: "\e63b";
+}
+.icon-shuangyinhao:before {
+	content: "\e637";
+}
+.icon-gengduo:before {
+	content: "\e62e";
+}
+.icon-shanchu1:before {
+	content: "\e63c";
+}
+
+
 	

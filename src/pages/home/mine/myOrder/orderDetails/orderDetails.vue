@@ -1,7 +1,8 @@
 <template>
 	<view>
-		<view class="top">
+		<view class="iconfont icon-xuanzhong_ top">
 			已完成
+			
 			</view>
 		<view class="tip">您的订单已经签收，欢迎您再次光临！</view>
 		<view class="address">
@@ -11,7 +12,7 @@
 		</view>
 		<view class="goods_details">
 			<view class="info">
-			<image :src="imgUrl+Item[0].url"></image>
+			<image :src="imgurl+Item[0].url"></image>
 			<view class="details">
 				<text>{{Item[0].orderProductList[0].name}}</text>
 				<text> {{Item[0].orderProductList[0].description}}</text>
@@ -53,13 +54,15 @@
 			return{
 				Item:[],
 				studentID:1,
-				pid:''
+				pid:'',
+				imgurl:''
 			}
 		},
 		onLoad(e){
 			this.pid  = JSON.parse(decodeURIComponent(e.item));
 			console.log(this.pid)
 			this.acquirePay()
+			this.imgurl = this.imgUrl
 		},
 		methods:{
 			acquirePay(){
@@ -84,7 +87,7 @@
 		height: 5.125rem;
 		background-color: #C9A65E ;
 		text-align: center;
-		
+		color: white;
 	}
 	.tip{
 	

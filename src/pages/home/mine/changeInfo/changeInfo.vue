@@ -37,7 +37,9 @@
 		</view>
 		
 		<view class="item1">
-		<text @click="navTo">修改资料</text>
+		<text @click="navTo" >修改资料</text>
+		<view class="iconfont icon-gengduo" @click="navTo"></view>
+		
 		</view>
 	</view>
 	</view>
@@ -52,7 +54,7 @@
 	
 		computed: {
 			  ...mapGetters([
-			  	'myInfo'
+			  	'userInfo'
 			  ]),
 		},
 		
@@ -101,7 +103,8 @@
 		font-size: 0.875rem;
 		.item1{
 			color: #FFFFFF;
-			
+			display: flex;
+			justify-content: space-between;
 			margin: 4% 1.25rem 0px 1.25rem;
 			
 			

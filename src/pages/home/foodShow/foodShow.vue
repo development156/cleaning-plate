@@ -27,17 +27,17 @@
 				      v-for="(item,index) in foodList"
 				      :key="index">
 				      <image 
-				      mode="widthFix"
-				      :src="imgUrl+item.url"></image>
+				     
+				      :src="imgurl+item.url"></image>
 					  <view class="content">
-					  <view class="price">
+					  <view class="price" >
 					  	<text>{{item.dishName}}</text>
 					  </view>
-					  <view class="name">
-					  	{{item.price}}
+					  <view class="name"  >
+					  	{{item.price}}元
 					  </view>
-					  <view>
-					  	{{item.favour}}
+					  <view style="color: gray;font-size: 0.625rem;margin-top: 3%;">
+					  	{{item.favour}}人喜欢
 					  </view>
 					</view>
 				      </view>
@@ -69,7 +69,8 @@
 				// 当前默认食堂
 				diningRoom:'第一食堂',
 				index1: 0,
-				index2:0
+				index2:0,
+				imgurl:''
 				
 			}
 		},
@@ -86,6 +87,7 @@
 			this.diningRoom  = JSON.parse(decodeURIComponent(e.item));
 			this.getCanteenInfo()
 			this.getFood()
+			this.imgurl = this.imgUrl
 			
 		},
 		methods:{
@@ -140,7 +142,7 @@
 			margin: 5% auto;
 			background-color: white;
 			border-radius: 0.3125rem;
-			justify-content: space-around;
+			justify-content: space-evenly;
 			.item1,.item2{
 			margin: 3% 0 0 10%;
 			display: flex;
@@ -180,8 +182,8 @@
 				box-sizing: border-box;
 				border-radius: 10px;
 				image{
-					width: 8.125rem;
-					height: 7.3125rem;
+					width: 10.125rem;
+					height: 9.3125rem;
 					margin: 0 auto;
 			
 					border-radius: 5px

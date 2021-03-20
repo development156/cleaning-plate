@@ -32,7 +32,7 @@
 <script>
 	import {ManageAcademy} from '@/models/admin/Management/ManageAcademy/manageAcademy.js'
 	const manageAcademy = new ManageAcademy();
-	import {register} from '@/models/MyModel/register.js'
+	import {register} from '../../../models/MyModel/register.js'
 	const Register = new register()
 	import { mapGetters } from 'vuex'
 	export default{
@@ -48,7 +48,7 @@
 		methods:{
 			getAllProfession(){
 					manageAcademy.getAllProfession().then( res => {
-						console.log(res)
+						// console.log(res)
 						for(var i=0;i<res.data.length;i++){
 								this.colleges.push(res.data[i].college)
 						}
@@ -63,7 +63,7 @@
 			},
 			getProfession(){
 				manageAcademy.getAllProfession({"college":this.college}).then( res => {
-					console.log(res)
+					// console.log(res)
 					if(res.code==200){
 						console.log(res.data)
 						for(var i=0;i<res.data.length;i++){
@@ -72,22 +72,22 @@
 						}
 						
 					}
-					console.log(this.grade)
+					// console.log(this.grade)
 				})
 			},
 			bindPickerChange1(e){
-				console.log(e)
+				// console.log(e)
 				this.index1 = e.detail.value
 				this.college = this.colleges[this.index1]
 				this.getProfession()
 			},
 			bindPickerChange2(e){
-				console.log(e)
+				// console.log(e)
 				this.index2 = e.detail.value
 				this.pro = this.profession[this.index2]
 			},
 			bindPickerChange3(e){
-				console.log(e)
+				// console.log(e)
 				this.index3 = e.detail.value
 				this.grd = this.grade[this.index3]
 			},
@@ -97,19 +97,39 @@
 					profession:this.pro,
 					grade:this.grd
 				}
-				console.log(this.userInfo)
-				Register.registerStudent(studentInfo,this.userInfo).then(res=>{
-					console.log(res)
-					if(code==200){
-						uni.showToast({
-							title: res.msg,
-							icon:'none',
-							duration: 1500
+				// console.log(this.userInfo)
+				
+				Register.registerStudent(studentInfo,this.userInfo).then(res=> {
+						console.log(res)
+						console.log("啦啦啦")
+						uni.setStorageSync('AuthTokens', res.header.Authorization)
+						uni.setStorageSync('judgmentOfAuthority', res.header.judgmentOfAuthority)
+						console.log(uni.getStorageSync('AuthTokens'))
+							uni.showToast({
+								title: res.data.data.msg,
+								icon:'none',
+								duration: 1500
+							});
+					let judgmentOfAuthority = uni.getStorageSync('judgmentOfAuthority')
+					if(judgmentOfAuthority ==1){
+						uni.navigateTo({
+							url:'../home'
 						});
 					}
+					if(judgmentOfAuthority ==2){
+						uni.navigateTo({
+							url:'../../admin/Upload/index'
+						});
+					}
+					if(judgmentOfAuthority ==3){
+						uni.navigateTo({
+							url:'../../superAdmin/index'
+						});
+					}
+						
 				})
-			}
-		},
+				}
+			},
 		data(){
 			return{
 			

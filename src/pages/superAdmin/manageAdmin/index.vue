@@ -1,19 +1,19 @@
 <template>
 	<view>
 		<view class="item1">
-			<view class="icon" @click="navTo1"></view>
-			<view class="con">查看用户</view>
+			<view class="iconfont icon-chakan icon" @click="navTo1" style="font-size: 1.875rem;"></view>
+			<view class=" con" style="font-size: 1.125rem">查看用户</view>
 		</view>
 		
-		<view class="item2" @click="navTo3()">
+		<view class="item2" >
 			<view class="squ" v-for=" item in list">
 			<image></image>
-			<view class="con2">
+			<view class="con2" @click="navTo3()">
 				<text>{{item.name}}</text>
 				<text>{{item.profession}}</text>
 			</view>
-			<text @click="deleted(item.id)">删除</text>
-			<text @click="updated(item.id,item.name)">修改</text>
+			<text @click="deleted(item.id)" class="iconfont icon-shanchu1" style="font-size: 1.25rem;"></text>
+			
 			</view>
 		
 		</view>
@@ -47,14 +47,7 @@
 					this.list.splice(id, 1);
 				})
 			},
-			// 修改
-			updated(id,name){
-				this.$emit('updated',id,name);
-				admin.updateAdmin(id,name).then(res=>{
-					console.log(res)
-				})
-			},
-			
+		
 			navTo3(){
 				this.$emit('navTo3');
 			},
@@ -83,7 +76,7 @@
 				margin: 5% 0 10% 10%;
 				height: 1.3125rem;
 				width: 1.3125rem;
-				border: 1px solid red;
+				
 			}
 			.con{
 					margin: 6% 0 10% 10%;

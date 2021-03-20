@@ -18,7 +18,7 @@
 			<view class="icon"></view>
 		</view>
 	
-		<view class="way">
+		<view class="way" style="margin-top: 2%;">
 			<text>配送方式</text>
 			<text>上门自取</text>
 		</view>
@@ -26,7 +26,7 @@
 	
 	<view class="goods_details" v-for="item in Item" >
 		<view class="info" v-for="i in item.orderProductList">
-		<image :src="imgUrl+i.url"></image>
+		<image :src="imgurl+i.url"></image>
 		<view class="details">
 			<text>{{i.name}}</text>
 			<text>*{{i.number}}</text>
@@ -42,7 +42,7 @@
 	
 	<view class="footer">
 		<view class="money">
-			<text>应付：¥{{totalPrice1}}</text>
+			<text style="color: red;">应付：¥{{totalPrice1}}</text>
 			<text>含运费：￥0.00</text>
 		</view>
 		<button type="submit" @click="pay">提交订单</button>
@@ -65,7 +65,7 @@
 			this.pid = Pid;
 			console.log(this.pid)
 			this.acquirePay()
-			
+			this.imgurl = this.imgUrl
 		},
 		data(){
 			return {
@@ -73,7 +73,7 @@
 				// 临时设置的id
 				studentID:1,
 				pid:4,
-				
+				imgurl:'',
 				// 总数量
 				totalNum:0,
 				totalPrice:0
@@ -121,6 +121,20 @@
 			  title: res.msg,
 			  icon: "none"
 			});
+			// 是否进行推送
+			uni.requestSubscribeMessage({
+			  tmplIds: ['DxEEZxd29Cj0dYG54T_0ZlMGKzw_aEqVnASAikYzOiU','c9q4umaHKQwRDCuXFFX972YDBckKxJGKFy6iVhDpSag'],
+			  success (res) {
+				  console.log(res)
+				  console.log("推送成功")
+				  uni.navigateTo({
+				  url:`../index`
+				  })
+			  }
+			})
+			
+		
+			
 		})
 		},
 		/**
@@ -167,6 +181,7 @@
 				.info{
 					font-size: 14px;
 					margin:1.5rem  1.125rem 0.4375rem 0.875rem;
+					
 					text:nth-child(1){
 							color: #999999;	
 							}
@@ -203,14 +218,16 @@
 			height: 13.0625rem;
 			.info{
 				display: flex;
+				background-color: white;
+				border-bottom: 1px solid lightgray;
 				image{
 					width: 5.9375rem;
 					height: 5.5rem;
-					margin: 3.3125rem  0 0 1.0625rem ;
-					
+					margin: 1.3125rem  0 2% 1.0625rem ;
+					border-radius: 0.625rem;
 				}
 				.details{
-					margin:3.3125rem  0 0 0.5625rem;
+					margin:1.3125rem  0 2% 0.5625rem;
 					display: flex;
 					height: 6.25rem;
 					width: 14.5625rem;
@@ -251,9 +268,9 @@
 			
 			.total{
 				display: flex;
-				margin: 1.8125rem 0 0.875rem 11.5rem;
+				padding: 1.8125rem 0 0.875rem 14.5rem;
 				font-size: 0.625rem;
-				
+				background-color: white;
 			}
 		}
 		.footer{
@@ -271,7 +288,7 @@
 			z-index: 99;
 			.money{
 			
-				font-size: 0.875rem;
+				font-size: 0.675rem;
 				margin:0.625rem 0 0 1.25rem;
 				display: flex;
 				flex-direction: column;
@@ -280,7 +297,7 @@
 				}
 			}
 			button{
-				margin-top: -2.5rem;
+				margin-top: -2.2rem;
 				position: absolute;
 				left: 47%;
 				border-radius: 30px;

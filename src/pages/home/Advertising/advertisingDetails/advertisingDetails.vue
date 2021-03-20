@@ -10,7 +10,7 @@
 	</view>
 	
 	<view class="image">
-		<image :url="imgUrl+List.url"></image>
+		<image :url="imgurl+List.url"></image>
 	</view>
 	
 	<view class="foo">
@@ -28,7 +28,8 @@
 		data(){
 			return{
 				id:'',
-				List:[]
+				List:[],
+				imgurl:''
 			}
 		},
 		onLoad(e){
@@ -36,6 +37,7 @@
 			this.id = id;
 			console.log(this.id)
 			this.getDetails()
+			this.imgurl = this.imgUrl
 		},
 		methods:{
 			getDetails(){

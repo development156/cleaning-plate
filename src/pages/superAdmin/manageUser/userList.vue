@@ -53,7 +53,7 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: space-around;
-				margin: 1% 0 0 5%;
+				margin: 0 0 0 5%;
 				view{
 					&:nth-child(2){
 						font-size: 0.625rem;

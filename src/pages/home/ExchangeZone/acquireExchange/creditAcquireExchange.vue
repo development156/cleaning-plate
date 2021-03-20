@@ -18,7 +18,7 @@
 		
 		<view class="order_info">
 			<view class="infos">
-				<image :src="imgUrl+Item.url"></image>
+				<image :src="imgurl+Item.url"></image>
 				<view class="right">
 					<view class="tit">
 						{{Item.description}}
@@ -53,7 +53,8 @@
 	export default{
 		data(){
 			return {
-				Item:[]
+				Item:[],
+				imgurl:''
 			}
 		},
 		computed: {
@@ -65,6 +66,7 @@
 			const item = JSON.parse(decodeURIComponent(e.item));
 			this.Item = item;
 			console.log(this.Item)
+			this.imgurl = this.imgUrl
 		},
 		methods:{
 			confirm(){
@@ -73,9 +75,17 @@
 				Exchange.exchange(this.Item.id,studentId,time.getYear(),this.Item.name,this.Item.url,this.Item.integrate).then(res=>{
 					uni.showToast({
 					  title: res.msg,
-					  icon:"none"
-					});
+					  icon:"none",
+					  success(){
+						  uni.navigateTo({
+						  url:`../index`
+						  })
+					  }
+					}
+					
+					);
 					// 进行判断是否兑换成功
+				
 					
 				}).catch(error=>{
 					uni.showToast({
@@ -114,7 +124,7 @@
 		}
 		
 		.order_info{
-			font-size: 14px;
+			font-size: 16px;
 			width: 100%;
 			height: 11.4375rem;
 			text-align: center;
@@ -124,13 +134,13 @@
 				
 			display: flex;
 			image{
-				width: 4.125rem;
-				height: 4.125rem;
-				
+				width: 5.9375rem;
+				height: 5.5rem;
 				margin: 1.3125rem 0rem 0rem 1.5rem;
+				border-radius: 0.625rem;
 			}
 			.right{
-				margin: 1.1875rem 0px 2rem 0px;
+				margin: 1.3rem 0px 2rem 0px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;

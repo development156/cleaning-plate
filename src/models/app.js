@@ -3,7 +3,7 @@ import { HTTP } from '../utils/http.js'
 
 class AppModel extends HTTP {
 	login(params) {
-        return this.request({
+        return this.request1({
             url: `/user/login`,
 			method: 'GET',
 			

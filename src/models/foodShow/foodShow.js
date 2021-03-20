@@ -5,7 +5,7 @@ class FoodShow  extends HTTP {
 	
 	getFood(diningRoom,floor,window) {
 	    return this.request({
-	        url: `/admin/getMenu`,
+	        url: `/common/getMenu`,
 			method: 'Get',
 			data: {
 				diningRoom:diningRoom,

@@ -1,5 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
 		{
 			//管理员首页
 			"path": "pages/admin/Upload/index",
@@ -10,13 +11,20 @@
 			}
 		
 		},
+
 		// 用户端
 		{
 			"path": "pages/home/home",
 			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+
+		{
+			"path": "pages/superAdmin/index",
+			"style": {
 				"navigationBarTitleText": "柚光",
 				"backgroundColor": "#000000" //FF8C00
-		
 			}
 		},
 		
@@ -30,6 +38,7 @@
 		},
 		
 
+
 		{
 			//输入快递单号页面
 			"path": "pages/admin/OrderManage/index",
@@ -40,17 +49,18 @@
 			}
 
 		},
-		
-		// {
-		// 	//管理员首页
-		// 	"path": "pages/admin/Upload/index",
-		// 	"style": {
-		// 		"navigationBarTitleText": "管理员端",
-		// 		"navigationBarBackgroundColor": "#FFFFFF",
-		// 		"navigationBarTextStyle": "black"
-		// 	}
 
-		// },
+		{
+			//管理员首页
+			"path": "pages/admin/Upload/index",
+			"style": {
+				"navigationBarTitleText": "管理员端",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+
+
+		},
 
 		{
 
@@ -140,27 +150,27 @@
 		{
 			"path": "pages/superAdmin/manageUser/userList",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
-
+				"navigationBarTitleText": "用户列表",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
 			}
 		},
 		// 超级管理员
-		
+
 		{
 			"path": "pages/superAdmin/manageAdmin/managerDetails/managerDetails",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
-
+				"navigationBarTitleText": "管理员信息详情",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
 			}
 		},
 		{
 			"path": "pages/superAdmin/manageUser/userDetails/userDetails",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
-
+				"navigationBarTitleText": "待审核用户详情",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
 			}
 		},
 
@@ -204,7 +214,7 @@
 			}
 
 		},
-		
+
 		{
 			//快递详情页
 			"path": "pages/admin/OrderManage/OrderList/orderList",
@@ -325,22 +335,25 @@
 			}
 
 		},
+
+
+
 		{
 
 			"path": "pages/home/mine/ExchangeHistory/ExchangeHistory",
 			"style": {
 				"navigationBarTitleText": "兑换历史",
-				"navigationBarBackgroundColor": "#775C4C",
-
-				"enablePullDownRefresh": true
+				"navigationBarBackgroundColor": "#775C4C"
 			}
 
 		},
 		{
 			"path": "pages/home/ort/index",
 			"style": {
-				"navigationBarTitleText": "每日剩菜界面",
-				"navigationBarBackgroundColor": "#775C4C"
+				"navigationBarTitleText": "剩菜分析",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+
 			}
 		},
 
@@ -349,10 +362,6 @@
 			"style": {
 				"navigationBarTitleText": "荣誉度排行",
 				"navigationBarBackgroundColor": "#775C4C",
-				// "navigationBarShadow": {  
-				//            "colorType": "grey" //grey|blue|green|orange|red|yellow  
-				//        },  
-
 				"enablePullDownRefresh": true
 			}
 
@@ -367,13 +376,9 @@
 		{
 			"path": "pages/home/mine/index",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000" //FF8C00
-
-				// "font-size": "20px",
-				// "text-align": "left",
-				// "font-family": "Arial",
-				// "border": "1px solid rgba(255, 255, 255, 100)"
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
 			}
 
 		},
@@ -382,8 +387,9 @@
 		{
 			"path": "pages/home/foodShow/foodShow",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
+				"navigationBarTitleText": "菜品展示",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
 
 			}
 		},
@@ -391,8 +397,9 @@
 
 			"path": "pages/home/foodShow/CanteenList",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
+				"navigationBarTitleText": "食堂",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
 
 			}
 		},
@@ -400,19 +407,18 @@
 		{
 			"path": "pages/home/Advertising/advertisingList/advertisingList",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000" //FF8C00
-				// "color": "rgba(249, 242, 226, 100)",//255,127,80  249, 242, 226, 100
-				// "font-size": "20px",
-				// "text-align": "left",
-				// "font-family": "Arial",
-				// "border": "1px solid rgba(255, 255, 255, 100)"
+				"navigationBarTitleText": "公告列表",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 		},
 		{
 			"path": "pages/home/Advertising/advertisingDetails/advertisingDetails",
 			"style": {
-				"navigationBarTitleText": "柚光"
+				"navigationBarTitleText": "公告详情",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
 
 			}
 		},
@@ -422,9 +428,10 @@
 		{
 			"path": "pages/home/ExchangeZone/index",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"onReachBottomDistance": 50
+				"navigationBarTitleText": "兑换专区",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 
 		},
@@ -432,7 +439,10 @@
 		{
 			"path": "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
-				"navigationBarTitleText": "柚光"
+				"navigationBarTitleText": "确认兑换",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 		},
 
@@ -440,8 +450,10 @@
 		{
 			"path": "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "确认购买",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 
 		},
@@ -450,8 +462,10 @@
 		{
 			"path": "pages/home/ExchangeZone/goodsDetails/creditDetails",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "商品详情",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 
 		},
@@ -459,8 +473,10 @@
 		{
 			"path": "pages/home/ExchangeZone/goodsDetails/payDetails",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "商品详情",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 
 		},
@@ -469,7 +485,9 @@
 			"path": "pages/home/ExchangeZone/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
-				"enablePullDownRefresh": false
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationBarTextStyle": "black"
+
 			}
 
 		},
@@ -477,42 +495,80 @@
 		// 修改个人信息
 		{
 			"path": "pages/home/mine/changeInfo/changeInfo",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "个人信息",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
+			}
 		},
 		{
 			"path": "pages/home/mine/changeInfo/index",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "修改资料",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
+			}
 		},
 
 		// 我的反馈界面
 		{
 			"path": "pages/home/mine/feedBack/feedBack",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "反馈",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
+			}
 		},
 		// 我的订单界面
 		{
-			"path": "pages/home/mine/myOrder/myOrder"
+			"path": "pages/home/mine/myOrder/myOrder",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
+			}
 
 		},
 		//上传历史界面
 		{
-			"path": "pages/home/mine/uploadHistory/index"
+			"path": "pages/home/mine/uploadHistory/index",
+			"style": {
+				"navigationBarTitleText": "上传历史",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
 
 		},
 
 		//订单详情界面
 		{
-			"path": "pages/home/mine/myOrder/orderDetails/orderDetails"
+			"path": "pages/home/mine/myOrder/orderDetails/orderDetails",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"navigationBarBackgroundColor": "#C9A65E",
+				"navigationBarTextStyle": "white"
+			}
 		},
 
 		// 注册页面
 		{
-			"path": "pages/home/register/index"
+			"path": "pages/home/register/index",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
+			}
 		},
 
 		// 确认授权登录
 		{
-			"path": "pages/home/login/login"
+			"path": "pages/home/login/login",
+			"style": {
+				"navigationBarTitleText": "授权登录",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+
 		}
 
 

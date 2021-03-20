@@ -1,16 +1,16 @@
 <template>
 	<view class="mine-container">
-		<header >
+		<header>
 			<!--  hasAuthorUrserInfo -->
-			<view class="view-header_root" v-if="hasUserInfo" >
+			<view class="view-header_root" v-if="hasUserInfo">
 				<view>
-					<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"  @click="navTo"></image>
+					<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl" @click="navTo"></image>
 					<image class="avatar-img2" :src="starUrl" v-if="userInfo.starId > 0"></image>
 				</view>
 				<text>{{userInfo.nickName | formatUserName}}</text>
 			</view>
 			<view class="view-header_root" v-else>
-				<userInfoBtn @onClickBtn="onGetAuthData" >
+				<userInfoBtn @onClickBtn="onGetAuthData">
 					<section class="un-auth">
 						<view>
 							<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"></image>
@@ -21,34 +21,34 @@
 				</userInfoBtn>
 			</view>
 		</header>
-		
+
 		<main>
 			<view class="top-cnt"></view>
 			<view class="btm-cnt">
 				<!-- <view class="view-item-container" v-for="item in cellDataArray" :key="index" @tap="jumpToLoveRecord(item)">
 					<text class="text-item-title">{{item}}</text>
 				</view> -->
-				<view class="view-item-container" >
-				<!-- 	<text class="text-item-title1">{{item}}</text> -->
-					<text class="text-item-title"  @click="navTo6">上传历史</text>
+				<view class="view-item-container">
+					<!-- 	<text class="text-item-title1">{{item}}</text> -->
+					<text class="text-item-title" @click="navTo6">上传历史</text>
 					<text class="text-item-title1" @click="navTo2">订单</text>
 					<text class="text-item-title2" @click="navTo1">反馈</text>
-					<text class="text-item-title3"  @click="navTo3">兑换</text>
-					
+					<text class="text-item-title3" @click="navTo3">兑换</text>
+
 				</view>
 				<!-- <view class="view-item-container logout-cell" @tap="logoutFansTeam">
 					<text :class="logOutCell.img"></text>
 					<text class="text-item-title">{{logOutCell.title}}</text>
 				</view> -->
 				<view class="bottom">
-					柚见食光
+					暖心食光
 				</view>
 				<view class="bottom" style="height: 20%;">
-					
+
 				</view>
 			</view>
 		</main>
-		
+
 		<!-- <neil-modal :auto-close="false" :show="logout" :confirmColor="'#F73657'" @cancel="bindBtn" @confirm="bindBtn"
 		 :confirmText="'确认'" :cancelText="'取消'">
 			<view class="logout-modal-content">
@@ -61,7 +61,9 @@
 <script>
 	// import neilModal from '@/components/neil-modal/neil-modal.vue'
 	import userInfoBtn from '@/components/common/userInfoBtn.vue'
-	import { mapGetters } from 'vuex'
+	import {
+		mapGetters
+	} from 'vuex'
 
 	export default {
 		components: {
@@ -70,9 +72,9 @@
 		},
 		data() {
 			return {
-				hasUserInfo:false,
+				hasUserInfo: false,
 				cellDataArray: [
-					"上传历史","订单","兑换","反馈"
+					"上传历史", "订单", "兑换", "反馈"
 				],
 				// logOutCell: {
 				// 	img: 'icon-font icon-redeem_icon',
@@ -86,7 +88,7 @@
 				starUrl: ''
 			}
 		},
-		
+
 		computed: {
 			...mapGetters([
 				'userInfo'
@@ -109,11 +111,11 @@
 				}
 			}
 		},
-		
+
 		onShow() {
 			// this.getInitData()
 			console.log("mine onShow")
-			
+
 			// let	res=uni.getStorageSync("hasUserInfo")
 			// 			this.hasUserInfo=res
 			// 			console.log("hasUserInfo")
@@ -125,15 +127,15 @@
 				this.logout = true;
 			},
 			onGetAuthData() {
-			    	//授权成功后的回调事件
-			    	console.log('success')
-				let res=uni.getStorageSync("hasUserInfo")
-				this.hasUserInfo=res
-				
-			    },
+				//授权成功后的回调事件
+				console.log('success')
+				let res = uni.getStorageSync("hasUserInfo")
+				this.hasUserInfo = res
+
+			},
 			//爱心记录
 			jumpToLoveRecord(item) {
-				switch(item.type) {
+				switch (item.type) {
 					case 1:
 						uni.navigateTo({
 							url: '../home'
@@ -152,58 +154,61 @@
 			bindBtn(type) {
 				this.logout = false
 			},
+
 			navTo(){	
 				
 				uni.navigateTo({
-				url:'./changeInfo/changeInfo'
+					url: './changeInfo/changeInfo'
 				})
 			},
 			//跳转我的反馈界面
+
 			navTo1(){
-				
+
 				uni.navigateTo({
-				url:'./feedBack/feedBack'
+					url: './feedBack/feedBack'
 				})
 			},
 			//跳转我的订单界面
-			navTo2(){
-				
+
+			navTo2() {
+				console.log("啦啦啦啦")
+
 				uni.navigateTo({
-				url:'./myOrder/myOrder'
+					url: './myOrder/myOrder'
 				})
 			},
-			navTo3(){
+			navTo3() {
 				uni.navigateTo({
-				url:'./ExchangeHistory/ExchangeHistory'
+					url: './ExchangeHistory/ExchangeHistory'
 				})
 			},
 			// 跳转我的上传历史界面
-			navTo6(){
+			navTo6() {
 				uni.navigateTo({
-				url:'./uploadHistory/index'
+					url: './uploadHistory/index'
 				})
 			}
-			
+
 		}
 	}
-	
-	
 </script>
 <!-- lang="less" -->
 
-<style lang="less"   scoped>
-
+<style lang="less" scoped>
 	// @import '@/static/iconFont.css',;
 	@import '@/static/css/font-icon.css';
+
 	.mine-container {
 		.user-info-container {
 			button {
 				line-height: 40upx;
 			}
-			
+
 		}
-		
+
 	}
+
 	.input-nickname {
 		width: 462upx;
 		height: 86upx;
@@ -230,14 +235,14 @@
 
 
 	.view-item-container {
-		
+
 		color: #FFFFFF 10000%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		
-		.text-item-title{
+
+		.text-item-title {
 			text-align: center;
 			letter-spacing: 5;
 			font-family: "方正新书宋-标准";
@@ -245,29 +250,32 @@
 			letter-spacing: 7px;
 			width: 12.5rem;
 		}
-		.text-item-title1,.text-item-title2,.text-item-title3 {
-			margin-top: 20%;
+
+		.text-item-title1,
+		.text-item-title2,
+		.text-item-title3 {
+			margin-top: 15%;
 			letter-spacing: 5;
 			font-family: "方正新书宋-标准";
 			font-size: 180%;
 			letter-spacing: 7px;
-			
+
 		}
-		
-		
+
+
 	}
-	
+
 
 	.view-header_root {
 		width: 750upx;
-		
+
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
 		position: absolute;
-		top:3% ;
-	
+		top: 3%;
+
 		text {
 			display: block;
 			height: 60upx;
@@ -275,6 +283,7 @@
 			font-size: 24upx;
 			color: #fff;
 		}
+
 		.un-auth {
 			display: flex;
 			flex-direction: column;
@@ -282,14 +291,14 @@
 	}
 
 	.view-header_root {
-			
+
 		>view {
 			&:nth-child(1) {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				flex-direction: row;
-			
+
 			}
 
 			&:nth-child(2) {
@@ -306,48 +315,49 @@
 
 
 	page {
-		height: 100%;
-		
+		height:100%;
+
 		.mine-container {
-			background: -webkit-linear-gradient(top, #151515 0%,#848f94 0%,#485f67 0%,#485e69 4%,#4a5e67 4%,#4d5c63 24%,#4e5b61 28%,#505b5d 28%,#53585a 40%,#57585a 42%,#595651 59%,#5e5452 63%,#5d544f 63%,#5e534f 67%,#5e544b 67%,#655146 89%,#665043 89%,#665043 97%,#694e43 97%,#694e43 100%);
+			background: -webkit-linear-gradient(top, #151515 0%, #848f94 0%, #485f67 0%, #485e69 4%, #4a5e67 4%, #4d5c63 24%, #4e5b61 28%, #505b5d 28%, #53585a 40%, #57585a 42%, #595651 59%, #5e5452 63%, #5d544f 63%, #5e534f 67%, #5e544b 67%, #655146 89%, #665043 89%, #665043 97%, #694e43 97%, #694e43 100%);
 			height: 100%;
+
 			>header {
-			
+
 				width: 750upx;
 				height: 312upx;
-			
+
 				display: flex;
 				flex-direction: row;
-				
+
 			}
 
 			>main {
-			position: relative;
-				
+				position: relative;
+				margin-top: 15%;
+
 				.btm-cnt {
-				
+
 					margin-top: 5%;
 					padding: 0 32upx;
-				
+
 					>view {
 						display: flex;
-						font-family:"arial, helvetica, sans-serif";
+						font-family: "arial, helvetica, sans-serif";
 						font-size: 32upx;
 						color: #ffffff;
 					}
-					
+
 				}
-				.bottom{
-						margin:20% auto;
-						margin-left: 40%;
-						position:relative;
-						font-size: 0.75rem;
-						
-					}
-				
+
+				.bottom {
+					margin-top: 29%;
+					margin-left: 40%;
+					display: fixed;
+					font-size: 0.75rem;
+
+				}
+
 			}
 		}
 	}
-
-	
 </style>

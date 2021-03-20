@@ -83,17 +83,12 @@
 			},
 			
 			// 管理员信息详情
-			navTo3(){
+			navTo3(item){
 				uni.navigateTo({
 				url:`./manageAdmin/managerDetails/managerDetails?item=`+ encodeURIComponent(JSON.stringify(item))
 				})
 			},
-			// 修改管理员
-			updated(id,name){
-				admin.updateAdmin(id,name).then(res=>{
-					console.log(res)
-				})
-			},
+			
 			// 删除管理员
 			deleted(id){
 				admin.deleteAdmin(id).then(res=>{

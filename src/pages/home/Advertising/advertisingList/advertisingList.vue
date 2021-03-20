@@ -29,7 +29,7 @@
 											 >
 											  
 						                    <view :id="'swiper_id_'+swiperCurrIndex" class="news_item" >
-						                  <image :src="item.url"></image>
+						                  <image :src="imgurl+item.url"></image>
 						                  <view class="right">
 						                  	<view class="tit">
 						                  		{{item.title}}
@@ -65,6 +65,7 @@
 			return{
 				type:"新闻",
 				Info:[],
+				imgurl:'',
 				// 轮播图数据
 				Slideshow:[],
 				tabList: [{
@@ -95,6 +96,7 @@
 			 this.setSwiperHeight();
 			 this.getSlideshow()
 			 this.allHistoty()
+			 this.imgurl = this.imgUrl
 		},
 		methods:{
 			// 根据类型获取所有公告

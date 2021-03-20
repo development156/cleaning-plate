@@ -7,7 +7,7 @@
 			duration="500">
 		                       <swiper-item v-for="item in images">
 		                         
-		                       		<image :src="imgUrl+item.url" class="image"></image>
+		                       		<image :src="imgurl+item.url" class="image"></image>
 		                      
 		                       </swiper-item>
 		                    
@@ -77,18 +77,18 @@
 				this.shopItem = item;
 				console.log(this.shopItem)
 				this.getSwiper()
+				this.imgurl = this.imgUrl
 			},
 			data(){
 				return{
 					options: [ {
 					           icon: 'cart',
 					           text: '购物车',
-							   
+							   imgurl:'',
 							// 这个是加入购物车的的总数量
 					           info: 0,
 							   
-							   // 设置的studentId
-							   studentId:1
+							  
 							   
 					       }],
 					       buttonGroup: [{
@@ -117,13 +117,15 @@
 				      })
 				     },
 				     buttonClick (e) {
-				       console.log(e)
+				      
 					   if(e.index==0){
-						   const studentId=1
+						
 						  
 						  const number = this.options[0].info+1
+						  console.log(number)
 						  console.log(this.shopItem.id)
-						AddToCart.addToCart(this.shopItem.id,studentId,number).then(res=>{
+						  // 添加购物车
+						AddToCart.addToCart(this.shopItem.id,number).then(res=>{
 							console.log(res)
 							uni.showToast({
 							  title:res.msg,
@@ -135,18 +137,13 @@
 					   }
 				      else{
 						 // 生成订单
-						 	
-						 	// 之后注册后在获取学号
-						 	let studentId =1
-							// 需要购买的数量
-						 	
 							let PIdList={
 								number:1,
 								pId:this.shopItem.id
 							}
 							
 						 	// 确认订单
-						 	Exchange.pay(studentId,PIdList).then(res=>{
+						 	Exchange.pay(PIdList).then(res=>{
 								console.log(res)
 						 		uni.showToast({
 						 		  title:res.msg,
@@ -230,7 +227,7 @@
 		border-radius: 0.625rem;
 		background: white;
 		margin: 5% auto;
-		height:3.125rem;
+		height:4.125rem;
 	
 		font-size:0.625rem;
 		display: flex;
