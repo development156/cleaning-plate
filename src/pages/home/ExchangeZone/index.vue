@@ -11,7 +11,7 @@
 			<!-- 	积分兑换 -->
 			
 	<view class="hot_goods" v-if="flag==1">
-		<view class="tit">我的积分:{{myInfo.integrate}}</view>
+		<view class="tit"  style="color: #C9A65E;">我的积分:{{myInfo.integrate}}</view>
 		<view class="goods_list">
 			      <navigator class="goods_item"
 			      v-for="(item,index) in goodsList"
@@ -225,7 +225,8 @@ export default{
 				padding-left: 5%;
 				// 字间距
 				letter-spacing: 3px;
-				background: rgba(201, 166, 94, 0.8);
+			background: -webkit-linear-gradient(top, #151515 0%, #848f94 0%, #485f67 0%, #485e69 4%, #4a5e67 4%, #4d5c63 24%, #4e5b61 28%, #505b5d 28%, #53585a 40%, #57585a 42%, #595651 59%, #5e5452 63%, #5d544f 63%, #5e534f 67%, #5e544b 67%, #655146 89%, #665043 89%, #665043 97%, #694e43 97%, #694e43 100%);
+	
 			}
 		}
 		.goods_list{

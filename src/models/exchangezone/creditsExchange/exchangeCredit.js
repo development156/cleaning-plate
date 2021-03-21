@@ -1,5 +1,6 @@
 import {HTTP} from '../../../utils/http.js'
 class exchangeCredit extends HTTP{
+// 积分兑换
 	exchange(PID,studentId,Date,Pname,url,integrate){
 		return this.request({
 			url:'/covert/getIntegrationGoods',

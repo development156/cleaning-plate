@@ -60,11 +60,15 @@
 			        this.length =  event.target.value.length
 			        },
 		getFeedBack(){
+			console.log(this.description)
 			myFeedBack.postFeedback(this.studentId,this.description).then(res=>{
 				console.log(res)
 				uni.showToast({
 				  title:res.msg,
-				  icon: "none"
+				  icon: "none",
+				  success(){
+					  this.description=''
+				  }
 				});
 			})
 			
@@ -103,9 +107,6 @@
 								let textMertics = ctx.measureText(item.bullet)
 								// 根据TextMertics对象获取文字宽度
 								let textWidth = textMertics.width
-								
-								
-								
 							})
 							ctx.draw()
 							var lastFrameTime = 0;

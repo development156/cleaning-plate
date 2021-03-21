@@ -18,7 +18,7 @@
 					<view class="content" v-for="(content,index) in contentList">
 						<view class="item1">
 								<text>暖心食光</text>
-								<text>交易时间{{content.receivingDate}}</text>
+								<text>{{content.date}}</text>
 						</view>
 							<view class="item2" @click="navTo(content.id)">
 								<image :src="imgurl+content.url">
@@ -27,7 +27,8 @@
 								<text>{{content.shippingAdress}}</text>
 								<text>￥{{content.money}}</text>
 							</view>
-							<view class="item3" @click="acquireOrder(content.id)" v-show="isShow">确认订单</view>
+							<view class="item3" @click="acquireOrder(content.id,index)" v-if="isShow">确认订单</view>
+							<view class="item3" @click="topay(content.id)" v-if="isShow1">去付款</view>
 					</view>	
 					
 				
@@ -82,7 +83,8 @@
 				// 临时设置的学号
 				studentId:1,
 				state:'',
-				isShow:false
+				isShow:false,
+				isShow1:false
 				}
 			},
 			components: {
@@ -99,18 +101,23 @@
 				changeTab(e){
 				                 console.log(e);
 				                 this.swiperCurrIndex = e.index;
-								 
+								 console.log( this.swiperCurrIndex)
 								 this.getOrder()
 								 if(this.swiperCurrIndex ==2){
 									 this.isShow = true
+								 }else{
+									this.isShow = false
+								}
+								 if(this.swiperCurrIndex ==1){
+								 	 this.isShow1 = true
+								 }else{
+									  this.isShow1 =false
 								 }
-								 else{
-									  this.isShow = false
-								 }
+								
+								
 				             },
 				//swiper组件的切换返回值（执行其他的方法只需要在这里执行即可。）
 				            swiperChange(e) {
-								
 				                this.swiperCurrIndex = e.detail.current;	
 				                this.setSwiperHeight(); //例如动态获取高
 				            },
@@ -137,7 +144,6 @@
 						url:`orderDetails/orderDetails?item=`+ encodeURIComponent(JSON.stringify(id))
 						})
 					}
-					
 				},
 				
 				// 获取订单列表
@@ -160,16 +166,28 @@
 				},
 				
 				// 确认订单
-				acquireOrder(id){
+				acquireOrder(id,index){
 					getOrder.acquireOrder(this.studentId,id).then(res=>{
 						console.log(res)
+						const _this = this
 						uni.showToast({
 						  title:res.msg,
-						  icon: "none"
+						  icon: "none",
+						  success(){
+							  	_this.contentList.splice(index, 1);
+						  }
 						})
+				
 					})
 					
 				},
+				// 去付款订单
+				topay(id){
+					
+					uni.navigateTo({
+					url:`../../exchangeZone/acquireExchange/payAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(id))
+					})
+				}
 			
 			}
 		}

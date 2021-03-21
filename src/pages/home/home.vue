@@ -13,7 +13,7 @@
 		<view class="top">
 
 			<view class="box1" @click="confirmDialog">
-				<view class="iconfont icon-xiangjipaizhao image" style="font-size:3.125rem"></view>
+				<view class="iconfont icon-xiangjipaizhao image" style="font-size:3.125rem;margin-left: 30% ;"></view>
 				<text>上传照片</text>
 			</view>
 

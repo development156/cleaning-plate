@@ -7,8 +7,8 @@
 		
 		<view class="item2" >
 			<view class="squ" v-for=" item in list">
-			<image></image>
-			<view class="con2" @click="navTo3()">
+			<image :src="item.avatarUrl"></image>
+			<view class="con2" @click="navTo3(item)">
 				<text>{{item.name}}</text>
 				<text>{{item.profession}}</text>
 			</view>
@@ -48,8 +48,8 @@
 				})
 			},
 		
-			navTo3(){
-				this.$emit('navTo3');
+			navTo3(item){
+				this.$emit('navTo3',item);
 			},
 			navTo1(){
 				this.$emit('navTo1');
@@ -66,7 +66,6 @@
 			height: 3.5625rem;
 			display: flex;
 			
-			margin-top: 5%;
 			background-color: white;
 			justify-content: space-around;
 			width: 98%;
@@ -99,14 +98,15 @@
 				image{
 					height: 3.125rem;
 					width: 3.125rem;
-					margin: 10% 0 5% 3%;
+					margin: 10% 0 5% 0%;
 					border-radius: 100%;
-					border: 1px solid red;
+				
 				}
+				border-bottom: 1px solid gainsboro;
 				.con2{
 					display: flex;
 					flex-direction: column;
-					margin: 5% 0 5% 2%;
+					margin: 0 0 5% 0%;
 					text:nth-child(1){
 						color: #C9A65E;
 						

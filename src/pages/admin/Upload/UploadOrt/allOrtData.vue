@@ -1,7 +1,7 @@
 <template>
 	<view>
 	<view class="container1">
-		<span class="tips1">{{array.length}}条数据</span>
+		<span class="tips1" >{{array.length}}条数据</span>
 		
 		<view class="one-data">
 		<span>剩菜 </span>
@@ -38,10 +38,12 @@
 	
 	export default{
 		name:'allOrtData',
+		
 		data(){
 			return{
 				TotalWasteInfo:'',
 				hasNodata:false,
+				show:true,
 				array:[{
 					day: null,
 					id: 1,

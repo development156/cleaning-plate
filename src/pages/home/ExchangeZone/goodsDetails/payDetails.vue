@@ -145,6 +145,7 @@
 						 	// 确认订单
 						 	Exchange.pay(PIdList).then(res=>{
 								console.log(res)
+								console.log("啦啦啦")
 						 		uni.showToast({
 						 		  title:res.msg,
 						 		  icon: "none"

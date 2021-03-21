@@ -2,15 +2,17 @@
 	<view class="mine-container">
 		
 		<view class="main">
-			<view class="info">总共积分<span style="color: rgba(243, 227, 178, 100);
-"> {{myInfo.integrate}}</span> 固定积分<span style="color: rgba(243, 227, 178, 100);"> {{myInfo.fixedintegral}}</span></view>
+			<view class="info">总共积分
+			<span style="color:#7094AE;
+"> {{myInfo.integrate}}
+</span> 固定积分<span style="color: #7094AE;"> {{myInfo.fixedintegral}}</span></view>
 	
 			<view class="item-list">
 		            <view class="image-item" v-for="(item,index) in array" :key="index">
-					<view class="font1">	柚光自营＞ <span class="font2">已完成</span></view>
+					<view class="iconfont icon-shangcheng font1">	暖心食光 <span class="font2">已完成</span></view>
 						<view style="margin-top: 30rpx;">
 		                <view class="image-content">
-		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='"http://8.131.230.3:8080/YouGuang_war/"+item.url'
+		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src="imgurl+item.url"
 		                        @error="imageError"></image>
 		                </view>
 		                <view class="image-title">{{item.description}}</view>
@@ -34,8 +36,12 @@
 		        return {
 					have:false,
 		            array: [],
+					imgurl:''
 		
 		}
+		},
+		onLoad(){
+			 this.imgurl = this.imgUrl
 		},
 		computed: {
 			...mapGetters([

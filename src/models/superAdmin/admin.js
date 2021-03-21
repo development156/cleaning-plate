@@ -24,13 +24,13 @@ class Admin extends HTTP {
 	}
 	
 	// 增加管理员
-	addAdmin(studentId){
+	addAdmin(ID){
 		return this.request({
 		    url: `/superAdmin/addAdmin`,
 			method: 'GET',
 			
 			data:{
-				studentId:studentId
+				ID:ID
 			}
 		})
 	}

@@ -16,7 +16,7 @@ class MyFeedBack extends HTTP {
 	
 	feedbackList(){
 		return this.request({
-		    url: `/admin/getFeedBackByAdmin`,
+		    url: `/common/getFeedBackByAdmin`,
 			method: 'GET',
 			
 		})

@@ -1,17 +1,12 @@
 <template>
 	<view>
-		    <uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#4cd964"></uni-segmented-control>
+		 
 		        <view class="content">
 		            <view v-if="current === 0">
 		                <DataPresenceWeek></DataPresenceWeek>
+						<all-ort-data ></all-ort-data>
 		            </view>
-		            <view v-if="current === 1">
-		                <DataPresence></DataPresence>
-		            </view>
-		          
 		        </view>
-		
-		
 		
 	</view>
 </template>
@@ -20,19 +15,21 @@
 	import DataPresence from './DataPresence.vue'
 	import DataPresenceWeek from './DataPresenceWeek.vue'
 	import uniSegmentedControl from "@/components/common/uni-segmented-control.vue"
-
+	import allOrtData from '../../admin/Upload/UploadOrt/allOrtData.vue'
 	export default {
 	
 		 data() {
 		        return {
-		            items: ['选项卡1','选项卡2'],
-		            current: 0
+		            items: ['剩菜量','上传率'],
+		            current: 0,
+					show:false
 		        }
 		    },
 		components:{
 			    DataPresence,
 				DataPresenceWeek,
-				uniSegmentedControl
+				uniSegmentedControl,
+				allOrtData 
 			},
 		  methods: {
 		        onClickItem(e) {

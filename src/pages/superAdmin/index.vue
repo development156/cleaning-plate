@@ -3,7 +3,7 @@
 		<view class="xTab">
 			<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:70,spacing: 150,background:'white',color:'#666666',actColor:'#C9A65E',actSize:40,size:40,position:0}"></xTab>
 		</view>	
-		<manage-admin v-if="index==0" :list="list" @navTo1="navTo1" @navTo3="navTo1" @updated="updated" @deleted="deleted"></manage-admin>
+		<manage-admin v-if="index==0" :list="list" @navTo1="navTo1" @navTo3="navTo3" @updated="updated" @deleted="deleted"></manage-admin>
 		<manage-user v-if="index==1" :rolelist="rolelist" @add="add" @navTo="navTo" ></manage-user>
 		
 	</view>
@@ -70,9 +70,16 @@
 				})
 			},
 			//添加管理员
-			add(id){
+			add(id,index){
 				admin.addAdmin(id).then(res=>{
-					console.log(res)
+					if(res.code==200){
+						uni.showToast({
+						  title: res.msg,
+						  icon: "none"
+						});
+						this.rolelist.splice(index,1)
+					}
+					
 				})
 			},
 			// 跳转到用户详情
@@ -94,6 +101,10 @@
 				admin.deleteAdmin(id).then(res=>{
 					console.log(res)
 					this.list.splice(id, 1);
+					uni.showToast({
+					  title: '删除成功',
+					  icon: "none"
+					});
 				})
 			},
 			// 查看用户

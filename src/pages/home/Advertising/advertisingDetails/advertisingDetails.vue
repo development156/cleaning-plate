@@ -67,7 +67,7 @@
 			width: 85%;
 			height: 14.125rem;
 			margin: 10% auto;
-			border: 1px solid red;
+			
 		}
 		.foo{
 			font-size: 1.25rem;

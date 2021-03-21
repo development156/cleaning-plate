@@ -1,15 +1,17 @@
 <template>
 	<view>
 		
-		<view class="person" v-for="item in rolelist" >
-			<image></image>
-			<view class="left" @click="navTo(item)">
-				<view>{{item.name}}</view>
+		<view class="item2" >
+			<view class="squ" v-for="(item,index) in rolelist">
+			<image :src="item.avatarUrl"></image>
+			<view class="con2" @click="navTo(item)">
+				<view style="color: #C9A65E;">{{item.name}}</view>
 				<view>{{item.applyDate}}</view>
 			</view>
-			<view @click="add(item.studentId)" class="iconfont icon-jia " style="font-size: 1.875rem;"></view>
-		</view>
+			
+			</view>
 		
+		</view>
 		
 	</view>
 </template>
@@ -38,9 +40,9 @@
 		methods:{
 			
 			//添加管理员
-				add(id){
+				add(id,index){
 					
-					this.$emit('add',id);
+					this.$emit('add',id,index);
 				},
 				navTo(item){
 					this.$emit('navTo',item);
@@ -63,40 +65,46 @@
 			margin:10% 10% 10% 4% ;
 			font-size: 0.875rem;
 		}
-		.person{
-			background-color: white;
-			border-radius: 0.3125rem;
+	.item2{
+		
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		width: 98%;
+		margin: 5% auto;
+		border-radius: 0.3125rem;
+		.squ{
 			
-			width: 98%;
-			margin: 5% auto;
-			height: 5.625rem;
 			display: flex;
 			justify-content: space-around;
-			.left{
+			image{
+				height: 3.125rem;
+				width: 3.125rem;
+				margin: 10% 0 5% 3%;
+				border-radius: 100%;
+			
+			}
+			border-bottom: 1px solid gainsboro;
+			.con2{
 				display: flex;
 				flex-direction: column;
+				margin: 5% 0 5% 2%;
 				justify-content: space-around;
-				margin: 1% 0 0 5%;
-				view{
-					&:nth-child(2){
-						font-size: 0.625rem;
-					}
+				text:nth-child(1){
+					color: #C9A65E;
+					
+				}
+				text{
+					margin-top: 20%;
 				}
 			}
-		
-			image{
-				height: 2.375rem;
-				width: 2.375rem;
-				border-radius: 100%;
-				border: 1px solid red;
-				margin: 10% 0 0 5%;
-			}
-			view{
-				&:nth-child(3){
-					margin-top: 10%;
-				}
+			text{
+				margin-top: 15%;
 			}
 		}
+		
+	}
+	
 	}
 	
 	

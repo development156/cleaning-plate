@@ -25,9 +25,10 @@
 import {UploadHistory} from '@/models/MyModel/uploadHistory.js'
 const uploadHistory = new UploadHistory()
  export default{
+	
 	 onLoad(){
-		 this.getuploadHistory()
-		 this.imgurl = this.imgUrl
+	 	 this.imgurl = this.imgUrl
+		  this.getuploadHistory()
 	 },
 	 data(){
 		 return{

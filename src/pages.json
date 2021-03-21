@@ -12,9 +12,9 @@
 		{
 			"path": "pages/superAdmin/index",
 			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000"
-
+				"navigationBarTitleText": "超级管理员",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
 			}
 		},
 

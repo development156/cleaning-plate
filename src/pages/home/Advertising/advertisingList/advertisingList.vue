@@ -14,7 +14,7 @@
              	interval="2000" 
              	duration="500">
                  <swiper-item v-for="item in Slideshow">
-                 <image :src="item"></image>
+                 <image :src="imgurl+item"></image>
                  </swiper-item>
                                     
                  </swiper>
@@ -127,16 +127,20 @@
 		            },
 		 //动态设置swiper高度
 		            setSwiperHeight() {
-		                const that = this;
-		                let obj = uni.createSelectorQuery().in(this).select("#swiper_id_" + (this.swiperCurrIndex));
-		                obj.boundingClientRect(function(data) { //data - 各种参数
-		                    if (data) {
-	    //得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
-		                        that.swiperHegiht = data.height * 2 + 110; 
-		                    }
-		                }).exec();
-		            },
-					
+		                            const that = this;
+		            			
+		                            let obj = uni.createSelectorQuery().in(this).select("#swiper_id_" + (this.swiperCurrIndex));
+		            			
+		                            obj.boundingClientRect(function(data) { //data - 各种参数
+		                                if (data) {
+		            //得到px单位的高度，通过px转换rpx的单位换算(加上底部的间距或者存在底部按钮高度合成最后的rpx高度)
+		            						
+		            						that.swiperHegiht = data.height+50+'px'; 
+		            						console.log(that.swiperHegiht)
+		                                }
+		                            }).exec();
+		                        },
+		            
 					
 			// 获取所有人兑换的列表,以小喇叭的形式 .........................................................
 			allHistoty(){
@@ -163,16 +167,19 @@
 			}
 			  swiper {
 			            min-height: 80vh;
+						image{
+							width: 100%;
+							border-radius: 0.625rem;
+						}
+						
 			        }
 			.swiper{
 				width: 95%;
 				height: 12.5rem;
-				border: 1px solid rgba(0, 0, 0, 0.2);
-			
 				margin: 0 auto;
 				margin-top: 2.125rem;
 				border-radius: 0.625rem;
-			
+				margin-bottom: 10%;
 			}
 		.news_item{
 				

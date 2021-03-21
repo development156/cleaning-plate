@@ -69,6 +69,7 @@
 			this.imgurl = this.imgUrl
 		},
 		methods:{
+			// 进行兑换
 			confirm(){
 				const time = new Date()
 				const studentId = 1
