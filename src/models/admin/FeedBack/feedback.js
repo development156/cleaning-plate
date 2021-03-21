@@ -4,7 +4,7 @@ class FeedBack extends HTTP {
 	//管理员查看反馈列表
 	checkFeedbackList() {
 	    return this.request({
-	        url: `/admin/getFeedBackByAdmin`,
+	        url: `/common/getFeedBackByAdmin`,
 			method: 'GET',
 			
 	    })
@@ -12,7 +12,7 @@ class FeedBack extends HTTP {
 	//管理员某个
 	checkFeedback(id) {
 	    return this.request({
-	        url: `/admin/getFeedBackByAdmin`,
+	        url: `/common/getFeedBackByAdmin`,
 			method: 'GET',
 			data:{
 			"ID":id,

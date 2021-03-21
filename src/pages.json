@@ -1,6 +1,12 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
+	{
+			"path": "pages/home/home",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
 		{
 			//管理员首页
 			"path": "pages/admin/Upload/index",
@@ -11,23 +17,15 @@
 			}
 		
 		},
+// 
+// 		// 用户端
+// 		{
+// 			"path": "pages/home/home",
+// 			"style": {
+// 				"navigationStyle": "custom"
+// 			}
+// 		},
 
-		// 用户端
-		{
-			"path": "pages/home/home",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-
-		{
-			"path": "pages/superAdmin/index",
-			"style": {
-				"navigationBarTitleText": "柚光",
-				"backgroundColor": "#000000" //FF8C00
-			}
-		},
-		
 		{
 			"path": "pages/superAdmin/index",
 			"style": {
@@ -50,17 +48,17 @@
 
 		},
 
-		{
-			//管理员首页
-			"path": "pages/admin/Upload/index",
-			"style": {
-				"navigationBarTitleText": "管理员端",
-				"navigationBarBackgroundColor": "#FFFFFF",
-				"navigationBarTextStyle": "black"
-			}
-
-
-		},
+// 		{
+// 			//管理员首页
+// 			"path": "pages/admin/Upload/index",
+// 			"style": {
+// 				"navigationBarTitleText": "管理员端",
+// 				"navigationBarBackgroundColor": "#FFFFFF",
+// 				"navigationBarTextStyle": "black"
+// 			}
+// 
+// 
+// 		},
 
 		{
 
@@ -209,8 +207,8 @@
 			"path": "pages/admin/AddSocre/addSocre",
 			"style": {
 				"navigationBarTitleText": "加分",
-				"navigationBarBackgroundColor": "#FFFFFF",
-				"navigationBarTextStyle": "black"
+				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarTextStyle": "white"
 			}
 
 		},

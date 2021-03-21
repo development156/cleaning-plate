@@ -23,7 +23,10 @@
 			</navigator>
 		
 		</view>
+		
+		<view v-if="judgmentAuthority">
 		<GodenButton :delivery="btn"></GodenButton>
+		</view>
 		
 	</view>
 </template>
@@ -40,6 +43,8 @@
 		
 		data(){
 			return{
+			judgmentAuthority: true,
+
 			btn:{
 				url:'addData',
 				content:'添加数据'
@@ -51,7 +56,7 @@
 				wasteFood: 20,
 			},
 			
-			]
+			],
 			}
 		},
 		components:{
@@ -61,6 +66,10 @@
 		},
 		created() {
 			this.getAllOrt();
+			let judgmentOfAuthority = uni.getStorageSync('judgmentOfAuthority');
+			if(judgmentOfAuthority==1){
+				this.judgmentAuthority=false;
+			}
 		},
 		methods:{
 			getAllOrt(){

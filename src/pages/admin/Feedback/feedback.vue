@@ -113,7 +113,7 @@
 				
 			checkfeedList:function(){
 				feedBack.checkFeedbackList().then(res => {
-					
+					console.log(res)
 					this.array = res.data;
 					if(res.code==1005){
 						this.have=true;

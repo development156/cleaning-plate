@@ -150,18 +150,30 @@
 							
 							id++;		
 							
-						element.windowsList.forEach(function(element2){	
-							console.log(element2)
-							th.allWindowList.push({
-								name:element2.windows,id:element2.id,belong:element.floor
-							})
-							
-						})		
+// 						element.windowsList.forEach(function(element2){	
+// 							console.log(element2)
+// 							th.allWindowList.push({
+// 								name:element2.windows,id:element2.id,belong:element.floor
+// 							})
+// 							
+// 						})		
 						i++;
 						
 					// console.log(th.windowList)	
 					})
 					th.optionfloor=th.floors[0].name
+					manageCanteen.getCanteenWindows({
+						"canteenName": this.optionhall,
+						"floor": th.optionfloor
+					}).then( res => {
+					var wdowList=[]
+					var i=1;
+					res.data.forEach( d =>{
+						wdowList.push({name:d,id:i}) 
+							i++;
+					})
+					this.windowList=wdowList;
+						})
 					}
 						
 				}).catch(err => {
@@ -197,18 +209,18 @@
 				})
 			},
 			changeTabHall(e){
-				console.log(e)
+				
 				// this.optionhall = e.target.value
 				
 				this.index2 = e.detail.value;
 				this.optionhall =this.halls[this.index2]
-				console.log("this.optionhall")
-				console.log(this.optionhall)
+// 				console.log("this.optionhall")
+// 				console.log(this.optionhall)
 				this.getCanteeInfo(this.optionhall)
 			
 			},
 			changeTabFloor(e){
-				console.log(e);
+				
 				// this.optionfloor= e.target.value
 				this.index3 = e.detail.value;
 				this.optionfloor=this.optionfloor[this.index3]
@@ -217,14 +229,18 @@
 			changeFloorTab(e){
 				// this.allWindowList=[];
 				this.windowList=[];
-				console.log(e);
-				console.log(this.optionhall);
+				
 				manageCanteen.getCanteenWindows({
-					"canteenName": "第三食堂",
-					"floor": "3楼"
+					"canteenName": this.optionhall,
+					"floor": e.name
 				}).then( res => {
-				console.log("res")
-				console.log(res)
+				var wdowList=[]
+				var i=1;
+				res.data.forEach( d =>{
+					wdowList.push({name:d,id:i}) 
+						i++;
+				})
+				this.windowList=wdowList;
 					}).catch(err => {
 					uni.showModal({
 							content: "error",
@@ -243,7 +259,7 @@
 			},
 			changeTab(e){
 				
-			  console.log(e);
+			  
 			   // this.option = e.target.value
 			   this.index1 = e.target.value;
 			   this.option=this.options[this.index1]
