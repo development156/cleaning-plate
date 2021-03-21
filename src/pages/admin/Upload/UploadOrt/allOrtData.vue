@@ -1,7 +1,7 @@
 <template>
 	<view>
 	<view class="container1">
-		<span class="tips1">{{array.length}}条数据</span>
+		<!-- <span class="tips1">{{array.length}}条数据</span> -->
 		
 		<view class="one-data">
 		<span>剩菜 </span>
@@ -137,9 +137,14 @@
 		justify-content:center;
 		
 		.tips1{
-			position: absolute;
-			left: 78rpx;
-			top: 78rpx;
+// 			position: relative;
+// 			left: 78rpx;
+// 			top: 78rpx;
+			display: block;
+			
+			margin-left: 18rpx;
+			width: 20%;
+			// margin-top: 18rpx;
 			color: rgba(151, 151, 151, 100);
 			font-size: 28rpx;
 		}
@@ -148,7 +153,7 @@
 		width: 664rpx;
 		height: 110rpx;
 		line-height: 110rpx;
-		margin-top: 138rpx;
+		margin-top: 108rpx;
 		display: flex;
 		border: 2rpx solid #C8C7CC;
 		
