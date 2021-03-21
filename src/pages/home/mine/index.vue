@@ -16,7 +16,7 @@
 							<image class="avatar-img" :src="userInfo.avatarUrl | formatAvatarUrl"></image>
 							<image class="avatar-img2" :src="starUrl" v-if="userInfo.starId > 0"></image>
 						</view>
-						<text>uni-小程序 默认用户名称</text>
+						<text>{{userInfo.nickName | formatUserName}}</text>
 					</section>
 				</userInfoBtn>
 			</view>
@@ -107,7 +107,7 @@
 				if (val) {
 					return val
 				} else {
-					return 'uni-小程序 默认用户名'
+					return '游客模式'
 				}
 			}
 		},
@@ -154,22 +154,26 @@
 			bindBtn(type) {
 				this.logout = false
 			},
-			navTo() {
-				console.log("啦啦啦啦")
+
+			navTo(){	
+				
 				uni.navigateTo({
 					url: './changeInfo/changeInfo'
 				})
 			},
 			//跳转我的反馈界面
-			navTo1() {
-				console.log("啦啦啦啦")
+
+			navTo1(){
+
 				uni.navigateTo({
 					url: './feedBack/feedBack'
 				})
 			},
 			//跳转我的订单界面
+
 			navTo2() {
 				console.log("啦啦啦啦")
+
 				uni.navigateTo({
 					url: './myOrder/myOrder'
 				})

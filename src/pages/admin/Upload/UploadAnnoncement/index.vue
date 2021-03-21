@@ -53,24 +53,29 @@
 				 //imgArr:[],
 				 notice:{
 						"title":"",//我是标题
-						"urlList":this.photoFiles,
+						"urlList":'',
 						"article":'',//我是内容
 						"type":'',
 				},
-				photoFiles: [
-				    ],
+				photoFiles:''
 				
 			}
 		},
 		components:{
 			uploadImg
 		},
+		created() {
+			this.notice.type = this.array[this.index];
+		},
 		methods:{
 		addPic:function(data){
 			// console.log("data")
 			// console.log(data)
 			 // photoFiles.push(img);
-			this.photoFiles=data;
+			this.notice.urlList=data[0].path;
+			
+			console.log("this.photoFiles");
+			console.log(this.notice.urlList)
 		},
 		bindTextAreaBlur: function (e) {
 			            console.log(e.detail.value)
@@ -78,7 +83,9 @@
 		bindPickerChange: function(e) {
 		            console.log('picker发送选择改变，携带值为', e.target.value)
 		            this.index = e.target.value;//水果1  产品2  宣传3
+					
 					this.notice.type = this.array[this.index];
+					
 					
 		        },
 		imageError: function(e) {
@@ -90,16 +97,17 @@
 			uni.showLoading({
 				title: '正在加载...'
 			})
+			console.log(this.notice)
 			upload.uploadNotice(this.notice).then(res => {
 					console.log(res)
 					uni.hideLoading()
-					this.array=res.data
+					// this.array=res.data
 					
 					uni.showToast({
 					    title: '上传成功',
 					    duration: 1400
 					});
-					this.photoFiles=''
+					// this.photoFiles=''
 					this.notice=''
 					
 	

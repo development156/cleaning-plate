@@ -8,7 +8,7 @@
 			<view class="touch-list list-touch clearfix" @touchstart="touchS" @touchmove="touchM" @touchend="touchE" :data-index="index" :style="item.txtStyle" ><!-- @click="goDetail(item.id)" -->
 			  
 			
-			<navigator :url="'./inputFeed?id='+item.id" hover-class="navigator-hover"> <!-- hover-class="navigator-hover" -->
+			<navigator :url="'./inputFeed?id='+item.id"  hover-class="none"> <!-- hover-class="navigator-hover" -->
 			<view class="info-item1">
 	            <view class="info_image">
 
@@ -113,7 +113,7 @@
 				
 			checkfeedList:function(){
 				feedBack.checkFeedbackList().then(res => {
-					
+					console.log(res)
 					this.array = res.data;
 					if(res.code==1005){
 						this.have=true;

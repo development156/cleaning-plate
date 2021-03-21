@@ -18,9 +18,13 @@
 			 :style="{ width: boxWidth, height: boxHeight, backgroundColor: styles.backgroundColor }" class="uni-fab__content"
 			 elevation="5">
 				<view v-if="flexDirectionStart || horizontalLeft" class="uni-fab__item uni-fab__item--first" />
-				<view v-for="(item, index) in content" :key="index" :class="{ 'uni-fab__item--active': isShow }" class="uni-fab__item"
+				
+				
+				<view v-for="(item, index) in content" :key="index" :class="{ 'uni-fab__item--active': isShow }" class="uni-fab__item iconfont" 
 				 @click="_onItemClick(index, item)">
-					<image :src="item.active ? item.selectedIconPath : item.iconPath" class="uni-fab__item-image" mode="widthFix" />
+				 
+				 <!-- item.active ? item.selectedIconPath : -iconPath -->
+					<image src="@/static/images/admin/万能搜索.png" class="uni-fab__item-image" mode='widthFix' />
 					<text class="uni-fab__item-text" :style="{ color: item.active ? styles.selectedColor : styles.color }">{{ item.text }}</text>
 				</view>
 				<view v-if="flexDirectionEnd || horizontalRight" class="uni-fab__item uni-fab__item--first" />

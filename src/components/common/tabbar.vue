@@ -2,7 +2,7 @@
     <view class="uni-tabbar">
 		
         <view class="uni-tabbar__item" v-for="(item,index) in tabbar" :key="index" @tap="changeTab(item)">
-            <view class="icon" :class="[item.fontIcon , item.pagePath == pagePath?'uni-active':'']"></view>
+            <view class="iconfont" :class="[item.fontIcon , item.pagePath == pagePath?'uni-active':'']"></view>
             <!-- 上面使用的是字体图标，解决切换页面的时候图标会闪的效果，毕竟每切换一个页面都会闪一下不太好看，可以切换使用下面的图片方式 -->
             <view v-if="false" class="uni-tabbar__bd">
                 <view class="uni-tabbar__icon">
@@ -108,7 +108,10 @@
  //    [nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
  //        flex-direction: unset;
  //    }
-	
+	.iconfont{
+		width: 30rpx;
+		margin: 0 auto;
+	}
     .uni-tabbar {
         position: fixed;
 		left: 0;

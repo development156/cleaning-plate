@@ -8,6 +8,14 @@ class ManageCanteen extends HTTP {
 			method: 'GET',
 	    })
 	}
+	//根据食堂和楼层 获得窗口
+	getCanteenWindows(params) { //
+	    return this.request({
+	        url: `/common/getCanteenWindows`,
+			method: 'GET',
+			data:params
+	    })
+	}
 	//获取相应食堂的楼层及窗口信息
 	getCanteenInfo(params) { //
 	    return this.request({

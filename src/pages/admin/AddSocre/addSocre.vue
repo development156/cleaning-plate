@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="tab-view" >
 		<!-- <xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:80,spacing: 200,background:'#1989FA',color:'#666666',actColor:'#C9A65E',size:32,position:0}"></xTab> -->
-		<xTab v-if="isShow" :value="colleges" @changeTab="changeTabAcademy" actType="underline" :config="{spacing: 125,background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
+		<xTab v-if="isShow" :value="colleges" @changeTab="changeTabAcademy" actType="underline" :config="{spacing: 30,right:10, background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
 		</view>
 	
 	
@@ -23,8 +23,8 @@
 			<image></image>
 			<text>总积分 ：{{item.professionIntegral}}</text>
 		</view>
-		</view>
 		
+		</view>
 		
 		<view class="line"></view>
 	</view> <!-- //  -->
@@ -74,7 +74,7 @@
 	import { AddScocre } from '@/models/admin/AddSocre/addSocre.js'
 	const addScocre = new AddScocre();	
 
- import xTab from '@/components/common/poiuy-xTab/xTab.vue';
+ import xTab from '@/components/common/poiuy-xTab/xTab2.vue';
 	export default{
 		name:"addSocre",
 		
@@ -344,7 +344,12 @@
 
 <style lang="scss" scoped>
 	page{
-	
+	.tab-view{
+		// margin: 0 auto;
+		
+		box-shadow:0px 8rpx 14rpx #D8DCE6;
+		overflow-x: scroll;
+	}
 	.container{
 		display: flex;
 		flex-direction: column;
@@ -388,7 +393,7 @@
 			.item1{
 				display: flex;
 				flex-direction: column;
-				font-size: 0.6rem;
+				font-size: 0.79rem;
 				justify-content: space-evenly;
 				text:nth-child(2){
 					color: rgba(151, 151, 151, 100);
@@ -399,7 +404,7 @@
 				font-weight: bold;
 				color: #C9A65E;
 				margin-top: 6%;
-				font-size: 0.71rem;
+				font-size: 0.81rem;
 			}
 			.item3{
 				display: flex;

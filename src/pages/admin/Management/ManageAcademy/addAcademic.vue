@@ -56,7 +56,7 @@
 						duration: 1400
 					});
 					
-					uni.navigateTo({
+					uni.redirectTo({
 						url:'./index'
 					})
 					}

@@ -23,8 +23,10 @@ class FoodUpload extends HTTP {
 	
 	//获得所有的菜品	
 	getMenu(params){
+		console.log("333")
+		console.log(params)
 		return this.request({
-		    url: `/admin/getMenu`,
+		    url: `/common/getMenu`,
 			method: 'GET',
 			data: params
 		})

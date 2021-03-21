@@ -1,11 +1,11 @@
 <template>
 
 	<view >
-
+<view style="background: #FFFFFF;">
 		<xTab :value="tabList"  
 		@changeTab="changeTab" actType="underline" 
-		:config="{padding:100,spacing: 200,background:'#1D5397',color:'#666666',actColor:'#D97F00',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
-
+		:config="{padding:100,spacing: 200,background:'#1D5397',color:'#666666',actColor:'#C9A65E',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
+</view>
 		<!-- :url="`/pages/details/index?id=${item.target}`" -->
 			<!-- 开始循环遍历 -->
 			
@@ -19,9 +19,10 @@
 			      :key="index"
 				   :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 			     >
-			      <image 
-			      :src="imgUrl+'/' +item.url">
+			      <image  mode="aspectFill"
+			      :src="imgurl +item.url">
 				  </image>
+				  
 				  <!-- 移除菜品的按钮  -->
 				  <view class="q-image-remover"  @tap="removeImage(item.ID,flag)">
 					  <!-- :data-idx="idx" -->
@@ -72,7 +73,7 @@
 	:url="'goodsDetails/payDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 	 :key="item.id"
 	>
-									<image :src="imgUrl+'/'+item.url" mode="aspectFill"></image>
+									<image :src="imgurl+item.url" mode="aspectFill"></image>
 									
 									<!-- 移除菜品的按钮  -->
 									<view class="q-image-remover"  @tap="removeImage(item.ID,flag)">
@@ -92,7 +93,7 @@
 						                 </view>
 		  </navigator>
 		
-		<view>
+		
 			<button class="addGoods"
 			 style="position: fixed;
 			 bottom: 0;
@@ -106,7 +107,7 @@
 			 font-weight: 500;
 			 border: 2rpx solid rgba(255, 255, 255, 100);"
 			 @click="addGoods(2)">上传商城商品</button>
-		</view>
+		
 	</view>
 	 </view>
 
@@ -129,6 +130,7 @@ export default{
 	},
 	data(){
 		return{
+			imgurl:'',
 			goodsList:[],
 			// 商城里的商品列表
 			shopList:[],
@@ -156,7 +158,7 @@ export default{
 	},
 	onLoad(){
 		this.getScoll();
-
+		this.imgurl=this.imgUrl;
 	},
 	//滚动条触底事件
 	onReachBottom(){
@@ -275,17 +277,20 @@ export default{
 							icon:'none',
 							duration: 1500
 						});
-						
+						setTimeout(function(){ 
+							uni.redirectTo({
+							url:'../ManageGoods/index'
+						})
+							 }, 1510);
 						
 							// that.getScoll(flag)
-							that.$router.go(0);
-							
+					
 						
 						
 					}
 				})
 				.catch(err => {
-					
+					console.log(err);
 					uni.showModal({
 							content: "删除失败",
 							showCancel: false
@@ -323,9 +328,10 @@ export default{
 	
 		
 		overflow: hidden;
-		margin-top: 10px;
+		
 		
 		.tit{
+			border-top:2rpx solid rgba(187, 187, 187, 0.7);
 			height: 50px;
 			line-height: 50px;
 			color: red;
@@ -362,7 +368,7 @@ export default{
 		    right: 2rpx;
 		}
 		image {
-		    width: 24rpx;
+		    width: 30rpx;
 		    height: 24rpx;
 		    position: absolute;
 		    top: -60rpx;

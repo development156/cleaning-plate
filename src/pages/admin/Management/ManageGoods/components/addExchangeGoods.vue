@@ -10,12 +10,11 @@
 	                        <!-- 图片缩略图  -->
 	                        <block v-for="(imgItem, idx) in photoFiles" :key="idx">
 	                            <view class="item">
-	                                <image class="q-image" :src="imgUrl+'/'+imgItem.url"  mode="aspectFill" :data-cur="imgUrl+'/'+imgItem.url" @tap="refundPicPreView"></image>
+	                                <image class="q-image" :src="imgurl+imgItem.url"  mode="aspectFill" :data-cur="imgurl+imgItem.url" @tap="refundPicPreView"></image>
 	                                </image>
 	                                <!-- 移除图片的按钮  -->
 	                                <view class="q-image-remover" :data-idx="idx" @tap="removeImage">
 	                                    <text>x</text>
-	                                    <image  src="../../../../../static/images/tabbar/feedback.png" mode="aspectFill"></image>
 	                                </view>
 	                            </view>
 	                        </block>
@@ -32,11 +31,11 @@
 		<view class="goods-info">
 			<span class="item1">
 					<span>所需积分</span>
-					<span><input class="input" placeholder="输入积分" v-model='notice.product.integrate' /></span>
+					<span><input class="input" placeholder="input" v-model='notice.product.integrate' /></span>
 			</span>
 			<span class="item3">
 					<span>产地</span>
-					<span><input class="input"  placeholder="输入产地" v-model='notice.product.ProductionPlace' /></span>
+					<span><input class="input"  placeholder="input" v-model='notice.product.ProductionPlace' /></span>
 			</span>
 			<span class="item2">
 					<span>数量</span>
@@ -44,7 +43,7 @@
 			</span>
 		</view>
 		
-		<view class="exchang-info">
+		<view class="exchang-info" style="margin-top: 50rpx;">
 			<p>兑换需知</p>
 			<p style="text-align: left; margin: 0 auto;">
 				1、兑换方法：点击立即兑换-兑换成功。</br>
@@ -67,8 +66,12 @@
 	import { ManageGoods } from '@/models/admin/Management/ManageGoods/manageGoods.js'
 	const manageGoods = new ManageGoods();
 	export default{
+	onLoad() {
+		this.imgurl=this.imgUrl;
+	},
 	data() {
 		 return {
+			 imgurl:'',
 		         photoFiles: [
 		             // {url: "",id:1},
 		 //             {url: "",id:2},
@@ -114,13 +117,13 @@
 							th.photoFiles=''
 							th.notice=''
 							setTimeout(function(){
-								let a = th.$router.go(1)
-								if (a == undefined) {
+								// let a = th.$router.go(1)
+								// if (a == undefined) {
 								//重新定向跳转页面
 								uni.reLaunch({
 									url: '../index'
 								})
-								}
+								// }
 								
 							}, 1410);
 						}
@@ -163,7 +166,8 @@
 			          sizeType: ['compressed'],
 			          sourceType: ['album','camera'],//, 'camera'
 			          success: function(res) {
-						
+						  console.log("success")
+						console.log(res)
 						 // 图片的本地临时文件路径列表
 						 var tempFilePaths = res.tempFilePaths[0];	
 						 
@@ -176,9 +180,11 @@
 									setTimeout(()=>{
 										uni.hideLoading()
 									},180);
+									console.log(res2[1])
+									if (res2[1].code== 200){
 																		
-									if (res2[1].statusCode == 200){
-									    // console.log('文件上传成功')
+									// if (res2[1].statusCode == 200){
+									//     // console.log('文件上传成功')
 										uni.showToast({
 											title: '上传成功',
 											icon:'none',
@@ -255,7 +261,7 @@
 		justify-content: center;
 		.input{
 			vertical-align: middle;
-			width: 89%;
+			width: 95%;
 			height: 186rpx;
 			padding: 20rpx;
 			color:  rgba(182, 182, 182, 100);
@@ -371,19 +377,19 @@
 				}
 			// }
 		}
-		
 	}
 	.exchang-info{
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-		margin-top: 40rpx;
+		margin-top: 45rpx;
 		width: 710rpx;
-		height: 34%;
+		height: 35%;
 		line-height: 40rpx;
 		color: rgba(182, 182, 182, 100);
 		font-size: 28rpx;
 		border-radius: 10rpx;
+		margin:  0 auto;
 		text-align: center;
 		box-shadow: 0px 2rpx 6rpx 0px rgba(0, 0, 0, 0.4);
 		border: 2rpx solid rgba(255, 255, 255, 100);

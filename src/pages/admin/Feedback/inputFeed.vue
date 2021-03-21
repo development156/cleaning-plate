@@ -25,6 +25,8 @@
 	   methods: {
 	      getInfo(id) {
 			feedBack.checkFeedback(id).then(res => {
+				console.log("res")
+				console.log(res)
 				// this.array = res.data;
 				this.info = res.data[0]
 				console.log(this.info )

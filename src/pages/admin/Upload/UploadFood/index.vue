@@ -43,8 +43,9 @@
 	 
 	 <view class="input-food">
 		 <view class="food-photo" >
-			 <image :src="imgurl+imgPath" v-if="showpicture"  mode="aspectFill"/>
+			 
 			 <addPhoto @photoShow="showPicture($event)"></addPhoto>
+			 <image :src="imgurl+imgPath" v-if="showpicture"  mode="aspectFill"/>
 		 </view>
 		
 		<!-- 食物价格 -->
@@ -210,6 +211,7 @@
 							// id:
 							// },
 					],
+					AllWindowlist:[]
 					
 			};
 	  },
@@ -226,16 +228,31 @@
 		changeTab1(e){
 		            // console.log(e.index);
 		            this.diningRoom=this.windowlist1[e.index].name;
+					
+					this.getCanteeInfo({name :this.diningRoom});
+					
 					this.gotMenu();
+					
 						
 		},
 		changeTab2(e){
-		      // console.log(e.index);
+		      console.log(e);
 		       this.floor=this.windowlist2[e.index].name;
+			   this.windowlist=[];
+			   this.windowlist3=[];
+			   // this.getCanteeInfo({name :this.diningRoom,thFloor:this.floor });
+			   this.AllWindowlist.forEach( res =>{
+				 if(res.belong == this.floor){
+					 this.windowlist.push({
+					 	name:res.name,id:res.id,belong:res.belong
+					 })
+					 this.windowlist3.push({
+					 	name:res.name,id:res.id,belong:res.belong
+					 })
+				 }
+			   })
 			   this.gotMenu();
-						
 		},
-		
 		//获取所有食堂的名称
 		getCanteeName(){
 			var th=this;
@@ -272,10 +289,10 @@
 		//获取相应食堂的楼层及窗口信息
 		getCanteeInfo(CanteenName){
 			var th=this;
-			// console.log("CanteenName.name")
-			// console.log(CanteenName.name)
+			
 			manageCanteen.getCanteenInfo({"CanteenName":CanteenName.name}).then( res => {
-				// console.log(res)
+				
+				
 				if(res.code==200){
 					// 初始化开始界面的数据
 					th.floor = res.data[0].floor;
@@ -284,6 +301,10 @@
 					
 					
 					var id=0;
+					th.windowlist2=[];
+					th.windowlist=[];
+					th.windowlist3=[];
+					th.AllWindowlist=[];
 					//导入楼层
 					res.data.forEach(function(element) {
 						
@@ -292,19 +313,28 @@
 						})
 						id++;		
 							
+							// if(CanteenName.thFloor == element.floor){
+							
 					element.windowsList.forEach(function(element2){	
 						//导入窗口
-						th.windowlist.push({
-							name:element2.windows,id:element2.id,
-						})
-						th.windowlist3.push({
-							name:element2.windows,id:element2.id,
+						console.log(element2)
+						th.AllWindowlist.push({
+							name:element2.windows,id:element2.id,belong:element.floor
 						})
 						
-					})		
+						// th.windowlist.push({
+						// 	name:element2.windows,id:element2.id,belong:element.floor
+						// })
+						// th.windowlist3.push({
+						// 	name:element2.windows,id:element2.id,belong:element.floor
+						// })
+						
+					})
+					
+							// }
 				// console.log(th.windowList)	
 				})
-				
+				// this.changeTab2();
 				//获得菜得数据
 				this.gotMenu();
 				}else if(res.code==1005){
@@ -315,12 +345,14 @@
 				}
 					
 			}).catch(err => {
+				console.log(err)
 				uni.showModal({
 						content: "error",
 						showCancel: false
 					});
 			})
 		},
+		
 	   //获取数据
 	   gotMenu(){
 		   upLoad.getMenu({
@@ -385,6 +417,9 @@
 					
 					this.inputInfo.dishName=''
 					this.inputInfo.url=''
+					this.inputInfo.price=''
+					this.imgPath=''
+					this.showpicture=false
 					
 				})
 				.catch(err => {
@@ -398,7 +433,7 @@
 	   },
 	   //显示照片
 	   showPicture(imgurl){
-		   console.log("showPicture")
+		   
 		   //让图片置顶
 		   this.showpicture = true ;
 		   this.imgPath = imgurl;

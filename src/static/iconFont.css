@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'iconfont';  /* project id 2329466 */
   src: url('//at.alicdn.com/t/font_2329466_otqlaan2mg9.eot');
@@ -150,14 +151,17 @@
 
 .icon-navicon-cptx:before {
   content: "\e63f";
+	color:	#DEB887;
 }
 
 .icon-fenzu:before {
   content: "\e602";
+			color:	#DEB887;
 }
 
 .icon-gonggao:before {
   content: "\e648";
+	color:	#DEB887;
 }
 .icon-zhuangxiushangjia:before {
 	content: "\e60a";
