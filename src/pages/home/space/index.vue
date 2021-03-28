@@ -54,10 +54,8 @@
 	const rank = new Rank()
 	export default {
 	  name: 'space',
-	 
 	  data() {
 	        return {
-			
 				perList:[],
 				index:true,
 				rankNumber:0
@@ -86,7 +84,7 @@
 					this.perList.sort(function (a, b) {
 					  return (a.integrate - b.integrate)
 					});
-					console.log(this.perList)
+					this.perList.reverse();
 				for(var i=0;i<this.perList.length;i++){
 					if(this.myInfo.fixedintegral>this.perList[i].integrate){
 						this.rankNumber = i
@@ -99,9 +97,12 @@
 				rank.getClassRank().then(res=>{
 					console.log(res)
 					this.perList  = res.data
-					this.perList .sort(function (a, b) {
+					this.perList.sort(function (a, b) {
 					  return (a.integrate - b.integrate)
+					  
 					});
+					this.perList.reverse();
+					console.log(this.perList)
 					for(var i=0;i<this.perList.length;i++){
 						if(this.myInfo.fixedintegral>this.perList[i].integrate){
 							this.rankNumber = i

@@ -406,7 +406,7 @@
 		},
 
 		{
-			"path": "pages/home/Advertising/advertisingList/advertisingList",
+			"path": "pages/home/advertising/advertisingList/advertisingList",
 			"style": {
 				"navigationBarTitleText": "公告列表",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -415,7 +415,7 @@
 			}
 		},
 		{
-			"path": "pages/home/Advertising/advertisingDetails/advertisingDetails",
+			"path": "pages/home/advertising/advertisingDetails/advertisingDetails",
 			"style": {
 				"navigationBarTitleText": "公告详情",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -427,7 +427,7 @@
 
 
 		{
-			"path": "pages/home/ExchangeZone/index",
+			"path": "pages/home/exchangeZone/index",
 			"style": {
 				"navigationBarTitleText": "兑换专区",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -438,7 +438,7 @@
 		},
 
 		{
-			"path": "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
+			"path": "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "确认兑换",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -449,7 +449,7 @@
 
 
 		{
-			"path": "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
+			"path": "pages/home/exchangeZone/acquireExchange/payAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "确认购买",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -461,7 +461,7 @@
 
 
 		{
-			"path": "pages/home/ExchangeZone/goodsDetails/creditDetails",
+			"path": "pages/home/exchangeZone/goodsDetails/creditDetails",
 			"style": {
 				"navigationBarTitleText": "商品详情",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -472,7 +472,7 @@
 		},
 
 		{
-			"path": "pages/home/ExchangeZone/goodsDetails/payDetails",
+			"path": "pages/home/exchangeZone/goodsDetails/payDetails",
 			"style": {
 				"navigationBarTitleText": "商品详情",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -483,7 +483,7 @@
 		},
 		// 购物车
 		{
-			"path": "pages/home/ExchangeZone/cart/cart",
+			"path": "pages/home/exchangeZone/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
 					"navigationBarBackgroundColor": "#FFFFFF",
@@ -576,12 +576,11 @@
 	],
 
 
-
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		// "navigationBarBackgroundColor": "#FF6347"
-		"backgroundColor": "#F08080"
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "暖心食光",
+		
+		"backgroundColor": "#ffffff"
 
 
 	}

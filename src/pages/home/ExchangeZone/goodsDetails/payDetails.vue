@@ -5,12 +5,9 @@
 			autoplay 
 			interval="2000" 
 			duration="500">
-		                       <swiper-item v-for="item in images">
-		                         
-		                       		<image :src="imgurl+item.url" class="image"></image>
-		                      
-		                       </swiper-item>
-		                    
+		                        <swiper-item v-for="item in images">
+										<image :src="item.url" class="image"></image>
+		                        </swiper-item>
 		                    </swiper>
 		</view>
 		<view class="info" >
@@ -40,6 +37,13 @@
 			<text>金额</text>
 			<text>￥{{shopItem.univalence}}</text>
 			</view>
+			<view class="item">
+			<text>扶贫单位</text>
+			<text>{{shopItem.povertyAlleviationUnit}}</text>
+			</view>
+			<view class="item">
+			<text>扶贫详情</text>
+			<text>{{shopItem.descriptionOfPovertyAlleviation}}</text>
 		</view>
 		
 		<view class="tip">
@@ -60,7 +64,7 @@
 	</view>
 	
 	
-	
+</view>	
 </template>
 
 <script>
@@ -73,18 +77,19 @@
 		const Exchange = new exchangeCredit()
 		export default{
 			onLoad(e){
+				
 				const item = JSON.parse(decodeURIComponent(e.item));
 				this.shopItem = item;
 				console.log(this.shopItem)
 				this.getSwiper()
-				this.imgurl = this.imgUrl
+				
 			},
 			data(){
 				return{
 					options: [ {
 					           icon: 'cart',
 					           text: '购物车',
-							   imgurl:'',
+							 
 							// 这个是加入购物车的的总数量
 					           info: 0,
 							   
@@ -193,19 +198,20 @@
 			
 	
 	.info{
-		
+		font-size: 30rpx;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		height: 7.4375rem;
+		height: 100%;
 		background-color: white;
-		font-size: 0.625rem;
+		
 		width: 98%;
 		border-radius: 0.625rem;
 		margin: 10% auto;
 		.item{
 			display: flex;
 			justify-content: space-between;
+			margin-top: 2%;
 			text:nth-child(2){
 				margin-right: 20%;
 				width: 50%;
@@ -229,8 +235,7 @@
 		background: white;
 		margin: 5% auto;
 		height:4.125rem;
-	
-		font-size:0.625rem;
+		font-size: 0.9rem;
 		display: flex;
 		justify-content: space-between;
 		text{
@@ -240,7 +245,7 @@
 			width: 15%;
 			margin-left: 3%;
 			text-align: center;
-			height:1.125rem;
+			height:1.3rem;
 			background-color: #C9A65E;
 			color: white;
 			border-radius: 0.625rem;

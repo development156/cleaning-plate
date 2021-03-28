@@ -28,7 +28,7 @@
 				      :key="index">
 				      <image 
 				     
-				      :src="imgurl+item.url"></image>
+				      :src="item.url"></image>
 					  <view class="content">
 					  <view class="price" >
 					  	<text>{{item.dishName}}</text>
@@ -70,7 +70,7 @@
 				diningRoom:'第一食堂',
 				index1: 0,
 				index2:0,
-				imgurl:''
+				
 				
 			}
 		},
@@ -87,7 +87,6 @@
 			this.diningRoom  = JSON.parse(decodeURIComponent(e.item));
 			this.getCanteenInfo()
 			this.getFood()
-			this.imgurl = this.imgUrl
 			
 		},
 		methods:{
@@ -152,12 +151,12 @@
 					height: 1.875rem;
 					margin-left: 5%;
 					border: none;
-					font-size: 0.9375rem;
+					font-size: 35rpx;
 					color: #C9A65E;
 					
 				}
 				text{
-					font-size: 0.9375rem;
+					font-size:35rpx;
 					color: gray;
 				
 				}
@@ -191,7 +190,7 @@
 				.content{
 					display: flex;
 					justify-content: space-around;
-					font-size: 32rpx;
+					font-size: 30rpx;
 					.name{
 						color: red;
 					}

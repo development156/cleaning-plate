@@ -60,14 +60,16 @@
 			        this.length =  event.target.value.length
 			        },
 		getFeedBack(){
+		
 			console.log(this.description)
 			myFeedBack.postFeedback(this.studentId,this.description).then(res=>{
 				console.log(res)
+					let _this = this
 				uni.showToast({
 				  title:res.msg,
 				  icon: "none",
 				  success(){
-					  this.description=''
+					  _this.description=''
 				  }
 				});
 			})
@@ -96,7 +98,7 @@
 						function anim(){
 							ctx.setFontSize(15)
 							// 擦除整个画布
-							ctx.setFillStyle('#B08367')
+							ctx.setFillStyle('#ffffff')
 							ctx.setGlobalAlpha(0.5)
 							ctx.clearRect(0,0,850,2000)
 							// 循环绘制
@@ -112,7 +114,7 @@
 							var lastFrameTime = 0;
 							var doAnimationFrame = function (callback) {
 							    var currTime = new Date().getTime();
-							    var timeToCall = Math.max(0, 150 - (currTime - lastFrameTime));
+							    var timeToCall = Math.max(0, 500 - (currTime - lastFrameTime));
 							    var id = setTimeout(function () { callback(currTime + timeToCall); }, timeToCall);
 							    lastFrameTime = currTime + timeToCall;
 							    return id;

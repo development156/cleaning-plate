@@ -2,7 +2,7 @@
 <view>
 	<an-notice-bar  :text="noticeMsg" bgColor=" -webkit-linear-gradient(left, #c9a65e 0%,#c9a65e 61%,#ffffff 100%,#dcdcdd 100%)" color="white"></an-notice-bar>
 <view class="tab-view">
-<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{height1:0,height: 100,padding:95,spacing: 122,color:'#C9A65E',actColor:'#7094AE',size:32,actWeight:'Bold',position:0}"></xTab>
+<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{height1:0,height: 100,padding:95,spacing: 122,color:'#C9A65E',actColor:'#7094AE',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
 
  <view>
 	 
@@ -14,7 +14,7 @@
              	interval="2000" 
              	duration="500">
                  <swiper-item v-for="item in Slideshow">
-                 <image :src="imgurl+item"></image>
+                 <image :src="item"></image>
                  </swiper-item>
                                     
                  </swiper>
@@ -29,14 +29,14 @@
 											 >
 											  
 						                    <view :id="'swiper_id_'+swiperCurrIndex" class="news_item" >
-						                  <image :src="imgurl+item.url"></image>
+						                  <image :src="item.url"></image>
 						                  <view class="right">
 						                  	<view class="tit">
 						                  		{{item.title}}
 						                  	</view>
 						                  	<view class="info">
-						                  		<text>发表时间：{{item.date}}</text>
-						                  		<text>浏览：{{item.pageview}}</text>
+						                  		<text>时间：{{item.date}}</text>
+						                  		<text style="color:#c9a65e ;">浏览：{{item.pageview}}</text>
 						                  	</view>
 						                  </view>
 						                   
@@ -52,7 +52,7 @@
 
 <script>
 	import AnNoticeBar from '@/components/common/an-notice-bar/an-notice-bar.vue'
-	 import xTab from '@/components/common/poiuy-xTab/xTab.vue';
+	  import xTab from '@/components/common/poiuy-xTab/xTab.vue';
 	import {getAdvertiseList} from '../../../../models/advertising/advertisingList/advertiseList.js'
 	const GetAdvertiseList = new getAdvertiseList()
 	import {MyModel} from '../../../../models/MyModel/exchangeHistory.js'
@@ -65,7 +65,7 @@
 			return{
 				type:"新闻",
 				Info:[],
-				imgurl:'',
+				
 				// 轮播图数据
 				Slideshow:[],
 				tabList: [{
@@ -96,7 +96,7 @@
 			 this.setSwiperHeight();
 			 this.getSlideshow()
 			 this.allHistoty()
-			 this.imgurl = this.imgUrl
+			
 		},
 		methods:{
 			// 根据类型获取所有公告
@@ -145,10 +145,11 @@
 			// 获取所有人兑换的列表,以小喇叭的形式 .........................................................
 			allHistoty(){
 				myModel.allHistoty().then(res=>{
+					console.log(res)
 					for(var i=0 ;i<res.data.length-1;i++){
-					this.noticeMsg +="学号"+res.data[i].studentID+"兑换了"+res.data[i].pname+'|'
+					this.noticeMsg +="学号"+res.data[i].studentId+"兑换了"+res.data[i].pname+'|'
 					}
-					this.noticeMsg+="学号"+res.data[res.data.length-1].studentID+"兑换了"+res.data[res.data.length-1].pname
+					this.noticeMsg+="学号"+res.data[res.data.length-1].studentId+"兑换了"+res.data[res.data.length-1].pname
 				
 				})
 			}
@@ -161,8 +162,7 @@
 	page{
 		
 		.tab-view{
-				margin-top: 10%;
-				
+				margin-top: 3%;
 				
 			}
 			  swiper {
@@ -201,10 +201,10 @@
 						flex-direction: column;
 						justify-content: space-between;
 						.tit{
-						font-size: 35rpx;
+						font-size: 30rpx;
 					}
 					.info{
-						font-size: 24rpx;
+							font-size: 0.75rem;
 						text:nth-child(2){
 							margin-left: 30rpx;
 						}

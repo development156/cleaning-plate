@@ -241,6 +241,7 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
+		  font-family: MicrosoftYaHei, Microsoft YaHei;
 
 		.text-item-title {
 			text-align: center;
@@ -280,7 +281,7 @@
 			display: block;
 			height: 60upx;
 			margin-top: 25upx;
-			font-size: 24upx;
+			font-size: 30rpx;
 			color: #fff;
 		}
 

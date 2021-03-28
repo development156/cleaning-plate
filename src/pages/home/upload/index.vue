@@ -42,8 +42,7 @@
 		data() {
 			return {
 
-				studentId: 1,
-
+				studentId: 1
 			}
 		},
 		components: {
@@ -95,7 +94,7 @@
 								}
 								_this.$refs.compress.compress(compressParams).then(file => {
 									uni.uploadFile({
-										url: 'http://youguang.cn.utools.club/Img/uploadImg',
+										url: 'http://8.129.51.225:8080/YouGuang_war/Img/uploadImg',
 										filePath: file,
 										name: 'file',
 										header: {

@@ -81,7 +81,7 @@
 				var carId = that.carts;
 				for(var i =0;i< carId.length ;i++){
 					if(carId[i].selected == true){
-						idArr.push(carId[i].id);
+						idArr.push(carId[i].pid);
 						numArr.push(carId[i].number)
 					}
 				}
@@ -420,7 +420,7 @@
 	  padding: 0;
 	  margin: 0;
 	  box-sizing:border-box;
-	  font-size: 28rpx;
+	 font-size: 30rpx;
 	  font-family: "微软雅黑";
 	}
 	.uni-checkbox-input{
@@ -486,7 +486,7 @@
 	  height:75rpx;
 	  display:block;
 	  position:relative;
-	  font-size: 28rpx;
+	 font-size: 30rpx;
 	}
 	button::after{ border: none; }
 	input:-ms-input-placeholder {

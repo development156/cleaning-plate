@@ -18,13 +18,13 @@
 		
 		<view class="order_info">
 			<view class="infos">
-				<image :src="imgurl+Item.url"></image>
+				<image :src="Item.url"></image>
 				<view class="right">
-					<view class="tit">
+					<view class="tit" style="margin-left: 3%; width: 100%;">
 						{{Item.description}}
 					</view>
 					<view class="info">
-						<text>*1</text>
+						<text>数量*1</text>
 					</view>
 				</view>
 			</view>
@@ -53,8 +53,7 @@
 	export default{
 		data(){
 			return {
-				Item:[],
-				imgurl:''
+				Item:[]
 			}
 		},
 		computed: {
@@ -99,13 +98,18 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		font-size: 30rpx;
+		font-family: "方正兰亭黑-标准";
+	}
+</style>
 <style lang="scss" scoped>
 	page{
-			font-family: "方正兰亭黑-标准";
+			
 			
 		.info{
-			font-size: 14px;
+		
 			margin:1.5rem  1.125rem 0.4375rem 0.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -115,7 +119,7 @@
 							}
 		}
 		.address{
-			font-size: 14px;
+			
 			margin:0.4375rem 1.375rem 0.8125rem  0.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -152,6 +156,7 @@
 		.content{
 			display: flex;
 			justify-content: space-between;
+			font-size: 30rpx;
 			margin: 0rem 1.375rem 0px 1.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -164,7 +169,7 @@
 		margin-top: 18.75rem;
 		display: flex;
 		.left{
-			font-size: 0.75rem;
+			
 			display: flex;
 			
 			flex-direction: column;

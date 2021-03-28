@@ -175,7 +175,7 @@
 	}
 
 	.uni-tab__cart-button-right-text {
-		font-size: $uni-font-size-base;
+		font-size:30rpx;
 		color: #fff;
 	}
 

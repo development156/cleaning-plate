@@ -54,7 +54,7 @@
 	
 		computed: {
 			  ...mapGetters([
-			  	'userInfo'
+			  	'userInfo','myInfo'
 			  ]),
 		},
 		
@@ -79,13 +79,13 @@
 	page{
 
 	.view-header_root {
-			margin-top:6.6875rem;
+			margin-top:2.6875rem;
 		view {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				flex-direction: column;
-				font-size: 0.75rem;
+				font-size: 30rpx;
 				color: #fff;
 		}
 		
@@ -99,8 +99,8 @@
 	}
 	
 	.content{
-		margin-top: 2.3125rem;
-		font-size: 0.875rem;
+		margin-top: 3.3125rem;
+		font-size: 30rpx;
 		.item1{
 			color: #FFFFFF;
 			display: flex;

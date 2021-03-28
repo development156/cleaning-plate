@@ -6,7 +6,7 @@
 		</view>
 		
 		<view class="content" v-for="item in  list">
-			<image :src="imgurl+item.url"></image>
+			<image :src="item.url"></image>
 			<view class="tip">
 				<view class="top">
 					<text>相似度</text> 
@@ -27,15 +27,15 @@ const uploadHistory = new UploadHistory()
  export default{
 	
 	 onLoad(){
-	 	 this.imgurl = this.imgUrl
+	 	
 		  this.getuploadHistory()
 	 },
 	 data(){
 		 return{
 			 // 临时设置的学号
 			 studentId:1,
-			 list:[],
-			 imgurl:''
+			 list:[]
+			
 		 }
 	 },
 	 methods:{
@@ -91,6 +91,7 @@ const uploadHistory = new UploadHistory()
 				flex-direction: column;
 				justify-content: space-around;
 				.top{
+					font-size: 30rpx;
 					display: flex;
 					justify-content: space-between;
 					text{

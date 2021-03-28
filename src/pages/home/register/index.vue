@@ -156,7 +156,7 @@
 <style lang="scss" scoped>
 	.content{
 		margin-top: 2.3125rem;
-		font-size: 0.875rem;
+		font-size: 30rpx;
 		.top{
 			position: absolute;
 			top:1.25rem;
@@ -175,7 +175,7 @@
 				
 				height: 1.875rem;
 			
-				font-size: 0.9375rem;
+			font-size: 30rpx;
 				color:white;
 				
 			}

@@ -104,13 +104,12 @@
 				// console.log(this.userInfo)
 				Register.registerStudent(studentInfo,this.userInfo).then(res=>{
 					console.log(res)
-					// if(code==200){
-					// 	uni.showToast({
-					// 		title: res.msg,
-					// 		icon:'none',
-					// 		duration: 1500
-					// 	});
-					// }
+						uni.showToast({
+							title: '修改成功',
+							icon:'none',
+							duration: 1500
+						});
+					
 				})
 			}
 		},
@@ -140,7 +139,7 @@
 <style lang="scss" scoped>
 	.content{
 		margin-top: 2.3125rem;
-		font-size: 0.875rem;
+		font-size: 30rpx;
 		.top{
 			position: absolute;
 			top:1.25rem;
@@ -151,7 +150,7 @@
 			text-align: center;
 			background-color: rgba(250,250,250,0.3);
 			color: white;
-			font-size: 1.125rem;
+			font-size: 30rpx;
 			
 		}
 		.item{
@@ -159,7 +158,7 @@
 				
 				height: 1.875rem;
 				
-				font-size: 0.9375rem;
+			font-size: 30rpx;
 				color:white;
 				
 			}

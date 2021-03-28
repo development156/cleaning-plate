@@ -27,7 +27,6 @@
 				circular: false,
 				item:[],
 				index:0,
-				
 			}
 		},
 		async onShow() {
@@ -59,12 +58,18 @@
 				
 					foodShow.getCanteenName().then(res=>{
 						this.item = res.data
+						
+						let entryPic = ['https://ftp.bmp.ovh/imgs/2021/03/19837b864b0d3705.jpg','https://ftp.bmp.ovh/imgs/2021/03/2cbd75bdfbfacc56.jpg',
+						'https://ftp.bmp.ovh/imgs/2021/03/bdd3bd037bc0b644.jpg'
+						]
+			
 						for(var i=0;i<res.data.length;i++){
 							this.item[i]={
 								title:res.data[i],
 								id:i,
+								entryPic:entryPic[i],
 								type:0,
-								text:"lallll"
+								text:"学生食堂、教学餐厅、教工食堂共三个食堂，分别位于树林对面，第四教学楼旁以及教工宿舍旁。其中最大的一所为学生食堂，如今正在进行翻修（一楼已经投入使用二楼也将于今年开放），食堂的装修以及运营模式都会有极大的改变。相信在不久之后便能看见它焕然一新的面貌，同学们的就餐环境也会的到很大的提升。"
 							}
 					}
 					console.log(this.item)
