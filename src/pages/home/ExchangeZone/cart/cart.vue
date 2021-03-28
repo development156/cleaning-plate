@@ -87,7 +87,7 @@
 						icon: "none"
 					})
 					if (res.code == 1001) {
-						uni.navigateTo({
+						 uni.redirectTo({
 							url: `../acquireExchange/payAcquireExchange?item=` + encodeURIComponent(JSON.stringify(res.data))
 						})
 					}

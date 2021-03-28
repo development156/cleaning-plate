@@ -77,7 +77,7 @@
 					  title: res.msg,
 					  icon:"none",
 					  success(){
-						  uni.navigateTo({
+						  uni.redirectTo({
 						  url:`../index`
 						  })
 					  }

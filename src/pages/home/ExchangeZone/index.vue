@@ -14,7 +14,7 @@
 			<view class="tit" style="color: #C9A65E;">我的积分:{{myInfo.integrate}}</view>
 			<view class="goods_list">
 				<navigator class="goods_item" v-for="(item,index) in goodsList" :key="index" :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))">
-					<image :src="item.url">
+					<image :src="item.url" open-type="redirect">
 					</image>
 					<view class="name">
 						<text style="color: white; background-color:#C9A65E ;width: 15px;height: 0.75rem;border-radius:0.125rem" >扶农助农</text>
@@ -37,7 +37,7 @@
 		<view v-else>
 			<uni-search-bar placeholder="搜索" @confirm="search" @cancel="cancel()" :radius="100"></uni-search-bar>
 			<navigator class="news_item" v-for="(item,index) in shopList" :url="'goodsDetails/payDetails?item='+ encodeURIComponent(JSON.stringify(item))"
-			 :key="item.id">
+			 :key="item.id" open-type="redirect">
 				<image :src="item.url"></image>
 				<view class="right" style="color: gray;">
 					<view class="tit" style="color:#C9A65E ">

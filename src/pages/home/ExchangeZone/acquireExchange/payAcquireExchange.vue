@@ -127,7 +127,7 @@
 				  success (res) {
 					  console.log(res)
 					  console.log("推送成功")
-					  uni.navigateTo({
+					 uni.redirectTo({
 					  url:`../index`
 					  })
 				  }

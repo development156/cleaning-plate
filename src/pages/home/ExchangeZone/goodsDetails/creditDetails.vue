@@ -91,7 +91,7 @@
 		
 		methods:{
 			navTo(){
-				uni.navigateTo({
+				 uni.redirectTo({
 				url:`../acquireExchange/creditAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(this.goodsItem))
 				})
 			},

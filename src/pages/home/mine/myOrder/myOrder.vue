@@ -180,7 +180,7 @@
 			// 去付款订单
 			topay(id) {
 
-				uni.navigateTo({
+				 uni.redirectTo({
 					url: `../../exchangeZone/acquireExchange/payAcquireExchange?item=` + encodeURIComponent(JSON.stringify(id))
 				})
 			}

@@ -117,7 +117,7 @@
 			methods:{
 				onClick (e) {
 					
-				      uni.navigateTo({
+				      uni.redirectTo({
 				      url:'../cart/cart'
 				      })
 				     },
@@ -155,7 +155,7 @@
 						 		  title:res.msg,
 						 		  icon: "none"
 						 		})
-						 		uni.navigateTo({
+						 		 uni.redirectTo({
 						 		url:`../acquireExchange/payAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(res.data))
 						 		})
 						 	}).catch(error=>{
