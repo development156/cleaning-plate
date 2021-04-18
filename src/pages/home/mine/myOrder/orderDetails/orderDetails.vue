@@ -80,11 +80,11 @@
 
 <style lang="scss">
 	page{
-		background-color: gainsboro;
+		background-color: #F5F5F5;
 	}
 	.top{
 		height: 5.125rem;
-		background-color: #C9A65E ;
+		background-color: #b5a58c ;
 		text-align: center;
 		color: white;
 	}

@@ -53,6 +53,8 @@
 			changeTab(e){
 			     console.log(e);
 				this.index = e.index
+				this.getRoleList()
+				this.selectAdmin()
 			 },
 			 //审核列表
 			 	getRoleList(){
@@ -97,10 +99,10 @@
 			},
 			
 			// 删除管理员
-			deleted(id){
-				admin.deleteAdmin(id).then(res=>{
+			deleted(id,item){
+				admin.deleteAdmin(id,item).then(res=>{
 					console.log(res)
-					this.list.splice(id, 1);
+					this.list.splice(item, 1);
 					uni.showToast({
 					  title: '删除成功',
 					  icon: "none"

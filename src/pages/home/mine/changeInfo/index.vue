@@ -31,7 +31,7 @@
 		<input placeholder="请输入姓名" />
 	</view>
 	
-		<button style="color: white; width: 95%; margin: 10% auto; background-color: rgba(250,250,250,0.5);" @click="register">立即修改</button>
+		<button style="color: white; width: 95%; margin: 10% auto; background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);;" @click="register">立即修改</button>
 		
 	</view>
 	</view>
@@ -132,7 +132,7 @@
 
 <style>
 	page{
-			background: -webkit-linear-gradient(top, #151515 0%,#848f94 0%,#485f67 0%,#485e69 4%,#4a5e67 4%,#4d5c63 24%,#4e5b61 28%,#505b5d 28%,#53585a 40%,#57585a 42%,#595651 59%,#5e5452 63%,#5d544f 63%,#5e534f 67%,#5e544b 67%,#655146 89%,#665043 89%,#665043 97%,#694e43 97%,#694e43 100%);
+			background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
 	}
 </style>
@@ -149,7 +149,7 @@
 			border-radius: 1.25rem;
 			text-align: center;
 			background-color: rgba(250,250,250,0.3);
-			color: white;
+			color: black;
 			font-size: 30rpx;
 			
 		}
@@ -159,10 +159,10 @@
 				height: 1.875rem;
 				
 			font-size: 30rpx;
-				color:white;
+				color:blcak;
 				
 			}
-			color: #FFFFFF;
+			color: black;
 			display:flex;
 			margin: 4.25rem 1.25rem 0px 1.25rem;
 			text{
@@ -172,7 +172,7 @@
 				border: none;
 				width: 25%;
 			}
-			border-bottom: 1px solid rgba(223, 223, 223, 0.26);
+			border-bottom: 1px solid lightgray;
 			justify-content: space-between;
 		}
 		

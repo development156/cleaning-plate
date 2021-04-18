@@ -4,9 +4,9 @@
 		<view class="main">
 			<view class="info">
 				<span>总共积分</span>
-			<span style="color:#7094AE;"> {{myInfo.integrate}}</span> 
+			<span style="color:#b5a58c;"> {{myInfo.integrate}}</span> 
 			<span>固定积分</span>
-			<span style="color: #7094AE;"> {{myInfo.fixedintegral}}</span>
+			<span style="color: #b5a58c;"> {{myInfo.fixedintegral}}</span>
 
 			</view>
 	
@@ -81,7 +81,7 @@
 </script>
 <style>
 	page{
-		background-color: rgba(119, 92, 76, 100);
+		background-color:#f5f5f5;
 	}
 </style>
 <style  lang="scss" scoped>

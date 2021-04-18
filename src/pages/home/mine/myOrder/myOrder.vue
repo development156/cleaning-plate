@@ -2,7 +2,7 @@
 	<view>
 		<!--顶部导航栏-->
 		<view class="uni-tab-bar">
-			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 100,spacing:20,padding:2,height1: 0,left:200,color:'#7094AE',actColor:'#C9A65E',size:32,position:5}"
+			<xTab :value="tabBars" @changeTab="changeTab" actType="underline" :config="{height: 100,spacing:20,padding:2,height1: 0,left:200,color:'grey',actColor:'#C9A65E',size:34,position:5}"
 			 class="uni-swiper-tab">
 
 			</xTab>
@@ -202,7 +202,7 @@
 
 
 	page {
-		background-color: #3B5A69;
+			background-color: #F5F5F5;
 	}
 
 	.uni-tab-bar {
@@ -213,11 +213,11 @@
 
 	.content {
 		background-color: #FFFFFF;
-		border-radius: 5px;
+		border-radius: 10px;
 		text-align: center;
 		border: 1px solid rgba(255, 255, 255, 100);
 		margin-top: 0.875rem;
-		width: 98%;
+		width: 95%;
 		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 		margin: 5% auto;
 
@@ -276,7 +276,9 @@
 			text-align: center;
 			border: 1px solid rgba(187, 187, 187, 100);
 			font-size: 1rem;
+			color: white;
 			margin: 0 1.375rem 5% 75%;
+			background: -webkit-linear-gradient(-45deg, rgba(180,164,140,1) 44%,rgba(218,206,183,1) 75%,rgba(218,206,183,1) 75%,rgba(224,213,193,1) 81%,rgba(224,213,193,1) 81%,rgba(234,225,204,1) 99%);
 		}
 	}
 </style>

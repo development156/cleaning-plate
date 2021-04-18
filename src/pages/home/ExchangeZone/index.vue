@@ -11,7 +11,10 @@
 		<!-- 	积分兑换 -->
 
 		<view class="hot_goods" v-if="flag==1">
-			<view class="tit" style="color: #C9A65E;">我的积分:{{myInfo.integrate}}</view>
+			<view class="tit" style="color:#C9A65E ;">
+			<view style="height:1.25rem; width: 0.1875rem; background: #C9A65E; margin-top: 3%; margin-right: 2%;"></view>
+			<view>我的积分{{myInfo.integrate}}</view>
+			</view>
 			<view class="goods_list">
 				<navigator class="goods_item" v-for="(item,index) in goodsList" :key="index" :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))">
 					<image :src="item.url" open-type="redirect">
@@ -220,20 +223,19 @@
 		.hot_goods {
 			overflow: hidden;
 			margin-top: 10px;
-			font-size: 30rpx;
+			font-size: 35rpx;
 			.tit {
-				height: 40px;
-				width: 90%;
-				margin: 3% auto;
+				height: 35px;
+				width: 100%;
+				display: flex;
 				border-radius: 0.5rem;
 				line-height: 40px;
-				
+				text-align: left;
 				color: white;
 				padding-left: 5%;
 				// 字间距
-				letter-spacing: 3px;
-				background: -webkit-linear-gradient(top, #151515 0%, #848f94 0%, #485f67 0%, #485e69 4%, #4a5e67 4%, #4d5c63 24%, #4e5b61 28%, #505b5d 28%, #53585a 40%, #57585a 42%, #595651 59%, #5e5452 63%, #5d544f 63%, #5e534f 67%, #5e544b 67%, #655146 89%, #665043 89%, #665043 97%, #694e43 97%, #694e43 100%);
-
+				letter-spacing: 2px;
+		
 			}
 		}
 
@@ -290,7 +292,7 @@
 		border-radius: 5px;
 		margin: 1.0625rem 0.5rem 0px 0.5rem;
 		padding: 10rpx 20rpx;
-		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 		background-color: white;
 		border: 1px solid rgba(255, 255, 255, 100);
 

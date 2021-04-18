@@ -19,11 +19,11 @@
 				<text style="color: #999999;">{{Item.applyDate}}</text>
 			</view>
 			
-			<view class="item">
+		<!-- 	<view class="item">
 				<text>批准时间：</text>
 				<text style="color: #999999;">{{Item.approvalDate}}</text>
 			</view>
-		
+		 -->
 		
 		</view>
 		</view>

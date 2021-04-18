@@ -8,7 +8,7 @@
 				<view style="color: #C9A65E;">{{item.name}}</view>
 				<view>{{item.applyDate}}</view>
 			</view>
-			
+			<view class="iconfont icon-tubiaozhizuomoban con3" style="margin-top: 10%; font-size: 1.875rem;" @click="add(item.id)"></view>
 			</view>
 		
 		</view>

@@ -54,22 +54,23 @@
 		display: flex;
 		flex-direction: column;
 		margin: 10% 1.0625rem 0 1.0625rem;
-		font-size: 40rpx;
+		font-size: 60rpx;
 		.tab{
 			display: flex;
 			justify-content: space-between;
 			margin-top: 10%;
 			color: #979797;
-			font-size: 0.75rem;
+			font-size: 30rpx;
 		}
 		.image{
 			width: 85%;
 			height: 14.125rem;
 			margin: 10% auto;
+			border-radius: 1.25rem;
 			
 		}
 		.foo{
-			font-size: 30rpx;
+			font-size: 40rpx;
 		}
 	}
 </style>

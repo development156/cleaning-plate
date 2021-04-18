@@ -187,9 +187,10 @@
 			margin-right: 1.125rem;
 			width: 11rem;
 			height: 2.9375rem;
-			background-color: #C9A65E;
+				background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			color: #fff;
 			font-size: 1.25rem;
+			border-radius: 1.25rem;
 		}
 	}
 	}

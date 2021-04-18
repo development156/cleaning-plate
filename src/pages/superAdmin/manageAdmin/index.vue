@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<view class="item1">
+	<!-- 	<view class="item1">
 			<view class="iconfont icon-chakan icon" @click="navTo1" style="font-size: 1.875rem;"></view>
 			<view class=" con" style="font-size: 1.125rem">查看用户</view>
-		</view>
+		</view> -->
 		
 		<view class="item2" >
 			<view class="squ" v-for=" item in list">
@@ -12,7 +12,7 @@
 				<text>{{item.name}}</text>
 				<text>{{item.profession}}</text>
 			</view>
-			<text @click="deleted(item.id)" class="iconfont icon-shanchu1" style="font-size: 1.25rem;"></text>
+			<text @click="deleted(item.id,item)" class="iconfont icon-shanchu1" style="font-size: 1.25rem;"></text>
 			
 			</view>
 		
@@ -40,11 +40,11 @@
 		methods:{
 			
 			// 删除
-			deleted(id){
-				this.$emit('deleted',id);
+			deleted(id,item){
+				this.$emit('deleted',id,item);
 				admin.deleteAdmin(id).then(res=>{
 					console.log(res)
-					this.list.splice(id, 1);
+					this.list.splice(item, 1);
 				})
 			},
 		

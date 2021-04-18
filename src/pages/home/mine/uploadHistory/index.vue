@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view class="tab">
+			<view style="height:1.25rem; width: 0.1875rem; background: #C9A65E; margin-top: 1%; margin-right: 2%;"></view>
 			<text>上传次数</text>
 			<text>{{list.length}}</text>
 		</view>
@@ -57,14 +58,14 @@ const uploadHistory = new UploadHistory()
 
 <style lang="scss">
 	page{
-		background-color: rgba(249, 249, 249, 0.8);
+		background-color: #f5f5f5;
 		.tab{
 			display: flex;
 			
 			font-size: 1.25rem;
 			margin: 5% 0 0 5%;
 			text{
-				&:nth-child(2){
+				&:nth-child(3){
 					color:#C9A65E  ;
 					font-weight: bold;
 					margin-left: 5%;
@@ -72,8 +73,8 @@ const uploadHistory = new UploadHistory()
 			}
 		}
 		.content{
-			height: 5.9375rem;
-			width: 98%;
+			height: 7.9375rem;
+			width: 95%;
 			margin: 5% auto;
 			background-color: white;
 			border-radius: 0.625rem;

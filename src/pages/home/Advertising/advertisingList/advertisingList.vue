@@ -1,8 +1,8 @@
 <template>
 <view>
-	<an-notice-bar  :text="noticeMsg" bgColor=" -webkit-linear-gradient(left, #c9a65e 0%,#c9a65e 61%,#ffffff 100%,#dcdcdd 100%)" color="white"></an-notice-bar>
+	<an-notice-bar  :text="noticeMsg" bgColor="#f5f5f5" color="black"></an-notice-bar>
 <view class="tab-view">
-<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{height1:0,height: 100,padding:95,spacing: 122,color:'#C9A65E',actColor:'#7094AE',actSize:40,size:40,actWeight:'Bold',position:0}"></xTab>
+<xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{height1:0,height: 100,padding:95,spacing: 122,color:'#666666',actColor:'#C9A65E',actSize:40,size:40,position:0}"></xTab>
 
  <view>
 	 
@@ -182,7 +182,7 @@
 				margin-bottom: 10%;
 			}
 		.news_item{
-				
+				height: 200rpx;
 					display: flex;
 					border-radius: 5px;
 					margin: 1.0625rem 0.5rem 0px 0.5rem;
@@ -193,7 +193,7 @@
 						width: 200rpx;
 						min-width: 200rpx;
 						max-width: 200px;
-						height: 150rpx;
+						height: 200rpx;
 					}
 					.right{
 						margin-left: 15rpx;

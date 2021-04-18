@@ -103,7 +103,7 @@
 					       },
 					       {
 					         text: '立即购买',
-					         backgroundColor: '#C9A65E',
+					         backgroundColor: '#b5a58c',
 					         color: '#fff'
 					       }
 					       ],
@@ -242,11 +242,11 @@
 			margin-top: 5%;
 		}
 		text:nth-child(1){
-			width: 15%;
+			width: 4.8125rem;
 			margin-left: 3%;
 			text-align: center;
-			height:1.3rem;
-			background-color: #C9A65E;
+			height:1.4rem;
+			background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			color: white;
 			border-radius: 0.625rem;
 		}

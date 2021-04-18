@@ -56,7 +56,7 @@
 			<text>温馨提示</text>
 			<text>积分一经使用不支持退还，数量有限，先到先得，兑完即止</text>
 			</view>
-			<button  :style="{backgroundColor:isEnough?'#C9A65E':'#777468'}" @click="navTo" :disabled="!isEnough">立即兑换</button>
+			<button  :style="{backgroundColor:isEnough?'#b5a58c':'#777468'}" @click="navTo" :disabled="!isEnough">立即兑换</button>
 		</view>
 	</view>
 	
@@ -169,7 +169,7 @@
 				display: flex;
 				flex-direction: column;
 				text{
-					margin: 0.625rem 0 2% 0.5rem;
+					margin: 0.425rem 0 2% 0.5rem;
 						font-size: 0.875rem;
 					&:nth-child(1),&:nth-child(5){
 						height:1.4rem;
@@ -177,7 +177,7 @@
 						border-radius: 0.625rem;
 						border: 0.0625rem solid gainsboro;
 						text-align: center;
-						background-color:#C9A65E ;
+					background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 						color: white;
 					}
 				}
@@ -186,7 +186,7 @@
 				height: 2.625rem;
 				width: 95%;
 				text-align: center;
-				
+				border-radius: 1.25rem;
 				color: white;
 				margin-bottom: 1.125rem;
 			}

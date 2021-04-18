@@ -299,12 +299,14 @@
 				margin-top: -2.8rem;
 				position: absolute;
 				left: 47%;
-				border-radius: 30px;
+				border-radius: 20px;
+				text-align: top;
 				width: 6.9375rem;
 				height: 2.5rem;
 				text-align: center;
 				color: white;
-				background-color: #C9A65E;
+				line-height: 70rpx;
+				background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			}
 		}
 		

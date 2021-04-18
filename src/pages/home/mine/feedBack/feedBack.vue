@@ -96,9 +96,9 @@
 						ctx.font = 'italic bold 20px cursive'
 						
 						function anim(){
-							ctx.setFontSize(15)
+							ctx.setFontSize(20)
 							// 擦除整个画布
-							ctx.setFillStyle('#ffffff')
+							ctx.setFillStyle('#000000')
 							ctx.setGlobalAlpha(0.5)
 							ctx.clearRect(0,0,850,2000)
 							// 循环绘制
@@ -148,18 +148,18 @@
 
 <style lang="scss">
 	page{
-		background: linear-gradient(to bottom, #475f69 0%,#415d68 19%,#3e5c66 24%,#3b5c65 25%,#395b65 32%,#355a63 35%,#335964 42%,#315961 43%,#2b5760 54%,#28575f 54%,#2a5661 56%,#275660 56%,#27565e 58%,#22545f 68%,#1f545c 68%,#1f535e 71%,#1d535d 76%,#1a535c 77%,#1c525c 78%,#19525b 78%,#19525d 80%,#1b515b 80%,#18535b 82%,#115059 100%);
+		background: #f5f5f5;
 		.tip{
-			color: #FFFFFF;
+			color: gray;
 			display: flex;
 			flex-direction: column;
 			letter-spacing: 0.625rem;
 			font-style: italic;
 			font-size: 1.25rem;
 			margin-left:1.25rem;
-			 background-image: -webkit-linear-gradient(bottom, rgb(255, 255, 255), rgb(0, 0, 0));
-			            -webkit-background-clip: text;
-			            -webkit-text-fill-color: transparent;
+			 // // background-image: -webkit-linear-gradient(bottom, rgb(255, 255, 255), rgb(0, 0, 0));
+			 //            -webkit-background-clip: text;
+			 //            -webkit-text-fill-color: transparent;
 			text{
 				&:nth-child(1) {
 					font-size: 3.125rem;
@@ -175,12 +175,14 @@
 			margin: 5% auto;
 			width: 95%;
 			height: 21rem;
-			background-color: rgba(255, 255, 255, 0.5);
+			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+			background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 			font-family: "Microsoft Yahei";
 			color: gray;
 			font-size: 0.875rem;
 			border-radius: 1.25rem;
 			position: relative;
+			
 			input{
 				width: 80%;
 				height: 20%;
@@ -195,7 +197,7 @@
 				
 				.item1,.item2{
 					height: 0.0625rem;
-					background-color:gainsboro ;
+					
 					margin: 0% 5% 0 5%;
 				}
 				.item1{
@@ -217,7 +219,7 @@
 				position: absolute;
 				border-radius: 20px;
 				
-				background-color: rgba(176, 131, 103, 100);
+				background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 				text-align: center;
 				
 			}
