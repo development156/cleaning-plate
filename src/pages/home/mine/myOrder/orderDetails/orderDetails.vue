@@ -12,7 +12,7 @@
 		</view>
 		<view class="goods_details">
 			<view class="info">
-			<image :src="imgurl+Item[0].url"></image>
+			<image :src="Item[0].url"></image>
 			<view class="details">
 				<text>{{Item[0].orderProductList[0].name}}</text>
 				<text> {{Item[0].orderProductList[0].description}}</text>
@@ -54,15 +54,14 @@
 			return{
 				Item:[],
 				studentID:1,
-				pid:'',
-				imgurl:''
+				pid:''
 			}
 		},
 		onLoad(e){
 			this.pid  = JSON.parse(decodeURIComponent(e.item));
 			console.log(this.pid)
 			this.acquirePay()
-			this.imgurl = this.imgUrl
+			
 		},
 		methods:{
 			acquirePay(){
@@ -81,11 +80,11 @@
 
 <style lang="scss">
 	page{
-		background-color: gainsboro;
+		background-color: #F5F5F5;
 	}
 	.top{
 		height: 5.125rem;
-		background-color: #C9A65E ;
+		background-color: #b5a58c ;
 		text-align: center;
 		color: white;
 	}

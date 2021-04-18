@@ -18,7 +18,7 @@
 			<view class="icon"></view>
 		</view>
 	
-		<view class="way" style="margin-top: 2%;">
+		<view class="way" style="margin-top: 1%;">
 			<text>配送方式</text>
 			<text>上门自取</text>
 		</view>
@@ -26,10 +26,10 @@
 	
 	<view class="goods_details" v-for="item in Item" >
 		<view class="info" v-for="i in item.orderProductList">
-		<image :src="imgurl+i.url"></image>
+		<image :src="i.url"></image>
 		<view class="details">
 			<text>{{i.name}}</text>
-			<text>*{{i.number}}</text>
+			<text>数量*{{i.number}}</text>
 			<text>¥{{i.univalence}}/份</text>
 		</view>
 		</view>
@@ -65,7 +65,7 @@
 			this.pid = Pid;
 			console.log(this.pid)
 			this.acquirePay()
-			this.imgurl = this.imgUrl
+			
 		},
 		data(){
 			return {
@@ -73,7 +73,6 @@
 				// 临时设置的id
 				studentID:1,
 				pid:4,
-				imgurl:'',
 				// 总数量
 				totalNum:0,
 				totalPrice:0
@@ -122,19 +121,18 @@
 			  icon: "none"
 			});
 			// 是否进行推送
-			uni.requestSubscribeMessage({
-			  tmplIds: ['DxEEZxd29Cj0dYG54T_0ZlMGKzw_aEqVnASAikYzOiU','c9q4umaHKQwRDCuXFFX972YDBckKxJGKFy6iVhDpSag'],
-			  success (res) {
-				  console.log(res)
-				  console.log("推送成功")
-				  uni.navigateTo({
-				  url:`../index`
-				  })
-			  }
-			})
-			
-		
-			
+			if(res.code==200){
+				uni.requestSubscribeMessage({
+				  tmplIds: ['DxEEZxd29Cj0dYG54T_0ZlMGKzw_aEqVnASAikYzOiU','c9q4umaHKQwRDCuXFFX972YDBckKxJGKFy6iVhDpSag'],
+				  success (res) {
+					  console.log(res)
+					  console.log("推送成功")
+					 uni.redirectTo({
+					  url:`../index`
+					  })
+				  }
+				})
+			}
 		})
 		},
 		/**
@@ -176,10 +174,10 @@
 			height: 9.3125rem;
 			display: flex;
 			flex-direction: column;
-			font-size: 0.75rem;
+			font-size: 30rpx;
 			.all{
 				.info{
-					font-size: 14px;
+					font-size: 30rpx;
 					margin:1.5rem  1.125rem 0.4375rem 0.875rem;
 					
 					text:nth-child(1){
@@ -190,7 +188,7 @@
 									}
 				}
 				.address{
-					font-size: 14px;
+					font-size: 30rpx;
 					margin:0.4375rem 1.375rem 0.8125rem  0.875rem;
 					text:nth-child(1){
 							color: #999999;	
@@ -216,6 +214,7 @@
 			border: 1px solid rgba(255, 255, 255, 100);
 			background-color: #FFFFFF;
 			height: 13.0625rem;
+			font-size: 30rpx;
 			.info{
 				display: flex;
 				background-color: white;
@@ -250,16 +249,16 @@
 						height: 50rpx;
 						text-align: center;
 						line-height: 50rpx;
-						font-size: 32rpx;
+						font-size: 30rpx;
 						color: #1a256a;
 					}
 					
 					text{
 						&:nth-child(1){
-							font-size: 0.75rem;
+							font-size: 30rpx;
 						}
 						&:nth-child(2){
-							font-size: 8px;
+							font-size: 30rpx;
 							color:#9F9F9F;
 						}
 					}
@@ -269,13 +268,13 @@
 			.total{
 				display: flex;
 				padding: 1.8125rem 0 0.875rem 14.5rem;
-				font-size: 0.625rem;
+				
 				background-color: white;
 			}
 		}
 		.footer{
 		
-			
+			font-size: 30rpx;
 			justify-content: space-around;
 			width: 100%;
 			position: fixed;
@@ -288,7 +287,7 @@
 			z-index: 99;
 			.money{
 			
-				font-size: 0.675rem;
+				
 				margin:0.625rem 0 0 1.25rem;
 				display: flex;
 				flex-direction: column;
@@ -297,15 +296,17 @@
 				}
 			}
 			button{
-				margin-top: -2.2rem;
+				margin-top: -2.8rem;
 				position: absolute;
 				left: 47%;
-				border-radius: 30px;
+				border-radius: 20px;
+				text-align: top;
 				width: 6.9375rem;
 				height: 2.5rem;
 				text-align: center;
 				color: white;
-				background-color: #C9A65E;
+				line-height: 70rpx;
+				background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			}
 		}
 		

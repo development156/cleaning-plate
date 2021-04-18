@@ -1,7 +1,7 @@
 <template>
 	<view class="contnet">
 		<view class="item">
-		<image></image>
+		<image :src="Item.avatarUrl"></image>
 		<view class="info">
 			<text style="font-weight: bold; font-size: 1rem">他的账户</text>
 			<view class="item">
@@ -26,7 +26,7 @@
 		
 		</view>
 		</view>
-		<button @click="deleted">删除</button>
+		<button @click="deleted(Item.id)">删除</button>
 	</view>
 	
 	
@@ -48,12 +48,17 @@
 		},
 		methods:{
 			// 删除管理员
-			deleted(){
-				admin.deleteAdmin(Item.id).then(res=>{
+			deleted(id){
+				admin.deleteAdmin(id).then(res=>{
 					console.log(res)
 					uni.showToast({
 					  title:res.msg,
-					  icon: "none"
+					  icon: "none",
+					  success(){
+						  uni.navigateTo({
+						  	url: '../../index'
+						  })
+					  }
 					});
 				})
 			}
@@ -73,7 +78,7 @@ page{
 					width: 3.625rem;
 					margin: 1.625rem 0 0 1.25rem ;
 					border-radius: 100%;
-					border: 1px solid red;
+					
 					
 				}
 				.info{

@@ -18,13 +18,13 @@
 		
 		<view class="order_info">
 			<view class="infos">
-				<image :src="imgurl+Item.url"></image>
+				<image :src="Item.url"></image>
 				<view class="right">
-					<view class="tit">
+					<view class="tit" style="margin-left: 3%; width: 100%;">
 						{{Item.description}}
 					</view>
 					<view class="info">
-						<text>*1</text>
+						<text>数量*1</text>
 					</view>
 				</view>
 			</view>
@@ -53,8 +53,7 @@
 	export default{
 		data(){
 			return {
-				Item:[],
-				imgurl:''
+				Item:[]
 			}
 		},
 		computed: {
@@ -69,6 +68,7 @@
 			this.imgurl = this.imgUrl
 		},
 		methods:{
+			// 进行兑换
 			confirm(){
 				const time = new Date()
 				const studentId = 1
@@ -77,7 +77,7 @@
 					  title: res.msg,
 					  icon:"none",
 					  success(){
-						  uni.navigateTo({
+						  uni.redirectTo({
 						  url:`../index`
 						  })
 					  }
@@ -98,13 +98,18 @@
 		}
 	}
 </script>
-
+<style>
+	page{
+		font-size: 30rpx;
+		font-family: "方正兰亭黑-标准";
+	}
+</style>
 <style lang="scss" scoped>
 	page{
-			font-family: "方正兰亭黑-标准";
+			
 			
 		.info{
-			font-size: 14px;
+		
 			margin:1.5rem  1.125rem 0.4375rem 0.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -114,7 +119,7 @@
 							}
 		}
 		.address{
-			font-size: 14px;
+			
 			margin:0.4375rem 1.375rem 0.8125rem  0.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -151,6 +156,7 @@
 		.content{
 			display: flex;
 			justify-content: space-between;
+			font-size: 30rpx;
 			margin: 0rem 1.375rem 0px 1.875rem;
 			text:nth-child(1){
 					color: #999999;	
@@ -163,7 +169,7 @@
 		margin-top: 18.75rem;
 		display: flex;
 		.left{
-			font-size: 0.75rem;
+			
 			display: flex;
 			
 			flex-direction: column;
@@ -181,9 +187,10 @@
 			margin-right: 1.125rem;
 			width: 11rem;
 			height: 2.9375rem;
-			background-color: #C9A65E;
+				background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			color: #fff;
 			font-size: 1.25rem;
+			border-radius: 1.25rem;
 		}
 	}
 	}

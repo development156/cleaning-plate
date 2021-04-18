@@ -40,6 +40,8 @@
 			
 				</view>
 				<view class="info_credit">{{item.integrate}}</view>
+				<view  class="iconfont icon-aixin2 ai"   @click="dian(index)"></view>
+				<view v-if="dianzan==index" class="iconfont icon-aixin1 ai" style="color: red;"  @click="dian(index)"></view>
 			<view>
 	  </view>
 	</view>
@@ -54,13 +56,13 @@
 	const rank = new Rank()
 	export default {
 	  name: 'space',
-	 
 	  data() {
 	        return {
-			
 				perList:[],
 				index:true,
-				rankNumber:0
+				rankNumber:0,
+				dianzan:-1,
+				
 	}
 	},
 	computed: {
@@ -77,6 +79,10 @@
 			this.index = !this.index
 			this.getPerRank()
 		},
+		// 点赞
+		dian(index){
+			this.dianzan = index
+		},
 		// 获得个人排名
 		getPerRank(){
 			if(this.index == true){
@@ -86,7 +92,7 @@
 					this.perList.sort(function (a, b) {
 					  return (a.integrate - b.integrate)
 					});
-					console.log(this.perList)
+					this.perList.reverse();
 				for(var i=0;i<this.perList.length;i++){
 					if(this.myInfo.fixedintegral>this.perList[i].integrate){
 						this.rankNumber = i
@@ -99,9 +105,12 @@
 				rank.getClassRank().then(res=>{
 					console.log(res)
 					this.perList  = res.data
-					this.perList .sort(function (a, b) {
+					this.perList.sort(function (a, b) {
 					  return (a.integrate - b.integrate)
+					  
 					});
+					this.perList.reverse();
+					console.log(this.perList)
 					for(var i=0;i<this.perList.length;i++){
 						if(this.myInfo.fixedintegral>this.perList[i].integrate){
 							this.rankNumber = i
@@ -120,13 +129,13 @@
 </script>
 <style>
 	page{
-		background: rgba(119, 92, 76, 0.5);
+		background-color: #f5f5f5;
 	}
 </style>
 <style lang="scss"  scoped>
 	page{
 	.head{
-		background-color: rgba(119, 92, 76, 100);
+	background: -webkit-linear-gradient(left, #f0f0f0 0%,#d5c9b3 0%,#cdbea9 0%,#b5a58c 0%,#f0f0f0 0%,#b5a58c 0%,#b5a58c 13%,#b5a58c 27%,#b09e86 86%,#a7937b 100%);
 		height: 366rpx;
 	.info{
 		
@@ -158,11 +167,11 @@
 			}
 			.info_portrait{
 				margin-top: 16rpx;
-				font-size: 28rpx;
+				font-size: 33rpx;
 				flex-direction:column;
 				text-align: center;
 				font-family: SourceHanSansSC-regular;
-				color: rgba(223, 223, 223, 100);
+				color: black;
 			}
 		}
 		.total_credit{
@@ -217,50 +226,58 @@
 		.content_info{
 			left: 96px;
 			top: 320px;
-			border: 1px solid rgba(187, 187, 187, 100);
+			
 			
 			.item_info{
 				display: flex;
 				justify-content:space-between;
-				height: 82rpx;
+				height: 180rpx;
 				align-items:center;
+				border-bottom: 1px solid lightgrey;
 				.item_infoleft{
 			display: flex;
-			margin-left: 42rpx;
+			margin-left: 35rpx;
 			
 			.item_id{
-				width: 32rpx;
+				width: 25rpx;
+				
 				height: 82rpx;
 				color: rgba(132, 118, 115, 100);
-				font-size: 56rpx;
-				text-align: left;
+				font-size: 48rpx;
+				 margin-top: 20rpx;
 				font-family: SourceHanSansSC-regular;
 			}
 			.info_head{
-				border-radius:60rpx;
-				 margin-top: 6rpx;
-				margin-left: 28rpx;
+				border-radius: 0.3125rem;
+				 margin-top: 5rpx;
+				margin-left: 35rpx;
 				line-height: 82rpx;
-				width: 60rpx;
-				height: 60rpx;
+				width: 110rpx;
+				height: 110rpx;
 				background-color: white;
-				border: 1px solid rgba(187, 187, 187, 100);
+				
 			}
 			.info_name{
-				margin-top: 5%;
+				margin-top: 7%;
+				margin-left: 10px;
 				color: rgba(16, 16, 16, 100);
-				font-size: 31rpx;
+				font-size: 32rpx;
 				font-family: SourceHanSansSC-regular;
 			}
 }
 				.info_credit{
 					position: absolute;
-					right: 2%;
+					right: 15%;
 				
 					color: rgba(105, 78, 67, 100);
 					font-size: 48rpx;
 			
 					font-family: SourceHanSansSC-regular;
+				}
+				.ai{
+					position: absolute;
+					right: 2%;
+					font-size: 30px;				
 				}
 			}
 			

@@ -354,11 +354,11 @@
 	.qiun-common-mt{margin-top:10upx;}
 	.qiun-bg-white{background:#FFFFFF; display: flex; flex-direction: row; width: 100%;}
 	.qiun-title-bar{width:96%; padding:10upx 2%; flex-wrap:nowrap;}
-	.qiun-title-dot-light{border-left: 10upx solid #0ea391; margin-left: 25upx;padding-left: 20upx;
+	.qiun-title-dot-light{border-left: 10upx solid #b5a58c; margin-left: 25upx;padding-left: 20upx;
  padding-bottom: 15upx; font-size: 40upx;color: #000000}
 	.uni-common-pl{}
 	.uni-list-cell-db{ position: absolute; right: 24rpx; font-size: 32rpx;
-	 background: rgb(14,163,145,0.6) ; margin-top: 8rpx; color: #FFFFFF; width: 210rpx;
+	background: -webkit-linear-gradient(left, rgba(180,164,140,1) 0%,rgba(206,191,170,1) 36%,rgba(218,206,183,1) 60%,rgba(224,213,193,1) 70%,rgba(234,225,204,1) 100%);margin-top: 8rpx; color: #FFFFFF; width: 210rpx;
 	 text-align: center;border-radius: 20rpx; 
-	 border-bottom: 5upx solid #0ea391;}
+	 border-bottom: 5upx solid #b5a58c;}
 </style>

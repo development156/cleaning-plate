@@ -40,7 +40,7 @@
 					<text :class="logOutCell.img"></text>
 					<text class="text-item-title">{{logOutCell.title}}</text>
 				</view> -->
-				<view class="bottom">
+				<view class="bottom" >
 					暖心食光
 				</view>
 				<view class="bottom" style="height: 20%;">
@@ -194,12 +194,23 @@
 	}
 </script>
 <!-- lang="less" -->
-
+<style>
+	page {
+		background: url('https://z3.ax1x.com/2021/04/15/cgqsIg.jpg') no-repeat;
+		background-size: 100% 100%;
+	
+	}
+</style>
 <style lang="less" scoped>
 	// @import '@/static/iconFont.css',;
 	@import '@/static/css/font-icon.css';
 
 	.mine-container {
+	
+
+
+
+
 		.user-info-container {
 			button {
 				line-height: 40upx;
@@ -236,11 +247,12 @@
 
 	.view-item-container {
 
-		color: #FFFFFF 10000%;
+		color: black ;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
+		  font-family: MicrosoftYaHei, Microsoft YaHei;
 
 		.text-item-title {
 			text-align: center;
@@ -274,14 +286,14 @@
 		justify-content: center;
 		flex-direction: column;
 		position: absolute;
-		top: 3%;
+		top: 7%;
 
 		text {
 			display: block;
 			height: 60upx;
-			margin-top: 25upx;
-			font-size: 24upx;
-			color: #fff;
+			margin-top: 40upx;
+			font-size: 30rpx;
+			color: #666666;
 		}
 
 		.un-auth {
@@ -318,7 +330,7 @@
 		height:100%;
 
 		.mine-container {
-			background: -webkit-linear-gradient(top, #151515 0%, #848f94 0%, #485f67 0%, #485e69 4%, #4a5e67 4%, #4d5c63 24%, #4e5b61 28%, #505b5d 28%, #53585a 40%, #57585a 42%, #595651 59%, #5e5452 63%, #5d544f 63%, #5e534f 67%, #5e544b 67%, #655146 89%, #665043 89%, #665043 97%, #694e43 97%, #694e43 100%);
+	
 			height: 100%;
 
 			>header {
@@ -344,7 +356,8 @@
 						display: flex;
 						font-family: "arial, helvetica, sans-serif";
 						font-size: 32upx;
-						color: #ffffff;
+						color: #666666;
+							
 					}
 
 				}

@@ -1,7 +1,7 @@
 <template>
 	<view class="contnet">
 		<view class="item">
-		<image></image>
+		<image :src="Item.avatarUrl"></image>
 		<view class="info">
 			<text style="font-weight: bold; font-size: 1rem">他的账户</text>
 			<view class="item">
@@ -19,11 +19,11 @@
 				<text style="color: #999999;">{{Item.applyDate}}</text>
 			</view>
 			
-			<view class="item">
+		<!-- 	<view class="item">
 				<text>批准时间：</text>
 				<text style="color: #999999;">{{Item.approvalDate}}</text>
 			</view>
-		
+		 -->
 		
 		</view>
 		</view>
@@ -72,7 +72,7 @@
 					width: 3.625rem;
 					margin: 1.625rem 0 0 1.25rem ;
 					border-radius: 100%;
-					border: 1px solid red;
+				
 					
 				}
 				.info{

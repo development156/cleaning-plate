@@ -1,18 +1,18 @@
 <template>
 	<view>
-		<view class="item1">
+	<!-- 	<view class="item1">
 			<view class="iconfont icon-chakan icon" @click="navTo1" style="font-size: 1.875rem;"></view>
 			<view class=" con" style="font-size: 1.125rem">查看用户</view>
-		</view>
+		</view> -->
 		
 		<view class="item2" >
 			<view class="squ" v-for=" item in list">
-			<image></image>
-			<view class="con2" @click="navTo3()">
+			<image :src="item.avatarUrl"></image>
+			<view class="con2" @click="navTo3(item)">
 				<text>{{item.name}}</text>
 				<text>{{item.profession}}</text>
 			</view>
-			<text @click="deleted(item.id)" class="iconfont icon-shanchu1" style="font-size: 1.25rem;"></text>
+			<text @click="deleted(item.id,item)" class="iconfont icon-shanchu1" style="font-size: 1.25rem;"></text>
 			
 			</view>
 		
@@ -40,16 +40,16 @@
 		methods:{
 			
 			// 删除
-			deleted(id){
-				this.$emit('deleted',id);
+			deleted(id,item){
+				this.$emit('deleted',id,item);
 				admin.deleteAdmin(id).then(res=>{
 					console.log(res)
-					this.list.splice(id, 1);
+					this.list.splice(item, 1);
 				})
 			},
 		
-			navTo3(){
-				this.$emit('navTo3');
+			navTo3(item){
+				this.$emit('navTo3',item);
 			},
 			navTo1(){
 				this.$emit('navTo1');
@@ -66,7 +66,6 @@
 			height: 3.5625rem;
 			display: flex;
 			
-			margin-top: 5%;
 			background-color: white;
 			justify-content: space-around;
 			width: 98%;
@@ -99,14 +98,15 @@
 				image{
 					height: 3.125rem;
 					width: 3.125rem;
-					margin: 10% 0 5% 3%;
+					margin: 10% 0 5% 0%;
 					border-radius: 100%;
-					border: 1px solid red;
+				
 				}
+				border-bottom: 1px solid gainsboro;
 				.con2{
 					display: flex;
 					flex-direction: column;
-					margin: 5% 0 5% 2%;
+					margin: 0 0 5% 0%;
 					text:nth-child(1){
 						color: #C9A65E;
 						

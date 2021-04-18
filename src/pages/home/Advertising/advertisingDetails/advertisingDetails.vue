@@ -10,7 +10,7 @@
 	</view>
 	
 	<view class="image">
-		<image :url="imgurl+List.url"></image>
+		<image :src="List.url"></image>
 	</view>
 	
 	<view class="foo">
@@ -28,8 +28,7 @@
 		data(){
 			return{
 				id:'',
-				List:[],
-				imgurl:''
+				List:[]
 			}
 		},
 		onLoad(e){
@@ -37,7 +36,7 @@
 			this.id = id;
 			console.log(this.id)
 			this.getDetails()
-			this.imgurl = this.imgUrl
+			
 		},
 		methods:{
 			getDetails(){
@@ -55,22 +54,23 @@
 		display: flex;
 		flex-direction: column;
 		margin: 10% 1.0625rem 0 1.0625rem;
-		font-size: 1.75rem;
+		font-size: 60rpx;
 		.tab{
 			display: flex;
 			justify-content: space-between;
 			margin-top: 10%;
 			color: #979797;
-			font-size: 0.75rem;
+			font-size: 30rpx;
 		}
 		.image{
 			width: 85%;
 			height: 14.125rem;
 			margin: 10% auto;
-			border: 1px solid red;
+			border-radius: 1.25rem;
+			
 		}
 		.foo{
-			font-size: 1.25rem;
+			font-size: 40rpx;
 		}
 	}
 </style>

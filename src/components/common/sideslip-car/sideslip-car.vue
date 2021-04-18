@@ -81,7 +81,7 @@
 				var carId = that.carts;
 				for(var i =0;i< carId.length ;i++){
 					if(carId[i].selected == true){
-						idArr.push(carId[i].id);
+						idArr.push(carId[i].pid);
 						numArr.push(carId[i].number)
 					}
 				}
@@ -392,7 +392,7 @@
 		width: 240rpx;
 		height: 89rpx;
 		font-size: 32rpx;
-		background: #C9A65E;
+		background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 		color: #FFFFFF;
 		text-align: center;
 		border-radius: 40rpx;
@@ -420,7 +420,7 @@
 	  padding: 0;
 	  margin: 0;
 	  box-sizing:border-box;
-	  font-size: 28rpx;
+	 font-size: 30rpx;
 	  font-family: "微软雅黑";
 	}
 	.uni-checkbox-input{
@@ -486,7 +486,7 @@
 	  height:75rpx;
 	  display:block;
 	  position:relative;
-	  font-size: 28rpx;
+	 font-size: 30rpx;
 	}
 	button::after{ border: none; }
 	input:-ms-input-placeholder {

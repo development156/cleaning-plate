@@ -2,18 +2,23 @@
 	<view class="mine-container">
 		
 		<view class="main">
-			<view class="info">总共积分<span style="color: rgba(243, 227, 178, 100);
-"> {{myInfo.integrate}}</span> 固定积分<span style="color: rgba(243, 227, 178, 100);"> {{myInfo.fixedintegral}}</span></view>
+			<view class="info">
+				<span>总共积分</span>
+			<span style="color:#b5a58c;"> {{myInfo.integrate}}</span> 
+			<span>固定积分</span>
+			<span style="color: #b5a58c;"> {{myInfo.fixedintegral}}</span>
+
+			</view>
 	
 			<view class="item-list">
 		            <view class="image-item" v-for="(item,index) in array" :key="index">
-					<view class="font1">	柚光自营＞ <span class="font2">已完成</span></view>
+					<view class="iconfont icon-shangcheng font1">	暖心食光 <span class="font2">已完成</span></view>
 						<view style="margin-top: 30rpx;">
 		                <view class="image-content">
-		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='"http://8.131.230.3:8080/YouGuang_war/"+item.url'
+		                    <image style="width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src="item.url"
 		                        @error="imageError"></image>
 		                </view>
-		                <view class="image-title">{{item.description}}</view>
+		                <view class="image-title" style="font-size: 30rpx;">{{item.description}}</view>
 						</view>
 						<span>{{item.data}}</span>
 						<view style="color: rgba(16, 16, 16, 100);margin-top: 80rpx;margin-right: 20rpx; font-size: 28rpx;float: right;">使用积分：{{item.integrate}}</view>
@@ -33,10 +38,12 @@
 		data() {
 		        return {
 					have:false,
-		            array: [],
+		            array: []
+					
 		
 		}
 		},
+		
 		computed: {
 			...mapGetters([
 				'userInfo','myInfo'
@@ -74,7 +81,7 @@
 </script>
 <style>
 	page{
-		background-color: rgba(119, 92, 76, 100);
+		background-color:#f5f5f5;
 	}
 </style>
 <style  lang="scss" scoped>
@@ -103,11 +110,13 @@
 				position:absolute;
 				left: 20rpx;
 				top: 42rpx;
+				right: 20rpx;
 				// width: 04rpx;
 				height: 34rpx;
 				color: rgba(16, 16, 16, 100);
-				font-size: 28rpx;
+				font-size: 35rpx;
 				text-align: left;
+				
 			}
 			.item-list{
 				position:absolute;
@@ -153,7 +162,7 @@
 					
 					height: 34rpx;
 					color: rgba(16, 16, 16, 100);
-					font-size: 30rpx;
+					font-size: 0.975rem;
 					text-align: left;
 					
 					.font2{
@@ -163,7 +172,7 @@
 						  width: 90rpx;
 						  
 						  color: rgba(149, 149, 149, 100);
-						  font-size: 30rpx;
+						font-size: 0.975rem;
 						  text-align: left;
 						  
 					}

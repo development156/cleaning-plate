@@ -5,12 +5,9 @@
 			autoplay 
 			interval="2000" 
 			duration="500">
-		                       <swiper-item v-for="item in images">
-		                         
-		                       		<image :src="imgurl+item.url" class="image"></image>
-		                      
-		                       </swiper-item>
-		                    
+		                        <swiper-item v-for="item in images">
+										<image :src="item.url" class="image"></image>
+		                        </swiper-item>
 		                    </swiper>
 		</view>
 		<view class="info" >
@@ -40,6 +37,13 @@
 			<text>金额</text>
 			<text>￥{{shopItem.univalence}}</text>
 			</view>
+			<view class="item">
+			<text>扶贫单位</text>
+			<text>{{shopItem.povertyAlleviationUnit}}</text>
+			</view>
+			<view class="item">
+			<text>扶贫详情</text>
+			<text>{{shopItem.descriptionOfPovertyAlleviation}}</text>
 		</view>
 		
 		<view class="tip">
@@ -60,7 +64,7 @@
 	</view>
 	
 	
-	
+</view>	
 </template>
 
 <script>
@@ -73,18 +77,19 @@
 		const Exchange = new exchangeCredit()
 		export default{
 			onLoad(e){
+				
 				const item = JSON.parse(decodeURIComponent(e.item));
 				this.shopItem = item;
 				console.log(this.shopItem)
 				this.getSwiper()
-				this.imgurl = this.imgUrl
+				
 			},
 			data(){
 				return{
 					options: [ {
 					           icon: 'cart',
 					           text: '购物车',
-							   imgurl:'',
+							 
 							// 这个是加入购物车的的总数量
 					           info: 0,
 							   
@@ -98,7 +103,7 @@
 					       },
 					       {
 					         text: '立即购买',
-					         backgroundColor: '#C9A65E',
+					         backgroundColor: '#b5a58c',
 					         color: '#fff'
 					       }
 					       ],
@@ -112,7 +117,7 @@
 			methods:{
 				onClick (e) {
 					
-				      uni.navigateTo({
+				      uni.redirectTo({
 				      url:'../cart/cart'
 				      })
 				     },
@@ -145,11 +150,12 @@
 						 	// 确认订单
 						 	Exchange.pay(PIdList).then(res=>{
 								console.log(res)
+								console.log("啦啦啦")
 						 		uni.showToast({
 						 		  title:res.msg,
 						 		  icon: "none"
 						 		})
-						 		uni.navigateTo({
+						 		 uni.redirectTo({
 						 		url:`../acquireExchange/payAcquireExchange?item=`+ encodeURIComponent(JSON.stringify(res.data))
 						 		})
 						 	}).catch(error=>{
@@ -192,19 +198,20 @@
 			
 	
 	.info{
-		
+		font-size: 30rpx;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		height: 7.4375rem;
+		height: 100%;
 		background-color: white;
-		font-size: 0.625rem;
+		
 		width: 98%;
 		border-radius: 0.625rem;
 		margin: 10% auto;
 		.item{
 			display: flex;
 			justify-content: space-between;
+			margin-top: 2%;
 			text:nth-child(2){
 				margin-right: 20%;
 				width: 50%;
@@ -228,19 +235,18 @@
 		background: white;
 		margin: 5% auto;
 		height:4.125rem;
-	
-		font-size:0.625rem;
+		font-size: 0.9rem;
 		display: flex;
 		justify-content: space-between;
 		text{
 			margin-top: 5%;
 		}
 		text:nth-child(1){
-			width: 15%;
+			width: 4.8125rem;
 			margin-left: 3%;
 			text-align: center;
-			height:1.125rem;
-			background-color: #C9A65E;
+			height:1.4rem;
+			background: -webkit-linear-gradient(-45deg, rgba(167,147,123,1) 0%,rgba(176,158,134,1) 14%,rgba(181,165,140,1) 30%,rgba(205,190,169,1) 76%,rgba(213,201,179,1) 98%,rgba(213,201,179,1) 100%,rgba(240,240,240,1) 100%,rgba(240,240,240,1) 100%);
 			color: white;
 			border-radius: 0.625rem;
 		}

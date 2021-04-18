@@ -60,12 +60,18 @@
 	}
 </script>
 <style lang="scss">
+	page {
+		background: url('https://z3.ax1x.com/2021/04/15/cRyUWF.jpg') no-repeat;
+		background-size: 100% 100%;
+	
+	}
 	.all{
 		button{
-			margin: 20% auto;
+			margin: 65% auto;
 			width: 90%;
-			background-color:#C9A65E ;
-			color: white;
+			background-color: rgba(255, 255, 255, 0.5);
+			color: black;
+			border-radius: 20px;
 		}
 		
 	}

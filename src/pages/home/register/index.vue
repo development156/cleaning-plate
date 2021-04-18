@@ -23,7 +23,7 @@
 			</picker>
 		</view>
 	
-		<button style="color: white; width: 95%; margin: 10% auto; background-color: rgba(250,250,250,0.5);" @click="register">立即注册</button>
+		<button style="color: white; width: 95%; margin: 10% auto; background: -webkit-linear-gradient(left, rgba(180,164,140,1) 0%,rgba(206,191,170,1) 36%,rgba(218,206,183,1) 60%,rgba(224,213,193,1) 70%,rgba(234,225,204,1) 100%);margin-top: 8rpx; color: #FFFFFF; width: 210rpx;" @click="register">立即注册</button>
 		
 	</view>
 	</view>
@@ -149,24 +149,24 @@
 
 <style>
 	page{
-			background: -webkit-linear-gradient(top, #151515 0%,#848f94 0%,#485f67 0%,#485e69 4%,#4a5e67 4%,#4d5c63 24%,#4e5b61 28%,#505b5d 28%,#53585a 40%,#57585a 42%,#595651 59%,#5e5452 63%,#5d544f 63%,#5e534f 67%,#5e544b 67%,#655146 89%,#665043 89%,#665043 97%,#694e43 97%,#694e43 100%);
+		background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
 	}
 </style>
 <style lang="scss" scoped>
 	.content{
 		margin-top: 2.3125rem;
-		font-size: 0.875rem;
+		font-size: 30rpx;
 		.top{
 			position: absolute;
 			top:1.25rem;
-			left: 80%;
+			left: 75%;
 			width: 4.125rem;
 			height: 2rem;
 			border-radius: 1.25rem;
 			text-align: center;
-			background-color: rgba(250,250,250,0.3);
-			color: white;
+			background: -webkit-linear-gradient(left, rgba(180,164,140,1) 0%,rgba(206,191,170,1) 36%,rgba(218,206,183,1) 60%,rgba(224,213,193,1) 70%,rgba(234,225,204,1) 100%);margin-top: 8rpx; color: #FFFFFF; width: 210rpx;
+			color:black;
 			font-size: 1.125rem;
 			
 		}
@@ -175,11 +175,11 @@
 				
 				height: 1.875rem;
 			
-				font-size: 0.9375rem;
-				color:white;
+			font-size: 30rpx;
+				color:black;
 				
 			}
-			color: #FFFFFF;
+			color: black;
 			display:flex;
 			margin: 4.25rem 1.25rem 0px 1.25rem;
 			text{
@@ -188,7 +188,7 @@
 			input{
 				border: none;
 			}
-			border-bottom: 1px solid rgba(223, 223, 223, 0.26);
+			border-bottom: 1px solid lightgray;
 			justify-content: space-between;
 		}
 		
