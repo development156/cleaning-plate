@@ -64,18 +64,18 @@
 				content:[{
 					iconPath:'@/static/images/admin/hall.png',
 					selectedIconPath:'@/static/images/admin/hall.png',
-					text:'管理食堂',
+					text:'食 堂',
 					active:false,
 					
 				},{
 					iconPath:'@/static/images/admin/academy.png',
 					selectedIconPath:'@/static/images/admin/academy.png',
-					text:'管理学院',
+					text:'学 院',
 					active:false
 				},{
 					iconPath:'@/static/images/admin/shop.png',
 					selectedIconPath:'@/static/images/admin/shop.png',
-					text:'管理商城',
+					text:'商 城',
 					active:false
 				}],
 				horizontal:'right',

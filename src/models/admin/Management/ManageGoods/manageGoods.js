@@ -8,12 +8,16 @@ class ManageGoods extends HTTP {
 			data: params
 	    })
 	}
+	
 	//上传图片
 	uploadPictrue(params){
-		
+		let Authorization = uni.getStorageSync('AuthTokens')
 		return  uni.uploadFile({
 		    url: 'http://8.129.51.225:8080/YouGuang_war/admin/uploadProductImg',
 			filePath: params,
+			header: {
+				'Authorization':Authorization
+				},
 			name: 'multipartFile',
 	
 		})

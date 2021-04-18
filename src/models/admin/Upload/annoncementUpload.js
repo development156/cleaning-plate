@@ -14,9 +14,12 @@ class AnnoncementUpload extends HTTP {
 	}	
 	//上传图片
 	uploadPictrue(params){
-		
+		let Authorization = uni.getStorageSync('AuthTokens')
 		return  uni.uploadFile({
 		    url: 'http://8.129.51.225:8080/YouGuang_war/notice/uploadNoticeImg',
+			header: {
+			'Authorization':Authorization
+			},	
 			filePath: params,
 			name: 'multipartFile',
 	

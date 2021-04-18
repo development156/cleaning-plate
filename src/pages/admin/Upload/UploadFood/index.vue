@@ -23,7 +23,7 @@
 		<view class="food-list"  v-for="(item,index) in foodlist" :key="index">
 		<view class="one-food">
 			<image style="height: 234rpx; width: 300rpx;background: #EEEEEE; 
-			border-radius: 10rpx;" mode="aspectFit" :src="imgurl+item.url"
+			border-radius: 10rpx;" mode="aspectFit" :src="item.url"
 			    @error="imageError"></image>
 				
 				<!-- 移除菜品的按钮  -->
@@ -45,7 +45,7 @@
 		 <view class="food-photo" >
 			 
 			 <addPhoto @photoShow="showPicture($event)"></addPhoto>
-			 <image :src="imgurl+imgPath" v-if="showpicture"  mode="aspectFill"/>
+			 <image :src="imgPath" v-if="showpicture"  mode="aspectFill"/>
 		 </view>
 		
 		<!-- 食物价格 -->

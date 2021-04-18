@@ -6,7 +6,7 @@
 	                       
 	                       <block v-for="(imgItem, idx) in photoFiles" :key="idx">
 	                           <view class="item" style=" margin: 0; position: relative;  padding: 0;">
-	                               <image  class="q-image" :src="imgurl+imgItem.path" mode="aspectFit" :data-cur="imgItem.url" @tap="refundPicPreView"></image>
+	                               <image  class="q-image" :src="imgItem.path" mode="aspectFit" :data-cur="imgItem.url" @tap="refundPicPreView"></image>
 	                               </image>
 	                               
 	                               <view class="q-image-remover" :data-idx="idx"
@@ -24,6 +24,7 @@
 	           						top: -69rpx;
 									color: #F2F2F2;
 	           						right: 14rpx;">x</text>
+									
 	                               <!--    <image  class="image"
 	           						style="
 	           						width: 30rpx;
@@ -118,7 +119,7 @@
 		          												 img.path = JSON.parse(res2[1].data).data;
 		          												 // img.url = JSON.parse(res2[1]).resourcesUrl + JSON.parse(res2[1]).filePath;
 		          												 var photoFiles = ths.photoFiles;
-		          												 
+		          												
 		          												 photoFiles.push(img);
 		          												ths.photoFiles= photoFiles
 																ths.$emit("addPictrue",photoFiles)

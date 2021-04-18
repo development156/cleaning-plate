@@ -23,7 +23,7 @@
 					<!-- style="margin-top: 30rpx;" -->
 			    
 			       <image style="box-shadow:2rpx 1rpx 1rpx  #000000; margin-left: 50rpx; 
-					width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFill" :src="imgurl+url"
+					width: 180rpx; height: 180rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFill" :src="url"
 			            @error="imageError"></image>
 			   
 			    <view class="image-title" style="font-size: 32rpx;
@@ -128,7 +128,8 @@
 				var th=this;
 				orderMangae.getApplyInformation(
 				{"ID":orderId}).then(res => {
-				
+				console.log("getApplyInformation")
+				console.log(res)
 						th.url = res.data[0].url;
 						th.orderId = res.data[0].id;
 						th.userName = res.data[0].name;

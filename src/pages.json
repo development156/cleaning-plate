@@ -7,6 +7,7 @@
 				"navigationStyle": "custom"
 			}
 		},
+		
 		{
 			//管理员首页
 			"path": "pages/admin/Upload/index",
@@ -25,7 +26,7 @@
 // 				"navigationStyle": "custom"
 // 			}
 // 		},
-
+// 
 		{
 			"path": "pages/superAdmin/index",
 			"style": {
@@ -171,8 +172,8 @@
 				"navigationBarTextStyle": "black"
 			}
 		},
-
-
+// 
+// 
 
 
 
@@ -302,7 +303,7 @@
 			"path": "pages/admin/Feedback/inputFeed",
 			"style": {
 
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "反馈消息",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black"
 			}

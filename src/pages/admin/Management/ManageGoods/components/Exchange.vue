@@ -1,6 +1,6 @@
 <template>
 	<view>
-		这个页面用用户端的
+		<!-- 这个页面用用户端的 -->
 <!-- 	<view class="credit">我的积分<span>208</span></view>
 	<view class="select">
 		<select  v-model="option" >

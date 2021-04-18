@@ -10,7 +10,7 @@
 	                        <!-- 图片缩略图  -->
 	                        <block v-for="(imgItem, idx) in photoFiles" :key="idx">
 	                            <view class="item">
-	                                <image class="q-image" :src="imgurl+imgItem.url"  mode="aspectFill" :data-cur="imgurl+imgItem.url" @tap="refundPicPreView"></image>
+	                                <image class="q-image" :src="imgItem.url"  mode="aspectFill" :data-cur="imgItem.url" @tap="refundPicPreView"></image>
 	                                </image>
 	                                <!-- 移除图片的按钮  -->
 	                                <view class="q-image-remover" :data-idx="idx" @tap="removeImage">
@@ -39,14 +39,28 @@
 					<span><input class="input"  placeholder="输入产地" v-model='notice.product.ProductionPlace' /></span>
 			</span>
 			<span class="item2">
-					<span>销量</span>
-					<span><input class="input"  v-model='notice.product.sales' /></span>
+					<span>库存</span>
+					<span><input class="input"  placeholder="输入库存" v-model='notice.product.stock' /></span>
 			</span>
+			<span class="item5">
+					<span>扶贫单位</span>
+					<span><input class="input2"  placeholder="输入单位" v-model='notice.product.PovertyAlleviationUnit' /></span>
+			</span>
+				<span class="item4">
+					<span>扶贫描述</span>
+
+			</span>
+    <view style="background: #EEEEEE">
+		
+<textarea class="input1"  v-model="notice.product.DescriptionOfPovertyAlleviation" maxlength="300" auto-focus="autofocus"  placeholder="输入描述"   />
+		
+		<!-- <input class="input1"  v-model='notice.product.DescriptionOfPovertyAlleviation' /></view> -->
 		</view>
 				
 		<view>
 			<button class="addGoods" @click="send">发布</button>
 		</view>
+	</view>
 	</view>
 </template>
 
@@ -67,12 +81,14 @@
 			    notice:{
 			    	"product":{
 						"name":"",//商品名称
-						
+						"stock":'',//库存
 						"integrate":'',//积分
 						"univalence":'',//单价
 						"state":'',//用于判断该产品的存在状态
 						"flag":'2',//判断是积分兑换，还是用户自己支付
-						"sales":'0'//销量
+						"sales":'0',//销量
+						'PovertyAlleviationUnit':'',//扶贫单位
+						"DescriptionOfPovertyAlleviation":''
 					},
 					"productionImgList":'',
 			    },    
@@ -90,7 +106,8 @@
 				})
 				var th=this;
 				manageGoods.addGoods(this.notice).then(res => {
-						
+						console.log("console.log(res)")
+						console.log(res)
 						uni.hideLoading()
 						// this.array=res.data
 						if(res.code==200){
@@ -155,7 +172,8 @@
 						    });
 					
 						manageGoods.uploadPictrue(tempFilePaths).then( res2 => {
-							
+									console.log("res2")
+									console.log(res2)
 									setTimeout(()=>{
 										uni.hideLoading()
 									},180);
@@ -263,7 +281,7 @@
 		 
 		// background: #2C405A;
 		margin: auto;
-		
+		overflow-y: scroll;
 		border-bottom: 2rpx solid rgba(255, 255, 255, 100);
 		.q-image-wrap {
 			
@@ -281,6 +299,7 @@
 			    width: 210rpx;
 				border-radius: 20rpx;
 			    margin: 9rpx;
+				margin-bottom: 15rpx;
 			    // margin-buttom: 18rpx;
 				.q-image {
 				    height: 210rpx;
@@ -320,43 +339,136 @@
 			}
 		}
 	}
-	
 	.goods-info{
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-	
-		padding: 20rpx;
-		height: 200rpx;
+			
+		padding: 14rpx;
+		height: 17%;
 		width: 88%;
 		margin: auto;
-		
+		// background: #0EA391;
 		border-top: 3rpx solid #BBBBBB ;
 		
-		.item1,.item2,.item3{
+		.item1,.item2,.item3,.item4,.item5{
 			display: flex;
 			justify-content: space-between;
 			font-size: 32rpx;
-			
+			height: 74rpx;//
 			span:nth-child(1){
 				color: rgba(16, 16, 16, 100);
+				line-height: 76rpx;
 			
 			}
 			// span:nth-child(2){
 			
 			 
 				.input{
-					display: inline;
-					width: 100upx;
-					border: 2rpx ;
-					text-align: right;
+					padding: 0;
+					
+					background: #BFDE85;
+					// display: inline;
+					height: 62rpx;
+					width: 195upx;
+					// border: 2rpx ;
+					text-align: center;
 					font-size: 30rpx;
 				color: rgba(222, 24, 35, 100);
 				}
+				//扶贫单位
+					.input2{
+						padding-top: 6rpx;
+						margin-top: 6rpx;
+					background: #BFDE85;
+						width:  195upx;
+						height: 62rpx;
+						
+						text-align: center;
+						font-size: 30rpx;
+					color: rgba(222, 24, 35, 100);
+				}
+					.input1{
+					background: #BFDE85;
+							
+						width: 85%;
+						height: 170rpx;
+						margin: auto;
+						margin-top: 20rpx;
+						padding-top: 6rpx;
+						color:  rgba(182, 182, 182, 100);
+						
+						font-size: 30rpx;
+						text-align: left;
+						
+						border: 2rpx ;
+						margin-top: 6rpx ;
+						
+						font-size: 30rpx;
+					color: rgba(222, 24, 35, 100);
+				}
 			// }
 		}
-		
 	}
+// 	.goods-info{
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: space-evenly;
+// 	
+// 		padding: 20rpx;
+// 		height: 200rpx;
+// 		width: 88%;
+// 		margin: auto;
+// 		
+// 		border-top: 3rpx solid #BBBBBB ;
+// 		
+// 		.item1,.item2,.item3,.item4,.item5{
+// 			display: flex;
+// 			justify-content: space-between;
+// 			font-size: 32rpx;
+// 			
+// 			span:nth-child(1){
+// 				color: rgba(16, 16, 16, 100);
+// 			
+// 			}
+// 			// span:nth-child(2){
+// 			
+// 			 
+// 					.input{
+// 					padding: 0;
+// 					
+// 					background: #BFDE85;
+// 					// display: inline;
+// 					height: 66rpx;
+// 					width: 95upx;
+// 					// border: 2rpx ;
+// 					text-align: center;
+// 					font-size: 30rpx;
+// 				color: rgba(222, 24, 35, 100);
+// 				}
+// 				
+// 					.input1{
+// 					display: block;
+// 						width: 80%;
+// 						border: 2rpx ;
+// 						text-align: center;
+// 						font-size: 32rpx;
+// 						height: 70rpx;
+// 					color: rgba(222, 24, 35, 100);
+// 				}
+// 					.input2{
+// 					background: #BFDE85;
+// 						width:  195upx;
+// 						height: 66rpx;
+// 						border: 2rpx ;
+// 						text-align: center;
+// 						font-size: 30rpx;
+// 					color: rgba(222, 24, 35, 100);
+// 				}
+// 			// }
+// 		}
+// 		
+// 	}
 
 	
 	.addGoods{

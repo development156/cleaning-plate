@@ -25,9 +25,13 @@ class OrderManager extends HTTP {
 	}
 	//查询订单详情
 	getApplyInformation(params) {
+		let Authorization = uni.getStorageSync('AuthTokens')
 	    return this.request({
 	        url: `/mine/getApplyInformation`,
 			method: 'Get',
+			header: {
+			'Authorization':Authorization
+			},	
 			data:params
 	    })
 	}

@@ -13,10 +13,11 @@
 				<view class="user-info">
 
 
-					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFill" :src='imgurl+item.url | formatAvatarUrl'
+					<image style=" width: 48rpx; height:48rpx; background-color: #eeeeee;border-radius: 48rpx;" mode="aspectFill" :src='item.url | formatAvatarUrl'
 		                    @error="imageError"></image>
 							
 					<span>{{item.name}}</span>
+		
 				</view>
 				<view class="order-state">
 					等待<span v-show="tackled">买家收货</span><span v-show="!tackled">发货</span>
@@ -25,7 +26,7 @@
 					<view style="margin-top: 30rpx;">
 		            <view class="image-content">
 
-		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='imgurl+item.url | formatAvatarUrl'
+		                <image style="width: 156rpx; height: 158rpx; background-color: #eeeeee;border-radius: 10px;" mode="aspectFit" :src='item.url | formatAvatarUrl'
 		                    @error="imageError"></image>
 							
 		            </view>
@@ -123,6 +124,9 @@
 				// })
 				var th= this;
 				orderMangae.ensureShipment({"ID":id,"orderFlag":flag,"shipmentFlag":shipmenFlag}).then(res => {
+					console.log("去发货")
+					console.log(res);
+					
 					if(res.code == 200){
 						th.gotAllGoods(0);
 						uni.showToast({
@@ -160,7 +164,8 @@
 				if(shipmentFlag == 0){
 					
 				orderMangae.getUnshipment({"shipmentFlag":0}).then(res => {
-					
+					console.log("res0");
+					console.log(res);
 				// 	res.data.forEach(function (item) {
 				// 		list.push(item)
 				// 	})
@@ -195,7 +200,8 @@
 // 				})
 				}else if(shipmentFlag==1){
 					orderMangae.getUnshipment({"shipmentFlag":1}).then(res => {
-						
+						console.log("res");
+						console.log(res);
 						res.data.orderToApplyList.forEach(function (item) {
 							item.hasTackled=true;//确认订单
 							item.flag=0;//支付订单
@@ -212,10 +218,12 @@
 						// this.jugement(2);
 						
 					})	.catch(err => {
-							uni.showModal({
-												content: ' 你连网络了吗~',
-												showCancel: false
-						});
+					
+					uni.showToast({
+						title: '没有需要处理的订单',
+						icon:'none',
+						duration: 1800
+					});
 							
 				})
 				}

@@ -13,8 +13,8 @@
 		<image></image>
 		
 		<view class="item1">
-			<text>{{item.professionUploadRationMonth.college}}</text>
-			<text>{{item.professionUploadRationMonth.year+'-'+item.professionUploadRationMonth.month}}</text>
+			<text style="margin-top: 20rpx;">{{item.professionUploadRationMonth.college}}</text>
+			<text style="margin-top: 50rpx;">{{item.professionUploadRationMonth.year+'-'+item.professionUploadRationMonth.month}}</text>
 		</view>
 		<view class="item2">
 		{{item.professionUploadRationMonth.profession+item.professionUploadRationMonth.grade}}
@@ -434,7 +434,9 @@
 	}
 		
 	.footer{
-		background-color: rgba(255, 252, 235, 100);
+		// background-color: rgba(255, 252, 235, 100);
+		background-color: rgba(205,133,63, 0.2);
+
 		height:35%;
 		box-shadow: 0px 2rpx 8rpx 0px rgba(0, 0, 0, 0.4);
 		display: flex;

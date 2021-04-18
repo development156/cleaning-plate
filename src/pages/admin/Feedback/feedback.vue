@@ -25,6 +25,13 @@
 				
 				<view class="info_backinfo">{{item.description}}</view>
 				</view>
+				<view class="info_key" >
+				关键词：
+				<span >{{item.keyWordList[0]}}</span>
+				<span>{{item.keyWordList[1]}}</span>
+				<span>
+				{{item.keyWordList[2]}}</span>
+				</view>
 			</view>	
 			</navigator>	
 				 <!-- </uni-swipe-action-item> -->
@@ -127,6 +134,7 @@
 					});
 				})
 			},
+			
 				// 删除按钮
 			touchS: function (e) {
 			              // console.log('touchS')
@@ -310,6 +318,28 @@
 				
 				// border: 2rpx solid rgba(255, 255, 255, 100);
 			}
+			.info_key{
+				position: absolute;
+				font-size: 25rpx;
+				right:55rpx;
+				top: 140rpx;
+				
+				span{
+					background-color: #C9A65E;
+					border: 5rpx  solid #C9A65E;
+					border-radius: 40rpx;
+					margin-right: 8rpx;
+					width: 65rpx;
+					height: 60rpx;
+					color: #F3F3F3;
+					font-weight: 500;
+				}
+				
+				
+				
+				
+			
+			}
 			.info_content{
 				flex-flow:column;
 				margin-left:25rpx;
@@ -323,8 +353,8 @@
 				.info_nickname{
 					color: rgba(16, 16, 16, 100);
 					font-size: 16px;
-					
 				}
+				
 				.data{
 					color: rgba(119, 118, 114, 100);
 					font-size: 14px;
@@ -332,6 +362,7 @@
 					// margin-left:270rpx;
 				}
 				}
+				
 				.info_backinfo{
 					margin-top: 18rpx;
 					width: 508rpx;

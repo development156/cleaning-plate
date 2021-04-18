@@ -12,7 +12,7 @@
 			<!-- 	积分兑换 -->
 			
 	<view class="hot_goods" v-if="flag==1">
-		<view class="tit">我的积分</view>
+		
 		<view class="goods_list">
 			     <navigator class="goods_item"
 			      v-for="(item,index) in goodsList"
@@ -20,7 +20,7 @@
 				   :url="'goodsDetails/creditDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 			     >
 			      <image  mode="aspectFill"
-			      :src="imgurl +item.url">
+			      :src="item.url">
 				  </image>
 				  
 				  <!-- 移除菜品的按钮  -->
@@ -36,10 +36,14 @@
 				  -->
 				  <view class="name">
 				  	{{item.name }}
+					
 				  </view>
 				  
 				  <view class="name2">
 				  	{{item.integrate}}  积分
+				  </view>
+				  <view class="name21">
+				   库存	{{item.stock}} 份
 				  </view>
 				
 				  <view class="name3">
@@ -73,7 +77,7 @@
 	:url="'goodsDetails/payDetails?item='+ encodeURIComponent(JSON.stringify(item))" 
 	 :key="item.id"
 	>
-									<image :src="imgurl+item.url" mode="aspectFill"></image>
+									<image :src="item.url" mode="aspectFill"></image>
 									
 									<!-- 移除菜品的按钮  -->
 									<view class="q-image-remover"  @tap="removeImage(item.ID,flag)">
@@ -88,8 +92,9 @@
 						              	</view>
 						                  	
 						               <text class="text1">￥{{item.univalence}}</text>
-						                  <text class="text2">产地: {{item.productionPlace}}</text>
-						                  	
+									    <text class="text3">产地: {{item.productionPlace}}</text>
+						                   <text class="text3">库存	{{item.stock}} 份
+						                  	</text>
 						                 </view>
 		  </navigator>
 		
@@ -423,6 +428,12 @@ export default{
 				
 				font-family: 方正兰亭黑-标准;
 			}
+			.name21{
+				color:#999999;
+				font-size: 26rpx;
+				padding-bottom: 8rpx;
+				text-align: right;
+			}
 			.name3{
 				
 				color: rgba(149, 149, 149, 100);
@@ -486,14 +497,23 @@ export default{
 				.text2{
 					color: rgba(149, 149, 149, 100);
 					font-size: 24rpx;
-					float: right;
+					float: left;
 					text-align: right;
 					// margin-bottom: 20rpx;
-					padding-bottom: 20rpx;
+					padding-bottom: 22rpx;
 					font-family: 方正兰亭黑-标准;
 				}
 					
-				
+					.text3{
+					
+					color: rgba(149, 149, 149, 100);
+					font-size: 24rpx;
+					float: left;
+					text-align: left;
+					// margin-bottom: 20rpx;
+					
+					font-family: 方正兰亭黑-标准;
+				}
 				}
 				
 			}
