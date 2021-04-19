@@ -419,7 +419,7 @@
 		},
 
 		{
-			"path": "pages/home/advertising/advertisingList/advertisingList",
+			"path": "pages/home/Advertising/advertisingList/advertisingList",
 			"style": {
 				"navigationBarTitleText": "公告列表",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -428,7 +428,7 @@
 			}
 		},
 		{
-			"path": "pages/home/advertising/advertisingDetails/advertisingDetails",
+			"path": "pages/home/Advertising/advertisingDetails/advertisingDetails",
 			"style": {
 				"navigationBarTitleText": "公告详情",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -440,7 +440,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/index",
+			"path": "pages/home/ExchangeZone/index",
 			"style": {
 				"navigationBarTitleText": "兑换专区",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -451,7 +451,7 @@
 		},
 
 		{
-			"path": "pages/home/exchangeZone/acquireExchange/creditAcquireExchange",
+			"path": "pages/home/ExchangeZone/acquireExchange/creditAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "确认兑换",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -462,7 +462,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/acquireExchange/payAcquireExchange",
+			"path": "pages/home/ExchangeZone/acquireExchange/payAcquireExchange",
 			"style": {
 				"navigationBarTitleText": "确认购买",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -474,7 +474,7 @@
 
 
 		{
-			"path": "pages/home/exchangeZone/goodsDetails/creditDetails",
+			"path": "pages/home/ExchangeZone/goodsDetails/creditDetails",
 			"style": {
 				"navigationBarTitleText": "商品详情",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -485,7 +485,7 @@
 		},
 
 		{
-			"path": "pages/home/exchangeZone/goodsDetails/payDetails",
+			"path": "pages/home/ExchangeZone/goodsDetails/payDetails",
 			"style": {
 				"navigationBarTitleText": "商品详情",
 					"navigationBarBackgroundColor": "#b5a58c",
@@ -496,7 +496,7 @@
 		},
 		// 购物车
 		{
-			"path": "pages/home/exchangeZone/cart/cart",
+			"path": "pages/home/ExchangeZone/cart/cart",
 			"style": {
 				"navigationBarTitleText": "购物车",
 					"navigationBarBackgroundColor": "#b5a58c",
