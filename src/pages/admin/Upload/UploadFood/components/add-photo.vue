@@ -33,6 +33,9 @@ export default {
     sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
     sourceType: ['album'], //从相册选择
     success: function (res) {
+		console.log("success")
+		console.log(res)
+		
 	uni.showLoading({
 	    title: '加载中'
 	});
@@ -47,6 +50,9 @@ export default {
     
 //     }
 	 ).then(res => {
+		 
+		 console.log("chooseImage")
+		 console.log(res)
 		 // success: function (uploadFileRes) {  
 			if(JSON.parse(res[1].data).code==200){
 				uni.hideLoading();

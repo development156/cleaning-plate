@@ -220,7 +220,7 @@
 			"path": "pages/admin/AddSocre/addSocre",
 			"style": {
 				"navigationBarTitleText": "加分",
-				"navigationBarBackgroundColor": "#485f67",
+				"navigationBarBackgroundColor": "#b5a58c",
 				"navigationBarTextStyle": "white"
 			}
 

@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="tab-view" >
 		<!-- <xTab :value="tabList" @changeTab="changeTab" actType="underline" :config="{padding:80,spacing: 200,background:'#1989FA',color:'#666666',actColor:'#C9A65E',size:32,position:0}"></xTab> -->
-		<xTab v-if="isShow" :value="colleges" @changeTab="changeTabAcademy" actType="underline" :config="{spacing: 30,right:10, background:'#1989FA',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
+		<xTab v-if="isShow" :value="colleges" @changeTab="changeTabAcademy" actType="underline" :config="{spacing: 30,right:10, background:'#b5a58c',color:'#666666',actColor:'#1989FA',size:32,position:0}"></xTab>
 		</view>
 	
 	
@@ -435,7 +435,7 @@
 		
 	.footer{
 		// background-color: rgba(255, 252, 235, 100);
-		background-color: rgba(205,133,63, 0.2);
+		background-color: 	#F5F5F5;
 
 		height:35%;
 		box-shadow: 0px 2rpx 8rpx 0px rgba(0, 0, 0, 0.4);

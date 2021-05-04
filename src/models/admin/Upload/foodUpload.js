@@ -16,7 +16,7 @@ class FoodUpload extends HTTP {
 	uploadPicture(params){
 		let Authorization = uni.getStorageSync('AuthTokens')
 		return uni.uploadFile({
-			url : 'http://8.129.51.225:8080/YouGuang_war/admin/uploadProductImg',
+			url : 'http://47.112.121.20:8080/YouGuang_war/admin/uploadProductImg',
 			filePath: params,
 			header: {
 			'Authorization':Authorization

@@ -384,7 +384,8 @@
 	   addData(){
 				//上传菜名接口
 					upLoad.uploadMenu( this.inputInfo ).then(res => {
-					// console.log(res)
+						console.log("上传菜名接口")
+					console.log(res)
 					//如果菜名为空返回
 					if(this.inputInfo.dishName==''){
 						uni.showToast({

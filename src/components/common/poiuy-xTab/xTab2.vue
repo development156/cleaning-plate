@@ -10,7 +10,7 @@
 				 height:conf.height+'rpx',
 				 'line-height':conf.height+'rpx'}">
 				 
-					<label :id="'txt_'+item[setField.id]" class="txt" :style="{color:currAct===item[setField.id]?'#C9A65E':'#FFFFFF',  //(conf.actColor)
+					<label :id="'txt_'+item[setField.id]" class="txt" :style="{color:currAct===item[setField.id]?'#000000':'#FFFFFF',  //(conf.actColor)
 					'font-size':(currAct===item[setField.id]?conf.actSize+'rpx':conf.size+'rpx'),
 					
 					'margin-right':30+'rpx',
@@ -71,12 +71,12 @@
 					padding: 0,
 					size: 40,
 					color: '#333333',
-					actColor: '#C9A65E',
+					actColor: '#000000',
 					actSize:35,
 					spacing: 60,
 					position: 0,
 					actWeight: '100',
-					background: '#485f67'
+					background: '#b5a58c'
 				},
 				currAct: null,
 				moves: 0,
@@ -196,7 +196,7 @@
 	
 	.scroll-view {
 		position: fixed;
-		background:#485f67;
+		background:#b5a58c;
 		width: 150%;
 		white-space: nowrap;
 		padding-left: 0.66rem;

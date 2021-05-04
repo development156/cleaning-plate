@@ -4,9 +4,9 @@
 let BASE_URL = ''
 if (process.env.NODE_ENV == 'development') {
 //http://8.129.51.225:8080/YouGuang_war
-    BASE_URL = 'http://8.129.51.225:8080/YouGuang_war' // qe环境
+    BASE_URL = 'http://47.119.143.146:8080/YouGuang_war' // qe环境
 } else {
-    BASE_URL = 'http://8.129.51.225:8080/YouGuang_war' // 生产环境
+    BASE_URL = 'http://47.119.143.146:8080/YouGuang_war' // 生产环境
 
 } 
 const config = {
